@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="/theme/css/style.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/theme-logos.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/docs.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/wowchemy-compat.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news-snippet.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/publications.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/feeds.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/projects.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/research-home.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/collaborations.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/cv.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/archive-links.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-summary.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/filter-tagcloud.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-content.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/pygments.css?v=c6b9f9bc" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="/theme/css/navbar.css" rel="stylesheet">
+
+<!-- KaTeX for LaTeX math rendering -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+
+
+
+
+<title>"fluidnc-sim: a desktop CNC simulator with QEMU firmware emulation and 3D toolpath visualization"</title>
+
+
+<link href="https://jordan.auge.synaxe.net/fr/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jordan Augé Full Atom Feed" >
+
+<link href="https://jordan.auge.synaxe.net/fr/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Full RSS Feed" >
+
+
+
+
+<link href="/feed/cnc.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Categories RSS Feed" >
+
+
+
+<link rel="canonical" href="https://jordan.auge.synaxe.net/fr/drafts/fluidnc-simulator-en/">
+
+<link rel="alternate" hreflang="en" href="https://jordan.auge.synaxe.net/drafts/fluidnc-simulator-en/">
+<link rel="alternate" hreflang="fr" href="https://jordan.auge.synaxe.net/fr/drafts/fluidnc-simulator-en/">
+
+<meta property="og:locale" content="">
+
+<meta property="og:site_name" content="Jordan Augé">
+<meta property="og:url" content="https://jordan.auge.synaxe.net/fr/drafts/fluidnc-simulator-en/">
+<meta property="og:type" content="article">
+
+<meta property="og:title" content="fluidnc-sim — QEMU-Based CNC Simulator with 3D Toolpath">
+<meta property="og:description" content="A desktop simulator that runs the real FluidNC firmware in QEMU and renders the TS35 touchscreen via LVGL on the host, with a live 3D orthographic view of toolpath, hardware plugins, and material...">
+
+
+
+
+<meta name="description" content="A desktop simulator that runs the real FluidNC firmware in QEMU and renders the TS35 touchscreen via LVGL on the host, with a live 3D...">
+
+<meta name="author" content="Jordan Augé">
+
+
+
+<meta name="description" content="Jordan Augé's homepage">
+
+<script src="/theme/js/color-modes.js"></script>
+
+<meta name="author" content="Jordan Augé">
+
+
+</head>
+
+<body class="article-fluidnc-simulator">
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <symbol id="archive" viewBox="0 0 16 16">
+    <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="arrow-right-short" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+  </symbol>
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </symbol>
+  <symbol id="file-earmark-richtext" viewBox="0 0 16 16">
+    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+    <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
+  </symbol>
+  <symbol id="film" viewBox="0 0 16 16">
+    <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="rss" viewBox="0 0 16 16">
+    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+    <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+  <symbol id="three-dots" viewBox="0 0 16 16">
+    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+  </symbol>
+</svg>
+
+
+
+
+
+  <header class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top">
+  <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+    <div class="d-lg-none" style="width: 2.25rem;"></div>
+
+    <a class="navbar-brand p-0 me-0 me-lg-4" href="https://jordan.auge.synaxe.net/" aria-label=Jordan Augé>Jordan Augé</a>
+
+    <div class="d-flex">
+      <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jordan Augé</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+      </div>
+
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/">Accueil</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/news">Actualités</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/research">Recherche</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/research/publications">Publications</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/cv">CV</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/projects">Projets</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/blog">Blog</a>
+              </li>
+        </ul>
+
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+
+          <li class="nav-item d-none d-lg-flex align-items-center navbar-social-icons">
+            <a href="mailto:jordan.auge@free.fr" class="nav-link px-1 navbar-social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://scholar.google.fr/citations?user=-itbwwIAAAAJ" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://github.com/jordanauge" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/jordan-aug%C3%A9-763ba4a8/" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </li>
+
+          <li class="nav-item dropdown d-lg-none">
+            <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                    id="bd-theme-mobile"
+                    type="button"
+                    aria-expanded="false"
+                    data-bs-toggle="dropdown"
+                    data-bs-display="static"
+                    aria-label="Toggle theme (auto)">
+              <svg class="bi my-1"><use href="#circle-half"></use></svg>
+              <span class="ms-2" id="bd-theme-text">Toggle theme</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+                  Light
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+                  Dark
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+                  Auto
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item d-lg-none navbar-language-item">
+            <div class="navbar-lang-toggle" aria-label="Language switcher">
+              <span class="navbar-lang-label">EN</span>
+              <a href="/fr/drafts/fluidnc-simulator-en.html"
+                 class="navbar-lang-toggle-track"
+                 role="switch"
+                 aria-checked="false"
+                 aria-label="Switch to French">
+                <span class="navbar-lang-toggle-thumb"></span>
+              </a>
+              <span class="navbar-lang-label">FR</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="navbar-absolute-right d-none d-lg-flex align-items-center">
+    <div class="dropdown d-flex align-items-center">
+      <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-lang-toggle navbar-language-item" aria-label="Language switcher">
+      <span class="navbar-lang-label">EN</span>
+      <a href="/fr/drafts/fluidnc-simulator-en.html"
+         class="navbar-lang-toggle-track"
+         role="switch"
+         aria-checked="false"
+         aria-label="Switch to French">
+        <span class="navbar-lang-toggle-thumb"></span>
+      </a>
+      <span class="navbar-lang-label">FR</span>
+    </div>
+  </div>
+</header>
+            <header class="intro-header"
+                style="background-image: url('https://jordan.auge.synaxe.net/fr/../theme/images/post-bg.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                            <div class="post-heading text-light text-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+
+
+<div class="container-xxl px-4 px-xxl-2">
+    <div class="d-lg-grid content blog-article-page" id="content">
+        
+<div class="sidebar">
+  <aside class="news-article-sidebar sticky-top">
+
+    <div class="publications-sidebar-header">
+      <h1>CNC</h1>
+    </div>
+
+    <div class="sidebar-section sidebar-nav-links">
+
+      <div class="sidebar-feed-row">
+        <a class="sidebar-feed-label" href="/fr/blog/">Tous les billets</a>
+        <div class="dropdown sidebar-rss-dropdown">
+          <button class="sidebar-rss-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Flux RSS">
+            <svg class="bi" width="11" height="11" aria-hidden="true"><use xlink:href="#rss"></use></svg>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end sidebar-rss-menu">
+            <li><a class="dropdown-item" href="/fr/feed/blog.rss.xml" rel="alternate" type="application/rss+xml">Articles</a></li>
+            <li><a class="dropdown-item" href="/fr/feed/blog-with-updates.rss.xml" rel="alternate" type="application/rss+xml">Articles + mises à jour</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-feed-row">
+        <a class="sidebar-feed-label sidebar-feed-label--plain" href="https://jordan.auge.synaxe.net/fr/blog/category/cnc/">CNC</a>
+        <div class="dropdown sidebar-rss-dropdown">
+          <button class="sidebar-rss-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Flux RSS">
+            <svg class="bi" width="11" height="11" aria-hidden="true"><use xlink:href="#rss"></use></svg>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end sidebar-rss-menu">
+            <li><a class="dropdown-item" href="/fr/feed/cnc.rss.xml" rel="alternate" type="application/rss+xml">Articles</a></li>
+            <li><a class="dropdown-item" href="/fr/feed/cnc-with-updates.rss.xml" rel="alternate" type="application/rss+xml">Articles + mises à jour</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-back-row mt-2">
+        <button type="button" class="sidebar-back-link" onclick="if(history.length > 1 && document.referrer && document.referrer.indexOf(location.host) !== -1){ history.back(); } else { location.href='/fr/blog/'; }">
+          <i class="bi bi-arrow-left"></i>
+          Retour
+        </button>
+      </div>
+
+    </div>
+
+    <div id="blog-toc-section" class="sidebar-section" style="display:none">
+      <hr class="sidebar-divider my-2">
+      <div class="blog-toc-heading">Sur cette page</div>
+      <nav id="blog-toc" class="blog-toc-nav" aria-label="Table of contents"></nav>
+    </div>
+
+  </aside>
+</div>
+
+<script>
+(function() {
+  function buildToc() {
+    var post = document.querySelector('.post');
+    if (!post) return;
+    var headings = Array.from(post.querySelectorAll('h2, h3'));
+    if (headings.length < 2) return;
+    var nav = document.getElementById('blog-toc');
+    var section = document.getElementById('blog-toc-section');
+    if (!nav || !section) return;
+
+    var ul = document.createElement('ul');
+    ul.className = 'blog-toc-list';
+    headings.forEach(function(h, i) {
+      if (!h.id) h.id = 'toc-heading-' + i;
+      var li = document.createElement('li');
+      li.className = 'blog-toc-item blog-toc-' + h.tagName.toLowerCase();
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.className = 'blog-toc-link';
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    nav.appendChild(ul);
+    section.style.display = '';
+
+    var aside = section.closest('.news-article-sidebar');
+    if (!aside) return;
+
+    // Calibrate sticky top to actual navbar height so sidebar never overlaps it
+    function applyNavbarOffset() {
+      var navbar = document.querySelector('.bd-navbar');
+      if (!navbar) return;
+      var h = Math.ceil(navbar.getBoundingClientRect().height);
+      var gap = 4; // px clearance below navbar
+      aside.style.top = (h + gap) + 'px';
+      aside.style.maxHeight = 'calc(100vh - ' + (h + gap) + 'px)';
+    }
+    applyNavbarOffset();
+    window.addEventListener('resize', applyNavbarOffset, { passive: true });
+
+    // Minimal-scroll: only move the sidebar when the active link is out of view.
+    // Never overshoot — scroll just enough to reveal the link with a small margin.
+    function scrollSidebarToActive(link) {
+      var margin = 6;
+      var asideRect = aside.getBoundingClientRect();
+      var linkRect = link.getBoundingClientRect();
+      var relTop    = linkRect.top    - asideRect.top;
+      var relBottom = linkRect.bottom - asideRect.top;
+      if (relTop < margin) {
+        aside.scrollTop += relTop - margin;
+      } else if (relBottom > asideRect.height - margin) {
+        aside.scrollTop += relBottom - asideRect.height + margin;
+      }
+      // If already visible, do nothing
+    }
+
+    // Scroll-based active tracking: the active heading is the last one whose
+    // top edge has passed above the scroll threshold (navbar bottom + small offset).
+    var currentActiveId = null;
+    function updateActive() {
+      var navbar = document.querySelector('.bd-navbar');
+      var threshold = (navbar ? navbar.offsetHeight : 56) + 8;
+
+      var found = null;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        if (headings[i].getBoundingClientRect().top <= threshold) {
+          found = headings[i];
+          break;
+        }
+      }
+      // If nothing has passed yet, highlight the first item
+      if (!found) found = headings[0];
+      if (!found) return;
+
+      if (found.id === currentActiveId) return; // no change
+      currentActiveId = found.id;
+
+      nav.querySelectorAll('.blog-toc-link').forEach(function(l) {
+        l.classList.remove('active');
+      });
+      var activeLink = nav.querySelector('a[href="#' + found.id + '"]');
+      if (activeLink) {
+        activeLink.classList.add('active');
+        scrollSidebarToActive(activeLink);
+      }
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() { updateActive(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateActive(); // set initial state
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildToc);
+  } else {
+    buildToc();
+  }
+})();
+</script>
+
+
+
+        <div class="main">
+            
+<div class="posts-container article-posts-container mx-auto my-5">
+  <div class="posts">
+    <div class="post">
+      <div class="article-content-header">
+        <h1 class="article-content-title">"fluidnc-sim: a desktop CNC simulator with QEMU firmware emulation and 3D toolpath visualization"</h1>
+        <div class="article-meta-pills article-meta-pills-content mt-2 mb-1">
+          <time class="article-date" datetime="2026-05-12"><i class="bi bi-calendar3"></i> 2026-05-12</time>
+          <time class="article-date article-date-updated" datetime="2026-11-02"><i class="bi bi-pencil-square"></i> 2026-11-02</time>
+            <a class="post-tag post-tag-project" data-color="orange" href="https://jordan.auge.synaxe.net/fr/blog/category/cnc/"><i class="bi bi-folder2-open"></i> CNC</a>
+        </div>
+      </div>
+      
+     <div class="article-summary article-summary-featured">
+         <div class="article-summary-kicker">Summary</div>
+     <p>A desktop simulator that runs the real FluidNC firmware in QEMU and renders the TS35 touchscreen via LVGL on the host, with a live 3D orthographic view of toolpath, hardware plugins, and material removal. Built to develop and test plugins that require visual hardware feedback — touch plate collision, ETS approach sequences, stall detection — without flashing hardware on every iteration.</p>
+     </div>
+
+
+
+       <h2 id="prior-art">Prior art</h2>
+<p>Before building a custom simulator, the obvious options are:</p>
+<p><strong>Wokwi</strong> is the most accessible ESP32 simulation environment — a browser-based emulator that can run firmware and simulate common peripherals. For simple projects it works well. For FluidNC plugin development, it falls short on two points: there is no support for the SPI TFT + LVGL stack that the TS35 uses, and there is no way to visualize machine state in three dimensions. Wokwi simulates the MCU; it does not simulate a CNC machine. The <code>wokwi-cli</code> command-line variant enables automated testing, but the peripheral limitations remain.</p>
+<p><strong>QEMU</strong> (Espressif’s ESP32 fork of <code>qemu-system-xtensa</code>) runs real firmware at the instruction level. FluidNC boots, the G-code parser works, the state machine transitions correctly. This is much closer to what we need — but QEMU is headless. It has no display output, no SPI peripheral simulation, and no way to render the TS35 screen. You observe firmware behavior through the serial port, not through the UI.</p>
+<p><strong>FluidNC’s <code>native</code> build</strong> compiles a subset of FluidNC for Linux/macOS via a PlatformIO native environment. It runs the G-code parser and a few unit tests in isolation. It cannot run plugin code that depends on FreeRTOS or ESP32 peripherals, and has no display or machine state.</p>
+<p>What was missing in all three: a way to run the real LVGL display code (the same <code>TS35Display.cpp</code> that runs on the ESP32) on the host desktop, and a way to see machine position in 3D while the firmware runs. The plugins we wanted to build — touch plate collision detection, tool change sequences, stall-triggered feed holds — require visual hardware feedback to develop correctly. That required building the host-side rendering layer ourselves.</p>
+<hr/>
+<h2 id="why-a-desktop-simulator">Why a desktop simulator</h2>
+<p>Developing FluidNC plugins means working on two things simultaneously: a <code>ConfigurableModule</code> running on Core 1 (business logic, command generation, state machines) and an LVGL display extension running on Core 0 (UI rendering, touch handling). Both need tight feedback loops.</p>
+<p>The standard hardware development cycle — compile, flash (~3 min), boot, test by hand — works for one-off configuration changes. For plugin development it becomes a bottleneck: a session of refining probe sequences, tuning animation timing, or debugging a display layout can involve dozens of iterations. Mistakes are expensive: crashed axes, broken bits, reflashing from a bad state.</p>
+<p><code>fluidnc-sim</code> closes this loop. It runs the real FluidNC firmware in QEMU and renders the real display code on the host desktop. The same <code>TS35Display.cpp</code> compiled for x86/ARM64 instead of Xtensa, the same G-code logic, the same state machines — with a 3D orthographic view of the machine state added on top. Compile, run, see the result in seconds.</p>
+<hr/>
+<h2 id="architecture">Architecture</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code>┌─────────────────────────────────────────────────────────────────────┐
+│  SDL2 window (1760 × 640)                                          │
+│                                                                    │
+│  ┌──────────────────────┐  ┌────────────────────────────────────┐  │
+│  │  LVGL TS35 display   │  │  PathViewer 3D                    │  │
+│  │  480×320 ×2           │  │  Orthographic projection          │  │
+│  │                      │  │  - Toolpath trace                 │  │
+│  │  DRO, jog buttons,  │  │  - Wasteboard + stock             │  │
+│  │  SD file browser,    │  │  - Gantry + spindle               │  │
+│  │  extension tabs      │  │  - Hardware plugins (ETS, limits) │  │
+│  │  (TCH, AZ, SG...)   │  │  - VoxelCarver material removal   │  │
+│  └──────────────────────┘  └────────────────────────────────────┘  │
+│                                                                    │
+│  ┌──────────────────────────────────────────────────────────────┐  │
+│  │  Backend (selectable)                                        │  │
+│  │  ├─ QEMU: real ESP32 firmware in qemu-system-xtensa         │  │
+│  │  ├─ GCodePlayer: simulated execution, no firmware needed    │  │
+│  │  ├─ SerialBridge: physical ESP32 via RFC2217                │  │
+│  │  └─ Renode: Renode co-simulation                            │  │
+│  └──────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────┘
+</code></pre></div></td></tr></table></div>
+<p>The left panel is the real LVGL display code running on the host — the same <code>TS35Display.cpp</code> compiled for x86/ARM64 instead of Xtensa.  The right panel is a custom 3D renderer using SDL2 draw primitives (no OpenGL dependency for the main view).</p>
+<hr/>
+<h2 id="four-backends">Four backends</h2>
+<table>
+<thead>
+<tr>
+<th>Backend</th>
+<th>What runs</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>QEMU</strong></td>
+<td>Real FluidNC firmware in Espressif’s ESP32 QEMU fork</td>
+<td>Full integration testing — firmware + display + plugins</td>
+</tr>
+<tr>
+<td><strong>GCodePlayer</strong></td>
+<td>Host-side G-code interpreter</td>
+<td>Fast iteration on display/viewer code without building firmware</td>
+</tr>
+<tr>
+<td><strong>SerialBridge</strong></td>
+<td>Physical or wokwi-cli ESP32 via serial/RFC2217</td>
+<td>Testing against real hardware from a desktop UI</td>
+</tr>
+<tr>
+<td><strong>Renode</strong></td>
+<td>Renode ESP32 model</td>
+<td>Alternative emulation path</td>
+</tr>
+</tbody>
+</table>
+<p>QEMU mode uses a flash image (<code>flash-qemu.bin</code>) built from the real FluidNC firmware with plugins compiled in.  The simulator manages the QEMU process, streams status reports, and routes commands bidirectionally.</p>
+<hr/>
+<h2 id="pathviewer-3d">PathViewer 3D</h2>
+<p>The 3D view is an orthographic renderer built on SDL2 <code>RenderDrawLine</code> / <code>RenderFillRect</code> — no GPU shaders.  It shows:</p>
+<ul>
+<li><strong>Toolpath trace</strong>: colored by feed rate, with rapid moves dashed</li>
+<li><strong>Wasteboard and stock</strong>: axis-aligned boxes from the YAML config</li>
+<li><strong>Gantry and spindle</strong>: Y rails, X carriage, Z column, motor housings — all rendered as projected boxes</li>
+<li><strong>Tool</strong>: cone frustum matching the current tool diameter from the tool library</li>
+<li><strong>Hardware plugins</strong>: ETS puck, limit switch indicators, StallGuard bar</li>
+</ul>
+<p>Controls: left-drag to orbit, right-drag to pan, scroll to zoom, F9–F12 to toggle tool/spindle/gantry/wasteboard visibility.</p>
+<p>The projection math:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>u = cos(az) × wx − sin(az) × wy
+v = sin(az) × sin(el) × wx + cos(az) × sin(el) × wy + cos(el) × wz
+sx = w/2 + u × scale + pan_x
+sy = h/2 − v × scale + pan_y
+</code></pre></div></td></tr></table></div>
+<hr/>
+<h2 id="hardware-simulation-plugins">Hardware simulation plugins</h2>
+<p>The simulator has a plugin registry for hardware that interacts with the 3D view:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ZProbePlugin</strong></td>
+<td>Renders the ETS puck, detects tool contact, injects <code>[PRB:]</code> results</td>
+</tr>
+<tr>
+<td><strong>AutoZeroPlugin</strong></td>
+<td>Models Sienci AXTP-0002 L-shaped plate with shape-aware tool collision</td>
+</tr>
+<tr>
+<td><strong>LimitSwitchPlugin</strong></td>
+<td>Shows limit switch positions, triggers <code>ALARM:2</code> on contact</td>
+</tr>
+<tr>
+<td><strong>StallGuardPlugin</strong></td>
+<td>Renders the SG_RESULT bar, simulates stall events</td>
+</tr>
+<tr>
+<td><strong>ToolDragPlugin</strong></td>
+<td>Click-and-drag tool repositioning with mpos sync</td>
+</tr>
+</tbody>
+</table>
+<p>Plugins implement <code>ISimHardwarePlugin</code> and self-register via a static macro:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">REGISTER_SIM_HARDWARE_PLUGIN</span><span class="p">(</span><span class="n">viewer3d</span><span class="o">::</span><span class="n">ZProbePlugin</span><span class="p">,</span><span class="w"> </span><span class="n">z_probe_plugin</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>They receive machine state updates every frame, can render overlays in the 3D view, and handle mouse clicks (clicking the ETS puck simulates probe contact).</p>
+<hr/>
+<h2 id="voxelcarver">VoxelCarver</h2>
+<p>The VoxelCarver is a subtractive material simulation: it maintains a 3D voxel grid representing the stock and removes material as the tool passes through.  Each voxel’s removal state is updated based on the tool’s swept volume (cylinder + hemisphere end mill profile).</p>
+<p>Two rendering paths:</p>
+<ul>
+<li><strong>CPU</strong>: SDL2 rectangles for each exposed voxel face — works everywhere</li>
+<li><strong>OpenGL</strong>: hardware-accelerated rendering of the voxel mesh — faster for high-resolution grids</li>
+</ul>
+<hr/>
+<h2 id="configuration">Configuration</h2>
+<p>Machine dimensions, tool changer positions, and hardware simulation parameters come from the FluidNC YAML config:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">sim_hardware</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stepper</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">steps_per_mm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80.0</span>
+<span class="w">    </span><span class="nt">max_speed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6000.0</span>
+<span class="w">  </span><span class="nt">wasteboard</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">thickness_mm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
+<span class="w">  </span><span class="nt">stock</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">width_mm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200.0</span>
+<span class="w">    </span><span class="nt">depth_mm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">150.0</span>
+<span class="w">    </span><span class="nt">height_mm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25.0</span>
+<span class="w">  </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">visual_only</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div></td></tr></table></div>
+<p>The simulator loads the same <code>config.yaml</code> used by the real firmware and extracts axis travel, tool changer positions, and sim-specific parameters.</p>
+<hr/>
+<h2 id="plugin-integration">Plugin integration</h2>
+<p>TS35 display extensions (TCH tab, AZ tab, SG tab, Gamepad, Laser Frame) compile into the simulator via the same source files used on the ESP32.  The CMake build pulls them in through <code>EXTRA_PLUGIN_DIRS</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>cmake<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DPLUGIN_SRC_DIR<span class="o">=</span>../fluidnc-ts35display/src<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DEXTRA_PLUGIN_DIRS<span class="o">=</span><span class="s2">"../fluidnc-toolchange/src;../fluidnc-autozero/src"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DEXTRA_COMPILE_DEFS<span class="o">=</span><span class="s2">"USE_TOOL_CHANGE=1;USE_AUTOZERO=1"</span>
+</code></pre></div></td></tr></table></div>
+<p>Only <code>ts35/*.cpp</code> files from each plugin directory are compiled — the FluidNC <code>ConfigurableModule</code> code runs in the real firmware, not the simulator.</p>
+<hr/>
+<h2 id="plugin-support">Plugin support</h2>
+<p>The simulator compiles the real plugin source files — the same <code>TS35Display.cpp</code>, <code>GamepadJog.cpp</code>, and hardware plugin code used by the ESP32. Each plugin contributes an LVGL UI tab and a 3D simulation model.</p>
+<p>| Plugin | UI tab | 3D model | Simulation |
+| <strong>TS35 Display</strong> | DRO, jog pad, file browser, extension tabs | Gantry, spindle, tool | LVGL rendering at 480×320, touch interaction |
+| <strong>Gamepad Jog</strong> | PAD tab with stick/button display | — | <code>/gamepad.html</code> virtual controller, state injection |
+| <strong>ToolChange</strong> | TCH: tool selector, ETS status | ETS puck at change position | M6 sequencing, two-speed approach animation |
+| <strong>AutoZero</strong> | AZ: probe trigger, thickness settings | 4 touch plate types | Shape-aware contact detection, ~50-waypoint animation |
+| <strong>Laser Frame</strong> | FRM: frame dimensions, power level | Laser head, beam path | Power-mapped trail coloring, bounding box |
+| <strong>StallGuard</strong> | SG: load bars per axis, threshold slider | Real-time load bar overlay | <code>|SG:X,Y,Z|</code> injection, stall event animation |</p>
+<p>Plugins are compiled in via <code>EXTRA_PLUGIN_DIRS</code> — only the <code>ts35/*.cpp</code> files, not the FluidNC <code>ConfigurableModule</code> code which runs in the real firmware.</p>
+<hr/>
+<h2 id="keyboard-controls">Keyboard controls</h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>W/A/S/D</td>
+<td>Jog Y+/X-/Y-/X+</td>
+</tr>
+<tr>
+<td>Q/E</td>
+<td>Jog Z+/Z-</td>
+</tr>
+<tr>
+<td>[/]</td>
+<td>Spindle override ±10%</td>
+</tr>
+<tr>
+<td>F1–F4</td>
+<td>Playback speed: 0.5×, 1×, 5×, 20×</td>
+</tr>
+<tr>
+<td>Space</td>
+<td>Feed Hold</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>Cycle Start</td>
+</tr>
+<tr>
+<td>F9–F12</td>
+<td>Toggle tool / spindle / gantry / wasteboard</td>
+</tr>
+<tr>
+<td>Click tool + drag</td>
+<td>Mouse jog XY</td>
+</tr>
+<tr>
+<td>Scroll (during drag)</td>
+<td>Adjust Z</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="probe-simulation-g382-autozero">Probe simulation (G38.2 / AutoZero)</h2>
+<p>The simulator handles G38.2 probing locally — no firmware involvement — with shape-aware collision detection against a virtual touch plate.</p>
+<ul>
+<li><strong>Adaptive resolution</strong>: step count is computed as <code>distance / 0.01mm</code> (clamped 10–5000), so probe precision is always 0.01 mm regardless of travel distance</li>
+<li><strong>Shape-aware collision</strong>: the AutoZero plugin models the Sienci AXTP-0002 L-shaped plate (78×49 mm, 25 mm walls, 5 mm base) and checks contact using the actual tool geometry</li>
+<li><strong>Tool shape dispatch</strong>: V-bit (widening cone), ball-end (hemisphere), endmill (constant cylinder) — each gets correct effective radius at contact height</li>
+<li><strong>3D animation</strong>: ~50 intermediate waypoints are pushed to PathViewer during probe descent for smooth visual feedback in the 3D view</li>
+</ul>
+<p>Clicking the virtual touch plate in the 3D view also triggers an immediate probe contact, useful for quick testing without waiting for the full descent animation.</p>
+<hr/>
+<h2 id="laser-mode-and-spindle-tracking">Laser mode and spindle tracking</h2>
+<p>The simulator distinguishes CNC and laser configs:</p>
+<ul>
+<li><strong>M3/M4/M5/S parsing</strong>: spindle state (on/off, mode, RPM) is tracked through the entire pipeline</li>
+<li><strong>Power-mapped trail</strong>: PathViewer colors each trail segment by power percentage — blue→yellow→red heat-map when spindle is on, fading green for rapids</li>
+<li><strong>VoxelCarver laser mode</strong>: when the config declares <code>type: Laser</code>, the carver switches from cylindrical endmill sweep to a laser spot with burn depth proportional to <code>S / max_rpm</code></li>
+<li><strong>HUD</strong>: a bottom-left overlay during Run/Hold shows four bars — feed rate, bit radius, spindle/laser power, and spindle override percentage</li>
+</ul>
+<p>The laser fixture (<code>ttc450-laser.yaml</code>) sets <code>type: Laser</code> and <code>max_rpm: 1000</code>, while the CNC fixture uses <code>type: PWM</code>.</p>
+<hr/>
+<h2 id="mouse-jog-tool-drag">Mouse jog (tool drag)</h2>
+<p>Click on the tool in the 3D view to grab it, then drag to reposition XY.  Scroll wheel adjusts Z.  The tool is clamped to the machine envelope at all times.</p>
+<p>Under the hood, the drag updates both the visual waypoint queue and the <code>SimMachine::mpos[]</code> array synchronously.  This dual update ensures the tool stays where you dropped it — no snap-back when the animation queue drains.</p>
+<table>
+<thead>
+<tr>
+<th>Drag action</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Left-click tool → drag</td>
+<td>Move XY within machine envelope</td>
+</tr>
+<tr>
+<td>Scroll wheel (while dragging)</td>
+<td>Adjust Z up/down in 2 mm steps</td>
+</tr>
+<tr>
+<td>Release</td>
+<td>Tool stays at final position</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="performance-architecture">Performance architecture</h2>
+<p>Three patterns keep the simulator responsive even at high update rates:</p>
+<ol>
+<li>
+<p><strong>Single-lock queue drain</strong>: PathViewer acquires its mutex once per frame, swaps the waypoint deque into a local buffer, then processes outside the lock.  Writers never contend with the rendering thread beyond one swap.</p>
+</li>
+<li>
+<p><strong>Atomic empty check</strong>: an <code>std::atomic&lt;bool&gt;</code> flag tracks whether the queue has content.  The fast path (empty queue, most frames) skips the mutex entirely — zero contention.</p>
+</li>
+<li>
+<p><strong>Enum-based tool dispatch</strong>: AutoZeroPlugin classifies the tool shape into an enum (<code>Endmill | VBit | BallEnd | Drill</code>) once per state change.  Collision detection uses a switch instead of per-frame string comparisons.</p>
+</li>
+</ol>
+<p>Combined, these allow the simulator to sustain 60 fps on a MacBook even while streaming thousands of waypoints from a QEMU probe animation.</p>
+<hr/>
+<h2 id="building-and-running">Building and running</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># One-time: download Espressif QEMU fork</span>
+task<span class="w"> </span>setup-qemu
+
+<span class="c1"># Build with toolchange + autozero plugins</span>
+task<span class="w"> </span>setup-full
+task<span class="w"> </span>build
+
+<span class="c1"># Run in QEMU mode with real firmware</span>
+task<span class="w"> </span>run
+
+<span class="c1"># Run with GCodePlayer (no firmware needed)</span>
+task<span class="w"> </span>run-fixture<span class="w"> </span><span class="nv">FIXTURE</span><span class="o">=</span>my_job.nc<span class="w"> </span><span class="nv">SPEED</span><span class="o">=</span><span class="m">5</span>.0
+</code></pre></div></td></tr></table></div>
+<hr/>
+<h2 id="repository">Repository</h2>
+<ul>
+<li>Code: <a href="https://github.com/jordanauge/fluidnc-sim">https://github.com/jordanauge/fluidnc-sim</a></li>
+<li>Tests: <code>cmake --build build --target sim-tests &amp;&amp; ./build/test/sim-tests</code></li>
+</ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+            <hr>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+  </div>
+</footer>
+    <!--script async src="/theme/js/vendor/bootstrap.bundle.min.js"></script-->
+    <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
+    <script async src="/theme/js/lazyload.js"></script-->
+    <script async src="/theme/js/application.js"></script>
+    <script defer src="/theme/js/archive-links.js"></script>
+    <script defer src="/theme/js/code-blocks.js"></script>
+    <script defer src="/theme/js/filters.js"></script>
+
+    <!-- KaTeX JavaScript for math rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\\\(', right: '\\\\)', display: false},
+            {left: '\\\\[', right: '\\\\]', display: true}
+          ]
+        });"></script>
+
+
+  </body>
+</html>

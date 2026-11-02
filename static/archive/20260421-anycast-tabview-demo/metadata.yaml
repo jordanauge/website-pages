@@ -1,0 +1,38 @@
+archived_at: '2026-04-21T08:18:46.750296Z'
+date: '20260421'
+description: Archived webpage from anycast.telecom-paristech.fr
+files:
+- index.html
+- assets/scripts/slick.core.js
+- assets/scripts/dariomagictable.js
+- assets/scripts/slick.grid.js
+- assets/scripts/slick.dataview.js
+- assets/scripts/jquery-1.7.min.js
+- assets/scripts/anycast-longitudinal-geofootprint-perIP24-withHeader.js
+- assets/scripts/slick.columnpicker.js
+- assets/scripts/jquery.csv.js
+- assets/scripts/slick.rowselectionmodel.js
+- assets/scripts/jquery-ui-1.8.16.custom.min.js
+- assets/scripts/slick.pager.js
+- assets/scripts/slick.formatters.js
+- assets/scripts/jquery.event.drag-2.2.js
+- assets/scripts/slick.editors.js
+- assets/scripts/firebugx.js
+- assets/stylesheets/examples.css
+- assets/stylesheets/css
+- assets/stylesheets/slick.pager.css
+- assets/stylesheets/main.css
+- assets/stylesheets/slick.grid.css
+- assets/stylesheets/slick.columnpicker.css
+- assets/stylesheets/jquery-ui-1.8.16.custom.css
+original_url: https://anycast.telecom-paristech.fr/tabview/
+size_mb: 3.18
+slug: anycast-tabview-demo
+tags:
+- anycast
+- dns
+- demo
+- visualization
+- telecom-paristech
+title: Tabview
+type: webpage

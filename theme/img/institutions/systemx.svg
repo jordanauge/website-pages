@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="56" viewBox="0 0 180 56" role="img" aria-labelledby="title desc">
+  <title id="title">IRT SystemX badge</title>
+  <desc id="desc">Institution badge for IRT SystemX.</desc>
+  <rect width="180" height="56" rx="12" fill="#f5fcfd"/>
+  <rect x="0.75" y="0.75" width="178.5" height="54.5" rx="11.25" fill="none" stroke="#c3dde2"/>
+  <rect x="10" y="10" width="38" height="36" rx="10" fill="#00839a"/>
+  <text x="29" y="33" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#ffffff">SX</text>
+  <text x="60" y="24" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1d414a">IRT SystemX</text>
+  <text x="60" y="39" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#53717a">Research institute</text>
+</svg>

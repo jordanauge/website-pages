@@ -1,0 +1,43 @@
+        /* Custom CSS for the banner and image */
+        .banner {
+            height: 200px; /* Set a fixed height for the banner */
+            position: relative;
+            overflow: hidden; /* Ensure nothing spills out of the banner container */
+            /* New: Circular gradient background with subtle orange shades */
+            background-image: radial-gradient(circle at top left, #FFDAB9, #FFA07A);
+            margin-bottom: 2em;
+        }
+        .banner-image-container {
+            /* Position the image container on the right side */
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 40%; /* Adjust the width to control the crop */
+            overflow: hidden; /* This is what crops the image */
+        }
+        .banner-image {
+            /* Make the image fill its container while maintaining aspect ratio */
+            top: 0;
+            width: 100%;
+            /* height: 100%; */
+            object-fit: cover; /* This is a good modern approach for cropping */
+        }
+        .banner-text-container {
+            /* Ensure the text stays on the left */
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .banner-image-container {
+                width: 300px; /* Adjust width for mobile */
+            }
+            .banner-image {
+                height: 100%; /* Ensure the image stays cropped */
+            }
+            .banner-text-container {
+                padding-right: 1rem; /* Add padding to prevent text from overlapping image */
+            }
+        }

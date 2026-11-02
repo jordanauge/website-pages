@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="/theme/css/style.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/theme-logos.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/docs.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/wowchemy-compat.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news-snippet.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/publications.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/feeds.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/projects.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/research-home.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/collaborations.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/cv.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/archive-links.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-summary.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/filter-tagcloud.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-content.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/pygments.css?v=c6b9f9bc" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="/theme/css/navbar.css" rel="stylesheet">
+
+<!-- KaTeX for LaTeX math rendering -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+
+
+
+
+<title>Exécuter Windows 11 sur Linux en VM QEmu imbriquée</title>
+
+
+<link href="https://jordan.auge.synaxe.net/fr/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jordan Augé Full Atom Feed" >
+
+<link href="https://jordan.auge.synaxe.net/fr/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Full RSS Feed" >
+
+
+
+
+<link href="/feed/flipper-virtuel.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Categories RSS Feed" >
+
+
+
+<link rel="canonical" href="https://jordan.auge.synaxe.net/fr/blog/2024/03/dev-qemu-windows/">
+
+<link rel="alternate" hreflang="fr" href="https://jordan.auge.synaxe.net/fr/blog/2024/03/dev-qemu-windows/">
+<link rel="alternate" hreflang="en" href="https://jordan.auge.synaxe.net/blog/2024/03/dev-qemu-windows/">
+
+<meta property="og:locale" content="">
+
+<meta property="og:site_name" content="Jordan Augé">
+<meta property="og:url" content="https://jordan.auge.synaxe.net/fr/blog/2024/03/dev-qemu-windows/">
+<meta property="og:type" content="article">
+
+<meta property="og:title" content="Exécuter Windows 11 sur Linux en VM QEmu imbriquée">
+<meta property="og:description" content="Comment configurer une machine virtuelle QEmu/KVM sous Linux avec prise en charge de la virtualisation imbriquée pour exécuter Windows 11 et WSL2, y compris les pilotes VirtIO, la configuration...">
+
+
+
+
+<meta name="description" content="Comment configurer une machine virtuelle QEmu/KVM sous Linux avec prise en charge de la virtualisation imbriquée pour exécuter Windows...">
+
+<meta name="author" content="Jordan Augé">
+
+<meta name="tags" content="qemu">
+<meta name="tags" content="windows">
+<meta name="tags" content="wsl2">
+<meta name="tags" content="virtual-pinball">
+<meta name="tags" content="pincab">
+
+
+<meta name="description" content="Jordan Augé's homepage">
+
+<script src="/theme/js/color-modes.js"></script>
+
+<meta name="author" content="Jordan Augé">
+
+
+</head>
+
+<body class="article-dev-qemu-windows">
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <symbol id="archive" viewBox="0 0 16 16">
+    <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="arrow-right-short" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+  </symbol>
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </symbol>
+  <symbol id="file-earmark-richtext" viewBox="0 0 16 16">
+    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+    <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
+  </symbol>
+  <symbol id="film" viewBox="0 0 16 16">
+    <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="rss" viewBox="0 0 16 16">
+    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+    <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+  <symbol id="three-dots" viewBox="0 0 16 16">
+    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+  </symbol>
+</svg>
+
+
+
+
+
+  <header class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top">
+  <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+    <div class="d-lg-none" style="width: 2.25rem;"></div>
+
+    <a class="navbar-brand p-0 me-0 me-lg-4" href="https://jordan.auge.synaxe.net/fr/" aria-label=Jordan Augé>Jordan Augé</a>
+
+    <div class="d-flex">
+      <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Basculer la navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jordan Augé</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fermer" data-bs-target="#bdNavbar"></button>
+      </div>
+
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/">Accueil</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/news">Actualites</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/research/publications">Publications</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/projects">Projets</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/blog">Blog</a>
+              </li>
+        </ul>
+
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+
+          <li class="nav-item d-none d-lg-flex align-items-center navbar-social-icons">
+            <a href="mailto:jordan.auge@free.fr" class="nav-link px-1 navbar-social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://scholar.google.fr/citations?user=-itbwwIAAAAJ" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://github.com/jordanauge" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/jordan-aug%C3%A9-763ba4a8/" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </li>
+
+          <li class="nav-item dropdown d-lg-none">
+            <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                    id="bd-theme-mobile"
+                    type="button"
+                    aria-expanded="false"
+                    data-bs-toggle="dropdown"
+                    data-bs-display="static"
+                    aria-label="Changer le thème (auto)">
+              <svg class="bi my-1"><use href="#circle-half"></use></svg>
+              <span class="ms-2" id="bd-theme-text">Changer le thème</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+                  Clair
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+                  Sombre
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+                  Auto
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item d-lg-none navbar-language-item">
+            <div class="navbar-lang-toggle" aria-label="Choix de langue">
+              <span class="navbar-lang-label">EN</span>
+              <a href="/blog/category/"
+                 class="navbar-lang-toggle-track is-fr"
+                 role="switch"
+                 aria-checked="true"
+                 aria-label="Switch to English">
+                <span class="navbar-lang-toggle-thumb"></span>
+              </a>
+              <span class="navbar-lang-label">FR</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="navbar-absolute-right d-none d-lg-flex align-items-center">
+    <div class="dropdown d-flex align-items-center">
+      <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-label="Changer le thème (auto)">
+        <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+            Clair
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+            Sombre
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-lang-toggle navbar-language-item" aria-label="Choix de langue">
+      <span class="navbar-lang-label">EN</span>
+      <a href="/blog/category/"
+         class="navbar-lang-toggle-track is-fr"
+         role="switch"
+         aria-checked="true"
+         aria-label="Switch to English">
+        <span class="navbar-lang-toggle-thumb"></span>
+      </a>
+      <span class="navbar-lang-label">FR</span>
+    </div>
+  </div>
+</header>
+            <header class="intro-header"
+                style="background-image: url('https://jordan.auge.synaxe.net/fr/../theme/images/post-bg.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                            <div class="post-heading text-light text-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+
+
+<div class="container-xxl px-4 px-xxl-2">
+    <div class="d-lg-grid content blog-article-page" id="content">
+        
+<div class="sidebar">
+  <aside class="news-article-sidebar sticky-top">
+
+    <div class="publications-sidebar-header">
+      <h1>Flipper virtuel</h1>
+    </div>
+
+    <div class="sidebar-section sidebar-nav-links">
+
+      <div class="sidebar-feed-row">
+        <a class="sidebar-feed-label" href="/fr/blog/">Tous les billets</a>
+        <div class="dropdown sidebar-rss-dropdown">
+          <button class="sidebar-rss-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Flux RSS">
+            <svg class="bi" width="11" height="11" aria-hidden="true"><use xlink:href="#rss"></use></svg>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end sidebar-rss-menu">
+            <li><a class="dropdown-item" href="/fr/feed/blog.rss.xml" rel="alternate" type="application/rss+xml">Articles</a></li>
+            <li><a class="dropdown-item" href="/fr/feed/blog-with-updates.rss.xml" rel="alternate" type="application/rss+xml">Articles + mises à jour</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-feed-row">
+        <a class="sidebar-feed-label sidebar-feed-label--plain" href="https://jordan.auge.synaxe.net/fr/blog/category/flipper-virtuel/">Flipper virtuel</a>
+        <div class="dropdown sidebar-rss-dropdown">
+          <button class="sidebar-rss-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Flux RSS">
+            <svg class="bi" width="11" height="11" aria-hidden="true"><use xlink:href="#rss"></use></svg>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end sidebar-rss-menu">
+            <li><a class="dropdown-item" href="/fr/feed/flipper-virtuel.rss.xml" rel="alternate" type="application/rss+xml">Articles</a></li>
+            <li><a class="dropdown-item" href="/fr/feed/flipper-virtuel-with-updates.rss.xml" rel="alternate" type="application/rss+xml">Articles + mises à jour</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-back-row mt-2">
+        <button type="button" class="sidebar-back-link" onclick="if(history.length > 1 && document.referrer && document.referrer.indexOf(location.host) !== -1){ history.back(); } else { location.href='/fr/blog/'; }">
+          <i class="bi bi-arrow-left"></i>
+          Retour
+        </button>
+      </div>
+
+    </div>
+
+    <div id="blog-toc-section" class="sidebar-section" style="display:none">
+      <hr class="sidebar-divider my-2">
+      <div class="blog-toc-heading">Sur cette page</div>
+      <nav id="blog-toc" class="blog-toc-nav" aria-label="Table of contents"></nav>
+    </div>
+
+  </aside>
+</div>
+
+<script>
+(function() {
+  function buildToc() {
+    var post = document.querySelector('.post');
+    if (!post) return;
+    var headings = Array.from(post.querySelectorAll('h2, h3'));
+    if (headings.length < 2) return;
+    var nav = document.getElementById('blog-toc');
+    var section = document.getElementById('blog-toc-section');
+    if (!nav || !section) return;
+
+    var ul = document.createElement('ul');
+    ul.className = 'blog-toc-list';
+    headings.forEach(function(h, i) {
+      if (!h.id) h.id = 'toc-heading-' + i;
+      var li = document.createElement('li');
+      li.className = 'blog-toc-item blog-toc-' + h.tagName.toLowerCase();
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.className = 'blog-toc-link';
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    nav.appendChild(ul);
+    section.style.display = '';
+
+    var aside = section.closest('.news-article-sidebar');
+    if (!aside) return;
+
+    // Calibrate sticky top to actual navbar height so sidebar never overlaps it
+    function applyNavbarOffset() {
+      var navbar = document.querySelector('.bd-navbar');
+      if (!navbar) return;
+      var h = Math.ceil(navbar.getBoundingClientRect().height);
+      var gap = 4; // px clearance below navbar
+      aside.style.top = (h + gap) + 'px';
+      aside.style.maxHeight = 'calc(100vh - ' + (h + gap) + 'px)';
+    }
+    applyNavbarOffset();
+    window.addEventListener('resize', applyNavbarOffset, { passive: true });
+
+    // Minimal-scroll: only move the sidebar when the active link is out of view.
+    // Never overshoot — scroll just enough to reveal the link with a small margin.
+    function scrollSidebarToActive(link) {
+      var margin = 6;
+      var asideRect = aside.getBoundingClientRect();
+      var linkRect = link.getBoundingClientRect();
+      var relTop    = linkRect.top    - asideRect.top;
+      var relBottom = linkRect.bottom - asideRect.top;
+      if (relTop < margin) {
+        aside.scrollTop += relTop - margin;
+      } else if (relBottom > asideRect.height - margin) {
+        aside.scrollTop += relBottom - asideRect.height + margin;
+      }
+      // If already visible, do nothing
+    }
+
+    // Scroll-based active tracking: the active heading is the last one whose
+    // top edge has passed above the scroll threshold (navbar bottom + small offset).
+    var currentActiveId = null;
+    function updateActive() {
+      var navbar = document.querySelector('.bd-navbar');
+      var threshold = (navbar ? navbar.offsetHeight : 56) + 8;
+
+      var found = null;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        if (headings[i].getBoundingClientRect().top <= threshold) {
+          found = headings[i];
+          break;
+        }
+      }
+      // If nothing has passed yet, highlight the first item
+      if (!found) found = headings[0];
+      if (!found) return;
+
+      if (found.id === currentActiveId) return; // no change
+      currentActiveId = found.id;
+
+      nav.querySelectorAll('.blog-toc-link').forEach(function(l) {
+        l.classList.remove('active');
+      });
+      var activeLink = nav.querySelector('a[href="#' + found.id + '"]');
+      if (activeLink) {
+        activeLink.classList.add('active');
+        scrollSidebarToActive(activeLink);
+      }
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() { updateActive(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateActive(); // set initial state
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildToc);
+  } else {
+    buildToc();
+  }
+})();
+</script>
+
+
+
+        <div class="main">
+            
+<div class="posts-container article-posts-container mx-auto my-5">
+  <div class="posts">
+    <div class="post">
+      <div class="article-content-header">
+        <h1 class="article-content-title">Exécuter Windows 11 sur Linux en VM QEmu imbriquée</h1>
+        <div class="article-meta-pills article-meta-pills-content mt-2 mb-1">
+          <time class="article-date" datetime="2024-03-14"><i class="bi bi-calendar3"></i> 2024-03-14</time>
+          <time class="article-date article-date-updated" datetime="2026-11-02"><i class="bi bi-pencil-square"></i> 2026-11-02</time>
+            <a class="post-tag" data-color="default" href="https://jordan.auge.synaxe.net/fr/blog/category/flipper-virtuel/">Flipper virtuel</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/qemu">#qemu</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/windows">#windows</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/wsl2">#wsl2</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/virtual-pinball">#virtual-pinball</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/pincab">#pincab</a>
+        </div>
+      </div>
+      <div class="translation-notice translation-notice-warn">
+  <i class="bi bi-robot"></i>
+  <span>Traduction automatique depuis l'anglais — non relue.</span>
+</div>
+
+     <div class="article-summary article-summary-featured">
+         <div class="article-summary-kicker">Summary</div>
+     <p>Comment configurer une machine virtuelle QEmu/KVM sous Linux avec prise en charge de la virtualisation imbriquée pour exécuter Windows 11 et WSL2, y compris les pilotes VirtIO, la configuration HyperV et la gestion des disques.</p>
+     </div>
+
+
+
+       <p>J’utilise exclusivement Linux chez moi et j’avais besoin d’une VM Windows pour compiler la <a href="https://github.com/vpinball/vpinball">suite de flipper virtuel</a> et d’autres logiciels nécessitant l’utilisation du Windows Subsystem for Linux (WSL2).</p>
+<h2 id="virtualbox-vs-qemu">Virtualbox vs QEmu</h2>
+<p>J’avais initialement choisi Virtualbox pour sa simplicité, mais je n’ai jamais réussi à y installer WSL2. Il semble que WSL2 soit implémenté sur la technologie HyperV de Windows, ce qui nécessite des fonctionnalités de virtualisation imbriquée pour être utilisé dans une VM.</p>
+<p>Contrairement à ce qui est annoncé dans la documentation officielle <a href="https://learn.microsoft.com/en-us/windows/wsl/faq#will-i-be-able-to-run-wsl-2-and-other-3rd-party-virtualization-tools-such-as-vmware--or-virtualbox-">wsl-virtualbox</a>, il semble que la prise en charge de la virtualisation imbriquée pour HyperV n’ait pas été incluse dans la dernière version 7.0 de Virtualbox (7.0.14-Debian à la date de rédaction), rendant impossible l’installation de WSL2 <a href="https://forums.virtualbox.org/viewtopic.php?t=110039">vbox-hyperv</a>. Cela pourrait changer avec la sortie de la version 7.1.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>WslRegisterDistribution failed with error: 0x80370102
+Please enable the Virtual Machine Platform Windows feature and ensure virtualization is enabled in the BIOS.
+For information please visit https://aka.ms/enablevirtualization
+</code></pre></div></td></tr></table></div>
+<p>C’était l’occasion d’essayer QEmu, qui le prend en charge et promet d’être plus efficace grâce à l’utilisation de KVM et virtio.</p>
+<h2 id="configuration-de-qemu">Configuration de QEmu</h2>
+<p>J’ai suivi l’excellent tutoriel de <a href="https://raphtlw.medium.com/how-to-set-up-a-kvm-qemu-windows-10-vm-ca1789411760">raphtlw</a>, dont les étapes sont équivalentes pour Windows 11 (à quelques occurrences IDE près qui devraient être remplacées par SATA). Les étapes les plus importantes sont résumées ici, et vous pouvez vous référer à la page originale pour une explication détaillée avec captures d’écran.</p>
+<h3 id="dependances">Dépendances</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>qemu-kvm<span class="w"> </span>bridge-utils<span class="w"> </span>virt-manager<span class="w"> </span>qemu-system<span class="w"> </span>virt-viewer<span class="w"> </span>spice-vdagent
+</code></pre></div></td></tr></table></div>
+<h3 id="configuration-classique">Configuration classique</h3>
+<p>Avant de commencer le processus d’installation, vous devrez télécharger deux fichiers ISO :</p>
+<ul>
+<li>Windows 11, disponible sur le <a href="https://www.microsoft.com/software-download/windows11">site de Microsoft</a></li>
+<li>L’<a href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/?C=M;O=D">ISO des pilotes VirtIO</a>, nécessaire pour configurer les périphériques VirtIO pendant l’installation (le réseau est obligatoire) — montez-le comme un deuxième lecteur CDROM.</li>
+</ul>
+<p>Créez une nouvelle VM qui sera installée à partir d’un fichier ISO :</p>
+<ul>
+<li><strong>CPU, mémoire</strong> : j’ai laissé les paramètres par défaut.</li>
+<li><strong>Taille du disque</strong> : au moins 60 Go sont recommandés — Windows lui-même occupe environ 30 Go, et les outils de compilation nécessitent 10 à 20 Go supplémentaires. Vous pouvez toujours étendre la partition après l’installation.</li>
+<li>Créez un deuxième lecteur CDROM dans le menu Stockage (sélectionnez le type de support comme CDROM) et pointez vers l’ISO VirtIO.</li>
+<li>Activez le démarrage depuis le CDROM SATA dans les options de démarrage. Vous pouvez également le sélectionner via le menu BIOS si la machine ne démarre pas.</li>
+<li>Passez au pilote VirtIO pour le disque dur et la carte réseau pour de meilleures performances.</li>
+</ul>
+<h3 id="ajustement-de-la-prise-en-charge-hyperv">Ajustement de la prise en charge HyperV</h3>
+<p>La configuration a fonctionné jusqu’à ce que j’installe WSL2 et redémarre, moment où j’ai été accueilli par l’écran bleu avec le message <code>SYSTEM_THREAD_EXCEPTION_NOT_HANDLED</code>. La VM n’a jamais réussi à se rétablir.</p>
+<p>J’ai trouvé des indications dans cet excellent <a href="https://www.redpill-linpro.com/techblog/2021/04/07/nested-virtualization-hyper-v-in-qemu-kvm.html">article de Redpill Linpro</a>, et après quelques essais avec l’éditeur XML dans la section “Processeur” de la configuration de la VM, j’ai réussi à redémarrer Windows avec ces paramètres :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">  </span><span class="nt">&lt;features&gt;</span>
+<span class="w">    </span><span class="nt">&lt;acpi/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;apic/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;pae/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;hyperv</span><span class="w"> </span><span class="na">mode=</span><span class="s">"custom"</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;vpindex</span><span class="w"> </span><span class="na">state=</span><span class="s">"on"</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;synic</span><span class="w"> </span><span class="na">state=</span><span class="s">"on"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/hyperv&gt;</span>
+<span class="w">    </span><span class="nt">&lt;smm</span><span class="w"> </span><span class="na">state=</span><span class="s">"on"</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/features&gt;</span>
+<span class="w">  </span><span class="nt">&lt;cpu</span><span class="w"> </span><span class="na">mode=</span><span class="s">"custom"</span><span class="w"> </span><span class="na">match=</span><span class="s">"exact"</span><span class="w"> </span><span class="na">check=</span><span class="s">"partial"</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">fallback=</span><span class="s">"allow"</span><span class="nt">&gt;</span>Broadwell-noTSX-IBRS<span class="nt">&lt;/model&gt;</span>
+<span class="w">    </span><span class="nt">&lt;feature</span><span class="w"> </span><span class="na">policy=</span><span class="s">"disable"</span><span class="w"> </span><span class="na">name=</span><span class="s">"hypervisor"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;feature</span><span class="w"> </span><span class="na">policy=</span><span class="s">"require"</span><span class="w"> </span><span class="na">name=</span><span class="s">"vmx"</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/cpu&gt;</span>
+<span class="w">  </span><span class="nt">&lt;clock</span><span class="w"> </span><span class="na">offset=</span><span class="s">"utc"</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;timer</span><span class="w"> </span><span class="na">name=</span><span class="s">"rtc"</span><span class="w"> </span><span class="na">tickpolicy=</span><span class="s">"catchup"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;timer</span><span class="w"> </span><span class="na">name=</span><span class="s">"pit"</span><span class="w"> </span><span class="na">tickpolicy=</span><span class="s">"delay"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;timer</span><span class="w"> </span><span class="na">name=</span><span class="s">"hpet"</span><span class="w"> </span><span class="na">present=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;timer</span><span class="w"> </span><span class="na">name=</span><span class="s">"hypervclock"</span><span class="w"> </span><span class="na">present=</span><span class="s">"yes"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;timer</span><span class="w"> </span><span class="na">name=</span><span class="s">"kvmclock"</span><span class="w"> </span><span class="na">present=</span><span class="s">"yes"</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/clock&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p>Je n’ai pas encore essayé d’optimiser ces paramètres au-delà de la confirmation que désactiver le passthrough CPU et sélectionner la bonne architecture CPU faisaient partie de la solution. La prochaine étape serait de consulter la documentation ou de continuer le processus d’essais-erreurs pour déterminer quelles propriétés sont réellement nécessaires ou offrent les meilleures performances. Comme le dit l’article, vos résultats peuvent varier.</p>
+<p>À titre de référence, voici la configuration initiale proposée par QEmu :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">  </span><span class="nt">&lt;features&gt;</span>
+<span class="w">    </span><span class="nt">&lt;acpi/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;apic/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;hyperv&gt;</span>
+<span class="w">      </span><span class="nt">&lt;relaxed</span><span class="w"> </span><span class="na">state=</span><span class="s">"on"</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;vapic</span><span class="w"> </span><span class="na">state=</span><span class="s">"on"</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;spinlocks</span><span class="w"> </span><span class="na">state=</span><span class="s">"on"</span><span class="w"> </span><span class="na">retries=</span><span class="s">"8191"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/hyperv&gt;</span>
+<span class="w">    </span><span class="nt">&lt;vmport</span><span class="w"> </span><span class="na">state=</span><span class="s">"off"</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/features&gt;</span>
+<span class="w">  </span><span class="nt">&lt;cpu</span><span class="w"> </span><span class="na">mode=</span><span class="s">"host-passthrough"</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;clock</span><span class="w"> </span><span class="na">offset=</span><span class="s">"localtime"</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;timer</span><span class="w"> </span><span class="na">name=</span><span class="s">"rtc"</span><span class="w"> </span><span class="na">tickpolicy=</span><span class="s">"catchup"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;timer</span><span class="w"> </span><span class="na">name=</span><span class="s">"pit"</span><span class="w"> </span><span class="na">tickpolicy=</span><span class="s">"delay"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;timer</span><span class="w"> </span><span class="na">name=</span><span class="s">"hpet"</span><span class="w"> </span><span class="na">present=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;timer</span><span class="w"> </span><span class="na">name=</span><span class="s">"hypervclock"</span><span class="w"> </span><span class="na">present=</span><span class="s">"yes"</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/clock&gt;</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="installation-de-windows-11">Installation de Windows 11</h2>
+<p>Laissez l’installateur vous guider jusqu’à l’étape où vous choisissez le disque sur lequel installer Windows. La liste devrait être vide.</p>
+<p>Sélectionnez l’option “Charger les pilotes”, et parcourez le deuxième CDROM (E:) pour trouver les pilotes corrects pour votre système d’exploitation et votre plateforme (notez que parfois il n’y a pas de version <code>win11</code>, mais <code>win10</code> fonctionne également) :</p>
+<ul>
+<li><code>E:\viostor\w11\amd64</code> (disque)</li>
+<li><code>E:\NetKVM\w11\amd64</code> (NIC)</li>
+<li><code>E:\qxldod\w10\amd64</code> (graphique)</li>
+</ul>
+<p>Cochez “Masquer les pilotes qui ne sont pas compatibles avec le matériel de cet ordinateur” pour vous assurer que les pilotes corrects sont trouvés. Si rien n’apparaît, vous avez peut-être oublié de passer un périphérique en VirtIO.</p>
+<p>Plus tard dans le processus d’installation, vous n’aurez pas l’opportunité de charger de nouveaux pilotes via l’interface graphique. Vous pourriez atteindre une étape où l’installateur essaie de trouver une connexion réseau et reste bloqué faute d’interface réseau. Dans ce cas, appuyez sur <strong>Shift+F10</strong> pour ouvrir un shell, naviguez vers les dossiers respectifs et exécutez :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>pnputil /add-driver *.inf
+pnputil /scan-devices
+</code></pre></div></td></tr></table></div>
+<p>Il m’est arrivé que l’installateur trouve l’interface réseau mais refuse de se connecter faute de connectivité Internet. En exécutant un ping depuis le shell, j’ai confirmé le problème. Sur l’hôte, les paquets arrivaient au pont mais n’étaient pas transmis, probablement à cause de règles iptables manquantes. La solution la plus simple est de redémarrer libvirtd — cela n’affectera pas les VM en cours d’exécution :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>sudo<span class="w"> </span>service<span class="w"> </span>libvirtd<span class="w"> </span>restart
+</code></pre></div></td></tr></table></div>
+<h2 id="agent-invite-et-pilotes-supplementaires">Agent invité et pilotes supplémentaires</h2>
+<p>Une fois Windows installé, vous devriez également installer :</p>
+<ul>
+<li><code>E:\virtio-win-guest-tools.exe</code> depuis l’ISO VirtIO</li>
+<li><a href="https://www.spice-space.org/download.html">Outils invités SPICE</a> (dans la section Guest / Windows binaries) pour des fonctionnalités telles que le partage du presse-papiers et la résolution dynamique entre l’hôte et l’invité</li>
+</ul>
+<h2 id="visual-studio-et-outils-associes">Visual Studio et outils associés</h2>
+<p>Vous pouvez télécharger gratuitement <a href="https://visualstudio.microsoft.com/downloads/">l’installateur en ligne</a> avec l’édition Community.</p>
+<p>Voici les paramètres de charge de travail que j’ai utilisés pour mon cas d’utilisation actuel. Ils nécessitent environ 10 Go supplémentaires.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code>Web &amp; Cloud
+    [ ] ASP.NET and web development
+    [ ] Azure development
+    [X] Python development, could be useful
+    [ ] Node.js developmen
+Desktop &amp; Mobile
+    [ ] .NET Multi-platform App UI development
+    [ ] .NET Desktop development
+    [X] Desktop development with C++
+    [ ] Universal Windows Platform development
+    [ ] Mobile development with C++
+Gaming
+    [X] Game development with Unity
+    [X] Game development with C++
+Other toolsets
+    [ ] Data storage and processing
+    [ ] Data science and analytical applications
+    [ ] Visual Studio extension development
+    [ ] Office / SharePoint development
+    [X] Linux and embedded development with C++
+</code></pre></div></td></tr></table></div>
+<p>Git sera nécessaire, et vous pouvez trouver les binaires Windows sur <a href="https://git-scm.com/download/win">le site officiel</a>.</p>
+<h2 id="wsl2">WSL2</h2>
+<p>Vous pouvez installer WSL2 directement depuis le <a href="https://aka.ms/wslstorepage">Microsoft Store</a>, ou via la ligne de commande comme indiqué ci-dessous.</p>
+<p>Ouvrez <strong>cmd.exe</strong> depuis le menu démarrer et exécutez en tant qu’administrateur :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>wsl --install
+</code></pre></div></td></tr></table></div>
+<p>Si vous avez Windows 11, ou une version suffisamment récente de Windows 10, vous devriez déjà avoir WSL2. Confirmez avec :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>$ wsl -v
+WSL version: 2.1.4.0
+Kernel version: 5.15.146.1-2
+WSLg version: 1.0.60
+MSRDC version: 1.2.5105
+Direct3D version: 1.611.1-81528511
+DXCore version: 10.0.25131.1002-220531-1700.rs-onecore-base2-hyp
+Windows version: 10.0.22631.2861
+</code></pre></div></td></tr></table></div>
+<p>Plus d’informations peuvent être trouvées dans <a href="https://aka.ms/wslstoreinfo">wslinfo</a>, <a href="https://support.microsoft.com/fr-fr/windows/activer-la-virtualisation-sur-windows-11-pc-c5578302-6e43-4b4b-a449-8ced115f58e1">wsl1</a> et <a href="https://learn.microsoft.com/fr-fr/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package">wsl2</a>. Le système vous demandera de redémarrer.</p>
+<p>Vous pouvez ensuite installer une distribution Linux (par exemple Debian) :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>$ wsl --install --distribution Debian
+
+Installing Windows optional component: VirtualMachinePlatform
+
+Deployment Image Servicing and Management tool
+Version: 10.0.22621.2792
+
+Image Version: 10.0.22631.2861
+
+Enabling feature(s)
+[==========================100.0%==========================]
+The operation completed successfully.
+The requested operation is successful. Changes will not be effective until the system is rebooted.
+Installing: Debian GNU/Linux
+Debian GNU/Linux has been installed.
+The requested operation is successful. Changes will not be effective until the system is rebooted.
+</code></pre></div></td></tr></table></div>
+<p>Après avoir choisi un identifiant et un mot de passe, vous devriez avoir un shell Linux fonctionnel.</p>
+<h2 id="maintenance">Maintenance</h2>
+<p>Si vous manquez d’espace disque, vous pouvez soit essayer de récupérer de l’espace, soit étendre le fichier image de Windows.</p>
+<h3 id="recuperer-de-lespace-compact-os-memoire-virtuelle-et-fichiers-dhibernation">Récupérer de l’espace : Compact OS, mémoire virtuelle et fichiers d’hibernation</h3>
+<p>Vous pouvez d’abord essayer de désinstaller les applications inutilisées, bien que la configuration décrite ci-dessus n’ait pratiquement aucun logiciel supplémentaire installé.</p>
+<p>Vous pouvez récupérer quelques Go en compressant les fichiers système à l’aide de la fonctionnalité “Compact OS” de Windows, en suivant <a href="https://www.windowscentral.com/how-reduce-windows-10-footprint-your-pc">ce tutoriel</a> :</p>
+<ol>
+<li>Ouvrez le menu Démarrer.</li>
+<li>Recherchez <strong>Invite de commandes</strong>, faites un clic droit sur le résultat et sélectionnez <strong>Exécuter en tant qu’administrateur</strong>.</li>
+<li>Vérifiez si Compact OS est déjà activé :</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Compact.exe /CompactOS:query
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Activez Compact OS :</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Compact.exe /CompactOS:always
+</code></pre></div></td></tr></table></div>
+<p>Le processus de compression peut prendre jusqu’à 20 minutes. Vous pouvez annuler la modification à tout moment avec <code>Compact.exe /CompactOS:never</code>.</p>
+<p>Vous pouvez également économiser de l’espace en réduisant les fichiers de mémoire virtuelle et d’hibernation. Ouvrez une invite de commandes en tant qu’administrateur et exécutez :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>powercfg /h /type reduced
+</code></pre></div></td></tr></table></div>
+<p>Cela réduit le fichier d’hibernation d’environ 30 %. Pour le supprimer entièrement :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>powercfg /h /off
+</code></pre></div></td></tr></table></div>
+<p>Pour restaurer le fichier d’hibernation complet plus tard :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>powercfg /h /size 100
+</code></pre></div></td></tr></table></div>
+<h3 id="extension-de-la-taille-de-limage-qemu">Extension de la taille de l’image QEmu</h3>
+<p>Pendant que la VM est arrêtée, redimensionnez l’image :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>sudo<span class="w"> </span>qemu-img<span class="w"> </span>resize<span class="w"> </span>/var/lib/libvirt/images/win11.qcow2<span class="w"> </span>+10G
+</code></pre></div></td></tr></table></div>
+<p>Vous pouvez ensuite utiliser le <strong>Gestionnaire de disques</strong> de Windows pour étendre le système de fichiers sur l’espace nouvellement disponible.</p>
+<p>Je n’ai pas pu déplacer la partition de récupération située entre le lecteur C: et l’espace non alloué depuis Windows. Pour contourner cela, vous pouvez utiliser les outils côté hôte :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>sudo<span class="w"> </span>modprobe<span class="w"> </span>nbd<span class="w"> </span><span class="nv">max_part</span><span class="o">=</span><span class="m">16</span>
+sudo<span class="w"> </span>qemu-nbd<span class="w"> </span>-c<span class="w"> </span>/dev/nbd0<span class="w"> </span>/var/lib/libvirt/images/win11.qcow2
+</code></pre></div></td></tr></table></div>
+<p>Le gestionnaire de partitions KDE n’a initialement pas vu les 10 Go supplémentaires. GParted les a vus, mais a affiché un avertissement :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>Not all of the space available to /dev/nbd0 appears to be used, you can fix
+the GPT to use all of the space (an extra 20971520 blocks) or continue with
+the current setting?
+</code></pre></div></td></tr></table></div>
+<p>Après avoir réparé la table GPT, les deux outils ont fonctionné correctement :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>sudo<span class="w"> </span>gparted<span class="w"> </span>/dev/nbd0
+</code></pre></div></td></tr></table></div>
+<p>Une fois terminé, déconnectez l’image :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>sudo<span class="w"> </span>qemu-nbd<span class="w"> </span>-d<span class="w"> </span>/dev/nbd0
+</code></pre></div></td></tr></table></div>
+<h2 id="references">Références</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+            <hr>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+  </div>
+</footer>
+    <!--script async src="/theme/js/vendor/bootstrap.bundle.min.js"></script-->
+    <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
+    <script async src="/theme/js/lazyload.js"></script-->
+    <script async src="/theme/js/application.js"></script>
+    <script defer src="/theme/js/archive-links.js"></script>
+    <script defer src="/theme/js/code-blocks.js"></script>
+    <script defer src="/theme/js/filters.js"></script>
+
+    <!-- KaTeX JavaScript for math rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\\\(', right: '\\\\)', display: false},
+            {left: '\\\\[', right: '\\\\]', display: true}
+          ]
+        });"></script>
+
+
+  </body>
+</html>

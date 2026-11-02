@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 245" role="img" aria-label="CR-Touch adapter cable wiring diagram">
+  <title>CR-Touch adapter cable wiring</title>
+  <defs>
+    <style>
+      .blk-title { font-family: 'SF Mono', Consolas, 'Liberation Mono', monospace; font-size: 12px; font-weight: bold; }
+      .blk-sub   { font-family: 'SF Mono', Consolas, 'Liberation Mono', monospace; font-size: 10px; fill: #475569; }
+      .pin-label { font-family: 'SF Mono', Consolas, 'Liberation Mono', monospace; font-size: 11px; fill: #cbd5e1; }
+      .pin-sub   { font-family: 'SF Mono', Consolas, 'Liberation Mono', monospace; font-size: 9.5px; fill: #64748b; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="245" fill="#0f172a" rx="8"/>
+
+  <!-- ─────────── CR-TOUCH BLOCK ─────────── -->
+  <rect x="15" y="18" width="170" height="205" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="100" y="38" text-anchor="middle" class="blk-title" fill="#7dd3fc">CR-Touch</text>
+  <text x="100" y="51" text-anchor="middle" class="blk-sub">5-pin JST</text>
+
+  <!-- Pin 1: G  white -->
+  <circle cx="183" cy="80" r="7" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="26" y="84" class="pin-label">G</text>
+  <text x="42" y="84" class="pin-sub">white · GND</text>
+
+  <!-- Pin 2: V  black -->
+  <circle cx="183" cy="105" r="7" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="26" y="109" class="pin-label">V</text>
+  <text x="42" y="109" class="pin-sub">black · +5V</text>
+
+  <!-- Pin 3: IN  yellow -->
+  <circle cx="183" cy="130" r="7" fill="#fde047" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="26" y="134" class="pin-label">IN</text>
+  <text x="42" y="134" class="pin-sub">yellow · servo sig</text>
+
+  <!-- Pin 4: G  red -->
+  <circle cx="183" cy="155" r="7" fill="#f87171" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="26" y="159" class="pin-label">G</text>
+  <text x="42" y="159" class="pin-sub">red · GND</text>
+
+  <!-- Pin 5: OUT  blue -->
+  <circle cx="183" cy="180" r="7" fill="#60a5fa" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="26" y="184" class="pin-label">OUT</text>
+  <text x="42" y="184" class="pin-sub">blue · output</text>
+
+  <!-- ─────────── D11 SERVO HEADER ─────────── -->
+  <rect x="455" y="18" width="250" height="115" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="580" y="37" text-anchor="middle" class="blk-title" fill="#86efac">D11 Servo Header</text>
+  <text x="580" y="50" text-anchor="middle" class="blk-sub">3-pin Dupont female</text>
+
+  <!-- D11 pin 1: VIN (black) -->
+  <circle cx="462" cy="68" r="7" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="475" y="72" class="pin-label">1  VIN <tspan class="pin-sub"> +5V · black</tspan></text>
+
+  <!-- D11 pin 2: GND (white) -->
+  <circle cx="462" cy="93" r="7" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="475" y="97" class="pin-label">2  GND <tspan class="pin-sub"> · white</tspan></text>
+
+  <!-- D11 pin 3: SIG (yellow) -->
+  <circle cx="462" cy="118" r="7" fill="#fde047" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="475" y="122" class="pin-label">3  SIG <tspan class="pin-sub"> · yellow</tspan></text>
+
+  <!-- ─────────── Z ENDSTOP HEADER ─────────── -->
+  <rect x="455" y="150" width="250" height="80" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="580" y="169" text-anchor="middle" class="blk-title" fill="#c4b5fd">Z Endstop Header</text>
+  <text x="580" y="182" text-anchor="middle" class="blk-sub">2-pin JST</text>
+
+  <!-- Z pin 1: OUT (blue) -->
+  <circle cx="462" cy="196" r="7" fill="#60a5fa" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="475" y="200" class="pin-label">1  OUT <tspan class="pin-sub"> · blue</tspan></text>
+
+  <!-- Z pin 2: GND (red) -->
+  <circle cx="462" cy="221" r="7" fill="#f87171" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="475" y="225" class="pin-label">2  GND <tspan class="pin-sub"> · red</tspan></text>
+
+  <!-- ─────────── WIRES ─────────── -->
+  <!-- white: G → D11 pin 2 GND  (80→93, slight downward curve) -->
+  <path d="M190,80 C325,80 325,93 455,93" stroke="#e2e8f0" stroke-width="2" fill="none" opacity="0.85"/>
+
+  <!-- black: V → D11 pin 1 VIN  (105→68, upward — CROSSES white) -->
+  <!-- Draw in two segments with a small break to show the wires don't connect -->
+  <path d="M190,105 C320,105 320,68 455,68" stroke="#94a3b8" stroke-width="2" fill="none" opacity="0.85"/>
+  <!-- Bridge gap on black wire at the crossing point (approx x=321, y=86) -->
+  <circle cx="321" cy="86" r="4.5" fill="#0f172a"/>
+
+  <!-- yellow: IN → D11 pin 3 SIG  (130→118) -->
+  <path d="M190,130 C325,130 325,118 455,118" stroke="#fde047" stroke-width="2" fill="none" opacity="0.85"/>
+
+  <!-- red: G → Z endstop pin 2 GND  (155→221) -->
+  <path d="M190,155 C340,155 340,221 455,221" stroke="#f87171" stroke-width="2" fill="none" opacity="0.85"/>
+
+  <!-- blue: OUT → Z endstop pin 1 OUT  (180→196) -->
+  <path d="M190,180 C330,180 330,196 455,196" stroke="#60a5fa" stroke-width="2" fill="none" opacity="0.85"/>
+
+  <!-- Crossing annotation -->
+  <text x="290" y="74" text-anchor="middle" font-family="monospace" font-size="9" fill="#475569">⚠ cross</text>
+</svg>

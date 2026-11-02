@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /drafts/
+
+Sitemap: https://jordan.auge.synaxe.net/sitemap.xml

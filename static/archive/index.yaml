@@ -1,0 +1,186 @@
+archives:
+  20260327-mwc17-hicn-video-whitepaper:
+    date: '20260327'
+    original_url: https://www.cisco.com/c/dam/en/us/solutions/collateral/service-provider/ultra-services-platform/mwc17-hicn-video-wp.pdf
+    size_mb: 1.36
+    slug: mwc17-hicn-video-whitepaper
+    tags:
+    - hicn
+    - hybrid-icn
+    - video
+    - cisco
+    - whitepaper
+    title: Document from www.cisco.com
+    type: pdf
+  20260421-acm-icn2017-mapme:
+    date: '20260421'
+    original_url: https://conferences.sigcomm.org/acm-icn/2017/proceedings/icn17-21.pdf
+    size_mb: 0.58
+    slug: acm-icn2017-mapme
+    tags:
+    - mapme
+    - icn
+    - acm
+    - conference
+    - '2017'
+    title: Document from conferences.sigcomm.org
+    type: pdf
+  20260421-acm-icn2017-secure-producer:
+    date: '20260421'
+    original_url: https://conferences.sigcomm.org/acm-icn/2017/proceedings/icn17-23.pdf
+    size_mb: 0.86
+    slug: acm-icn2017-secure-producer
+    tags:
+    - hicn
+    - icn
+    - acm
+    - conference
+    - security
+    - '2017'
+    title: Document from conferences.sigcomm.org
+    type: pdf
+  20260421-acm-icn2017-vicn:
+    date: '20260421'
+    original_url: https://conferences.sigcomm.org/acm-icn/2017/proceedings/icn17-26.pdf
+    size_mb: 1.26
+    slug: acm-icn2017-vicn
+    tags:
+    - vicn
+    - icn
+    - acm
+    - conference
+    - '2017'
+    title: Document from conferences.sigcomm.org
+    type: pdf
+  20260421-anycast-code:
+    date: '20260421'
+    original_url: https://anycast.telecom-paristech.fr/code/
+    size_mb: 0.02
+    slug: anycast-code
+    tags:
+    - anycast
+    - dns
+    - code
+    - telecom-paristech
+    title: Source code
+    type: webpage
+  20260421-anycast-dataset-page:
+    date: '20260421'
+    original_url: https://anycast.telecom-paristech.fr/dataset/
+    size_mb: 0.18
+    slug: anycast-dataset-page
+    tags:
+    - anycast
+    - dns
+    - dataset
+    - telecom-paristech
+    title: Anycast Datasets
+    type: webpage
+  20260421-anycast-tabview-demo:
+    date: '20260421'
+    original_url: https://anycast.telecom-paristech.fr/tabview/
+    size_mb: 3.18
+    slug: anycast-tabview-demo
+    tags:
+    - anycast
+    - dns
+    - demo
+    - visualization
+    - telecom-paristech
+    title: Tabview
+    type: webpage
+  20260421-fdio-wiki-vicn:
+    date: '20260421'
+    original_url: https://wiki.fd.io/view/Vicn
+    size_mb: 0.12
+    slug: fdio-wiki-vicn
+    tags:
+    - vicn
+    - fdio
+    - hicn
+    - icn
+    - code
+    title: Vicn - fd.io
+    type: webpage
+  20260421-github-mapme-tnsm17:
+    date: '20260421'
+    original_url: https://github.com/mapme-tnsm17
+    size_mb: 3.37
+    slug: github-mapme-tnsm17
+    tags:
+    - mapme
+    - hicn
+    - icn
+    - github
+    - code
+    title: "mapme-tnsm17 \xB7 GitHub"
+    type: webpage
+  20260421-irtf-anrp:
+    date: '20260421'
+    original_url: https://irtf.org/anrp
+    size_mb: 0.71
+    slug: irtf-anrp
+    tags:
+    - irtf
+    - anrp
+    - award
+    - research
+    title: Applied Networking Research Prize
+    type: webpage
+  20260421-mapme-tnsm17-project-page:
+    date: '20260421'
+    original_url: https://mapme-tnsm17.github.io/
+    size_mb: 0.08
+    slug: mapme-tnsm17-project-page
+    tags:
+    - mapme
+    - hicn
+    - icn
+    - research
+    title: 'MAP-ME: Managing Anchor-less Producer Mobility in Content-Centric Networks
+      | mapme-tnsm17.github.io'
+    type: webpage
+  20260423-ribeiro-2011-masters-thesis:
+    date: '20260423'
+    original_url: https://paris-traceroute.net/images/masters_ribeiro_2011.pdf
+    size_mb: 0.88
+    slug: ribeiro-2011-masters-thesis
+    tags:
+    - traceroute
+    - paris-traceroute
+    - masters-thesis
+    - upmc
+    - '2011'
+    - intern-supervision
+    title: Document from paris-traceroute.net
+    type: pdf
+  20260722-aaif-chairs-interview:
+    date: '20260722'
+    original_url: https://outshift.cisco.com/blog/ai-ml/aaif-chairs-interview
+    size_mb: 3.63
+    slug: aaif-chairs-interview
+    tags:
+    - aaif
+    - interview
+    - open-source
+    - agentic-ai
+    - reliability
+    - observability
+    - working-group
+    title: Outshift | Agentic AI Foundation Chairs discuss AGNTCY, AAIF, and building
+      in the open
+    type: webpage
+  20260722-agntcon-mcpcon-europe-2026:
+    date: '20260722'
+    original_url: https://events.linuxfoundation.org/agntcon-mcpcon-europe/
+    size_mb: 1.28
+    slug: agntcon-mcpcon-europe-2026
+    tags:
+    - agntcon
+    - mcpcon
+    - event
+    - agent
+    - interoperability
+    - linux-foundation
+    title: AGNTCon + MCPCon Europe | LF Events
+    type: webpage

@@ -1,0 +1,285 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 800">
+  <defs>
+    <style>
+      .wire { stroke: #000; stroke-width: 1.5; fill: none; }
+      .wire-thick { stroke: #000; stroke-width: 2.5; fill: none; }
+      .component { fill: none; stroke: #000; stroke-width: 1.5; }
+      .text { font-family: 'Times New Roman', serif; font-size: 12px; fill: #000; }
+      .label { font-family: 'Times New Roman', serif; font-size: 13px; fill: #000; font-weight: bold; }
+      .value { font-family: 'Times New Roman', serif; font-size: 11px; fill: #000; }
+      .title { font-family: 'Times New Roman', serif; font-size: 16px; fill: #000; font-weight: bold; }
+      .pin-label { font-family: 'Helvetica', sans-serif; font-size: 9px; fill: #000; }
+      .note { font-family: 'Times New Roman', serif; font-size: 10px; fill: #000; font-style: italic; }
+    </style>
+    
+    <!-- Resistor symbol (IEEE zigzag) -->
+    <g id="resistor">
+      <path d="M -10,0 L 0,0 L 3,4 L 9,-4 L 15,4 L 21,-4 L 27,4 L 33,-4 L 36,0 L 46,0" class="component" stroke-linejoin="miter"/>
+    </g>
+    
+    <!-- Capacitor symbol (polarized) -->
+    <g id="capacitor">
+      <line x1="0" y1="-15" x2="0" y2="15" class="component"/>
+      <path d="M 5,-15 L 5,15 M 6,-12 L 10,-12 M 8,-14 L 8,-10" class="component"/>
+      <line x1="0" y1="0" x2="-10" y2="0" class="wire"/>
+      <line x1="5" y1="0" x2="15" y2="0" class="wire"/>
+    </g>
+    
+    <!-- Diode symbol (IEEE) -->
+    <g id="diode">
+      <path d="M -10,0 L 0,0 M 0,-8 L 0,8 L 15,0 Z M 15,-8 L 15,8 M 15,0 L 25,0" class="component"/>
+    </g>
+    
+    <!-- Ground symbol (IEEE) -->
+    <g id="ground">
+      <line x1="0" y1="0" x2="0" y2="8" class="component"/>
+      <line x1="-12" y1="8" x2="12" y2="8" class="component" stroke-width="2"/>
+      <line x1="-8" y1="12" x2="8" y2="12" class="component" stroke-width="1.5"/>
+      <line x1="-4" y1="16" x2="4" y2="16" class="component" stroke-width="1"/>
+    </g>
+    
+    <!-- NPN Transistor symbol (IEEE) -->
+    <g id="npn-transistor">
+      <!-- Base line -->
+      <line x1="-15" y1="0" x2="0" y2="0" class="wire"/>
+      <line x1="0" y1="-15" x2="0" y2="15" class="component" stroke-width="2.5"/>
+      <!-- Collector -->
+      <line x1="0" y1="-8" x2="15" y2="-18" class="component" stroke-width="1.5"/>
+      <line x1="15" y1="-18" x2="15" y2="-25" class="wire"/>
+      <!-- Emitter with arrow -->
+      <line x1="0" y1="8" x2="15" y2="18" class="component" stroke-width="1.5"/>
+      <line x1="15" y1="18" x2="15" y2="25" class="wire"/>
+      <polygon points="15,18 11,12 8,18" fill="#000"/>
+    </g>
+    
+    <!-- Power supply symbol -->
+    <g id="power-vcc">
+      <line x1="0" y1="0" x2="0" y2="10" class="wire"/>
+      <circle cx="0" cy="15" r="3" fill="#000"/>
+    </g>
+  </defs>
+  
+  <!-- Title and subtitle -->
+  <text x="550" y="25" text-anchor="middle" class="title">555 Timer Doorbell Pulse Generator</text>
+  <text x="550" y="42" text-anchor="middle" class="value">Asymmetric Astable Multivibrator with Diode-Modified Timing</text>
+  
+  <!-- Grid reference markers -->
+  <text x="50" y="75" class="pin-label">A</text>
+  <text x="50" y="200" class="pin-label">B</text>
+  <text x="50" y="350" class="pin-label">C</text>
+  <text x="50" y="500" class="pin-label">D</text>
+  <text x="50" y="650" class="pin-label">E</text>
+  
+  <text x="100" y="60" class="pin-label">1</text>
+  <text x="250" y="60" class="pin-label">2</text>
+  <text x="400" y="60" class="pin-label">3</text>
+  <text x="550" y="60" class="pin-label">4</text>
+  <text x="700" y="60" class="pin-label">5</text>
+  <text x="850" y="60" class="pin-label">6</text>
+  <text x="1000" y="60" class="pin-label">7</text>
+  
+  <!-- Power rails -->
+  <!-- +V_CC rail (top) -->
+  <line x1="100" y1="100" x2="900" y2="100" class="wire-thick"/>
+  <use href="#power-vcc" x="100" y="85"/>
+  <text x="110" y="95" class="label">+6V</text>
+  
+  <!-- Ground rail (bottom) -->
+  <line x1="100" y1="700" x2="950" y2="700" class="wire-thick"/>
+  <use href="#ground" x="100" y="700"/>
+  <text x="70" y="725" class="label">GND</text>
+  
+  <!-- 555 Timer IC (drawn as DIP-8 package) -->
+  <rect x="380" y="200" width="140" height="240" fill="none" stroke="#000" stroke-width="2" rx="3"/>
+  <text x="450" y="225" text-anchor="middle" class="label">TLC555CP</text>
+  <text x="450" y="238" text-anchor="middle" class="pin-label">CMOS Timer</text>
+  
+  <!-- 555 Pin circles and labels -->
+  <!-- Left side pins -->
+  <circle cx="380" cy="240" r="3" fill="#fff" stroke="#000" stroke-width="1.5"/>
+  <text x="365" y="243" text-anchor="end" class="pin-label">1 GND</text>
+  
+  <circle cx="380" cy="280" r="3" fill="#fff" stroke="#000" stroke-width="1.5"/>
+  <text x="365" y="283" text-anchor="end" class="pin-label">2 TRIG</text>
+  
+  <circle cx="380" cy="320" r="3" fill="#fff" stroke="#000" stroke-width="1.5"/>
+  <text x="365" y="323" text-anchor="end" class="pin-label">3 OUT</text>
+  
+  <circle cx="380" cy="360" r="3" fill="#fff" stroke="#000" stroke-width="1.5"/>
+  <text x="365" y="363" text-anchor="end" class="pin-label">4 RST</text>
+  
+  <!-- Right side pins -->
+  <circle cx="520" cy="360" r="3" fill="#fff" stroke="#000" stroke-width="1.5"/>
+  <text x="535" y="363" text-anchor="start" class="pin-label">5 CV</text>
+  
+  <circle cx="520" cy="320" r="3" fill="#fff" stroke="#000" stroke-width="1.5"/>
+  <text x="535" y="323" text-anchor="start" class="pin-label">6 THR</text>
+  
+  <circle cx="520" cy="280" r="3" fill="#fff" stroke="#000" stroke-width="1.5"/>
+  <text x="535" y="283" text-anchor="start" class="pin-label">7 DIS</text>
+  
+  <circle cx="520" cy="240" r="3" fill="#fff" stroke="#000" stroke-width="1.5"/>
+  <text x="535" y="243" text-anchor="start" class="pin-label">8 V_CC</text>
+  
+  <!-- Pin 8 (V_CC) connection -->
+  <line x1="520" y1="240" x2="560" y2="240" class="wire"/>
+  <line x1="560" y1="240" x2="560" y2="100" class="wire"/>
+  
+  <!-- Pin 1 (GND) connection -->
+  <line x1="380" y1="240" x2="340" y2="240" class="wire"/>
+  <line x1="340" y1="240" x2="340" y2="700" class="wire"/>
+  
+  <!-- Pin 5 (Control Voltage) - bypass capacitor -->
+  <line x1="520" y1="360" x2="560" y2="360" class="wire"/>
+  <use href="#capacitor" transform="translate(560, 360) rotate(90)" />
+  <text x="580" y="365" class="label">C2</text>
+  <text x="580" y="378" class="value">10nF</text>
+  <line x1="575" y1="360" x2="600" y2="360" class="wire"/>
+  <line x1="600" y1="360" x2="600" y2="700" class="wire"/>
+  
+  <!-- R1 - Charging resistor -->
+  <line x1="560" y1="100" x2="560" y2="140" class="wire"/>
+  <use href="#resistor" transform="translate(560, 140) rotate(90)"/>
+  <text x="545" y="160" text-anchor="end" class="label">R1</text>
+  <text x="545" y="173" text-anchor="end" class="value">30kΩ</text>
+  <line x1="560" y1="186" x2="560" y2="280" class="wire"/>
+  <circle cx="560" cy="280" r="3" fill="#000"/>
+  
+  <!-- Pin 7 (Discharge) connection to timing node -->
+  <line x1="520" y1="280" x2="560" y2="280" class="wire"/>
+  
+  <!-- R2 - Discharging resistor -->
+  <line x1="680" y1="280" x2="680" y2="320" class="wire"/>
+  <use href="#resistor" transform="translate(680, 320) rotate(90)"/>
+  <text x="695" y="355" text-anchor="start" class="label">R2</text>
+  <text x="695" y="368" text-anchor="start" class="value">68kΩ</text>
+  <line x1="680" y1="366" x2="680" y2="450" class="wire"/>
+  
+  <!-- D1 - Asymmetric timing diode (parallel to R2) -->
+  <line x1="730" y1="280" x2="730" y2="305" class="wire"/>
+  <use href="#diode" transform="translate(730, 305) rotate(90)"/>
+  <text x="745" y="320" text-anchor="start" class="label">D1</text>
+  <text x="745" y="333" text-anchor="start" class="value">1N4148</text>
+  <line x1="730" y1="330" x2="730" y2="450" class="wire"/>
+  
+  <!-- Junction between R1, R2, D1 -->
+  <line x1="560" y1="280" x2="680" y2="280" class="wire"/>
+  <line x1="680" y1="280" x2="730" y2="280" class="wire"/>
+  <circle cx="680" cy="280" r="3" fill="#000"/>
+  
+  <!-- Timing capacitor C1 -->
+  <circle cx="680" cy="450" r="3" fill="#000"/>
+  <use href="#capacitor" transform="translate(680, 450) rotate(90)"/>
+  <text x="695" y="470" text-anchor="start" class="label">C1</text>
+  <text x="695" y="483" text-anchor="start" class="value">10μF</text>
+  <line x1="695" y1="450" x2="720" y2="450" class="wire"/>
+  <line x1="720" y1="450" x2="720" y2="700" class="wire"/>
+  
+  <!-- Connections from capacitor to TRIG and THR pins -->
+  <line x1="680" y1="280" x2="680" y2="320" class="wire"/>
+  <circle cx="320" cy="300" r="3" fill="#000"/>
+  <line x1="680" y1="280" x2="320" y2="280" class="wire"/>
+  <line x1="320" y1="280" x2="320" y2="300" class="wire"/>
+  
+  <!-- Pin 2 (TRIG) -->
+  <line x1="380" y1="280" x2="320" y2="280" class="wire"/>
+  
+  <!-- Pin 6 (THR) -->
+  <line x1="520" y1="320" x2="550" y2="320" class="wire"/>
+  <line x1="550" y1="320" x2="550" y2="300" class="wire"/>
+  <line x1="550" y1="300" x2="320" y2="300" class="wire"/>
+  
+  <!-- Pin 4 (RESET) - Control input from VTO2202F -->
+  <line x1="380" y1="360" x2="280" y2="360" class="wire"/>
+  <line x1="280" y1="360" x2="280" y2="400" class="wire"/>
+  
+  <!-- VTO2202F alarm relay contacts -->
+  <rect x="200" y="390" width="120" height="50" fill="none" stroke="#000" stroke-width="1.5" rx="3"/>
+  <text x="260" y="410" text-anchor="middle" class="label">VTO2202F</text>
+  <text x="260" y="423" text-anchor="middle" class="value">Alarm Relay</text>
+  <text x="260" y="435" text-anchor="middle" class="pin-label">NO Contact</text>
+  
+  <!-- Alarm relay connections -->
+  <line x1="280" y1="440" x2="280" y2="480" class="wire"/>
+  <circle cx="280" cy="480" r="2" fill="#fff" stroke="#000" stroke-width="1.5"/>
+  <line x1="280" y1="483" x2="280" y2="700" class="wire"/>
+  
+  <line x1="240" y1="440" x2="240" y2="480" class="wire"/>
+  <line x1="240" y1="480" x2="240" y2="100" class="wire"/>
+  
+  <!-- R3 - Pull-down resistor for RESET pin -->
+  <line x1="350" y1="360" x2="350" y2="400" class="wire"/>
+  <use href="#resistor" transform="translate(350, 400) rotate(90)"/>
+  <text x="335" y="430" text-anchor="end" class="label">R3</text>
+  <text x="335" y="443" text-anchor="end" class="value">10kΩ</text>
+  <line x1="350" y1="446" x2="350" y2="700" class="wire"/>
+  <circle cx="350" cy="360" r="3" fill="#000"/>
+  
+  <!-- Output section -->
+  <!-- Pin 3 (OUTPUT) -->
+  <line x1="380" y1="320" x2="300" y2="320" class="wire"/>
+  <line x1="300" y1="320" x2="300" y2="550" class="wire"/>
+  
+  <!-- R4 - Base resistor -->
+  <line x1="300" y1="550" x2="350" y2="550" class="wire"/>
+  <use href="#resistor" transform="translate(350, 550)"/>
+  <text x="373" y="542" text-anchor="middle" class="label">R4</text>
+  <text x="373" y="568" text-anchor="middle" class="value">1kΩ</text>
+  <line x1="396" y1="550" x2="435" y2="550" class="wire"/>
+  
+  <!-- Q1 - NPN Transistor -->
+  <use href="#npn-transistor" x="450" y="550"/>
+  <text x="475" y="545" class="label">Q1</text>
+  <text x="475" y="558" class="value">2N2222</text>
+  
+  <!-- Transistor emitter to ground -->
+  <line x1="465" y1="575" x2="465" y2="700" class="wire"/>
+  
+  <!-- Load circuit (doorbell solenoid) -->
+  <rect x="815" y="130" width="110" height="80" fill="none" stroke="#000" stroke-width="1.5" rx="3"/>
+  <text x="870" y="155" text-anchor="middle" class="label">L1</text>
+  <text x="870" y="168" text-anchor="middle" class="value">Doorbell</text>
+  <text x="870" y="181" text-anchor="middle" class="value">Solenoid</text>
+  <text x="870" y="200" text-anchor="middle" class="pin-label">(6V nominal)</text>
+  
+  <!-- Doorbell power connection -->
+  <line x1="840" y1="130" x2="840" y2="100" class="wire"/>
+  
+  <!-- Doorbell to transistor collector -->
+  <line x1="900" y1="170" x2="920" y2="170" class="wire"/>
+  <line x1="920" y1="170" x2="920" y2="480" class="wire"/>
+  <line x1="920" y1="480" x2="465" y2="480" class="wire"/>
+  <line x1="465" y1="480" x2="465" y2="525" class="wire"/>
+  
+  <!-- D2 - Flyback diode across solenoid -->
+  <line x1="840" y1="210" x2="840" y2="240" class="wire"/>
+  <use href="#diode" transform="translate(840, 240) rotate(90)"/>
+  <text x="855" y="265" text-anchor="start" class="label">D2</text>
+  <text x="855" y="278" text-anchor="start" class="value">1N4007</text>
+  <line x1="840" y1="265" x2="840" y2="290" class="wire"/>
+  <line x1="840" y1="290" x2="900" y2="290" class="wire"/>
+  <line x1="900" y1="290" x2="900" y2="170" class="wire"/>
+  
+  <!-- Timing equations box -->
+  <rect x="70" y="520" width="180" height="130" fill="none" stroke="#000" stroke-width="1.5" rx="3"/>
+  <text x="160" y="540" text-anchor="middle" class="label">Timing Equations</text>
+  <line x1="80" y1="545" x2="240" y2="545" stroke="#000" stroke-width="0.5"/>
+  
+  <text x="80" y="562" class="text" font-style="italic">t</text>
+  <text x="86" y="565" class="pin-label">HIGH</text>
+  <text x="115" y="562" class="text">= 0.693 × R1 × C1</text>
+  <text x="90" y="578" class="value">= 0.693 × 30kΩ × 10μF</text>
+  <text x="90" y="594" class="value">≈ 208 ms</text>
+  
+  <text x="80" y="612" class="text" font-style="italic">t</text>
+  <text x="86" y="615" class="pin-label">LOW</text>
+  <text x="115" y="612" class="text">= 0.693 × R2 × C1</text>
+  <text x="90" y="628" class="value">= 0.693 × 68kΩ × 10μF</text>
+  <text x="90" y="644" class="value">≈ 471 ms</text>
+  
+  <!-- Notes section -->
+  <text x="70" y="740" class="note">Note 1: D1 allows capacitor to charge through R1 only and discharge through R2 only.</text>
+  <text x="70" y="755" class="note">Note 2: Use TLC555 or LMC555 (CMOS) for battery operation. NE555 (bipolar) will drain batteries.</text>
+  <text x="70" y="770" class="note">Note 3: D2 protects Q1 from inductive voltage spike when solenoid is de-energized.</text>
+  <text x="70" y="785" class="note">Note 4: R3 ensures RESET pin is LOW when alarm contact is open (555 disabled).</text>
+</svg>

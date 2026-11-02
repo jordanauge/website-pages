@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="/theme/css/style.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/theme-logos.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/docs.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/wowchemy-compat.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news-snippet.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/publications.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/feeds.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/projects.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/research-home.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/collaborations.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/cv.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/archive-links.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-summary.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/filter-tagcloud.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-content.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/pygments.css?v=c6b9f9bc" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="/theme/css/navbar.css" rel="stylesheet">
+
+<!-- KaTeX for LaTeX math rendering -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+
+
+
+
+<title>Building and flashing Marlin 2 on a CR-10S V2</title>
+
+
+<link href="https://jordan.auge.synaxe.net/fr/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jordan Augé Full Atom Feed" >
+
+<link href="https://jordan.auge.synaxe.net/fr/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Full RSS Feed" >
+
+
+
+
+<link href="/feed/3d-printing.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Categories RSS Feed" >
+
+
+
+<link rel="canonical" href="https://jordan.auge.synaxe.net/fr/drafts/marlin-cr10s-v2-en/">
+
+<link rel="alternate" hreflang="en" href="https://jordan.auge.synaxe.net/drafts/marlin-cr10s-v2-en/">
+<link rel="alternate" hreflang="fr" href="https://jordan.auge.synaxe.net/fr/drafts/marlin-cr10s-v2-en/">
+
+<meta property="og:locale" content="">
+
+<meta property="og:site_name" content="Jordan Augé">
+<meta property="og:url" content="https://jordan.auge.synaxe.net/fr/drafts/marlin-cr10s-v2-en/">
+<meta property="og:type" content="article">
+
+<meta property="og:title" content="Building and flashing Marlin 2 on a CR-10S V2">
+<meta property="og:description" content="How to identify your CR-10S mainboard version, pull the right Marlin 2 configuration, build it with PlatformIO CLI, and flash it without the Arduino IDE.">
+
+
+
+
+<meta name="description" content="How to identify your CR-10S mainboard version, pull the right Marlin 2 configuration, build it with PlatformIO CLI, and flash it without...">
+
+<meta name="author" content="Jordan Augé">
+
+<meta name="tags" content="cr10s">
+<meta name="tags" content="marlin">
+<meta name="tags" content="firmware">
+<meta name="tags" content="platformio">
+<meta name="tags" content="3dprinting">
+
+
+<meta name="description" content="Jordan Augé's homepage">
+
+<script src="/theme/js/color-modes.js"></script>
+
+<meta name="author" content="Jordan Augé">
+
+
+</head>
+
+<body class="article-marlin-cr10s-v2">
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <symbol id="archive" viewBox="0 0 16 16">
+    <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="arrow-right-short" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+  </symbol>
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </symbol>
+  <symbol id="file-earmark-richtext" viewBox="0 0 16 16">
+    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+    <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
+  </symbol>
+  <symbol id="film" viewBox="0 0 16 16">
+    <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="rss" viewBox="0 0 16 16">
+    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+    <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+  <symbol id="three-dots" viewBox="0 0 16 16">
+    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+  </symbol>
+</svg>
+
+
+
+
+
+  <header class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top">
+  <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+    <div class="d-lg-none" style="width: 2.25rem;"></div>
+
+    <a class="navbar-brand p-0 me-0 me-lg-4" href="https://jordan.auge.synaxe.net/" aria-label=Jordan Augé>Jordan Augé</a>
+
+    <div class="d-flex">
+      <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jordan Augé</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+      </div>
+
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/">Accueil</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/news">Actualités</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/research">Recherche</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/research/publications">Publications</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/cv">CV</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/projects">Projets</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/blog">Blog</a>
+              </li>
+        </ul>
+
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+
+          <li class="nav-item d-none d-lg-flex align-items-center navbar-social-icons">
+            <a href="mailto:jordan.auge@free.fr" class="nav-link px-1 navbar-social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://scholar.google.fr/citations?user=-itbwwIAAAAJ" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://github.com/jordanauge" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/jordan-aug%C3%A9-763ba4a8/" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </li>
+
+          <li class="nav-item dropdown d-lg-none">
+            <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                    id="bd-theme-mobile"
+                    type="button"
+                    aria-expanded="false"
+                    data-bs-toggle="dropdown"
+                    data-bs-display="static"
+                    aria-label="Toggle theme (auto)">
+              <svg class="bi my-1"><use href="#circle-half"></use></svg>
+              <span class="ms-2" id="bd-theme-text">Toggle theme</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+                  Light
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+                  Dark
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+                  Auto
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item d-lg-none navbar-language-item">
+            <div class="navbar-lang-toggle" aria-label="Language switcher">
+              <span class="navbar-lang-label">EN</span>
+              <a href="/fr/drafts/marlin-cr10s-v2-en.html"
+                 class="navbar-lang-toggle-track"
+                 role="switch"
+                 aria-checked="false"
+                 aria-label="Switch to French">
+                <span class="navbar-lang-toggle-thumb"></span>
+              </a>
+              <span class="navbar-lang-label">FR</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="navbar-absolute-right d-none d-lg-flex align-items-center">
+    <div class="dropdown d-flex align-items-center">
+      <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-lang-toggle navbar-language-item" aria-label="Language switcher">
+      <span class="navbar-lang-label">EN</span>
+      <a href="/fr/drafts/marlin-cr10s-v2-en.html"
+         class="navbar-lang-toggle-track"
+         role="switch"
+         aria-checked="false"
+         aria-label="Switch to French">
+        <span class="navbar-lang-toggle-thumb"></span>
+      </a>
+      <span class="navbar-lang-label">FR</span>
+    </div>
+  </div>
+</header>
+            <header class="intro-header"
+                style="background-image: url('https://jordan.auge.synaxe.net/fr/../theme/images/post-bg.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                            <div class="post-heading text-light text-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+
+
+<div class="container-xxl px-4 px-xxl-2">
+    <div class="d-lg-grid content blog-article-page" id="content">
+        
+<div class="sidebar">
+  <aside class="news-article-sidebar sticky-top">
+
+    <div class="publications-sidebar-header">
+      <h1>3D Printing</h1>
+    </div>
+
+    <div class="sidebar-section sidebar-nav-links">
+
+      <div class="sidebar-feed-row">
+        <a class="sidebar-feed-label" href="/fr/blog/">Tous les billets</a>
+        <div class="dropdown sidebar-rss-dropdown">
+          <button class="sidebar-rss-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Flux RSS">
+            <svg class="bi" width="11" height="11" aria-hidden="true"><use xlink:href="#rss"></use></svg>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end sidebar-rss-menu">
+            <li><a class="dropdown-item" href="/fr/feed/blog.rss.xml" rel="alternate" type="application/rss+xml">Articles</a></li>
+            <li><a class="dropdown-item" href="/fr/feed/blog-with-updates.rss.xml" rel="alternate" type="application/rss+xml">Articles + mises à jour</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-feed-row">
+        <a class="sidebar-feed-label sidebar-feed-label--plain" href="https://jordan.auge.synaxe.net/fr/blog/category/3d-printing/">3D Printing</a>
+        <div class="dropdown sidebar-rss-dropdown">
+          <button class="sidebar-rss-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Flux RSS">
+            <svg class="bi" width="11" height="11" aria-hidden="true"><use xlink:href="#rss"></use></svg>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end sidebar-rss-menu">
+            <li><a class="dropdown-item" href="/fr/feed/3d-printing.rss.xml" rel="alternate" type="application/rss+xml">Articles</a></li>
+            <li><a class="dropdown-item" href="/fr/feed/3d-printing-with-updates.rss.xml" rel="alternate" type="application/rss+xml">Articles + mises à jour</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-back-row mt-2">
+        <button type="button" class="sidebar-back-link" onclick="if(history.length > 1 && document.referrer && document.referrer.indexOf(location.host) !== -1){ history.back(); } else { location.href='/fr/blog/'; }">
+          <i class="bi bi-arrow-left"></i>
+          Retour
+        </button>
+      </div>
+
+    </div>
+
+    <div id="blog-toc-section" class="sidebar-section" style="display:none">
+      <hr class="sidebar-divider my-2">
+      <div class="blog-toc-heading">Sur cette page</div>
+      <nav id="blog-toc" class="blog-toc-nav" aria-label="Table of contents"></nav>
+    </div>
+
+  </aside>
+</div>
+
+<script>
+(function() {
+  function buildToc() {
+    var post = document.querySelector('.post');
+    if (!post) return;
+    var headings = Array.from(post.querySelectorAll('h2, h3'));
+    if (headings.length < 2) return;
+    var nav = document.getElementById('blog-toc');
+    var section = document.getElementById('blog-toc-section');
+    if (!nav || !section) return;
+
+    var ul = document.createElement('ul');
+    ul.className = 'blog-toc-list';
+    headings.forEach(function(h, i) {
+      if (!h.id) h.id = 'toc-heading-' + i;
+      var li = document.createElement('li');
+      li.className = 'blog-toc-item blog-toc-' + h.tagName.toLowerCase();
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.className = 'blog-toc-link';
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    nav.appendChild(ul);
+    section.style.display = '';
+
+    var aside = section.closest('.news-article-sidebar');
+    if (!aside) return;
+
+    // Calibrate sticky top to actual navbar height so sidebar never overlaps it
+    function applyNavbarOffset() {
+      var navbar = document.querySelector('.bd-navbar');
+      if (!navbar) return;
+      var h = Math.ceil(navbar.getBoundingClientRect().height);
+      var gap = 4; // px clearance below navbar
+      aside.style.top = (h + gap) + 'px';
+      aside.style.maxHeight = 'calc(100vh - ' + (h + gap) + 'px)';
+    }
+    applyNavbarOffset();
+    window.addEventListener('resize', applyNavbarOffset, { passive: true });
+
+    // Minimal-scroll: only move the sidebar when the active link is out of view.
+    // Never overshoot — scroll just enough to reveal the link with a small margin.
+    function scrollSidebarToActive(link) {
+      var margin = 6;
+      var asideRect = aside.getBoundingClientRect();
+      var linkRect = link.getBoundingClientRect();
+      var relTop    = linkRect.top    - asideRect.top;
+      var relBottom = linkRect.bottom - asideRect.top;
+      if (relTop < margin) {
+        aside.scrollTop += relTop - margin;
+      } else if (relBottom > asideRect.height - margin) {
+        aside.scrollTop += relBottom - asideRect.height + margin;
+      }
+      // If already visible, do nothing
+    }
+
+    // Scroll-based active tracking: the active heading is the last one whose
+    // top edge has passed above the scroll threshold (navbar bottom + small offset).
+    var currentActiveId = null;
+    function updateActive() {
+      var navbar = document.querySelector('.bd-navbar');
+      var threshold = (navbar ? navbar.offsetHeight : 56) + 8;
+
+      var found = null;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        if (headings[i].getBoundingClientRect().top <= threshold) {
+          found = headings[i];
+          break;
+        }
+      }
+      // If nothing has passed yet, highlight the first item
+      if (!found) found = headings[0];
+      if (!found) return;
+
+      if (found.id === currentActiveId) return; // no change
+      currentActiveId = found.id;
+
+      nav.querySelectorAll('.blog-toc-link').forEach(function(l) {
+        l.classList.remove('active');
+      });
+      var activeLink = nav.querySelector('a[href="#' + found.id + '"]');
+      if (activeLink) {
+        activeLink.classList.add('active');
+        scrollSidebarToActive(activeLink);
+      }
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() { updateActive(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateActive(); // set initial state
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildToc);
+  } else {
+    buildToc();
+  }
+})();
+</script>
+
+
+
+        <div class="main">
+            
+<div class="posts-container article-posts-container mx-auto my-5">
+  <div class="posts">
+    <div class="post">
+      <div class="article-content-header">
+        <h1 class="article-content-title">Building and flashing Marlin 2 on a CR-10S V2</h1>
+        <div class="article-meta-pills article-meta-pills-content mt-2 mb-1">
+          <time class="article-date" datetime="2022-07-15"><i class="bi bi-calendar3"></i> 2022-07-15</time>
+          <time class="article-date article-date-updated" datetime="2026-11-02"><i class="bi bi-pencil-square"></i> 2026-11-02</time>
+            <a class="post-tag" data-color="yellow" href="https://jordan.auge.synaxe.net/fr/blog/category/3d-printing/">3D Printing</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/cr10s">#cr10s</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/marlin">#marlin</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/firmware">#firmware</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/platformio">#platformio</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/3dprinting">#3dprinting</a>
+        </div>
+      </div>
+      
+     <div class="article-summary article-summary-featured">
+         <div class="article-summary-kicker">Summary</div>
+     <p>How to identify your CR-10S mainboard version, pull the right Marlin 2 configuration, build it with PlatformIO CLI, and flash it without the Arduino IDE.</p>
+     </div>
+
+
+
+       <!-- PELICAN_BEGIN_SUMMARY -->
+<p>Flashing custom Marlin on a CR-10S is a prerequisite for installing a CR-Touch
+or any bed levelling probe. The process is not complicated, but it involves
+identifying your exact board revision, picking the matching configuration, and
+using PlatformIO to build and upload without the Arduino IDE.</p>
+<!-- PELICAN_END_SUMMARY -->
+<p>This post is the prerequisite for the
+<a href="https://jordan.auge.synaxe.net/blog/2022/07/crtouch-cr10s/">CR-Touch installation guide</a>.</p>
+<h2 id="identifying-your-board-version">Identifying your board version</h2>
+<p>The CR-10S family spans several mainboard revisions that share the same chassis
+but differ in firmware requirements. The key distinction is whether your printer
+has a <strong>filament runout sensor</strong> — that indicates a V2 or later.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Mainboard</th>
+<th style="text-align: left;">Filament sensor</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">CR-10S V1</td>
+<td style="text-align: left;">Creality v2.x (ATmega2560)</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Original CR-10S</td>
+</tr>
+<tr>
+<td style="text-align: left;">CR-10S V2</td>
+<td style="text-align: left;">Creality v2.5.2 (ATmega2560)</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Most common upgraded variant</td>
+</tr>
+<tr>
+<td style="text-align: left;">CR-10S V3</td>
+<td style="text-align: left;">Creality v2.x (ATmega2560)</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Direct drive extruder</td>
+</tr>
+<tr>
+<td style="text-align: left;">CR-10S Pro</td>
+<td style="text-align: left;">32-bit board</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Different firmware path entirely</td>
+</tr>
+</tbody>
+</table>
+<p>This guide covers <strong>V2 with the Creality v2.5.2 ATmega2560 mainboard</strong> — the
+most common variant. V1 and V3 use the same toolchain but require the matching
+<code>CrealityV1</code> configuration folder instead.</p>
+<p>The board revision is printed on the PCB. You can also verify by looking at the
+connector layout: the V2 adds a dedicated filament sensor header next to the
+E motor driver.</p>
+<h2 id="getting-the-source">Getting the source</h2>
+<p>Marlin releases two tracks: stable tags and a rolling <code>bugfix-2.0.x</code> branch.
+For CR-10S work the bugfix branch is recommended — it includes fixes that
+matter for ABL probes and haven’t reached a stable tag yet.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="o">=</span><span class="m">1</span><span class="w"> </span>-b<span class="w"> </span>bugfix-2.0.x<span class="w"> </span>https://github.com/MarlinFirmware/Marlin
+<span class="nb">cd</span><span class="w"> </span>Marlin
+</code></pre></div></td></tr></table></div>
+<p>Configurations live in a separate repository with a matching branch:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="o">=</span><span class="m">1</span><span class="w"> </span>-b<span class="w"> </span>import-2.0.x<span class="w"> </span>https://github.com/MarlinFirmware/Configurations
+</code></pre></div></td></tr></table></div>
+<p>Copy the CR-10 V2 example config into the Marlin source tree:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>cp<span class="w"> </span>Configurations/config/examples/Creality/CR-10<span class="se">\ </span>V2/CrealityV1/Configuration.h<span class="w">    </span>Marlin/Marlin/
+cp<span class="w"> </span>Configurations/config/examples/Creality/CR-10<span class="se">\ </span>V2/CrealityV1/Configuration_adv.h<span class="w"> </span>Marlin/Marlin/
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p><strong>Note:</strong> the <code>Configurations</code> repo path is <code>CR-10 V2 / CrealityV1</code>. Despite
+the name, this folder targets the original Creality ATmega2560 board, not a
+BTT or MKS replacement. The other subfolders (<code>BigTreeTech SKR 1.4 Turbo</code>,
+<code>SKR Mini E3 2.0</code>, <code>SKR Pro v1.2</code>) are for aftermarket 32-bit boards.</p>
+</blockquote>
+<h2 id="required-changes-to-configurationh">Required changes to Configuration.h</h2>
+<p>The bundled example is a reasonable starting point. The following changes are
+needed before building:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Uncomment one of these to match your thermistor type.</span>
+<span class="c1">// Creality stock hot end thermistor is EPCOS 100kΩ NTC = type 1.</span>
+<span class="cp">#define TEMP_SENSOR_0 1</span>
+
+<span class="c1">// Bed thermistor — Creality stock is also type 1.</span>
+<span class="cp">#define TEMP_SENSOR_BED 1</span>
+
+<span class="c1">// Extruder steps/mm — stock CR-10S V2 E-stepper.</span>
+<span class="c1">// Adjust after an extrusion calibration run.</span>
+<span class="cp">#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }</span>
+</code></pre></div></td></tr></table></div>
+<p>For BL-Touch / CR-Touch, see the
+<a href="https://jordan.auge.synaxe.net/blog/2022/07/crtouch-cr10s/">CR-Touch installation guide</a>
+for the additional defines. Build once without probe support first to confirm
+the base firmware flashes correctly.</p>
+<h2 id="toolchain-platformio-cli">Toolchain: PlatformIO CLI</h2>
+<p>PlatformIO is the recommended build system for Marlin 2. The Arduino IDE path
+exists but PlatformIO is faster and produces cleaner output.</p>
+<p>Install via pip (or into an existing Python environment):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>platformio
+</code></pre></div></td></tr></table></div>
+<p>Identify the correct PlatformIO environment for the ATmega2560 Creality board:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>grep<span class="w"> </span>-r<span class="w"> </span><span class="s2">"env:"</span><span class="w"> </span>Marlin/platformio.ini<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">"mega\|creality\|2560"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-10
+</code></pre></div></td></tr></table></div>
+<p>The target environment is <code>mega2560</code>. Build:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>Marlin
+pio<span class="w"> </span>run<span class="w"> </span>-e<span class="w"> </span>mega2560
+</code></pre></div></td></tr></table></div>
+<p>A successful build produces <code>.pio/build/mega2560/firmware.hex</code>.</p>
+<h2 id="flashing">Flashing</h2>
+<h3 id="via-usb-avrdude-platformio">Via USB (avrdude / PlatformIO)</h3>
+<p>Connect the printer to your computer via USB. The CR-10S exposes a CH340 USB
+serial adapter; on Linux it appears as <code>/dev/ttyUSB0</code>, on macOS as
+<code>/dev/tty.usbserial-*</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pio<span class="w"> </span>run<span class="w"> </span>-e<span class="w"> </span>mega2560<span class="w"> </span>--target<span class="w"> </span>upload
+</code></pre></div></td></tr></table></div>
+<p>PlatformIO auto-detects the port. If it fails to find the board, specify it:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pio<span class="w"> </span>run<span class="w"> </span>-e<span class="w"> </span>mega2560<span class="w"> </span>--target<span class="w"> </span>upload<span class="w"> </span>--upload-port<span class="w"> </span>/dev/ttyUSB0
+</code></pre></div></td></tr></table></div>
+<h3 id="via-octoprint-firmware-updater-plugin">Via OctoPrint (Firmware Updater plugin)</h3>
+<p>If OctoPrint is already running and connected, the
+<a href="https://plugins.octoprint.org/plugins/firmwareupdater/">Firmware Updater plugin</a>
+can flash the <code>.hex</code> directly without touching the USB cable. In the plugin
+settings, set the MCU type to <code>ATmega2560</code> and point it at the <code>.hex</code> from the
+build output above.</p>
+<p>This is convenient if the printer is on a network and you do not want to move
+the USB cable to a different machine.</p>
+<h2 id="first-boot-verification">First boot verification</h2>
+<p>After flashing, the printer should boot to the Marlin splash screen and then
+the main menu. Verify:</p>
+<ol>
+<li><strong>Info screen</strong>: check that the version string matches the build date (Main
+   menu → About Printer).</li>
+<li><strong>EEPROM reset</strong>: run <code>M502</code> (factory defaults) then <code>M500</code> (save to
+   EEPROM). This clears any stale values from the previous firmware.</li>
+<li><strong>Temperature sensors</strong>: heat the hot end to 200°C and the bed to 60°C to
+   confirm both thermistors read correctly.</li>
+<li><strong>Axis movement</strong>: jog each axis from the Move menu to confirm direction and
+   limit switches.</li>
+</ol>
+<p>Once the base firmware is verified, proceed with the
+<a href="https://jordan.auge.synaxe.net/blog/2022/07/crtouch-cr10s/">CR-Touch installation</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+            <hr>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+  </div>
+</footer>
+    <!--script async src="/theme/js/vendor/bootstrap.bundle.min.js"></script-->
+    <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
+    <script async src="/theme/js/lazyload.js"></script-->
+    <script async src="/theme/js/application.js"></script>
+    <script defer src="/theme/js/archive-links.js"></script>
+    <script defer src="/theme/js/code-blocks.js"></script>
+    <script defer src="/theme/js/filters.js"></script>
+
+    <!-- KaTeX JavaScript for math rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\\\(', right: '\\\\)', display: false},
+            {left: '\\\\[', right: '\\\\]', display: true}
+          ]
+        });"></script>
+
+
+  </body>
+</html>

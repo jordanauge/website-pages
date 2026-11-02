@@ -1,0 +1,1754 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="/theme/css/style.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/theme-logos.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/docs.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/wowchemy-compat.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news-snippet.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/publications.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/feeds.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/projects.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/research-home.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/collaborations.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/cv.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/archive-links.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-summary.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/filter-tagcloud.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-content.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/pygments.css?v=c6b9f9bc" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="/theme/css/navbar.css" rel="stylesheet">
+
+<!-- KaTeX for LaTeX math rendering -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+
+
+
+
+<title>Information-Centric Networking</title>
+
+
+<link href="https://jordan.auge.synaxe.net/fr/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jordan Augé Full Atom Feed" >
+
+<link href="https://jordan.auge.synaxe.net/fr/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Full RSS Feed" >
+
+
+
+
+
+
+<link href="/feed/news-research.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Research news RSS Feed" >
+
+<link rel="canonical" href="https://jordan.auge.synaxe.net/fr/pages/research/icn-en/">
+
+<link rel="alternate" hreflang="en" href="https://jordan.auge.synaxe.net/pages/research/icn-en.html">
+<link rel="alternate" hreflang="fr" href="https://jordan.auge.synaxe.net/research/icn/">
+
+<meta property="og:locale" content="">
+
+<meta property="og:site_name" content="Jordan Augé">
+<meta property="og:url" content="https://jordan.auge.synaxe.net/fr/pages/research/icn-en/">
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="Information-Centric Networking">
+<meta property="og:description" content="Jordan Augé&#39;s homepage">
+
+
+
+<meta name="description" content="Jordan Augé's homepage">
+
+<script src="/theme/js/color-modes.js"></script>
+
+<meta name="author" content="Jordan Augé">
+
+
+</head>
+
+<body class="page-icn">
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <symbol id="archive" viewBox="0 0 16 16">
+    <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="arrow-right-short" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+  </symbol>
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </symbol>
+  <symbol id="file-earmark-richtext" viewBox="0 0 16 16">
+    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+    <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
+  </symbol>
+  <symbol id="film" viewBox="0 0 16 16">
+    <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="rss" viewBox="0 0 16 16">
+    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+    <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+  <symbol id="three-dots" viewBox="0 0 16 16">
+    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+  </symbol>
+</svg>
+
+
+
+
+
+  <header class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top">
+  <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+    <div class="d-lg-none" style="width: 2.25rem;"></div>
+
+    <a class="navbar-brand p-0 me-0 me-lg-4" href="https://jordan.auge.synaxe.net/" aria-label=Jordan Augé>Jordan Augé</a>
+
+    <div class="d-flex">
+      <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jordan Augé</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+      </div>
+
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/">Accueil</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/news">Actualités</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/research">Recherche</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/research/publications">Publications</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/cv">CV</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/projects">Projets</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/blog">Blog</a>
+              </li>
+        </ul>
+
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+
+          <li class="nav-item d-none d-lg-flex align-items-center navbar-social-icons">
+            <a href="mailto:jordan.auge@free.fr" class="nav-link px-1 navbar-social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://scholar.google.fr/citations?user=-itbwwIAAAAJ" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://github.com/jordanauge" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/jordan-aug%C3%A9-763ba4a8/" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </li>
+
+          <li class="nav-item dropdown d-lg-none">
+            <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                    id="bd-theme-mobile"
+                    type="button"
+                    aria-expanded="false"
+                    data-bs-toggle="dropdown"
+                    data-bs-display="static"
+                    aria-label="Toggle theme (auto)">
+              <svg class="bi my-1"><use href="#circle-half"></use></svg>
+              <span class="ms-2" id="bd-theme-text">Toggle theme</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+                  Light
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+                  Dark
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+                  Auto
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item d-lg-none navbar-language-item">
+            <div class="navbar-lang-toggle" aria-label="Language switcher">
+              <span class="navbar-lang-label">EN</span>
+              <a href="/fr/research/icn/"
+                 class="navbar-lang-toggle-track"
+                 role="switch"
+                 aria-checked="false"
+                 aria-label="Switch to French">
+                <span class="navbar-lang-toggle-thumb"></span>
+              </a>
+              <span class="navbar-lang-label">FR</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="navbar-absolute-right d-none d-lg-flex align-items-center">
+    <div class="dropdown d-flex align-items-center">
+      <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-lang-toggle navbar-language-item" aria-label="Language switcher">
+      <span class="navbar-lang-label">EN</span>
+      <a href="/fr/research/icn/"
+         class="navbar-lang-toggle-track"
+         role="switch"
+         aria-checked="false"
+         aria-label="Switch to French">
+        <span class="navbar-lang-toggle-thumb"></span>
+      </a>
+      <span class="navbar-lang-label">FR</span>
+    </div>
+  </div>
+</header>
+
+
+    <div class="container-xxl px-4 px-xxl-2">
+      <div class="d-lg-grid content" id="content">
+
+
+        <div class="sidebar">
+          <div class="masthead py-5">
+  <div class="mb-4 text-center text-lg-start">
+    <div class="ms-3 ms-lg-0">
+      <p class="homepage-section-label mb-2">Research</p>
+      <p class="col-sm-8 col-lg-12 mx-auto mb-0 mb-lg-4">
+      This page brings together my current and previous research, my publications, and an overview of my PhD.
+      </p>
+    </div>
+  </div>
+
+  <nav class="research-sidebar-links" aria-label="Research navigation">
+    <a class="research-sidebar-link" href="/cv/"><i class="bi bi-person-vcard"></i><span>CV</span></a>
+    <a class="research-sidebar-link" href="/research/publications/"><i class="bi bi-journal-text"></i><span>Publications</span></a>
+    <a class="research-sidebar-link" href="/research/research-timeline/#scope=research&view=timeline"><i class="bi bi-clock-history"></i><span>Research Timeline</span></a>
+    <a class="research-sidebar-link" href="/research/phd/"><i class="bi bi-mortarboard"></i><span>PhD</span></a>
+  </nav>
+
+  <div class="research-sidebar-section">
+    <h2 class="research-sidebar-heading">Previous research</h2>
+    <nav class="research-sidebar-links" aria-label="Past activities">
+      <a class="research-sidebar-link" href="/research/cloud-security/">Cloud security</a>
+      <a class="research-sidebar-link" href="/research/agentic-network-change-validation/">Agentic network change validation</a>
+    </nav>
+  </div>
+
+  <div class="research-sidebar-section">
+    <div class="feed-block-header">
+      <h2 class="research-sidebar-heading mb-0">Research news</h2>
+      <a class="rss-link-button rss-link-button-icon rss-link-button-compact" href="/feed/news-research.rss.xml" rel="alternate" type="application/rss+xml" title="RSS feed" aria-label="Research news RSS feed">
+  <svg class="bi" aria-hidden="true"><use xlink:href="#rss"></use></svg>
+  <span>RSS</span>
+</a>
+    </div>
+    <p class="text-muted mb-0">No research news yet.</p>
+  </div>
+
+</div>
+
+        </div>
+        <div class="main">
+          <div class="posts-container mx-auto my-5">
+
+    <section id="content" class="body">
+        <div class="entry-content">
+            <!-- markdownlint-disable MD033 -->
+<section class="research-landing-hero">
+<p class="publications-kicker">Research track</p>
+<p class="research-topic-period">2015-2019</p>
+<h2>Information-Centric Networking, mobility, and deployable ICN over IP</h2>
+<p class="research-lead">
+    This research track covered producer mobility, deployable ICN over IP,
+    experimentation frameworks, and applied evaluations around video delivery
+    and heterogeneous access networks.
+  </p>
+</section>
+<h2 id="main-directions">Main directions</h2>
+<ul>
+<li>MAP-Me and anchor-less producer mobility</li>
+<li>Hybrid ICN and hICN as deployable ICN over IP</li>
+<li>vICN as an experimentation and virtualization framework</li>
+<li>ICN-based support for video delivery and heterogeneous wireless access</li>
+</ul>
+<h2 id="public-code-and-realizations">Public code and realizations</h2>
+<ul>
+<li><a href="https://github.com/FDio/">FD.io GitHub organization</a></li>
+<li><a href="https://wiki.fd.io/view/Vicn">FD.io vICN page</a></li>
+<li><a href="https://github.com/mapme-tnsm17">MAP-Me paper code</a></li>
+<li>Public video artifact: <a href="https://www.youtube.com/watch?v=m_KacZUrRnk">TelecomTV - Information Centric Networking driving Cisco’s 5G research</a></li>
+<li>Public video artifact: <a href="https://www.youtube.com/watch?v=p26GODPxGGE&amp;t=575s">CiscoFrance - ICN Demo - Rethinking mobility with information centric networking</a></li>
+<li>Public video artifact: <a href="https://www.youtube.com/watch?v=3BcG8F4Lcec">ITU - Using ICN to simplify data delivery, mobility management and secure transmission</a></li>
+</ul>
+<h2 id="collaborations-and-communities">Collaborations and communities</h2>
+<ul>
+<li>Collaboration with Samsung around hICN related work</li>
+<li>Participation in the DMM working group in the IETF</li>
+<li>Participation in ICNRG in the IRTF</li>
+<li><a href="https://github.com/dmm-5g/draft-bogineni-dmm-optimized-mobile-user-plane">Optimized mobile user plane draft repository</a></li>
+</ul>
+<h2 id="related-project-page">Related project page</h2>
+<ul>
+<li><a href="/research/hybrid-icn/">Hybrid ICN project page</a></li>
+</ul>
+<h2 id="publications">Publications</h2>
+<div class="btex" data-keywords-contains="project:icn" data-source="data/bibliography.bib" data-template="publications">
+<div aria-multiselectable="true" class="panel-group" id="accordion" role="tablist">
+<h3 class="section-heading publication-year-heading">2020</h3>
+<article class="panel publication-item type-ietf" data-publication-affiliations="cisco-paris" data-publication-authors="giovanna-carofiglio,luca-muscariello,michele-papalini" data-publication-projects="icn,hybrid-icn" data-publication-type="ietf" data-publication-year="2020" data-self-affiliation="cisco-paris" id="auge2020hicn_dmm_deployment">
+<div class="panel-heading publication-card-header" id="headingauge2020hicn_dmm_deployment" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-ietf">IETF</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><strong>Jordan Augé</strong>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=7uyDmMkAAAAJ" data-author-slug="luca-muscariello">Luca Muscariello</span> and <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-slug="michele-papalini">Michele Papalini</span></p>
+<p class="publication-title-line">
+<strong>Anchorless Mobility Management through hICN (hICN-AMM): Deployment Options</strong>
+</p>
+<p class="publication-details-line publication-meta">
+                                        2020 • <a href="https://datatracker.ietf.org/doc/draft-auge-dmm-hicn-mobility-deployment-options/" rel="noopener" target="_blank" title="Publication URL"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>
+</p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexauge2020hicn_dmm_deployment" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractauge2020hicn_dmm_deployment" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexauge2020hicn_dmm_deploymentlabel" class="modal fade" id="bibtexauge2020hicn_dmm_deployment" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexauge2020hicn_dmm_deploymentlabel">Anchorless Mobility Management through hICN (hICN-AMM): Deployment Options</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-auge2020hicn_dmm_deployment">@ietf{auge2020hicn_dmm_deployment,
+    author = "Aug{\'e}, Jordan and Carofiglio, Giovanna and Muscariello, Luca and Papalini, Michele",
+    title = "{Anchorless Mobility Management through hICN (hICN-AMM): Deployment Options}",
+    year = "2020",
+    url = "https://datatracker.ietf.org/doc/draft-auge-dmm-hicn-mobility-deployment-options/",
+    keywords = "ietf,project:icn,project:hybrid-icn",
+    number = "draft-auge-dmm-hicn-mobility-deployment-options-04",
+    howpublished = "IETF DMM WG"
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-auge2020hicn_dmm_deployment" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="auge2020hicn_dmm_deployment.bib" href="data:text/plain;charset=utf-8,%40ietf%7Bauge2020hicn_dmm_deployment%2C%0A%20%20%20%20author%20%3D%20%22Aug%7B%5C%27e%7D%2C%20Jordan%20and%20Carofiglio%2C%20Giovanna%20and%20Muscariello%2C%20Luca%20and%20Papalini%2C%20Michele%22%2C%0A%20%20%20%20title%20%3D%20%22%7BAnchorless%20Mobility%20Management%20through%20hICN%20%28hICN-AMM%29%3A%20Deployment%20Options%7D%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%2C%0A%20%20%20%20url%20%3D%20%22https%3A//datatracker.ietf.org/doc/draft-auge-dmm-hicn-mobility-deployment-options/%22%2C%0A%20%20%20%20keywords%20%3D%20%22ietf%2Cproject%3Aicn%2Cproject%3Ahybrid-icn%22%2C%0A%20%20%20%20number%20%3D%20%22draft-auge-dmm-hicn-mobility-deployment-options-04%22%2C%0A%20%20%20%20howpublished%20%3D%20%22IETF%20DMM%20WG%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractauge2020hicn_dmm_deploymentlabel" class="modal fade" id="abstractauge2020hicn_dmm_deployment" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractauge2020hicn_dmm_deploymentlabel">Anchorless Mobility Management through hICN (hICN-AMM): Deployment Options</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p class="publication-keywords"><strong>Keywords.</strong> ietf,project:icn,project:hybrid-icn</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<article class="panel publication-item type-ietf" data-publication-affiliations="cisco-paris" data-publication-authors="giovanna-carofiglio,luca-muscariello,michele-papalini" data-publication-projects="icn,hybrid-icn" data-publication-type="ietf" data-publication-year="2020" data-self-affiliation="cisco-paris" id="auge2020hicn_dmm_mobility">
+<div class="panel-heading publication-card-header" id="headingauge2020hicn_dmm_mobility" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-ietf">IETF</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><strong>Jordan Augé</strong>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=7uyDmMkAAAAJ" data-author-slug="luca-muscariello">Luca Muscariello</span> and <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-slug="michele-papalini">Michele Papalini</span></p>
+<p class="publication-title-line">
+<strong>Anchorless Mobility through hICN</strong>
+</p>
+<p class="publication-details-line publication-meta">
+                                        2020 • <a href="https://datatracker.ietf.org/doc/draft-auge-dmm-hicn-mobility/" rel="noopener" target="_blank" title="Publication URL"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>
+</p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexauge2020hicn_dmm_mobility" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractauge2020hicn_dmm_mobility" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexauge2020hicn_dmm_mobilitylabel" class="modal fade" id="bibtexauge2020hicn_dmm_mobility" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexauge2020hicn_dmm_mobilitylabel">Anchorless Mobility through hICN</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-auge2020hicn_dmm_mobility">@ietf{auge2020hicn_dmm_mobility,
+    author = "Aug{\'e}, Jordan and Carofiglio, Giovanna and Muscariello, Luca and Papalini, Michele",
+    title = "{Anchorless Mobility through hICN}",
+    year = "2020",
+    url = "https://datatracker.ietf.org/doc/draft-auge-dmm-hicn-mobility/",
+    keywords = "ietf,project:icn,project:hybrid-icn",
+    number = "draft-auge-dmm-hicn-mobility-04",
+    howpublished = "IETF DMM WG"
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-auge2020hicn_dmm_mobility" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="auge2020hicn_dmm_mobility.bib" href="data:text/plain;charset=utf-8,%40ietf%7Bauge2020hicn_dmm_mobility%2C%0A%20%20%20%20author%20%3D%20%22Aug%7B%5C%27e%7D%2C%20Jordan%20and%20Carofiglio%2C%20Giovanna%20and%20Muscariello%2C%20Luca%20and%20Papalini%2C%20Michele%22%2C%0A%20%20%20%20title%20%3D%20%22%7BAnchorless%20Mobility%20through%20hICN%7D%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%2C%0A%20%20%20%20url%20%3D%20%22https%3A//datatracker.ietf.org/doc/draft-auge-dmm-hicn-mobility/%22%2C%0A%20%20%20%20keywords%20%3D%20%22ietf%2Cproject%3Aicn%2Cproject%3Ahybrid-icn%22%2C%0A%20%20%20%20number%20%3D%20%22draft-auge-dmm-hicn-mobility-04%22%2C%0A%20%20%20%20howpublished%20%3D%20%22IETF%20DMM%20WG%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractauge2020hicn_dmm_mobilitylabel" class="modal fade" id="abstractauge2020hicn_dmm_mobility" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractauge2020hicn_dmm_mobilitylabel">Anchorless Mobility through hICN</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p class="publication-keywords"><strong>Keywords.</strong> ietf,project:icn,project:hybrid-icn</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<article class="panel publication-item type-ietf" data-publication-affiliations="cisco-paris" data-publication-authors="giovanna-carofiglio,luca-muscariello,michele-papalini" data-publication-projects="icn" data-publication-type="ietf" data-publication-year="2020" data-self-affiliation="cisco-paris" id="auge2020mapme_irtf">
+<div class="panel-heading publication-card-header" id="headingauge2020mapme_irtf" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-ietf">IETF</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><strong>Jordan Augé</strong>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=7uyDmMkAAAAJ" data-author-slug="luca-muscariello">Luca Muscariello</span> and <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-slug="michele-papalini">Michele Papalini</span></p>
+<p class="publication-title-line">
+<strong>MAP-Me: Managing Anchorless Mobility in Content Centric Networking</strong>
+</p>
+<p class="publication-details-line publication-meta">
+                                        2020 • <a href="https://datatracker.ietf.org/doc/draft-irtf-icnrg-mapme/" rel="noopener" target="_blank" title="Publication URL"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>
+</p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexauge2020mapme_irtf" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractauge2020mapme_irtf" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexauge2020mapme_irtflabel" class="modal fade" id="bibtexauge2020mapme_irtf" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexauge2020mapme_irtflabel">MAP-Me: Managing Anchorless Mobility in Content Centric Networking</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-auge2020mapme_irtf">@ietf{auge2020mapme_irtf,
+    author = "Aug{\'e}, Jordan and Carofiglio, Giovanna and Muscariello, Luca and Papalini, Michele",
+    title = "{MAP-Me: Managing Anchorless Mobility in Content Centric Networking}",
+    year = "2020",
+    url = "https://datatracker.ietf.org/doc/draft-irtf-icnrg-mapme/",
+    keywords = "ietf,project:icn,project:map-me",
+    number = "draft-irtf-icnrg-mapme-05",
+    howpublished = "IRTF ICNRG"
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-auge2020mapme_irtf" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="auge2020mapme_irtf.bib" href="data:text/plain;charset=utf-8,%40ietf%7Bauge2020mapme_irtf%2C%0A%20%20%20%20author%20%3D%20%22Aug%7B%5C%27e%7D%2C%20Jordan%20and%20Carofiglio%2C%20Giovanna%20and%20Muscariello%2C%20Luca%20and%20Papalini%2C%20Michele%22%2C%0A%20%20%20%20title%20%3D%20%22%7BMAP-Me%3A%20Managing%20Anchorless%20Mobility%20in%20Content%20Centric%20Networking%7D%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%2C%0A%20%20%20%20url%20%3D%20%22https%3A//datatracker.ietf.org/doc/draft-irtf-icnrg-mapme/%22%2C%0A%20%20%20%20keywords%20%3D%20%22ietf%2Cproject%3Aicn%2Cproject%3Amap-me%22%2C%0A%20%20%20%20number%20%3D%20%22draft-irtf-icnrg-mapme-05%22%2C%0A%20%20%20%20howpublished%20%3D%20%22IRTF%20ICNRG%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractauge2020mapme_irtflabel" class="modal fade" id="abstractauge2020mapme_irtf" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractauge2020mapme_irtflabel">MAP-Me: Managing Anchorless Mobility in Content Centric Networking</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p class="publication-keywords"><strong>Keywords.</strong> ietf,project:icn,project:map-me</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<article class="panel publication-item type-ietf" data-publication-affiliations="cisco-paris" data-publication-authors="luca-muscariello,giovanna-carofiglio,michele-papalini,mauro-sardara" data-publication-projects="icn,hybrid-icn" data-publication-type="ietf" data-publication-year="2020" data-self-affiliation="cisco-paris" id="muscariello2020hicn_intarea">
+<div class="panel-heading publication-card-header" id="headingmuscariello2020hicn_intarea" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-ietf">IETF</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=7uyDmMkAAAAJ" data-author-slug="luca-muscariello">Luca Muscariello</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span>, <strong>Jordan Augé</strong>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-slug="michele-papalini">Michele Papalini</span> and <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=PUYfhXIAAAAJ" data-author-slug="mauro-sardara">Mauro Sardara</span></p>
+<p class="publication-title-line">
+<strong>Hybrid Information-Centric Networking</strong>
+</p>
+<p class="publication-details-line publication-meta">
+                                        2020 • <a href="https://datatracker.ietf.org/doc/draft-muscariello-intarea-hicn/" rel="noopener" target="_blank" title="Publication URL"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>
+</p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexmuscariello2020hicn_intarea" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractmuscariello2020hicn_intarea" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexmuscariello2020hicn_intarealabel" class="modal fade" id="bibtexmuscariello2020hicn_intarea" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexmuscariello2020hicn_intarealabel">Hybrid Information-Centric Networking</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-muscariello2020hicn_intarea">@ietf{muscariello2020hicn_intarea,
+    author = "Muscariello, Luca and Carofiglio, Giovanna and Aug{\'e}, Jordan and Papalini, Michele and Sardara, Mauro",
+    title = "{Hybrid Information-Centric Networking}",
+    year = "2020",
+    url = "https://datatracker.ietf.org/doc/draft-muscariello-intarea-hicn/",
+    keywords = "ietf,project:icn,project:hybrid-icn",
+    number = "draft-muscariello-intarea-hicn-04",
+    howpublished = "IETF INTAREA"
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-muscariello2020hicn_intarea" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="muscariello2020hicn_intarea.bib" href="data:text/plain;charset=utf-8,%40ietf%7Bmuscariello2020hicn_intarea%2C%0A%20%20%20%20author%20%3D%20%22Muscariello%2C%20Luca%20and%20Carofiglio%2C%20Giovanna%20and%20Aug%7B%5C%27e%7D%2C%20Jordan%20and%20Papalini%2C%20Michele%20and%20Sardara%2C%20Mauro%22%2C%0A%20%20%20%20title%20%3D%20%22%7BHybrid%20Information-Centric%20Networking%7D%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%2C%0A%20%20%20%20url%20%3D%20%22https%3A//datatracker.ietf.org/doc/draft-muscariello-intarea-hicn/%22%2C%0A%20%20%20%20keywords%20%3D%20%22ietf%2Cproject%3Aicn%2Cproject%3Ahybrid-icn%22%2C%0A%20%20%20%20number%20%3D%20%22draft-muscariello-intarea-hicn-04%22%2C%0A%20%20%20%20howpublished%20%3D%20%22IETF%20INTAREA%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractmuscariello2020hicn_intarealabel" class="modal fade" id="abstractmuscariello2020hicn_intarea" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractmuscariello2020hicn_intarealabel">Hybrid Information-Centric Networking</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p class="publication-keywords"><strong>Keywords.</strong> ietf,project:icn,project:hybrid-icn</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<h3 class="section-heading publication-year-heading">2019</h3>
+<article class="panel publication-item type-conference" data-publication-affiliations="cisco-paris" data-publication-authors="giovanna-carofiglio,luca-muscariello,michele-papalini,mauro-sardara,alberto-compagno" data-publication-projects="icn,hybrid-icn" data-publication-type="conference" data-publication-venue="ACM ICN" data-publication-year="2019" data-self-affiliation="cisco-paris" id="carofiglio2019hicn">
+<div class="panel-heading publication-card-header" id="headingcarofiglio2019hicn" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-info">Conference</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=7uyDmMkAAAAJ" data-author-slug="luca-muscariello">Luca Muscariello</span>, <strong>Jordan Augé</strong>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-slug="michele-papalini">Michele Papalini</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=PUYfhXIAAAAJ" data-author-slug="mauro-sardara">Mauro Sardara</span> and <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=Y0pqSfgAAAAJ" data-author-slug="alberto-compagno">Alberto Compagno</span></p>
+<p class="publication-title-line">
+<strong>Enabling ICN in the Internet Protocol: Analysis and Evaluation of the Hybrid-ICN Architecture</strong>
+</p>
+<p class="publication-details-line publication-meta">
+<a class="publication-venue-link" href="https://conferences.sigcomm.org/acm-icn/2019/" rel="noopener" target="_blank" title="ACM ICN">ACM SIGCOMM ICN'19<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>, Macau, CN, Sept. 2019 • <a href="https://doi.org/10.1145/3357150.3357394" rel="noopener" target="_blank" title="DOI">DOI: 10.1145/3357150.3357394<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>
+</p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexcarofiglio2019hicn" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractcarofiglio2019hicn" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+<div class="btn-group publication-pdf-group">
+<a class="btn btn-default btn-xs btn-download publication-quick-link" download="" href="/static/files/research/carofiglio2019hicn.pdf" title="Download PDF"><i class="fa-solid fa-download fa-xs"></i> PDF</a>
+<button aria-expanded="false" class="btn btn-default btn-xs btn-download dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" type="button"><span class="visually-hidden">More sources</span></button>
+<ul class="dropdown-menu dropdown-menu-end publication-sources-menu">
+<li><a class="dropdown-item" download="" href="/static/files/research/carofiglio2019hicn.pdf"><i class="fa-solid fa-download fa-xs"></i> Local PDF</a></li>
+<li><a class="dropdown-item" href="https://doi.org/10.1145/3357150.3357394" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> DOI (10.1145/3357150.3357394)</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexcarofiglio2019hicnlabel" class="modal fade" id="bibtexcarofiglio2019hicn" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexcarofiglio2019hicnlabel">Enabling ICN in the Internet Protocol: Analysis and Evaluation of the Hybrid-ICN Architecture</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-carofiglio2019hicn">@article{carofiglio2019hicn,
+    author = "Carofiglio, Giovanna and Muscariello, Luca and Aug{\'e}, Jordan and Papalini, Michele and Sardara, Mauro and Compagno, Alberto",
+    title = "{Enabling ICN in the Internet Protocol: Analysis and Evaluation of the Hybrid-ICN Architecture}",
+    journal = "ACM SIGCOMM ICN'19",
+    address = "Macau, CN",
+    year = "2019",
+    month = "Sept.",
+    doi = "10.1145/3357150.3357394",
+    keywords = "conference,project:icn,project:hybrid-icn",
+    abstract = "Information-Centric Networking (ICN) embraces a family of network architectures rethinking Internet communication principles around named-data. After several years of research and the emergence of a few popular proposals, the idea to replace the Internet protocol with data-centric networking remains a subject of debate. ICN advantages have been advocated in the context of 5G networks for the support of highly mobile, multi-access/source and latencyminimal patterns of communications. However, large scale testing and insertion in operational networks are yet to happen, likely due to the lack of a clear incremental deployment strategy. In this paper, we analyze a recent proposal Hybrid-ICN (hICN), an ICN integration inside IP (rather that over/ under/ in place of) that has the ambition to trade-off no ICN architectural principles. By reusing existing packet formats, hICN brings innovation inside the IP stack, requiring minimal software upgrades and guaranteeing transparent interconnection with existing IP networks. We describe the architecture and use the open source implementation to test hICN in the open Internet to validate its short-term deployability. Further, we consider linear video streaming over mobile wireless heterogeneous networks as use case to highlight hICN advantages compared to TCP/IP counterpart."
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-carofiglio2019hicn" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="carofiglio2019hicn.bib" href="data:text/plain;charset=utf-8,%40article%7Bcarofiglio2019hicn%2C%0A%20%20%20%20author%20%3D%20%22Carofiglio%2C%20Giovanna%20and%20Muscariello%2C%20Luca%20and%20Aug%7B%5C%27e%7D%2C%20Jordan%20and%20Papalini%2C%20Michele%20and%20Sardara%2C%20Mauro%20and%20Compagno%2C%20Alberto%22%2C%0A%20%20%20%20title%20%3D%20%22%7BEnabling%20ICN%20in%20the%20Internet%20Protocol%3A%20Analysis%20and%20Evaluation%20of%20the%20Hybrid-ICN%20Architecture%7D%22%2C%0A%20%20%20%20journal%20%3D%20%22ACM%20SIGCOMM%20ICN%2719%22%2C%0A%20%20%20%20address%20%3D%20%22Macau%2C%20CN%22%2C%0A%20%20%20%20year%20%3D%20%222019%22%2C%0A%20%20%20%20month%20%3D%20%22Sept.%22%2C%0A%20%20%20%20doi%20%3D%20%2210.1145/3357150.3357394%22%2C%0A%20%20%20%20keywords%20%3D%20%22conference%2Cproject%3Aicn%2Cproject%3Ahybrid-icn%22%2C%0A%20%20%20%20abstract%20%3D%20%22Information-Centric%20Networking%20%28ICN%29%20embraces%20a%20family%20of%20network%20architectures%20rethinking%20Internet%20communication%20principles%20around%20named-data.%20After%20several%20years%20of%20research%20and%20the%20emergence%20of%20a%20few%20popular%20proposals%2C%20the%20idea%20to%20replace%20the%20Internet%20protocol%20with%20data-centric%20networking%20remains%20a%20subject%20of%20debate.%20ICN%20advantages%20have%20been%20advocated%20in%20the%20context%20of%205G%20networks%20for%20the%20support%20of%20highly%20mobile%2C%20multi-access/source%20and%20latencyminimal%20patterns%20of%20communications.%20However%2C%20large%20scale%20testing%20and%20insertion%20in%20operational%20networks%20are%20yet%20to%20happen%2C%20likely%20due%20to%20the%20lack%20of%20a%20clear%20incremental%20deployment%20strategy.%20In%20this%20paper%2C%20we%20analyze%20a%20recent%20proposal%20Hybrid-ICN%20%28hICN%29%2C%20an%20ICN%20integration%20inside%20IP%20%28rather%20that%20over/%20under/%20in%20place%20of%29%20that%20has%20the%20ambition%20to%20trade-off%20no%20ICN%20architectural%20principles.%20By%20reusing%20existing%20packet%20formats%2C%20hICN%20brings%20innovation%20inside%20the%20IP%20stack%2C%20requiring%20minimal%20software%20upgrades%20and%20guaranteeing%20transparent%20interconnection%20with%20existing%20IP%20networks.%20We%20describe%20the%20architecture%20and%20use%20the%20open%20source%20implementation%20to%20test%20hICN%20in%20the%20open%20Internet%20to%20validate%20its%20short-term%20deployability.%20Further%2C%20we%20consider%20linear%20video%20streaming%20over%20mobile%20wireless%20heterogeneous%20networks%20as%20use%20case%20to%20highlight%20hICN%20advantages%20compared%20to%20TCP/IP%20counterpart.%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractcarofiglio2019hicnlabel" class="modal fade" id="abstractcarofiglio2019hicn" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractcarofiglio2019hicnlabel">Enabling ICN in the Internet Protocol: Analysis and Evaluation of the Hybrid-ICN Architecture</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p>Information-Centric Networking (ICN) embraces a family of network architectures rethinking Internet communication principles around named-data. After several years of research and the emergence of a few popular proposals, the idea to replace the Internet protocol with data-centric networking remains a subject of debate. ICN advantages have been advocated in the context of 5G networks for the support of highly mobile, multi-access/source and latencyminimal patterns of communications. However, large scale testing and insertion in operational networks are yet to happen, likely due to the lack of a clear incremental deployment strategy. In this paper, we analyze a recent proposal Hybrid-ICN (hICN), an ICN integration inside IP (rather that over/ under/ in place of) that has the ambition to trade-off no ICN architectural principles. By reusing existing packet formats, hICN brings innovation inside the IP stack, requiring minimal software upgrades and guaranteeing transparent interconnection with existing IP networks. We describe the architecture and use the open source implementation to test hICN in the open Internet to validate its short-term deployability. Further, we consider linear video streaming over mobile wireless heterogeneous networks as use case to highlight hICN advantages compared to TCP/IP counterpart.</p>
+<p class="publication-keywords"><strong>Keywords.</strong> conference,project:icn,project:hybrid-icn</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<article class="panel publication-item type-workshop" data-publication-affiliations="cisco-paris" data-publication-authors="mauro-sardara,jacques-samain,giovanna-carofiglio" data-publication-projects="icn,hybrid-icn" data-publication-type="workshop" data-publication-venue="LANMAN" data-publication-year="2019" data-self-affiliation="cisco-paris" id="sardara2019policy">
+<div class="panel-heading publication-card-header" id="headingsardara2019policy" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-demo">Demo</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=PUYfhXIAAAAJ" data-author-slug="mauro-sardara">Mauro Sardara</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=Kp5KmywAAAAJ" data-author-slug="jacques-samain">Jacques Samain</span>, <strong>Jordan Augé</strong> and <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span></p>
+<p class="publication-title-line">
+<strong>Application-specific policy-driven 5G Transport with Hybrid ICN</strong>
+</p>
+<p class="publication-details-line publication-meta">
+                                        LANMAN'19 (demo session), Paris, France, 1-3 July 2019 • <a href="https://doi.org/10.1109/lanman.2019.8847127" rel="noopener" target="_blank" title="DOI">DOI: 10.1109/lanman.2019.8847127<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>
+</p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexsardara2019policy" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractsardara2019policy" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+<div class="btn-group publication-pdf-group">
+<a class="btn btn-default btn-xs btn-download publication-quick-link" download="" href="/static/files/research/sardara2019policy.pdf" title="Download PDF"><i class="fa-solid fa-download fa-xs"></i> PDF</a>
+<button aria-expanded="false" class="btn btn-default btn-xs btn-download dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" type="button"><span class="visually-hidden">More sources</span></button>
+<ul class="dropdown-menu dropdown-menu-end publication-sources-menu">
+<li><a class="dropdown-item" download="" href="/static/files/research/sardara2019policy.pdf"><i class="fa-solid fa-download fa-xs"></i> Local PDF</a></li>
+<li><a class="dropdown-item" href="https://doi.org/10.1109/lanman.2019.8847127" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> DOI (10.1109/lanman.2019.8847127)</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexsardara2019policylabel" class="modal fade" id="bibtexsardara2019policy" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexsardara2019policylabel">Application-specific policy-driven 5G Transport with Hybrid ICN</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-sardara2019policy">@article{sardara2019policy,
+    author = "Sardara, Mauro and Samain, Jacques and Aug{\'e}, Jordan and Carofiglio, Giovanna",
+    title = "Application-specific policy-driven 5G Transport with Hybrid ICN",
+    journal = "LANMAN'19 (demo session)",
+    month = "1-3 July",
+    year = "2019",
+    address = "Paris, France",
+    doi = "10.1109/lanman.2019.8847127",
+    keywords = "demo,project:icn,project:hybrid-icn",
+    abstract = "The future landscape of a heterogeneous and unified access (WiFi and Cellular), where users and applications interact with heterogeneous multi-cloud networks, with many different services collaborating together, poses significant challenges to ISP, Enterprises, Cloud Providers and the applications themselves, in particular in terms of Policies, Security and QoE. In this demonstration we showcase the potential of Hybrid ICN (hICN) in the context of enforcing inter-domain policies: exploiting the connection-less, app-aware, multipoint transport of hICN we are able to manage policies on a per-application basis, combining multiple objectives of different players (ISP, Enterprise, Users) in a dynamic and seamless manner."
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-sardara2019policy" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="sardara2019policy.bib" href="data:text/plain;charset=utf-8,%40article%7Bsardara2019policy%2C%0A%20%20%20%20author%20%3D%20%22Sardara%2C%20Mauro%20and%20Samain%2C%20Jacques%20and%20Aug%7B%5C%27e%7D%2C%20Jordan%20and%20Carofiglio%2C%20Giovanna%22%2C%0A%20%20%20%20title%20%3D%20%22Application-specific%20policy-driven%205G%20Transport%20with%20Hybrid%20ICN%22%2C%0A%20%20%20%20journal%20%3D%20%22LANMAN%2719%20%28demo%20session%29%22%2C%0A%20%20%20%20month%20%3D%20%221-3%20July%22%2C%0A%20%20%20%20year%20%3D%20%222019%22%2C%0A%20%20%20%20address%20%3D%20%22Paris%2C%20France%22%2C%0A%20%20%20%20doi%20%3D%20%2210.1109/lanman.2019.8847127%22%2C%0A%20%20%20%20keywords%20%3D%20%22demo%2Cproject%3Aicn%2Cproject%3Ahybrid-icn%22%2C%0A%20%20%20%20abstract%20%3D%20%22The%20future%20landscape%20of%20a%20heterogeneous%20and%20unified%20access%20%28WiFi%20and%20Cellular%29%2C%20where%20users%20and%20applications%20interact%20with%20heterogeneous%20multi-cloud%20networks%2C%20with%20many%20different%20services%20collaborating%20together%2C%20poses%20significant%20challenges%20to%20ISP%2C%20Enterprises%2C%20Cloud%20Providers%20and%20the%20applications%20themselves%2C%20in%20particular%20in%20terms%20of%20Policies%2C%20Security%20and%20QoE.%20In%20this%20demonstration%20we%20showcase%20the%20potential%20of%20Hybrid%20ICN%20%28hICN%29%20in%20the%20context%20of%20enforcing%20inter-domain%20policies%3A%20exploiting%20the%20connection-less%2C%20app-aware%2C%20multipoint%20transport%20of%20hICN%20we%20are%20able%20to%20manage%20policies%20on%20a%20per-application%20basis%2C%20combining%20multiple%20objectives%20of%20different%20players%20%28ISP%2C%20Enterprise%2C%20Users%29%20in%20a%20dynamic%20and%20seamless%20manner.%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractsardara2019policylabel" class="modal fade" id="abstractsardara2019policy" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractsardara2019policylabel">Application-specific policy-driven 5G Transport with Hybrid ICN</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p>The future landscape of a heterogeneous and unified access (WiFi and Cellular), where users and applications interact with heterogeneous multi-cloud networks, with many different services collaborating together, poses significant challenges to ISP, Enterprises, Cloud Providers and the applications themselves, in particular in terms of Policies, Security and QoE. In this demonstration we showcase the potential of Hybrid ICN (hICN) in the context of enforcing inter-domain policies: exploiting the connection-less, app-aware, multipoint transport of hICN we are able to manage policies on a per-application basis, combining multiple objectives of different players (ISP, Enterprise, Users) in a dynamic and seamless manner.</p>
+<p class="publication-keywords"><strong>Keywords.</strong> demo,project:icn,project:hybrid-icn</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<article class="panel publication-item type-patent" data-publication-affiliations="cisco-paris" data-publication-authors="giovanna-carofiglio" data-publication-projects="icn" data-publication-type="patent" data-publication-year="2019" data-self-affiliation="cisco-paris" id="carofiglio2019mobility_management">
+<div class="panel-heading publication-card-header" id="headingcarofiglio2019mobility_management" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-danger">Patent</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span>, <strong>Jordan Augé</strong> and Pascal Thubert</p>
+<p class="publication-title-line">
+<strong>Low-Overhead Anchorless Managing of Producer Mobility in Information-Centric Networking</strong>
+</p>
+<p class="publication-details-line publication-meta">
+                                        Cisco Technology Inc., 2019 • <a href="https://patents.google.com/patent/US10178019/" rel="noopener" target="_blank" title="Publication URL"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>
+</p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexcarofiglio2019mobility_management" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractcarofiglio2019mobility_management" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexcarofiglio2019mobility_managementlabel" class="modal fade" id="bibtexcarofiglio2019mobility_management" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexcarofiglio2019mobility_managementlabel">Low-Overhead Anchorless Managing of Producer Mobility in Information-Centric Networking</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-carofiglio2019mobility_management">@patent{carofiglio2019mobility_management,
+    author = "Carofiglio, Giovanna and Aug{\'e}, Jordan and Thubert, Pascal",
+    title = "{Low-Overhead Anchorless Managing of Producer Mobility in Information-Centric Networking}",
+    year = "2019",
+    publisher = "Cisco Technology Inc.",
+    number = "US 10,178,019",
+    url = "https://patents.google.com/patent/US10178019/",
+    keywords = "patent,project:icn"
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-carofiglio2019mobility_management" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="carofiglio2019mobility_management.bib" href="data:text/plain;charset=utf-8,%40patent%7Bcarofiglio2019mobility_management%2C%0A%20%20%20%20author%20%3D%20%22Carofiglio%2C%20Giovanna%20and%20Aug%7B%5C%27e%7D%2C%20Jordan%20and%20Thubert%2C%20Pascal%22%2C%0A%20%20%20%20title%20%3D%20%22%7BLow-Overhead%20Anchorless%20Managing%20of%20Producer%20Mobility%20in%20Information-Centric%20Networking%7D%22%2C%0A%20%20%20%20year%20%3D%20%222019%22%2C%0A%20%20%20%20publisher%20%3D%20%22Cisco%20Technology%20Inc.%22%2C%0A%20%20%20%20number%20%3D%20%22US%2010%2C178%2C019%22%2C%0A%20%20%20%20url%20%3D%20%22https%3A//patents.google.com/patent/US10178019/%22%2C%0A%20%20%20%20keywords%20%3D%20%22patent%2Cproject%3Aicn%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractcarofiglio2019mobility_managementlabel" class="modal fade" id="abstractcarofiglio2019mobility_management" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractcarofiglio2019mobility_managementlabel">Low-Overhead Anchorless Managing of Producer Mobility in Information-Centric Networking</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p class="publication-keywords"><strong>Keywords.</strong> patent,project:icn</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<h3 class="section-heading publication-year-heading">2018</h3>
+<article class="panel publication-item type-journal" data-publication-affiliations="cisco-paris,upmc" data-publication-authors="giovanna-carofiglio,giulio-grassi,luca-muscariello,giovanni-pau,xuan-zeng" data-publication-projects="icn" data-publication-type="journal" data-publication-venue="TNSM" data-publication-year="2018" data-self-affiliation="cisco-paris" id="auge2018map">
+<div class="panel-heading publication-card-header" id="headingauge2018map" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-success">Journal</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><strong>Jordan Augé</strong>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=DzaE5C4AAAAJ" data-author-slug="giulio-grassi">Giulio Grassi</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=7uyDmMkAAAAJ" data-author-slug="luca-muscariello">Luca Muscariello</span>, <span class="pub-author" data-author-affiliation="Sorbonne Université (UPMC)" data-author-scholar="https://scholar.google.com/citations?user=p4_bMFgAAAAJ" data-author-slug="giovanni-pau">Giovanni Pau</span> and <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-slug="xuan-zeng">Xuan Zeng</span></p>
+<p class="publication-title-line">
+<strong>MAP-Me: Managing Anchor-less Producer Mobility in Content-Centric Networks</strong>
+</p>
+<p class="publication-details-line publication-meta">
+                                        IEEE Transactions on Network and Service Management, IEEE, 2018 • <a href="https://doi.org/10.1109/tnsm.2018.2796720" rel="noopener" target="_blank" title="DOI">DOI: 10.1109/tnsm.2018.2796720<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>
+</p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexauge2018map" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractauge2018map" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+<div class="btn-group publication-pdf-group">
+<a class="btn btn-default btn-xs btn-download publication-quick-link" download="" href="/static/files/research/auge2018mapme.pdf" title="Download PDF"><i class="fa-solid fa-download fa-xs"></i> PDF</a>
+<button aria-expanded="false" class="btn btn-default btn-xs btn-download dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" type="button"><span class="visually-hidden">More sources</span></button>
+<ul class="dropdown-menu dropdown-menu-end publication-sources-menu">
+<li><a class="dropdown-item" download="" href="/static/files/research/auge2018mapme.pdf"><i class="fa-solid fa-download fa-xs"></i> Local PDF</a></li>
+<li><a class="dropdown-item" href="https://arxiv.org/abs/1611.06785" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> arXiv (arXiv:1611.06785)</a></li>
+<li><a class="dropdown-item" href="https://doi.org/10.1109/tnsm.2018.2796720" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> DOI (10.1109/tnsm.2018.2796720)</a></li>
+<li><a class="dropdown-item" href="https://mapme-tnsm17.github.io/" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> GitHub Pages</a> <a class="dropdown-mirror-badge" href="/static/archive/20260421-mapme-tnsm17-project-page/index.html" title="Local mirror"><i class="fa-solid fa-box-archive fa-xs"></i></a></li>
+<li><a class="dropdown-item" href="https://ieeexplore.ieee.org/document/8267132" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> IEEE Xplore</a></li>
+<li><a class="dropdown-item" href="https://hal.sorbonne-universite.fr/hal-01700786v1/" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> HAL</a></li>
+</ul>
+</div>
+<a class="btn btn-default btn-xs publication-quick-link btn-artifact" href="https://github.com/mapme-tnsm17" rel="noopener" target="_blank" title=""><i class="fa-brands fa-github fa-xs"></i> Code</a>
+<a class="btn btn-default btn-xs publication-quick-link btn-artifact" href="https://arxiv.org/abs/1611.06785" rel="noopener" target="_blank" title="arXiv:1611.06785"><i class="fa-solid fa-file-arrow-up fa-xs"></i> arXiv</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexauge2018maplabel" class="modal fade" id="bibtexauge2018map" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexauge2018maplabel">MAP-Me: Managing Anchor-less Producer Mobility in Content-Centric Networks</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-auge2018map">@article{auge2018map,
+    author = "Aug{\'e}, Jordan and Carofiglio, Giovanna and Grassi, Giulio and Muscariello, Luca and Pau, Giovanni and Zeng, Xuan",
+    title = "MAP-Me: Managing Anchor-less Producer Mobility in Content-Centric Networks",
+    journal = "IEEE Transactions on Network and Service Management",
+    year = "2018",
+    publisher = "IEEE",
+    doi = "10.1109/tnsm.2018.2796720",
+    keywords = "journal,project:icn,project:map-me",
+    eprint = "1611.06785",
+    archiveprefix = "arXiv",
+    primaryclass = "cs.NI",
+    abstract = "Mobility has become a basic premise of network communications, thereby requiring a native integration into 5G networks. Despite numerous efforts to propose and standardize effective mobility-management models for IP, the result is a complex, poorly flexible set of mechanisms. The natural support for mobility offered by ICN (Information Centric Networking) makes it a good candidate to define a radically new solution relieving limitations of the traditional approaches. If consumer mobility is supported in ICN by design, in virtue of its connectionless pull-based communication model, producer mobility is still an open challenge. In this work, we look at two prominent ICN architecture, CCN (Content Centric Networking) and NDN (Named Data Networking) and we propose MAP-Me, an anchor-less solution to manage micro-mobility of content producers via a name- based CCN/NDN data plane, with support for latency-sensitive streaming applications. We analyze MAP-Me performance and provide guarantees of correctness, stability, and bounded stretch, which we verify on real ISP topologies. Finally, we set up a comprehensive simulation environment in NDNSim 2.1 for MAP-Me evaluation and comparison with different classes of solution. We cover a wide range of topologies, mobility models and radio conditions, and conclude with a realistic trace-driven car-mobility pattern under a 802.11n radio access. The results are encouraging and highlight MAP-Me characteristics and efficiency in terms of user performance and network cost metrics. All the code is available as open-source."
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-auge2018map" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="auge2018map.bib" href="data:text/plain;charset=utf-8,%40article%7Bauge2018map%2C%0A%20%20%20%20author%20%3D%20%22Aug%7B%5C%27e%7D%2C%20Jordan%20and%20Carofiglio%2C%20Giovanna%20and%20Grassi%2C%20Giulio%20and%20Muscariello%2C%20Luca%20and%20Pau%2C%20Giovanni%20and%20Zeng%2C%20Xuan%22%2C%0A%20%20%20%20title%20%3D%20%22MAP-Me%3A%20Managing%20Anchor-less%20Producer%20Mobility%20in%20Content-Centric%20Networks%22%2C%0A%20%20%20%20journal%20%3D%20%22IEEE%20Transactions%20on%20Network%20and%20Service%20Management%22%2C%0A%20%20%20%20year%20%3D%20%222018%22%2C%0A%20%20%20%20publisher%20%3D%20%22IEEE%22%2C%0A%20%20%20%20doi%20%3D%20%2210.1109/tnsm.2018.2796720%22%2C%0A%20%20%20%20keywords%20%3D%20%22journal%2Cproject%3Aicn%2Cproject%3Amap-me%22%2C%0A%20%20%20%20eprint%20%3D%20%221611.06785%22%2C%0A%20%20%20%20archiveprefix%20%3D%20%22arXiv%22%2C%0A%20%20%20%20primaryclass%20%3D%20%22cs.NI%22%2C%0A%20%20%20%20abstract%20%3D%20%22Mobility%20has%20become%20a%20basic%20premise%20of%20network%20communications%2C%20thereby%20requiring%20a%20native%20integration%20into%205G%20networks.%20Despite%20numerous%20efforts%20to%20propose%20and%20standardize%20effective%20mobility-management%20models%20for%20IP%2C%20the%20result%20is%20a%20complex%2C%20poorly%20flexible%20set%20of%20mechanisms.%20The%20natural%20support%20for%20mobility%20offered%20by%20ICN%20%28Information%20Centric%20Networking%29%20makes%20it%20a%20good%20candidate%20to%20define%20a%20radically%20new%20solution%20relieving%20limitations%20of%20the%20traditional%20approaches.%20If%20consumer%20mobility%20is%20supported%20in%20ICN%20by%20design%2C%20in%20virtue%20of%20its%20connectionless%20pull-based%20communication%20model%2C%20producer%20mobility%20is%20still%20an%20open%20challenge.%20In%20this%20work%2C%20we%20look%20at%20two%20prominent%20ICN%20architecture%2C%20CCN%20%28Content%20Centric%20Networking%29%20and%20NDN%20%28Named%20Data%20Networking%29%20and%20we%20propose%20MAP-Me%2C%20an%20anchor-less%20solution%20to%20manage%20micro-mobility%20of%20content%20producers%20via%20a%20name-%20based%20CCN/NDN%20data%20plane%2C%20with%20support%20for%20latency-sensitive%20streaming%20applications.%20We%20analyze%20MAP-Me%20performance%20and%20provide%20guarantees%20of%20correctness%2C%20stability%2C%20and%20bounded%20stretch%2C%20which%20we%20verify%20on%20real%20ISP%20topologies.%20Finally%2C%20we%20set%20up%20a%20comprehensive%20simulation%20environment%20in%20NDNSim%202.1%20for%20MAP-Me%20evaluation%20and%20comparison%20with%20different%20classes%20of%20solution.%20We%20cover%20a%20wide%20range%20of%20topologies%2C%20mobility%20models%20and%20radio%20conditions%2C%20and%20conclude%20with%20a%20realistic%20trace-driven%20car-mobility%20pattern%20under%20a%20802.11n%20radio%20access.%20The%20results%20are%20encouraging%20and%20highlight%20MAP-Me%20characteristics%20and%20efficiency%20in%20terms%20of%20user%20performance%20and%20network%20cost%20metrics.%20All%20the%20code%20is%20available%20as%20open-source.%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractauge2018maplabel" class="modal fade" id="abstractauge2018map" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractauge2018maplabel">MAP-Me: Managing Anchor-less Producer Mobility in Content-Centric Networks</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p>Mobility has become a basic premise of network communications, thereby requiring a native integration into 5G networks. Despite numerous efforts to propose and standardize effective mobility-management models for IP, the result is a complex, poorly flexible set of mechanisms. The natural support for mobility offered by ICN (Information Centric Networking) makes it a good candidate to define a radically new solution relieving limitations of the traditional approaches. If consumer mobility is supported in ICN by design, in virtue of its connectionless pull-based communication model, producer mobility is still an open challenge. In this work, we look at two prominent ICN architecture, CCN (Content Centric Networking) and NDN (Named Data Networking) and we propose MAP-Me, an anchor-less solution to manage micro-mobility of content producers via a name- based CCN/NDN data plane, with support for latency-sensitive streaming applications. We analyze MAP-Me performance and provide guarantees of correctness, stability, and bounded stretch, which we verify on real ISP topologies. Finally, we set up a comprehensive simulation environment in NDNSim 2.1 for MAP-Me evaluation and comparison with different classes of solution. We cover a wide range of topologies, mobility models and radio conditions, and conclude with a realistic trace-driven car-mobility pattern under a 802.11n radio access. The results are encouraging and highlight MAP-Me characteristics and efficiency in terms of user performance and network cost metrics. All the code is available as open-source.</p>
+<p class="publication-keywords"><strong>Keywords.</strong> journal,project:icn,project:map-me</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<h3 class="section-heading publication-year-heading">2017</h3>
+<article class="panel publication-item type-conference" data-publication-affiliations="cisco-paris" data-publication-authors="giovanna-carofiglio,marcel-enguehard,luca-muscariello,mauro-sardara" data-publication-projects="icn,hybrid-icn" data-publication-type="conference" data-publication-venue="ACM ICN" data-publication-year="2017" data-self-affiliation="cisco-paris" id="auge2017simple">
+<div class="panel-heading publication-card-header" id="headingauge2017simple" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-info">Conference</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><strong>Jordan Augé</strong>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=VB4K4ZoAAAAJ" data-author-slug="marcel-enguehard">Marcel Enguehard</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=7uyDmMkAAAAJ" data-author-slug="luca-muscariello">Luca Muscariello</span> and <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=PUYfhXIAAAAJ" data-author-slug="mauro-sardara">Mauro Sardara</span></p>
+<p class="publication-title-line">
+<strong>Simple and efficient ICN network virtualization with vICN</strong>
+</p>
+<p class="publication-details-line publication-meta">
+<a class="publication-venue-link" href="https://conferences.sigcomm.org/acm-icn/2017/" rel="noopener" target="_blank" title="ACM ICN">Proceedings of the 4th ACM Conference on Information-Centric Networking<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>, pp. 216–217, ACM, 2017 • <a href="https://doi.org/10.1145/3125719.3132100" rel="noopener" target="_blank" title="DOI">DOI: 10.1145/3125719.3132100<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>
+</p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexauge2017simple" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractauge2017simple" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+<div class="btn-group publication-pdf-group">
+<a class="btn btn-default btn-xs btn-download publication-quick-link" download="" href="/static/files/research/auge2017simple.pdf" title="Download PDF"><i class="fa-solid fa-download fa-xs"></i> PDF</a>
+<button aria-expanded="false" class="btn btn-default btn-xs btn-download dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" type="button"><span class="visually-hidden">More sources</span></button>
+<ul class="dropdown-menu dropdown-menu-end publication-sources-menu">
+<li><a class="dropdown-item" download="" href="/static/files/research/auge2017simple.pdf"><i class="fa-solid fa-download fa-xs"></i> Local PDF</a></li>
+<li><a class="dropdown-item" href="https://doi.org/10.1145/3125719.3132100" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> DOI (10.1145/3125719.3132100)</a></li>
+<li><a class="dropdown-item" href="https://conferences.sigcomm.org/acm-icn/2017/proceedings/icn17-21.pdf" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> ACM SIGCOMM PDF</a></li>
+</ul>
+</div>
+<a class="btn btn-default btn-xs publication-quick-link btn-artifact" href="https://wiki.fd.io/view/Vicn" rel="noopener" target="_blank" title=""><i class="fa-brands fa-github fa-xs"></i> Code</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexauge2017simplelabel" class="modal fade" id="bibtexauge2017simple" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexauge2017simplelabel">Simple and efficient ICN network virtualization with vICN</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-auge2017simple">@inproceedings{auge2017simple,
+    author = "Aug{\'e}, Jordan and Carofiglio, Giovanna and Enguehard, Marcel and Muscariello, Luca and Sardara, Mauro",
+    title = "Simple and efficient ICN network virtualization with vICN",
+    booktitle = "Proceedings of the 4th ACM Conference on Information-Centric Networking",
+    pages = "216--217",
+    year = "2017",
+    organization = "ACM",
+    doi = "10.1145/3125719.3132100",
+    keywords = "conference,project:icn,project:hybrid-icn",
+    abstract = "Information-Centric Networking (ICN) has been proposed as an alternative to IP for future networks such as 5G. To speed up its development and adoption, researchers and engineers require testing tools that are both simple and scalable. In particular, it is crucial to be able to quickly deploy ICN-enabled network topologies in a flexible and efficient manner. In this demonstration, we showcase vICN (virtualized ICN), a platform that enables easy deployment, orchestration and management of ICN networks. vICN uses standard virtualization technologies such as Linux Containers (LXC) and is fully integrated with the CICN suite to enable flexible testing of ICN technologies on general-purpose hardware. Furthermore, it can perform live monitoring and modification of the network. In particular, we use vICN to deploy a simple topology that consists of 9 nodes. We show that vICN bootstraps the topology in about 60s on commodity hardware. We then demonstrate how vICN interacts with the virtualized network and how it can be used for easy experimentation."
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-auge2017simple" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="auge2017simple.bib" href="data:text/plain;charset=utf-8,%40inproceedings%7Bauge2017simple%2C%0A%20%20%20%20author%20%3D%20%22Aug%7B%5C%27e%7D%2C%20Jordan%20and%20Carofiglio%2C%20Giovanna%20and%20Enguehard%2C%20Marcel%20and%20Muscariello%2C%20Luca%20and%20Sardara%2C%20Mauro%22%2C%0A%20%20%20%20title%20%3D%20%22Simple%20and%20efficient%20ICN%20network%20virtualization%20with%20vICN%22%2C%0A%20%20%20%20booktitle%20%3D%20%22Proceedings%20of%20the%204th%20ACM%20Conference%20on%20Information-Centric%20Networking%22%2C%0A%20%20%20%20pages%20%3D%20%22216--217%22%2C%0A%20%20%20%20year%20%3D%20%222017%22%2C%0A%20%20%20%20organization%20%3D%20%22ACM%22%2C%0A%20%20%20%20doi%20%3D%20%2210.1145/3125719.3132100%22%2C%0A%20%20%20%20keywords%20%3D%20%22conference%2Cproject%3Aicn%2Cproject%3Ahybrid-icn%22%2C%0A%20%20%20%20abstract%20%3D%20%22Information-Centric%20Networking%20%28ICN%29%20has%20been%20proposed%20as%20an%20alternative%20to%20IP%20for%20future%20networks%20such%20as%205G.%20To%20speed%20up%20its%20development%20and%20adoption%2C%20researchers%20and%20engineers%20require%20testing%20tools%20that%20are%20both%20simple%20and%20scalable.%20In%20particular%2C%20it%20is%20crucial%20to%20be%20able%20to%20quickly%20deploy%20ICN-enabled%20network%20topologies%20in%20a%20flexible%20and%20efficient%20manner.%20In%20this%20demonstration%2C%20we%20showcase%20vICN%20%28virtualized%20ICN%29%2C%20a%20platform%20that%20enables%20easy%20deployment%2C%20orchestration%20and%20management%20of%20ICN%20networks.%20vICN%20uses%20standard%20virtualization%20technologies%20such%20as%20Linux%20Containers%20%28LXC%29%20and%20is%20fully%20integrated%20with%20the%20CICN%20suite%20to%20enable%20flexible%20testing%20of%20ICN%20technologies%20on%20general-purpose%20hardware.%20Furthermore%2C%20it%20can%20perform%20live%20monitoring%20and%20modification%20of%20the%20network.%20In%20particular%2C%20we%20use%20vICN%20to%20deploy%20a%20simple%20topology%20that%20consists%20of%209%20nodes.%20We%20show%20that%20vICN%20bootstraps%20the%20topology%20in%20about%2060s%20on%20commodity%20hardware.%20We%20then%20demonstrate%20how%20vICN%20interacts%20with%20the%20virtualized%20network%20and%20how%20it%20can%20be%20used%20for%20easy%20experimentation.%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractauge2017simplelabel" class="modal fade" id="abstractauge2017simple" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractauge2017simplelabel">Simple and efficient ICN network virtualization with vICN</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p>Information-Centric Networking (ICN) has been proposed as an alternative to IP for future networks such as 5G. To speed up its development and adoption, researchers and engineers require testing tools that are both simple and scalable. In particular, it is crucial to be able to quickly deploy ICN-enabled network topologies in a flexible and efficient manner. In this demonstration, we showcase vICN (virtualized ICN), a platform that enables easy deployment, orchestration and management of ICN networks. vICN uses standard virtualization technologies such as Linux Containers (LXC) and is fully integrated with the CICN suite to enable flexible testing of ICN technologies on general-purpose hardware. Furthermore, it can perform live monitoring and modification of the network. In particular, we use vICN to deploy a simple topology that consists of 9 nodes. We show that vICN bootstraps the topology in about 60s on commodity hardware. We then demonstrate how vICN interacts with the virtualized network and how it can be used for easy experimentation.</p>
+<p class="publication-keywords"><strong>Keywords.</strong> conference,project:icn,project:hybrid-icn</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<article class="panel publication-item type-conference" data-publication-affiliations="cisco-paris" data-publication-authors="alberto-compagno,xuan-zeng,luca-muscariello,giovanna-carofiglio" data-publication-projects="icn" data-publication-type="conference" data-publication-venue="ACM ICN" data-publication-year="2017" data-self-affiliation="cisco-paris" id="compagno2017secure">
+<div class="panel-heading publication-card-header" id="headingcompagno2017secure" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-info">Conference</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=Y0pqSfgAAAAJ" data-author-slug="alberto-compagno">Alberto Compagno</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-slug="xuan-zeng">Xuan Zeng</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=7uyDmMkAAAAJ" data-author-slug="luca-muscariello">Luca Muscariello</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span> and <strong>Jordan Augé</strong></p>
+<p class="publication-title-line">
+<strong>Secure producer mobility in information-centric network</strong>
+</p>
+<p class="publication-details-line publication-meta">
+<a class="publication-venue-link" href="https://conferences.sigcomm.org/acm-icn/2017/" rel="noopener" target="_blank" title="ACM ICN">Proceedings of the 4th ACM Conference on Information-Centric Networking<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>, pp. 163–169, ACM, 2017 • <a href="https://doi.org/10.1145/3125719.3125725" rel="noopener" target="_blank" title="DOI">DOI: 10.1145/3125719.3125725<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>
+</p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexcompagno2017secure" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractcompagno2017secure" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+<div class="btn-group publication-pdf-group">
+<a class="btn btn-default btn-xs btn-download publication-quick-link" download="" href="/static/files/research/compagno2017secure.pdf" title="Download PDF"><i class="fa-solid fa-download fa-xs"></i> PDF</a>
+<button aria-expanded="false" class="btn btn-default btn-xs btn-download dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" type="button"><span class="visually-hidden">More sources</span></button>
+<ul class="dropdown-menu dropdown-menu-end publication-sources-menu">
+<li><a class="dropdown-item" download="" href="/static/files/research/compagno2017secure.pdf"><i class="fa-solid fa-download fa-xs"></i> Local PDF</a></li>
+<li><a class="dropdown-item" href="https://doi.org/10.1145/3125719.3125725" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> DOI (10.1145/3125719.3125725)</a></li>
+<li><a class="dropdown-item" href="https://conferences.sigcomm.org/acm-icn/2017/proceedings/icn17-23.pdf" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> ACM SIGCOMM PDF</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexcompagno2017securelabel" class="modal fade" id="bibtexcompagno2017secure" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexcompagno2017securelabel">Secure producer mobility in information-centric network</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-compagno2017secure">@inproceedings{compagno2017secure,
+    author = "Compagno, Alberto and Zeng, Xuan and Muscariello, Luca and Carofiglio, Giovanna and Aug{\'e}, Jordan",
+    title = "Secure producer mobility in information-centric network",
+    booktitle = "Proceedings of the 4th ACM Conference on Information-Centric Networking",
+    pages = "163--169",
+    year = "2017",
+    organization = "ACM",
+    doi = "10.1145/3125719.3125725",
+    keywords = "conference,project:icn,project:map-me",
+    abstract = "One of the fundamental requirements of next generation 5G networks is the support for seamless mobility over an heterogeneous access network by design. The shift from host-based to content-based location-independent communication makes Information-Centric Networking (ICN) an appealing technology to provide not only mobility, but security and storage as native properties of the network architecture. Previous work in ICN literature has focused on name-based mobility management solutions and particularly on the challenges of producer mobility, which involves an interaction between forwarding and control plane. In this paper, we consider the security implications of producer mobility in ICN and highlight the importance of securing producer to network interactions to avoid any sort of cyber attack potentially leading to denial of service. To this aim, we propose a fully distributed and very low-overhead protocol for name prefix attestation in the network based on hash-chaining. First results show a significant improvement in verification latency of order of magnitudes with respect to signature verification."
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-compagno2017secure" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="compagno2017secure.bib" href="data:text/plain;charset=utf-8,%40inproceedings%7Bcompagno2017secure%2C%0A%20%20%20%20author%20%3D%20%22Compagno%2C%20Alberto%20and%20Zeng%2C%20Xuan%20and%20Muscariello%2C%20Luca%20and%20Carofiglio%2C%20Giovanna%20and%20Aug%7B%5C%27e%7D%2C%20Jordan%22%2C%0A%20%20%20%20title%20%3D%20%22Secure%20producer%20mobility%20in%20information-centric%20network%22%2C%0A%20%20%20%20booktitle%20%3D%20%22Proceedings%20of%20the%204th%20ACM%20Conference%20on%20Information-Centric%20Networking%22%2C%0A%20%20%20%20pages%20%3D%20%22163--169%22%2C%0A%20%20%20%20year%20%3D%20%222017%22%2C%0A%20%20%20%20organization%20%3D%20%22ACM%22%2C%0A%20%20%20%20doi%20%3D%20%2210.1145/3125719.3125725%22%2C%0A%20%20%20%20keywords%20%3D%20%22conference%2Cproject%3Aicn%2Cproject%3Amap-me%22%2C%0A%20%20%20%20abstract%20%3D%20%22One%20of%20the%20fundamental%20requirements%20of%20next%20generation%205G%20networks%20is%20the%20support%20for%20seamless%20mobility%20over%20an%20heterogeneous%20access%20network%20by%20design.%20The%20shift%20from%20host-based%20to%20content-based%20location-independent%20communication%20makes%20Information-Centric%20Networking%20%28ICN%29%20an%20appealing%20technology%20to%20provide%20not%20only%20mobility%2C%20but%20security%20and%20storage%20as%20native%20properties%20of%20the%20network%20architecture.%20Previous%20work%20in%20ICN%20literature%20has%20focused%20on%20name-based%20mobility%20management%20solutions%20and%20particularly%20on%20the%20challenges%20of%20producer%20mobility%2C%20which%20involves%20an%20interaction%20between%20forwarding%20and%20control%20plane.%20In%20this%20paper%2C%20we%20consider%20the%20security%20implications%20of%20producer%20mobility%20in%20ICN%20and%20highlight%20the%20importance%20of%20securing%20producer%20to%20network%20interactions%20to%20avoid%20any%20sort%20of%20cyber%20attack%20potentially%20leading%20to%20denial%20of%20service.%20To%20this%20aim%2C%20we%20propose%20a%20fully%20distributed%20and%20very%20low-overhead%20protocol%20for%20name%20prefix%20attestation%20in%20the%20network%20based%20on%20hash-chaining.%20First%20results%20show%20a%20significant%20improvement%20in%20verification%20latency%20of%20order%20of%20magnitudes%20with%20respect%20to%20signature%20verification.%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractcompagno2017securelabel" class="modal fade" id="abstractcompagno2017secure" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractcompagno2017securelabel">Secure producer mobility in information-centric network</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p>One of the fundamental requirements of next generation 5G networks is the support for seamless mobility over an heterogeneous access network by design. The shift from host-based to content-based location-independent communication makes Information-Centric Networking (ICN) an appealing technology to provide not only mobility, but security and storage as native properties of the network architecture. Previous work in ICN literature has focused on name-based mobility management solutions and particularly on the challenges of producer mobility, which involves an interaction between forwarding and control plane. In this paper, we consider the security implications of producer mobility in ICN and highlight the importance of securing producer to network interactions to avoid any sort of cyber attack potentially leading to denial of service. To this aim, we propose a fully distributed and very low-overhead protocol for name prefix attestation in the network based on hash-chaining. First results show a significant improvement in verification latency of order of magnitudes with respect to signature verification.</p>
+<p class="publication-keywords"><strong>Keywords.</strong> conference,project:icn,project:map-me</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<article class="panel publication-item type-conference" data-publication-affiliations="cisco-paris" data-publication-authors="jacques-samain,giovanna-carofiglio,luca-muscariello,michele-papalini,mauro-sardara" data-publication-projects="icn,hybrid-icn" data-publication-type="conference" data-publication-venue="SIGCOMM Demos" data-publication-year="2017" data-self-affiliation="cisco-paris" id="samain2017enhancing">
+<div class="panel-heading publication-card-header" id="headingsamain2017enhancing" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-info">Conference</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=Kp5KmywAAAAJ" data-author-slug="jacques-samain">Jacques Samain</span>, <strong>Jordan Augé</strong>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=7uyDmMkAAAAJ" data-author-slug="luca-muscariello">Luca Muscariello</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-slug="michele-papalini">Michele Papalini</span> and <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=PUYfhXIAAAAJ" data-author-slug="mauro-sardara">Mauro Sardara</span></p>
+<p class="publication-title-line">
+<strong>Enhancing Mobile Video Delivery over an Heterogeneous Network Access with Information-Centric Networking</strong>
+</p>
+<p class="publication-details-line publication-meta">
+<a class="publication-venue-link" href="https://www.sigcomm.org/sigcomm-conference" rel="noopener" target="_blank" title="SIGCOMM">Proceedings of the SIGCOMM Posters and Demos<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>, pp. 22–24, ACM, 2017 • <a href="https://doi.org/10.1145/3123878.3131973" rel="noopener" target="_blank" title="DOI">DOI: 10.1145/3123878.3131973<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>
+</p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexsamain2017enhancing" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractsamain2017enhancing" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+<div class="btn-group publication-pdf-group">
+<a class="btn btn-default btn-xs btn-download publication-quick-link" download="" href="/static/files/research/samain2017enhancing.pdf" title="Download PDF"><i class="fa-solid fa-download fa-xs"></i> PDF</a>
+<button aria-expanded="false" class="btn btn-default btn-xs btn-download dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" type="button"><span class="visually-hidden">More sources</span></button>
+<ul class="dropdown-menu dropdown-menu-end publication-sources-menu">
+<li><a class="dropdown-item" download="" href="/static/files/research/samain2017enhancing.pdf"><i class="fa-solid fa-download fa-xs"></i> Local PDF</a></li>
+<li><a class="dropdown-item" href="https://doi.org/10.1145/3123878.3131973" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> DOI (10.1145/3123878.3131973)</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexsamain2017enhancinglabel" class="modal fade" id="bibtexsamain2017enhancing" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexsamain2017enhancinglabel">Enhancing Mobile Video Delivery over an Heterogeneous Network Access with Information-Centric Networking</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-samain2017enhancing">@inproceedings{samain2017enhancing,
+    author = "Samain, Jacques and Aug{\'e}, Jordan and Carofiglio, Giovanna and Muscariello, Luca and Papalini, Michele and Sardara, Mauro",
+    title = "Enhancing Mobile Video Delivery over an Heterogeneous Network Access with Information-Centric Networking",
+    booktitle = "Proceedings of the SIGCOMM Posters and Demos",
+    pages = "22--24",
+    year = "2017",
+    organization = "ACM",
+    doi = "10.1145/3123878.3131973",
+    keywords = "conference,project:icn,project:hybrid-icn",
+    abstract = "Mobile video delivery drives Internet traffic evolution and puts colossal pressure on future 5G networks to support higher quality and lower latency requirements over an increasingly heterogeneous network access. Future Internet paradigms recentering communication around content, such as Information Centric Networks (ICN), appear as promising candidates to relieve the challenges of a mobility-robust, efficient and cost-effective video delivery, by integrating video-awareness at network layer. In this demo, we focus on ICN-enabled Dynamic Adaptive Streaming (DAS) over an heterogeneous wireless access. We integrate ICN capabilities in DAS clients requesting 4K video content to standard DAS servers. We deploy a virtualized ICN-enabled network slice using LXC containers to connect clients to servers through an heterogeneous wireless access (802.11n and LTE emulated radios) and a simplified backhaul. The contribution of the demo is twofold. First it showcases what ICN can bring to DAS over a mobile heterogeneous access in virtue of its content-awareness at network layer. Second, it offers to the user a rich sandbox where several state-of-the-art DAS controllers are implemented and can be tested over ICN or standard TCP.",
+    link1 = "https://dl.acm.org/citation.cfm?id=3131973",
+    link2 = "https://conferences.sigcomm.org/sigcomm/2017/program-demos.html"
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-samain2017enhancing" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="samain2017enhancing.bib" href="data:text/plain;charset=utf-8,%40inproceedings%7Bsamain2017enhancing%2C%0A%20%20%20%20author%20%3D%20%22Samain%2C%20Jacques%20and%20Aug%7B%5C%27e%7D%2C%20Jordan%20and%20Carofiglio%2C%20Giovanna%20and%20Muscariello%2C%20Luca%20and%20Papalini%2C%20Michele%20and%20Sardara%2C%20Mauro%22%2C%0A%20%20%20%20title%20%3D%20%22Enhancing%20Mobile%20Video%20Delivery%20over%20an%20Heterogeneous%20Network%20Access%20with%20Information-Centric%20Networking%22%2C%0A%20%20%20%20booktitle%20%3D%20%22Proceedings%20of%20the%20SIGCOMM%20Posters%20and%20Demos%22%2C%0A%20%20%20%20pages%20%3D%20%2222--24%22%2C%0A%20%20%20%20year%20%3D%20%222017%22%2C%0A%20%20%20%20organization%20%3D%20%22ACM%22%2C%0A%20%20%20%20doi%20%3D%20%2210.1145/3123878.3131973%22%2C%0A%20%20%20%20keywords%20%3D%20%22conference%2Cproject%3Aicn%2Cproject%3Ahybrid-icn%22%2C%0A%20%20%20%20abstract%20%3D%20%22Mobile%20video%20delivery%20drives%20Internet%20traffic%20evolution%20and%20puts%20colossal%20pressure%20on%20future%205G%20networks%20to%20support%20higher%20quality%20and%20lower%20latency%20requirements%20over%20an%20increasingly%20heterogeneous%20network%20access.%20Future%20Internet%20paradigms%20recentering%20communication%20around%20content%2C%20such%20as%20Information%20Centric%20Networks%20%28ICN%29%2C%20appear%20as%20promising%20candidates%20to%20relieve%20the%20challenges%20of%20a%20mobility-robust%2C%20efficient%20and%20cost-effective%20video%20delivery%2C%20by%20integrating%20video-awareness%20at%20network%20layer.%20In%20this%20demo%2C%20we%20focus%20on%20ICN-enabled%20Dynamic%20Adaptive%20Streaming%20%28DAS%29%20over%20an%20heterogeneous%20wireless%20access.%20We%20integrate%20ICN%20capabilities%20in%20DAS%20clients%20requesting%204K%20video%20content%20to%20standard%20DAS%20servers.%20We%20deploy%20a%20virtualized%20ICN-enabled%20network%20slice%20using%20LXC%20containers%20to%20connect%20clients%20to%20servers%20through%20an%20heterogeneous%20wireless%20access%20%28802.11n%20and%20LTE%20emulated%20radios%29%20and%20a%20simplified%20backhaul.%20The%20contribution%20of%20the%20demo%20is%20twofold.%20First%20it%20showcases%20what%20ICN%20can%20bring%20to%20DAS%20over%20a%20mobile%20heterogeneous%20access%20in%20virtue%20of%20its%20content-awareness%20at%20network%20layer.%20Second%2C%20it%20offers%20to%20the%20user%20a%20rich%20sandbox%20where%20several%20state-of-the-art%20DAS%20controllers%20are%20implemented%20and%20can%20be%20tested%20over%20ICN%20or%20standard%20TCP.%22%2C%0A%20%20%20%20link1%20%3D%20%22https%3A//dl.acm.org/citation.cfm%3Fid%3D3131973%22%2C%0A%20%20%20%20link2%20%3D%20%22https%3A//conferences.sigcomm.org/sigcomm/2017/program-demos.html%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractsamain2017enhancinglabel" class="modal fade" id="abstractsamain2017enhancing" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractsamain2017enhancinglabel">Enhancing Mobile Video Delivery over an Heterogeneous Network Access with Information-Centric Networking</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p>Mobile video delivery drives Internet traffic evolution and puts colossal pressure on future 5G networks to support higher quality and lower latency requirements over an increasingly heterogeneous network access. Future Internet paradigms recentering communication around content, such as Information Centric Networks (ICN), appear as promising candidates to relieve the challenges of a mobility-robust, efficient and cost-effective video delivery, by integrating video-awareness at network layer. In this demo, we focus on ICN-enabled Dynamic Adaptive Streaming (DAS) over an heterogeneous wireless access. We integrate ICN capabilities in DAS clients requesting 4K video content to standard DAS servers. We deploy a virtualized ICN-enabled network slice using LXC containers to connect clients to servers through an heterogeneous wireless access (802.11n and LTE emulated radios) and a simplified backhaul. The contribution of the demo is twofold. First it showcases what ICN can bring to DAS over a mobile heterogeneous access in virtue of its content-awareness at network layer. Second, it offers to the user a rich sandbox where several state-of-the-art DAS controllers are implemented and can be tested over ICN or standard TCP.</p>
+<p class="publication-keywords"><strong>Keywords.</strong> conference,project:icn,project:hybrid-icn</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<article class="panel publication-item type-conference" data-publication-affiliations="cisco-paris" data-publication-authors="mauro-sardara,luca-muscariello,marcel-enguehard,alberto-compagno,giovanna-carofiglio" data-publication-projects="icn,hybrid-icn" data-publication-type="conference" data-publication-venue="ACM ICN" data-publication-year="2017" data-self-affiliation="cisco-paris" id="sardara2017vicn">
+<div class="panel-heading publication-card-header" id="headingsardara2017vicn" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-info">Conference</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=PUYfhXIAAAAJ" data-author-slug="mauro-sardara">Mauro Sardara</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=7uyDmMkAAAAJ" data-author-slug="luca-muscariello">Luca Muscariello</span>, <strong>Jordan Augé</strong>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=VB4K4ZoAAAAJ" data-author-slug="marcel-enguehard">Marcel Enguehard</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=Y0pqSfgAAAAJ" data-author-slug="alberto-compagno">Alberto Compagno</span> and <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span></p>
+<p class="publication-title-line">
+<strong>Virtualized ICN (vICN): towards a unified network virtualization framework for ICN experimentation</strong>
+</p>
+<p class="publication-details-line publication-meta">
+<a class="publication-venue-link" href="https://conferences.sigcomm.org/acm-icn/2017/" rel="noopener" target="_blank" title="ACM ICN">Proceedings of the 4th ACM Conference on Information-Centric Networking<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>, pp. 109–115, ACM, 2017 • <a href="https://doi.org/10.1145/3125719.3125726" rel="noopener" target="_blank" title="DOI">DOI: 10.1145/3125719.3125726<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>
+</p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexsardara2017vicn" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractsardara2017vicn" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+<div class="btn-group publication-pdf-group">
+<a class="btn btn-default btn-xs btn-download publication-quick-link" download="" href="/static/files/research/sardara2017vicn.pdf" title="Download PDF"><i class="fa-solid fa-download fa-xs"></i> PDF</a>
+<button aria-expanded="false" class="btn btn-default btn-xs btn-download dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" type="button"><span class="visually-hidden">More sources</span></button>
+<ul class="dropdown-menu dropdown-menu-end publication-sources-menu">
+<li><a class="dropdown-item" download="" href="/static/files/research/sardara2017vicn.pdf"><i class="fa-solid fa-download fa-xs"></i> Local PDF</a></li>
+<li><a class="dropdown-item" href="https://doi.org/10.1145/3125719.3125726" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> DOI (10.1145/3125719.3125726)</a></li>
+<li><a class="dropdown-item" href="https://conferences.sigcomm.org/acm-icn/2017/proceedings/icn17-26.pdf" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> ACM SIGCOMM PDF</a></li>
+</ul>
+</div>
+<a class="btn btn-default btn-xs publication-quick-link btn-artifact" href="https://wiki.fd.io/view/Vicn" rel="noopener" target="_blank" title=""><i class="fa-brands fa-github fa-xs"></i> Code</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexsardara2017vicnlabel" class="modal fade" id="bibtexsardara2017vicn" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexsardara2017vicnlabel">Virtualized ICN (vICN): towards a unified network virtualization framework for ICN experimentation</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-sardara2017vicn">@inproceedings{sardara2017vicn,
+    author = "Sardara, Mauro and Muscariello, Luca and Aug{\'e}, Jordan and Enguehard, Marcel and Compagno, Alberto and Carofiglio, Giovanna",
+    title = "Virtualized ICN (vICN): towards a unified network virtualization framework for ICN experimentation",
+    booktitle = "Proceedings of the 4th ACM Conference on Information-Centric Networking",
+    pages = "109--115",
+    year = "2017",
+    organization = "ACM",
+    doi = "10.1145/3125719.3125726",
+    keywords = "conference,project:icn,project:hybrid-icn",
+    abstract = "To assess the feasibility and potential for deployment of new networking paradigms such as ICN, being able to carry out large scale experimentation and tests in real operational networks is crucial. Various platforms have been developed by the research community to support design and evaluation of specific aspects of ICN architecture. Most of them provide ICN-dedicated, small scale or application-specific environments and ad-hoc testing tools, non reusable in other contexts nor in real-world IP deployments. The goal of this paper is to contribute vICN (virtualized ICN), a unified open-source framework for network configuration and management that uses recent progresses in resource isolation and virtualization techniques. It offers a single, flexible and scalable platform to serve different purposes, ranging from reproducible large-scale research experimentation, to demonstrations with emulated and/or physical devices and network resources and to real deployments of ICN in existing IP networks. In the paper, we describe the rationale for vICN and its components, highlighting programmability, scalability and reliability as its core principles. Illustration of vICN properties is provided through concrete examples."
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-sardara2017vicn" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="sardara2017vicn.bib" href="data:text/plain;charset=utf-8,%40inproceedings%7Bsardara2017vicn%2C%0A%20%20%20%20author%20%3D%20%22Sardara%2C%20Mauro%20and%20Muscariello%2C%20Luca%20and%20Aug%7B%5C%27e%7D%2C%20Jordan%20and%20Enguehard%2C%20Marcel%20and%20Compagno%2C%20Alberto%20and%20Carofiglio%2C%20Giovanna%22%2C%0A%20%20%20%20title%20%3D%20%22Virtualized%20ICN%20%28vICN%29%3A%20towards%20a%20unified%20network%20virtualization%20framework%20for%20ICN%20experimentation%22%2C%0A%20%20%20%20booktitle%20%3D%20%22Proceedings%20of%20the%204th%20ACM%20Conference%20on%20Information-Centric%20Networking%22%2C%0A%20%20%20%20pages%20%3D%20%22109--115%22%2C%0A%20%20%20%20year%20%3D%20%222017%22%2C%0A%20%20%20%20organization%20%3D%20%22ACM%22%2C%0A%20%20%20%20doi%20%3D%20%2210.1145/3125719.3125726%22%2C%0A%20%20%20%20keywords%20%3D%20%22conference%2Cproject%3Aicn%2Cproject%3Ahybrid-icn%22%2C%0A%20%20%20%20abstract%20%3D%20%22To%20assess%20the%20feasibility%20and%20potential%20for%20deployment%20of%20new%20networking%20paradigms%20such%20as%20ICN%2C%20being%20able%20to%20carry%20out%20large%20scale%20experimentation%20and%20tests%20in%20real%20operational%20networks%20is%20crucial.%20Various%20platforms%20have%20been%20developed%20by%20the%20research%20community%20to%20support%20design%20and%20evaluation%20of%20specific%20aspects%20of%20ICN%20architecture.%20Most%20of%20them%20provide%20ICN-dedicated%2C%20small%20scale%20or%20application-specific%20environments%20and%20ad-hoc%20testing%20tools%2C%20non%20reusable%20in%20other%20contexts%20nor%20in%20real-world%20IP%20deployments.%20The%20goal%20of%20this%20paper%20is%20to%20contribute%20vICN%20%28virtualized%20ICN%29%2C%20a%20unified%20open-source%20framework%20for%20network%20configuration%20and%20management%20that%20uses%20recent%20progresses%20in%20resource%20isolation%20and%20virtualization%20techniques.%20It%20offers%20a%20single%2C%20flexible%20and%20scalable%20platform%20to%20serve%20different%20purposes%2C%20ranging%20from%20reproducible%20large-scale%20research%20experimentation%2C%20to%20demonstrations%20with%20emulated%20and/or%20physical%20devices%20and%20network%20resources%20and%20to%20real%20deployments%20of%20ICN%20in%20existing%20IP%20networks.%20In%20the%20paper%2C%20we%20describe%20the%20rationale%20for%20vICN%20and%20its%20components%2C%20highlighting%20programmability%2C%20scalability%20and%20reliability%20as%20its%20core%20principles.%20Illustration%20of%20vICN%20properties%20is%20provided%20through%20concrete%20examples.%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractsardara2017vicnlabel" class="modal fade" id="abstractsardara2017vicn" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractsardara2017vicnlabel">Virtualized ICN (vICN): towards a unified network virtualization framework for ICN experimentation</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p>To assess the feasibility and potential for deployment of new networking paradigms such as ICN, being able to carry out large scale experimentation and tests in real operational networks is crucial. Various platforms have been developed by the research community to support design and evaluation of specific aspects of ICN architecture. Most of them provide ICN-dedicated, small scale or application-specific environments and ad-hoc testing tools, non reusable in other contexts nor in real-world IP deployments. The goal of this paper is to contribute vICN (virtualized ICN), a unified open-source framework for network configuration and management that uses recent progresses in resource isolation and virtualization techniques. It offers a single, flexible and scalable platform to serve different purposes, ranging from reproducible large-scale research experimentation, to demonstrations with emulated and/or physical devices and network resources and to real deployments of ICN in existing IP networks. In the paper, we describe the rationale for vICN and its components, highlighting programmability, scalability and reliability as its core principles. Illustration of vICN properties is provided through concrete examples.</p>
+<p class="publication-keywords"><strong>Keywords.</strong> conference,project:icn,project:hybrid-icn</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<h3 class="section-heading publication-year-heading">2016</h3>
+<article class="panel publication-item type-report" data-publication-affiliations="cisco-paris" data-publication-authors="giovanna-carofiglio,luca-muscariello,michele-papalini,jacques-samain" data-publication-projects="icn,hybrid-icn" data-publication-type="report" data-publication-year="2016" data-self-affiliation="cisco-paris" id="carofiglio2016whitepaper">
+<div class="panel-heading publication-card-header" id="headingcarofiglio2016whitepaper" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-report">White Paper</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span>, <strong>Jordan Augé</strong>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=7uyDmMkAAAAJ" data-author-slug="luca-muscariello">Luca Muscariello</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-slug="michele-papalini">Michele Papalini</span> and <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=Kp5KmywAAAAJ" data-author-slug="jacques-samain">Jacques Samain</span></p>
+<p class="publication-title-line">
+<strong>Mobile Video Delivery with Hybrid ICN</strong>
+</p>
+<p class="publication-details-line publication-meta">
+                                        2016
+                                    </p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexcarofiglio2016whitepaper" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractcarofiglio2016whitepaper" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+<div class="btn-group publication-pdf-group">
+<a class="btn btn-default btn-xs btn-download publication-quick-link" href="https://www.cisco.com/c/dam/en/us/solutions/collateral/service-provider/visual-networking-index-vni/mobile-video-delivery-hybrid-ICN.pdf" title="Download PDF"><i class="fa-solid fa-download fa-xs"></i> PDF</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexcarofiglio2016whitepaperlabel" class="modal fade" id="bibtexcarofiglio2016whitepaper" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexcarofiglio2016whitepaperlabel">Mobile Video Delivery with Hybrid ICN</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-carofiglio2016whitepaper">@misc{carofiglio2016whitepaper,
+    author = "Carofiglio, Giovanna and Aug{\'{e}}, Jordan and Muscariello, Luca and Papalini, Michele and Samain, Jacques",
+    title = "{Mobile Video Delivery with Hybrid ICN}",
+    howpublished = "Cisco White Paper",
+    year = "2016",
+    keywords = "whitepaper,project:icn,project:hybrid-icn"
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-carofiglio2016whitepaper" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="carofiglio2016whitepaper.bib" href="data:text/plain;charset=utf-8,%40misc%7Bcarofiglio2016whitepaper%2C%0A%20%20%20%20author%20%3D%20%22Carofiglio%2C%20Giovanna%20and%20Aug%7B%5C%27%7Be%7D%7D%2C%20Jordan%20and%20Muscariello%2C%20Luca%20and%20Papalini%2C%20Michele%20and%20Samain%2C%20Jacques%22%2C%0A%20%20%20%20title%20%3D%20%22%7BMobile%20Video%20Delivery%20with%20Hybrid%20ICN%7D%22%2C%0A%20%20%20%20howpublished%20%3D%20%22Cisco%20White%20Paper%22%2C%0A%20%20%20%20year%20%3D%20%222016%22%2C%0A%20%20%20%20keywords%20%3D%20%22whitepaper%2Cproject%3Aicn%2Cproject%3Ahybrid-icn%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractcarofiglio2016whitepaperlabel" class="modal fade" id="abstractcarofiglio2016whitepaper" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractcarofiglio2016whitepaperlabel">Mobile Video Delivery with Hybrid ICN</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p class="publication-keywords"><strong>Keywords.</strong> whitepaper,project:icn,project:hybrid-icn</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<h3 class="section-heading publication-year-heading">2015</h3>
+<article class="panel publication-item type-conference" data-publication-affiliations="cisco-paris,upmc" data-publication-authors="giovanna-carofiglio,giulio-grassi,luca-muscariello,giovanni-pau,xuan-zeng" data-publication-projects="icn" data-publication-type="conference" data-publication-venue="ACM ICN" data-publication-year="2015" data-self-affiliation="cisco-paris" id="auge2015anchor">
+<div class="panel-heading publication-card-header" id="headingauge2015anchor" role="tab">
+<div class="publication-card-grid">
+<div class="publication-card-type">
+<span class="label label-info">Conference</span>
+</div>
+<div class="publication-card-main">
+<p class="publication-authors"><strong>Jordan Augé</strong>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=fvP_U2MAAAAJ" data-author-slug="giovanna-carofiglio">Giovanna Carofiglio</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=DzaE5C4AAAAJ" data-author-slug="giulio-grassi">Giulio Grassi</span>, <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-scholar="https://scholar.google.com/citations?user=7uyDmMkAAAAJ" data-author-slug="luca-muscariello">Luca Muscariello</span>, <span class="pub-author" data-author-affiliation="Sorbonne Université (UPMC)" data-author-scholar="https://scholar.google.com/citations?user=p4_bMFgAAAAJ" data-author-slug="giovanni-pau">Giovanni Pau</span> and <span class="pub-author" data-author-affiliation="Cisco Systems France" data-author-slug="xuan-zeng">Xuan Zeng</span></p>
+<p class="publication-title-line">
+<strong>Anchor-Less Producer Mobility in ICN</strong>
+</p>
+<p class="publication-details-line publication-meta">
+<a class="publication-venue-link" href="https://conferences.sigcomm.org/acm-icn/2015/" rel="noopener" target="_blank" title="ACM ICN">Proceedings of ICN'15 / the 2nd International Conference on Information-Centric Networking<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>, pp. 189–190, ACM, 2015 • <a href="https://doi.org/10.1145/2810156.2812601" rel="noopener" target="_blank" title="DOI">DOI: 10.1145/2810156.2812601<i class="fa-solid fa-arrow-up-right-from-square fa-xs ms-1"></i></a>
+</p>
+<div class="publication-meta-bar">
+<span class="publication-topic-badge topic-icn"><a class="topic-badge-category" href="/research/hybrid-icn/" title="Hybrid ICN">Hybrid ICN</a><span class="topic-badge-sep"> / </span><a class="topic-badge-sub" href="/research/icn/" title="ICN &amp; MAP-Me">ICN &amp; MAP-Me</a></span>
+</div>
+<div class="publication-inline-actions">
+<button class="btn btn-default btn-xs publication-bib-trigger" data-bs-target="#bibtexauge2015anchor" data-bs-toggle="modal" type="button"><i class="fa-solid fa-quote-left fa-xs"></i> BibTeX</button>
+<button class="btn btn-default btn-xs publication-abstract-trigger" data-bs-target="#abstractauge2015anchor" data-bs-toggle="modal" type="button"><i class="fa-solid fa-align-left fa-xs"></i> Abstract</button>
+<div class="btn-group publication-pdf-group">
+<a class="btn btn-default btn-xs btn-download publication-quick-link" download="" href="/static/files/research/auge2015anchor.pdf" title="Download PDF"><i class="fa-solid fa-download fa-xs"></i> PDF</a>
+<button aria-expanded="false" class="btn btn-default btn-xs btn-download dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" type="button"><span class="visually-hidden">More sources</span></button>
+<ul class="dropdown-menu dropdown-menu-end publication-sources-menu">
+<li><a class="dropdown-item" download="" href="/static/files/research/auge2015anchor.pdf"><i class="fa-solid fa-download fa-xs"></i> Local PDF</a></li>
+<li><a class="dropdown-item" href="https://doi.org/10.1145/2810156.2812601" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> DOI (10.1145/2810156.2812601)</a></li>
+<li><a class="dropdown-item" href="https://hal.science/hal-01231825v1" rel="noopener" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i> HAL</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- BibTeX Modal -->
+<div aria-hidden="true" aria-labelledby="bibtexauge2015anchorlabel" class="modal fade" id="bibtexauge2015anchor" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="bibtexauge2015anchorlabel">Anchor-Less Producer Mobility in ICN</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<pre class="bibtex-code" id="bibtex-code-auge2015anchor">@inproceedings{auge2015anchor,
+    author = "Aug{\'e}, Jordan and Carofiglio, Giovanna and Grassi, Giulio and Muscariello, Luca and Pau, Giovanni and Zeng, Xuan",
+    title = "Anchor-Less Producer Mobility in ICN",
+    booktitle = "Proceedings of ICN'15 / the 2nd International Conference on Information-Centric Networking",
+    pages = "189--190",
+    year = "2015",
+    organization = "ACM",
+    doi = "10.1145/2810156.2812601",
+    keywords = "conference,project:icn,project:map-me"
+}
+</pre>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-outline-secondary publication-copy-bib" data-bibtex-target="bibtex-code-auge2015anchor" type="button"><i class="fa-regular fa-copy"></i> Copy</button>
+<a class="btn btn-sm btn-outline-secondary" download="auge2015anchor.bib" href="data:text/plain;charset=utf-8,%40inproceedings%7Bauge2015anchor%2C%0A%20%20%20%20author%20%3D%20%22Aug%7B%5C%27e%7D%2C%20Jordan%20and%20Carofiglio%2C%20Giovanna%20and%20Grassi%2C%20Giulio%20and%20Muscariello%2C%20Luca%20and%20Pau%2C%20Giovanni%20and%20Zeng%2C%20Xuan%22%2C%0A%20%20%20%20title%20%3D%20%22Anchor-Less%20Producer%20Mobility%20in%20ICN%22%2C%0A%20%20%20%20booktitle%20%3D%20%22Proceedings%20of%20ICN%2715%20/%20the%202nd%20International%20Conference%20on%20Information-Centric%20Networking%22%2C%0A%20%20%20%20pages%20%3D%20%22189--190%22%2C%0A%20%20%20%20year%20%3D%20%222015%22%2C%0A%20%20%20%20organization%20%3D%20%22ACM%22%2C%0A%20%20%20%20doi%20%3D%20%2210.1145/2810156.2812601%22%2C%0A%20%20%20%20keywords%20%3D%20%22conference%2Cproject%3Aicn%2Cproject%3Amap-me%22%0A%7D%0A"><i class="fa-solid fa-download"></i> Download .bib</a>
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Modal -->
+<div aria-hidden="true" aria-labelledby="abstractauge2015anchorlabel" class="modal fade" id="abstractauge2015anchor" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="abstractauge2015anchorlabel">Anchor-Less Producer Mobility in ICN</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body publication-abstract-body">
+<p class="publication-keywords"><strong>Keywords.</strong> conference,project:icn,project:map-me</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm btn-default" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><script id="author-metadata" type="application/json">{"authors": {"timur-friedman": {"name": "Timur Friedman", "slug": "timur-friedman", "url": "https://timur.friedman.fr", "scholar": "https://scholar.google.fr/citations?user=RIFSbFkAAAAJ", "affiliation": "upmc", "affiliationName": "Sorbonne Université (UPMC)", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "Professor", "period": "2003–present"}]}, "giovanna-carofiglio": {"name": "Giovanna Carofiglio", "slug": "giovanna-carofiglio", "scholar": "https://scholar.google.com/citations?user=fvP_U2MAAAAJ", "affiliation": "cisco-paris", "affiliationName": "Cisco Systems France", "history": [{"institution": "cisco-paris", "institutionName": "Cisco Systems France", "role": "Research Scientist", "period": "2012–present"}]}, "dario-rossi": {"name": "Dario Rossi", "slug": "dario-rossi", "url": "https://drossi.org", "scholar": "https://scholar.google.com/citations?user=IB_VK0YAAAAJ", "affiliation": "huawei-paris", "affiliationName": "Huawei Paris Research Center", "history": [{"institution": "huawei-paris", "institutionName": "Huawei Paris Research Center", "role": "Chief Scientist", "period": "2021–present"}, {"institution": "telecom-paristech", "institutionName": "Telecom ParisTech", "role": "Professor", "period": "2006–2021"}]}, "marc-olivier-buob": {"name": "Marc-Olivier Buob", "slug": "marc-olivier-buob", "scholar": "https://scholar.google.fr/citations?user=xAFhSCsAAAAJ", "affiliation": "nokia-bell-labs", "affiliationName": "nokia-bell-labs", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "Research Engineer", "period": "2011–2018"}]}, "luca-muscariello": {"name": "Luca Muscariello", "slug": "luca-muscariello", "scholar": "https://scholar.google.com/citations?user=7uyDmMkAAAAJ", "affiliation": "cisco-paris", "affiliationName": "Cisco Systems France", "history": [{"institution": "cisco-paris", "institutionName": "Cisco Systems France", "role": "Principal Engineer", "period": "2012–present"}, {"institution": "orange-labs", "institutionName": "Orange Labs", "role": "Research Engineer", "period": "2005–2012"}]}, "loic-baron": {"name": "Loïc Baron", "slug": "loic-baron", "scholar": "https://scholar.google.fr/citations?user=a6JiMiYAAAAJ", "affiliation": "upmc", "affiliationName": "Sorbonne Université (UPMC)", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "Research Engineer", "period": "2009–present"}]}, "serge-fdida": {"name": "Serge Fdida", "slug": "serge-fdida", "url": "https://www.lip6.fr/actualite/personnes-fiche.php?ident=P35", "scholar": "https://scholar.google.fr/citations?user=dNI5TswAAAAJ", "affiliation": "upmc", "affiliationName": "Sorbonne Université (UPMC)", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "Professor", "period": "1995–present"}]}, "danilo-cicalese": {"name": "Danilo Cicalese", "slug": "danilo-cicalese", "scholar": "https://scholar.google.com/citations?user=nAP-6vYAAAAJ", "affiliation": "telecom-paristech", "affiliationName": "Telecom ParisTech", "history": [{"institution": "telecom-paristech", "institutionName": "Telecom ParisTech", "role": "PhD Student", "period": "2014–2017"}]}, "diana-joumblatt": {"name": "Diana Joumblatt", "slug": "diana-joumblatt", "affiliation": "telecom-paristech", "affiliationName": "Telecom ParisTech", "history": [{"institution": "telecom-paristech", "institutionName": "Telecom ParisTech", "role": "Researcher", "period": "2013–2016"}]}, "mauro-sardara": {"name": "Mauro Sardara", "slug": "mauro-sardara", "scholar": "https://scholar.google.com/citations?user=PUYfhXIAAAAJ", "affiliation": "cisco-paris", "affiliationName": "Cisco Systems France", "history": [{"institution": "cisco-paris", "institutionName": "Cisco Systems France", "role": "Software Engineer", "period": "2016–present"}]}, "james-roberts": {"name": "James Roberts", "slug": "james-roberts", "scholar": "https://scholar.google.fr/citations?user=Qs1XWr4AAAAJ", "affiliation": "inria", "affiliationName": "Inria", "history": [{"institution": "inria", "institutionName": "Inria", "role": "Research Director", "period": "2013–present"}, {"institution": "orange-labs", "institutionName": "Orange Labs", "role": "Research Director", "period": "1978–2013"}]}, "giulio-grassi": {"name": "Giulio Grassi", "slug": "giulio-grassi", "scholar": "https://scholar.google.com/citations?user=DzaE5C4AAAAJ", "affiliation": "cisco-paris", "affiliationName": "Cisco Systems France", "history": [{"institution": "cisco-paris", "institutionName": "Cisco Systems France", "role": "Software Engineer", "period": "2017–present"}, {"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "PhD Student", "period": "2014–2017"}]}, "xuan-zeng": {"name": "Xuan Zeng", "slug": "xuan-zeng", "affiliation": "cisco-paris", "affiliationName": "Cisco Systems France", "history": [{"institution": "cisco-paris", "institutionName": "Cisco Systems France", "role": "Software Engineer", "period": "2016–present"}]}, "michele-papalini": {"name": "Michele Papalini", "slug": "michele-papalini", "affiliation": "cisco-paris", "affiliationName": "Cisco Systems France", "history": [{"institution": "cisco-paris", "institutionName": "Cisco Systems France", "role": "Research Engineer", "period": "2015–2020"}]}, "alberto-compagno": {"name": "Alberto Compagno", "slug": "alberto-compagno", "scholar": "https://scholar.google.com/citations?user=Y0pqSfgAAAAJ", "affiliation": "cisco-paris", "affiliationName": "Cisco Systems France", "history": [{"institution": "cisco-paris", "institutionName": "Cisco Systems France", "role": "Research Scientist", "period": "2016–present"}]}, "jacques-samain": {"name": "Jacques Samain", "slug": "jacques-samain", "scholar": "https://scholar.google.com/citations?user=Kp5KmywAAAAJ", "affiliation": "cisco-paris", "affiliationName": "Cisco Systems France", "history": [{"institution": "cisco-paris", "institutionName": "Cisco Systems France", "role": "Software Engineer", "period": "2018–present"}]}, "marcel-enguehard": {"name": "Marcel Enguehard", "slug": "marcel-enguehard", "scholar": "https://scholar.google.com/citations?user=VB4K4ZoAAAAJ", "affiliation": "cisco-paris", "affiliationName": "Cisco Systems France", "history": [{"institution": "cisco-paris", "institutionName": "Cisco Systems France", "role": "Software Engineer", "period": "2017–2020"}]}, "giovanni-pau": {"name": "Giovanni Pau", "slug": "giovanni-pau", "scholar": "https://scholar.google.com/citations?user=p4_bMFgAAAAJ", "affiliation": "upmc", "affiliationName": "Sorbonne Université (UPMC)", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "Professor", "period": "2015–present"}, {"institution": "ucla", "institutionName": "UCLA", "role": "Research Scientist", "period": "2004–2015"}]}, "riad-mazloum": {"name": "Riad Mazloum", "slug": "riad-mazloum", "affiliation": "upmc", "affiliationName": "Sorbonne Université (UPMC)", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "PhD Student", "period": "2013–2016"}]}, "thomas-bourgeau": {"name": "Thomas Bourgeau", "slug": "thomas-bourgeau", "affiliation": "upmc", "affiliationName": "Sorbonne Université (UPMC)", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "PhD Student", "period": "2010–2013"}]}, "bruno-baynat": {"name": "Bruno Baynat", "slug": "bruno-baynat", "affiliation": "upmc", "affiliationName": "Sorbonne Université (UPMC)", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "Professor", "period": "1995–present"}]}, "thierry-parmentelat": {"name": "Thierry Parmentelat", "slug": "thierry-parmentelat", "affiliation": "inria", "affiliationName": "Inria", "history": [{"institution": "inria", "institutionName": "Inria", "role": "Research Engineer", "period": "2005–present"}]}, "mohamed-larabi": {"name": "Mohamed Amine Larabi", "slug": "mohamed-larabi", "affiliation": "upmc", "affiliationName": "Sorbonne Université (UPMC)", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "PhD Student", "period": "2012–2015"}]}, "mohammed-rahman": {"name": "Mohammed Yasin Rahman", "slug": "mohammed-rahman", "affiliation": "upmc", "affiliationName": "Sorbonne Université (UPMC)", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "Research Engineer", "period": "2012–2014"}]}, "sara-oueslati": {"name": "Sara Oueslati", "slug": "sara-oueslati", "affiliation": "orange-labs", "affiliationName": "Orange Labs", "history": [{"institution": "orange-labs", "institutionName": "Orange Labs", "role": "Research Scientist", "period": "2000–present"}]}, "eric-roux": {"name": "Eric Roux", "slug": "eric-roux", "affiliation": "orange-labs", "affiliationName": "Orange Labs", "history": [{"institution": "orange-labs", "institutionName": "Orange Labs", "role": "Research Scientist", "period": "2000–present"}]}, "nicolas-turro": {"name": "Nicolas Turro", "slug": "nicolas-turro", "affiliation": "inria", "affiliationName": "Inria", "history": [{"institution": "inria", "institutionName": "Inria", "role": "Research Engineer", "period": "2005–present"}]}, "sandrine-avakian": {"name": "Sandrine Avakian", "slug": "sandrine-avakian", "affiliation": "upmc", "affiliationName": "Sorbonne Université (UPMC)", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "Project Manager", "period": "2010–2015"}]}, "sam-betts": {"name": "Sam Betts", "slug": "sam-betts", "affiliation": "cisco-paris", "affiliationName": "Cisco Systems France", "history": [{"institution": "cisco-paris", "institutionName": "Cisco Systems France", "role": "Software Engineer", "period": "2018–2020"}]}, "martin-gysi": {"name": "Martin Gysi", "slug": "martin-gysi", "affiliation": "swisscom", "affiliationName": "Swisscom", "history": [{"institution": "swisscom", "institutionName": "Swisscom", "role": "Software Engineer", "period": "2018–2020"}]}, "john-dsouza": {"name": "John Kenneth d'Souza", "slug": "john-dsouza", "affiliation": "swisscom", "affiliationName": "Swisscom", "history": [{"institution": "swisscom", "institutionName": "Swisscom", "role": "Software Engineer", "period": "2019–2021"}]}, "pietro-casoria": {"name": "Pietro Casoria", "slug": "pietro-casoria", "affiliation": "unina", "affiliationName": "Università di Napoli Federico II", "history": [{"institution": "unina", "institutionName": "Università di Napoli Federico II", "role": "PhD Student", "period": "2014–2017"}]}, "antonio-pescape": {"name": "Antonio Pescapé", "slug": "antonio-pescape", "url": "https://wpage.unina.it/pescape/", "scholar": "https://scholar.google.com/citations?user=NKh1OQUAAAAJ", "affiliation": "unina", "affiliationName": "Università di Napoli Federico II", "history": [{"institution": "unina", "institutionName": "Università di Napoli Federico II", "role": "Professor", "period": "2005–present"}]}, "kc-claffy": {"name": "KC Claffy", "slug": "kc-claffy", "url": "https://www.caida.org/~kc/", "scholar": "https://scholar.google.com/citations?user=nT0USvcAAAAJ", "affiliation": "caida", "affiliationName": "CAIDA / UC San Diego", "history": [{"institution": "caida", "institutionName": "CAIDA / UC San Diego", "role": "Director", "period": "1997–present"}]}, "emile-aben": {"name": "Emile Aben", "slug": "emile-aben", "url": "https://labs.ripe.net/author/emileaben/", "affiliation": "ripe-ncc", "affiliationName": "RIPE NCC", "history": [{"institution": "ripe-ncc", "institutionName": "RIPE NCC", "role": "Research Scientist", "period": "2010–present"}]}, "robert-beverly": {"name": "Robert Beverly", "slug": "robert-beverly", "scholar": "https://scholar.google.com/citations?user=MxN1mIgAAAAJ", "affiliation": "cmand", "affiliationName": "cmand", "history": [{"institution": "cmand", "institutionName": "cmand", "role": "Researcher", "period": "2010–present"}]}, "fabian-bustamante": {"name": "Fabian Bustamante", "slug": "fabian-bustamante", "scholar": "https://scholar.google.com/citations?user=7Jvi3DEAAAAJ", "affiliation": "northwestern", "affiliationName": "Northwestern University", "history": [{"institution": "northwestern", "institutionName": "Northwestern University", "role": "Professor", "period": "2002–present"}]}, "benoit-donnet": {"name": "Benoît Donnet", "slug": "benoit-donnet", "url": "https://www.montefiore.uliege.be/cms/c_3482915/en/donnet-benoit", "scholar": "https://scholar.google.com/citations?user=KqMN7EQAAAAJ", "affiliation": "ulg", "affiliationName": "Université de Liège", "history": [{"institution": "ulg", "institutionName": "Université de Liège", "role": "Professor", "period": "2011–present"}]}, "marina-fomenkov": {"name": "Marina Fomenkov", "slug": "marina-fomenkov", "affiliation": "caida", "affiliationName": "CAIDA / UC San Diego", "history": [{"institution": "caida", "institutionName": "CAIDA / UC San Diego", "role": "Research Scientist", "period": "2000–present"}]}, "peter-haga": {"name": "Peter Haga", "slug": "peter-haga", "affiliation": "bme", "affiliationName": "Budapest University of Technology", "history": [{"institution": "bme", "institutionName": "Budapest University of Technology", "role": "Researcher", "period": "2005–2010"}]}, "matthew-luckie": {"name": "Matthew Luckie", "slug": "matthew-luckie", "scholar": "https://scholar.google.com/citations?user=MwVfNBQAAAAJ", "affiliation": "waikato", "affiliationName": "University of Waikato", "history": [{"institution": "waikato", "institutionName": "University of Waikato", "role": "Senior Lecturer", "period": "2010–present"}]}, "yuval-shavitt": {"name": "Yuval Shavitt", "slug": "yuval-shavitt", "scholar": "https://scholar.google.com/citations?user=gyA-dvgAAAAJ", "affiliation": "tau", "affiliationName": "Tel Aviv University", "history": [{"institution": "tau", "institutionName": "Tel Aviv University", "role": "Professor", "period": "2000–present"}]}, "aw-moore": {"name": "Andrew Moore", "slug": "aw-moore", "url": "https://www.cl.cam.ac.uk/~awm22/", "scholar": "https://scholar.google.com/citations?user=YuBo2lMAAAAJ", "affiliation": "cambridge", "affiliationName": "University of Cambridge", "history": [{"institution": "cambridge", "institutionName": "University of Cambridge", "role": "Professor", "period": "2005–present"}]}, "rg-clegg": {"name": "Richard Clegg", "slug": "rg-clegg", "scholar": "https://scholar.google.co.uk/citations?user=nEU7ISoAAAAJ", "affiliation": "qmul", "affiliationName": "Queen Mary University of London", "history": [{"institution": "ucl", "institutionName": "University College London", "role": "Researcher", "period": "2006–2012"}]}, "m-rio": {"name": "Miguel Rio", "slug": "m-rio", "scholar": "https://scholar.google.co.uk/citations?user=Fp8U8XAAAAAJ", "affiliation": "ucl", "affiliationName": "University College London", "history": [{"institution": "ucl", "institutionName": "University College London", "role": "Professor", "period": "2003–present"}]}, "r-landa": {"name": "Raul Landa", "slug": "r-landa", "affiliation": "ucl", "affiliationName": "University College London", "history": [{"institution": "ucl", "institutionName": "University College London", "role": "Researcher", "period": "2008–2014"}]}, "h-haddadi": {"name": "Hamed Haddadi", "slug": "h-haddadi", "url": "https://www.imperial.ac.uk/people/h.haddadi", "scholar": "https://scholar.google.com/citations?user=LxuY3GUAAAAJ", "affiliation": "imperial", "affiliationName": "imperial", "history": [{"institution": "cambridge", "institutionName": "University of Cambridge", "role": "Researcher", "period": "2006–2010"}]}, "ms-withall": {"name": "Mark Sheridan Withall", "slug": "ms-withall", "affiliation": "lboro", "affiliationName": "Loughborough University", "history": [{"institution": "lboro", "institutionName": "Loughborough University", "role": "Researcher", "period": "2005–2010"}]}, "iw-phillips": {"name": "Ian Phillips", "slug": "iw-phillips", "affiliation": "lboro", "affiliationName": "Loughborough University", "history": [{"institution": "lboro", "institutionName": "Loughborough University", "role": "Senior Lecturer", "period": "2000–present"}]}, "dj-parish": {"name": "David Parish", "slug": "dj-parish", "affiliation": "lboro", "affiliationName": "Loughborough University", "history": [{"institution": "lboro", "institutionName": "Loughborough University", "role": "Professor", "period": "1990–present"}]}, "k-kyriakopoulos": {"name": "Konstantinos Kyriakopoulos", "slug": "k-kyriakopoulos", "affiliation": "lboro", "affiliationName": "Loughborough University", "history": [{"institution": "lboro", "institutionName": "Loughborough University", "role": "Researcher", "period": "2006–2010"}]}, "ines-ribeiro": {"name": "Inês Ribeiro", "slug": "ines-ribeiro", "affiliation": "upmc", "affiliationName": "Sorbonne Université (UPMC)", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "Masters Student", "period": "Date to confirm"}]}, "akram-ben-jemaa": {"name": "Akram Ben Jemaa", "slug": "akram-ben-jemaa", "affiliation": "upmc", "affiliationName": "Sorbonne Université (UPMC)", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "Intern", "period": "Date to confirm"}]}, "thomas-delacour": {"name": "Thomas Delacour", "slug": "thomas-delacour", "affiliation": "upmc", "affiliationName": "Sorbonne Université (UPMC)", "history": [{"institution": "upmc", "institutionName": "Sorbonne Université (UPMC)", "role": "Intern", "period": "Date to confirm"}]}, "sarah-wassermann": {"name": "Sarah Wassermann", "slug": "sarah-wassermann", "url": "https://www.wassermann.lu/", "affiliation": "lincs", "affiliationName": "LINCS", "history": [{"institution": "lincs", "institutionName": "LINCS", "role": "Intern", "period": "Date to confirm"}]}, "zsofia-kallus": {"name": "Zsófia Kallus", "slug": "zsofia-kallus", "affiliation": "elte", "affiliationName": "Eötvös Loránd University (ELTE)", "history": [{"institution": "elte", "institutionName": "Eötvös Loránd University (ELTE)", "role": "Researcher", "period": "Date to confirm"}]}, "matthieu-gouel": {"name": "Matthieu Gouel", "slug": "matthieu-gouel", "url": "https://music.telecom-paristech.fr/music/music/matthieu-gouel/", "scholar": "https://scholar.google.com/citations?user=mHYu_GQAAAAJ", "affiliation": "telecom-paristech", "affiliationName": "Telecom ParisTech", "history": [{"institution": "telecom-paristech", "institutionName": "Telecom ParisTech", "role": "Researcher", "period": "2019–present"}]}}, "institutions": {"swisscom": {"name": "Swisscom", "type": "company"}, "cisco-outshift": {"name": "Cisco Systems / Outshift", "type": "company"}, "cisco-paris": {"name": "Cisco Systems France", "type": "company"}, "upmc": {"name": "Sorbonne Université (UPMC)", "type": "university"}, "lip6": {"name": "LIP6 / CNRS", "type": "lab"}, "lincs": {"name": "LINCS", "type": "lab"}, "telecom-paristech": {"name": "Telecom ParisTech", "type": "university"}, "orange-labs": {"name": "Orange Labs", "type": "company"}, "cambridge": {"name": "University of Cambridge", "type": "university"}, "huawei-paris": {"name": "Huawei Paris Research Center", "type": "company"}, "polito": {"name": "Politecnico di Torino", "type": "university"}, "unina": {"name": "Università di Napoli Federico II", "type": "university"}, "ucla": {"name": "UCLA", "type": "university"}, "caida": {"name": "CAIDA / UC San Diego", "type": "lab"}, "ulg": {"name": "Université de Liège", "type": "university"}, "inria": {"name": "Inria", "type": "lab"}, "lboro": {"name": "Loughborough University", "type": "university"}, "ucl": {"name": "University College London", "type": "university"}, "qmul": {"name": "Queen Mary University of London", "type": "university"}, "bme": {"name": "Budapest University of Technology", "type": "university"}, "northwestern": {"name": "Northwestern University", "type": "university"}, "waikato": {"name": "University of Waikato", "type": "university"}, "tau": {"name": "Tel Aviv University", "type": "university"}, "ripe-ncc": {"name": "RIPE NCC", "type": "organization"}, "elte": {"name": "Eötvös Loránd University (ELTE)", "type": "university"}}}</script>
+<!-- markdownlint-enable MD033 -->
+
+
+
+
+
+<section class="project-artifacts card mt-5">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h2 class="h4 mb-0">
+      <i class="bi bi-file-earmark-text"></i>
+      Related artifacts
+    </h2>
+    <span class="badge bg-secondary">17</span>
+  </div>
+  <div class="card-body p-0">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://github.com/FDio/">FD.io GitHub organization</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span class="badge text-bg-light"><i class="bi bi-github"></i> repo</span>
+              <span>hicn, hybrid-icn, icn</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://github.com/FDio/hicn">FD.io hICN GitHub repository</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span><i class="bi bi-calendar3"></i> 2020-11-11</span>
+              <span class="badge text-bg-light"><i class="bi bi-github"></i> repo</span>
+              <span>hicn, hybrid-icn, icn</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://www.youtube.com/watch?v=p26GODPxGGE&t=575s">ICN Demo: Rethinking mobility with information centric networking</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span><i class="bi bi-calendar3"></i> 2016-04-15</span>
+              <span class="badge text-bg-light"><i class="bi bi-play-circle"></i> video</span>
+              <span>icn</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://www.youtube.com/watch?v=m_KacZUrRnk">Information Centric Networking driving Cisco's 5G research</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span><i class="bi bi-calendar3"></i> 2016-03-16</span>
+              <span class="badge text-bg-light"><i class="bi bi-play-circle"></i> video</span>
+              <span>icn</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://www.youtube.com/watch?v=3BcG8F4Lcec">ITU 5G demo: Using ICN to simplify data delivery, mobility management and secure transmission</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span><i class="bi bi-calendar3"></i> 2016-12-15</span>
+              <span class="badge text-bg-light"><i class="bi bi-play-circle"></i> video</span>
+              <span>hicn, icn, hybrid-icn</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="/static/files/research/sardara2019policy.pdf">Application-specific policy-driven 5G Transport with Hybrid ICN</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span><i class="bi bi-calendar3"></i> 2019-07</span>
+              <span class="badge text-bg-light"><i class="bi bi-file-earmark-pdf"></i> pdf</span>
+              <span>hicn, hybrid-icn, icn</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://www.cisco.com/c/dam/en/us/solutions/collateral/service-provider/ultra-services-platform/mwc17-hicn-video-wp.pdf">MWC17 hICN video whitepaper archived copy</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span><i class="bi bi-calendar3"></i> 20260327</span>
+              <span class="badge text-bg-light"><i class="bi bi-file-earmark-pdf"></i> pdf</span>
+              <span>hicn, hybrid-icn, icn</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://mapme-tnsm17.github.io/">MAP-ME: Managing Anchor-less Producer Mobility in Content-Centric Networks | mapme-tnsm17.github.io</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span><i class="bi bi-calendar3"></i> 20260421</span>
+              <span class="badge text-bg-light"><i class="bi bi-globe"></i> webpage</span>
+              <span>mapme, hicn, icn, research</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://github.com/mapme-tnsm17">mapme-tnsm17 · GitHub</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span><i class="bi bi-calendar3"></i> 20260421</span>
+              <span class="badge text-bg-light"><i class="bi bi-globe"></i> webpage</span>
+              <span>mapme, hicn, icn, github, code</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://wiki.fd.io/view/Vicn">Vicn - fd.io</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span><i class="bi bi-calendar3"></i> 20260421</span>
+              <span class="badge text-bg-light"><i class="bi bi-globe"></i> webpage</span>
+              <span>vicn, fdio, hicn, icn, code</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://conferences.sigcomm.org/acm-icn/2017/proceedings/icn17-21.pdf">Document from conferences.sigcomm.org</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span><i class="bi bi-calendar3"></i> 20260421</span>
+              <span class="badge text-bg-light"><i class="bi bi-file-earmark-pdf"></i> pdf</span>
+              <span>mapme, icn, acm, conference, 2017</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://conferences.sigcomm.org/acm-icn/2017/proceedings/icn17-23.pdf">Document from conferences.sigcomm.org</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span><i class="bi bi-calendar3"></i> 20260421</span>
+              <span class="badge text-bg-light"><i class="bi bi-file-earmark-pdf"></i> pdf</span>
+              <span>hicn, icn, acm, conference, security, 2017</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://conferences.sigcomm.org/acm-icn/2017/proceedings/icn17-26.pdf">Document from conferences.sigcomm.org</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span><i class="bi bi-calendar3"></i> 20260421</span>
+              <span class="badge text-bg-light"><i class="bi bi-file-earmark-pdf"></i> pdf</span>
+              <span>vicn, icn, acm, conference, 2017</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://wiki.fd.io/view/Project_Proposals/hicn">hICN project proposal — FD.io / Linux Foundation</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span class="badge text-bg-light"><i class="bi bi-book"></i> wiki</span>
+              <span>hicn, hybrid-icn, icn, fdio, linux-foundation, open-source</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://github.com/mapme-tnsm17/mapme-tnsm17">MAP-Me TNSM'17 source code repository</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span class="badge text-bg-light"><i class="bi bi-github"></i> repo</span>
+              <span>mapme, hicn, icn, reproducibility</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://github.com/mapme-tnsm17/ndnsim">ndnSIM 2.1 with MAP-Me mobility patches</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span class="badge text-bg-light"><i class="bi bi-github"></i> repo</span>
+              <span>mapme, hicn, icn, reproducibility</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <div class="mb-2">
+              <a href="https://github.com/mapme-tnsm17/ns-3">NS-3 simulator with MAP-Me mobility patches</a>
+            </div>
+            <div class="small text-muted d-flex gap-2 flex-wrap align-items-center">
+              <span class="badge text-bg-light"><i class="bi bi-github"></i> repo</span>
+              <span>mapme, hicn, icn, reproducibility</span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+        </div>
+    </section>
+
+          </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer">
+  <div class="footer-container">
+  </div>
+</footer>
+    <!--script async src="/theme/js/vendor/bootstrap.bundle.min.js"></script-->
+    <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
+    <script async src="/theme/js/lazyload.js"></script-->
+    <script async src="/theme/js/application.js"></script>
+    <script defer src="/theme/js/archive-links.js"></script>
+    <script defer src="/theme/js/code-blocks.js"></script>
+    <script defer src="/theme/js/filters.js"></script>
+
+    <!-- KaTeX JavaScript for math rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\\\(', right: '\\\\)', display: false},
+            {left: '\\\\[', right: '\\\\]', display: true}
+          ]
+        });"></script>
+
+
+  </body>
+</html>
