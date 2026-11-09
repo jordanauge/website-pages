@@ -1,0 +1,17 @@
+archived_at: '2026-04-21T08:18:52.574600Z'
+date: '20260421'
+description: Archived webpage from anycast.telecom-paristech.fr
+files:
+- index.html
+- assets/stylesheets/css
+- assets/stylesheets/main.css
+original_url: https://anycast.telecom-paristech.fr/code/
+size_mb: 0.02
+slug: anycast-code
+tags:
+- anycast
+- dns
+- code
+- telecom-paristech
+title: Source code
+type: webpage

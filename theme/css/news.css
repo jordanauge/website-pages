@@ -1,0 +1,1420 @@
+/* News System Styles */
+
+/* ==================== News Sidebar ==================== */
+
+/* Ensure news sidebar uses proper positioning and sizing */
+.news-index-page .sidebar.publications-sidebar {
+   top: 5.75rem;
+   max-height: calc(100vh - 6.75rem);
+   position: sticky;
+}
+
+/* ==================== Article Meta Pills Layout ==================== */
+/* Override center alignment for news list items */
+.news-item .article-meta-pills {
+   justify-content: flex-start !important;
+   gap: 0.6rem;
+}
+
+.news-item .article-meta-pills-content {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: flex-start !important;
+   align-items: center;
+   gap: 0.6rem;
+   width: 100%;
+}
+
+.news-item .article-date {
+   flex-shrink: 0;
+   min-width: fit-content;
+}
+
+.news-item .news-tag {
+   flex-shrink: 0;
+   min-width: fit-content;
+   white-space: nowrap;
+}
+
+/* ==================== Domain Pills (styled like categories) ==================== */
+.article-meta-pill-domain {
+   font-weight: 500;
+   color: white;
+}
+
+.article-meta-pill-domain.domain-work {
+   background-color: rgba(13, 110, 253, 0.85);
+   border-color: rgba(13, 110, 253, 0.95);
+}
+
+.article-meta-pill-domain.domain-work:hover {
+   background-color: rgba(13, 110, 253, 0.75);
+}
+
+.article-meta-pill-domain.domain-research {
+   background-color: rgba(111, 66, 193, 0.85);
+   border-color: rgba(111, 66, 193, 0.95);
+}
+
+.article-meta-pill-domain.domain-research:hover {
+   background-color: rgba(111, 66, 193, 0.75);
+}
+
+.article-meta-pill-domain.domain-personal {
+   background-color: rgba(25, 135, 84, 0.85);
+   border-color: rgba(25, 135, 84, 0.95);
+}
+
+.article-meta-pill-domain.domain-personal:hover {
+   background-color: rgba(25, 135, 84, 0.75);
+}
+
+/* ==================== News Preview Card (now article-style) ==================== */
+.news-preview {
+   margin-top: 0;
+   margin-bottom: 1.5rem;
+   padding-bottom: 0;
+}
+
+.news-summary {
+   color: var(--bs-body-color);
+   font-size: 0.95rem;
+   line-height: 1.5;
+   margin-bottom: 1rem;
+   margin-top: 0.75rem;
+}
+
+/* ==================== Tag color palette (shared across news, homepage, article) ==================== */
+/*
+   Palette (same tokens as publications labels):
+   blue    → professional/agentic-ai/cisco topics
+   green   → personal/open-source/tools
+   purple  → research/preprint/paper
+   orange  → talk/event/conference
+   teal    → networking/infra
+   grey    → default fallback
+*/
+.news-tags {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.3rem;
+   margin-top: 0.1rem;
+}
+
+.news-tag {
+   display: inline-block;
+   padding: 0.1rem 0.38rem;
+   border-radius: 999px;
+   font-size: 0.6rem;
+   font-weight: 400;
+   letter-spacing: 0.02em;
+   /* border-only — no background fill */
+   background: transparent;
+   color: var(--bs-secondary-color);
+   border: 1px solid rgba(108, 117, 125, 0.35);
+}
+
+/* Tag semantic coloring — border color only, no background fill */
+.news-tag[data-color="blue"]   { border-color: rgba(13,110,253,0.45);  color:#4e8cff; }
+.news-tag[data-color="green"]  { border-color: rgba(25,135,84,0.45);   color:#2eaa6e; }
+.news-tag[data-color="purple"] { border-color: rgba(111,66,193,0.45);  color:#8b5cf6; }
+.news-tag[data-color="orange"] { border-color: rgba(255,159,67,0.45);  color:#e88a3a; }
+.news-tag[data-color="teal"]   { border-color: rgba(13,202,240,0.45);  color:#0fb5d0; }
+
+[data-bs-theme="dark"] .news-tag { color: var(--bs-secondary-color); }
+[data-bs-theme="dark"] .news-tag[data-color="blue"]   { color:#6ea9ff; }
+[data-bs-theme="dark"] .news-tag[data-color="green"]  { color:#52c77a; }
+[data-bs-theme="dark"] .news-tag[data-color="purple"] { color:#a78bfa; }
+[data-bs-theme="dark"] .news-tag[data-color="orange"] { color:#fba96a; }
+[data-bs-theme="dark"] .news-tag[data-color="teal"]   { color:#38d9f0; }
+
+/* ==================== Sidebar controls (shared via publications-sidebar) ==================== */
+.news-sidebar .filter-group {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.3rem;
+}
+
+.news-sidebar .filter-btn {
+   padding: 0.22rem 0.55rem;
+   border: 1px solid var(--bs-border-color);
+   background: transparent;
+   color: var(--bs-secondary-color);
+   font-size: 0.74rem;
+   font-weight: 500;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: all 0.15s ease;
+}
+
+.news-sidebar .filter-btn:hover {
+   border-color: var(--bs-primary);
+   color: var(--bs-primary);
+}
+
+.news-sidebar .filter-btn.active {
+   background: var(--bs-primary);
+   color: #fff;
+   border-color: var(--bs-primary);
+   font-weight: 600;
+}
+
+/* ==================== Year Section ==================== */
+.year-section {
+   margin-bottom: 2rem;
+   scroll-margin-top: 80px;
+}
+
+.year-header {
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+   margin-bottom: 1rem;
+   padding-bottom: 0.75rem;
+   border-bottom: 2px solid #4caf50;
+}
+
+.dark .year-header {
+   border-bottom-color: #6ec071;
+}
+
+.year-badge {
+   font-size: 1.75rem;
+   font-weight: 700;
+   color: inherit;
+}
+
+.dark .year-badge {
+   color: rgba(255, 255, 255, 0.9);
+}
+
+.year-count {
+   font-size: 0.95rem;
+   font-weight: 400;
+   color: rgba(0, 0, 0, 0.6);
+}
+
+.dark .year-count {
+   color: rgba(255, 255, 255, 0.6);
+}
+
+/* ==================== Timeline Sidebar ==================== */
+.news-timeline-sidebar {
+   position: sticky;
+   top: 80px;
+   background: rgba(248, 249, 250, 0.5);
+   border-radius: 8px;
+   padding: 1.25rem;
+   border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .news-timeline-sidebar {
+   background: rgba(255, 255, 255, 0.03);
+   border-color: rgba(255, 255, 255, 0.1);
+}
+
+.news-timeline-sidebar h4 {
+   font-size: 1rem;
+   font-weight: 700;
+   margin-bottom: 0.75rem;
+   color: inherit;
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+.timeline-nav {
+   display: flex;
+   flex-direction: column;
+   gap: 0.4rem;
+   margin-bottom: 1rem;
+}
+
+.timeline-year-link {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0.5rem 0.75rem;
+   background: transparent;
+   border-radius: 6px;
+   text-decoration: none;
+   color: inherit;
+   transition: all 0.2s ease;
+   border-left: 3px solid transparent;
+}
+
+.timeline-year-link:hover {
+   background: rgba(76, 175, 80, 0.1);
+   border-left-color: #4caf50;
+   transform: translateX(4px);
+}
+
+.dark .timeline-year-link:hover {
+   background: rgba(110, 192, 113, 0.15);
+   border-left-color: #6ec071;
+}
+
+.timeline-year-link.active {
+   background: rgba(76, 175, 80, 0.15);
+   color: #4caf50;
+   border-left-color: #4caf50;
+   font-weight: 600;
+}
+
+.dark .timeline-year-link.active {
+   background: rgba(110, 192, 113, 0.2);
+   color: #6ec071;
+   border-left-color: #6ec071;
+}
+
+.timeline-year {
+   font-size: 1rem;
+   font-weight: 600;
+}
+
+.timeline-count {
+   font-size: 0.8rem;
+   padding: 0.2rem 0.4rem;
+   background: rgba(0, 0, 0, 0.1);
+   border-radius: 10px;
+}
+
+.dark .timeline-count {
+   background: rgba(255, 255, 255, 0.15);
+}
+
+.timeline-year-link.active .timeline-count {
+   background: rgba(0, 0, 0, 0.15);
+}
+
+.dark .timeline-year-link.active .timeline-count {
+   background: rgba(255, 255, 255, 0.2);
+}
+
+/* ==================== News Stats ==================== */
+.news-stats {
+   padding-top: 1rem;
+   border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark .news-stats {
+   border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.news-stats h5 {
+   font-size: 0.85rem;
+   font-weight: 700;
+   text-transform: uppercase;
+   letter-spacing: 0.5px;
+   color: rgba(0, 0, 0, 0.5);
+   margin-bottom: 0.75rem;
+}
+
+.dark .news-stats h5 {
+   color: rgba(255, 255, 255, 0.5);
+}
+
+.news-stats ul li {
+   padding: 0.5rem 0;
+   color: rgba(0, 0, 0, 0.7);
+}
+
+.dark .news-stats ul li {
+   color: rgba(255, 255, 255, 0.7);
+}
+
+/* ==================== Artifacts Section ==================== */
+.artifacts-section {
+   margin-top: 1.5rem;
+   padding: 1.5rem;
+   background: rgba(248, 249, 250, 0.5);
+   border-radius: 8px;
+   border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .artifacts-section {
+   background: rgba(255, 255, 255, 0.03);
+   border-color: rgba(255, 255, 255, 0.1);
+}
+
+.artifacts-section h2 {
+   font-size: 1.25rem;
+   font-weight: 700;
+   margin-bottom: 1rem;
+   color: inherit;
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+.artifacts-list {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+}
+
+.artifact-item {
+   display: flex;
+   gap: 1rem;
+   padding: 1rem;
+   background: transparent;
+   border-radius: 6px;
+   border-left: 3px solid rgba(76, 175, 80, 0.3);
+   transition: all 0.2s ease;
+}
+
+.dark .artifact-item {
+   border-left-color: rgba(110, 192, 113, 0.3);
+}
+
+.artifact-item:hover {
+   background: rgba(76, 175, 80, 0.05);
+   border-left-color: #4caf50;
+}
+
+.dark .artifact-item:hover {
+   background: rgba(110, 192, 113, 0.08);
+   border-left-color: #6ec071;
+}
+
+.artifact-icon {
+   font-size: 1.75rem;
+   color: #4caf50;
+   flex-shrink: 0;
+}
+
+.dark .artifact-icon {
+   color: #6ec071;
+}
+
+.artifact-content {
+   flex: 1;
+}
+
+.artifact-content h4 {
+   font-size: 1rem;
+   margin-bottom: 0.5rem;
+}
+
+.artifact-primary-link {
+   color: inherit;
+   text-decoration: none;
+   font-weight: 600;
+   transition: color 0.2s ease;
+}
+
+.artifact-primary-link:hover {
+   color: #4caf50;
+}
+
+.dark .artifact-primary-link:hover {
+   color: #6ec071;
+}
+
+.artifact-description {
+   color: rgba(0, 0, 0, 0.7);
+   font-size: 0.9rem;
+   margin-bottom: 0.5rem;
+}
+
+.dark .artifact-description {
+   color: rgba(255, 255, 255, 0.7);
+}
+
+.artifact-archive-link {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.25rem;
+   font-size: 0.8rem;
+   color: rgba(0, 0, 0, 0.5);
+   text-decoration: none;
+   padding: 0.2rem 0.4rem;
+   border-radius: 4px;
+   transition: all 0.2s ease;
+}
+
+.dark .artifact-archive-link {
+   color: rgba(255, 255, 255, 0.5);
+}
+
+.artifact-archive-link:hover {
+   background: rgba(0, 0, 0, 0.05);
+   color: rgba(0, 0, 0, 0.7);
+}
+
+.dark .artifact-archive-link:hover {
+   background: rgba(255, 255, 255, 0.08);
+   color: rgba(255, 255, 255, 0.7);
+}
+
+/* ==================== Related Section ==================== */
+.related-section {
+   margin-top: 1.5rem;
+}
+
+.related-section h3 {
+   font-size: 1.1rem;
+   font-weight: 700;
+   margin-bottom: 0.75rem;
+   color: inherit;
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+.related-links {
+   list-style: none;
+   padding: 0;
+}
+
+.related-links li {
+   padding: 0.4rem 0;
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+/* ==================== Tags Section ==================== */
+.tags-section {
+   margin-top: 1.5rem;
+   padding-top: 1.5rem;
+   border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark .tags-section {
+   border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.tags-section .badge {
+   margin-right: 0.5rem;
+   margin-bottom: 0.5rem;
+   font-size: 0.62rem;
+   padding: 0.16rem 0.45rem;
+   font-weight: 600;
+}
+
+/* ==================== Navigation ==================== */
+.news-navigation,
+.year-navigation {
+   margin-top: 1.5rem;
+   padding-top: 1.5rem;
+   border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark .news-navigation,
+.dark .year-navigation {
+   border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.external-link-section {
+   margin-top: 1.5rem;
+   text-align: center;
+}
+
+/* ==================== Responsive Design ==================== */
+@media (max-width: 768px) {
+   .news-date-badge {
+      width: 60px;
+      height: 60px;
+      margin-right: 1rem;
+   }
+   
+   .badge-month {
+      font-size: 0.65rem;
+   }
+   
+   .badge-day {
+      font-size: 1.5rem;
+   }
+   
+   .news-preview {
+      padding: 0;
+   }
+   
+   .news-title {
+      font-size: 1.1rem;
+   }
+   
+   .news-timeline-sidebar {
+      position: static;
+      margin-top: 1.5rem;
+   }
+   
+   .year-badge {
+      font-size: 1.5rem;
+   }
+}
+
+/* ==================== Homepage News Section ==================== */
+.homepage-news {
+   margin: 2rem 0;
+}
+
+.homepage-news h2 {
+   font-size: 1.75rem;
+   font-weight: 700;
+   margin-bottom: 1.5rem;
+   color: inherit;
+}
+
+.homepage-news .news-preview {
+   margin-bottom: 1.5rem;
+}
+
+.homepage-news .view-all-link {
+   text-align: center;
+   margin-top: 2rem;
+}
+
+/* ==================== News Controls & View Mode Selector ==================== */
+.news-controls {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   margin-bottom: 2rem;
+   padding: 1rem;
+   background: rgba(0, 0, 0, 0.02);
+   border-radius: 8px;
+}
+
+.dark .news-controls {
+   background: rgba(255, 255, 255, 0.03);
+}
+
+.view-mode-selector {
+   display: flex;
+   gap: 0.5rem;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   border-radius: 6px;
+   padding: 4px;
+   background: white;
+}
+
+.dark .view-mode-selector {
+   border-color: rgba(255, 255, 255, 0.1);
+   background: #2c3e50;
+}
+
+.btn-view-mode {
+   padding: 0.5rem 1rem;
+   border: none;
+   background: transparent;
+   color: #6c757d;
+   font-weight: 500;
+   font-size: 0.875rem;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: all 0.2s ease;
+   min-width: 60px;
+}
+
+.btn-view-mode:hover {
+   background: rgba(0, 0, 0, 0.05);
+   color: #495057;
+}
+
+.dark .btn-view-mode:hover {
+   background: rgba(255, 255, 255, 0.05);
+   color: #adb5bd;
+}
+
+.btn-view-mode.active {
+   background: #e74c3c;
+   color: white;
+   font-weight: 600;
+}
+
+.dark .btn-view-mode.active {
+   background: #e67e73;
+}
+
+/* ==================== Loading Indicator ==================== */
+#loading-indicator {
+   display: none;
+   text-align: center;
+   padding: 2rem;
+   color: #6c757d;
+}
+
+.dark #loading-indicator {
+   color: #adb5bd;
+}
+
+/* ==================== Pagination Controls ==================== */
+#pagination-controls {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 1rem;
+   margin-top: 2rem;
+   padding: 1rem;
+}
+
+#pagination-controls button {
+   padding: 0.5rem 1rem;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   background: white;
+   color: #495057;
+   border-radius: 6px;
+   cursor: pointer;
+   transition: all 0.2s ease;
+   font-weight: 500;
+}
+
+.dark #pagination-controls button {
+   border-color: rgba(255, 255, 255, 0.1);
+   background: #2c3e50;
+   color: #adb5bd;
+}
+
+#pagination-controls button:hover:not(:disabled) {
+   background: #e74c3c;
+   color: white;
+   border-color: #e74c3c;
+}
+
+.dark #pagination-controls button:hover:not(:disabled) {
+   background: #e67e73;
+   border-color: #e67e73;
+}
+
+#pagination-controls button:disabled {
+   opacity: 0.4;
+   cursor: not-allowed;
+}
+
+#page-info {
+   font-weight: 600;
+   color: #495057;
+}
+
+.dark #page-info {
+   color: #adb5bd;
+}
+
+/* ==================== Interactive Timeline ==================== */
+.interactive-timeline {
+   height: calc(100vh - 100px);
+   display: none; /* Hidden by default */
+   flex-direction: column;
+   padding: 1rem 0;
+}
+
+.interactive-timeline.visible {
+   display: flex; /* Show in infinite mode */
+}
+
+.timeline-header {
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+   font-weight: 600;
+   color: #495057;
+   margin-bottom: 1rem;
+   font-size: 0.9rem;
+   text-transform: uppercase;
+   letter-spacing: 0.5px;
+}
+
+.dark .timeline-header {
+   color: #adb5bd;
+}
+
+.timeline-track {
+   position: relative;
+   flex: 1;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+
+.timeline-markers,
+.timeline-slider {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   width: 100%;
+}
+
+.timeline-markers {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   pointer-events: none;
+}
+
+.timeline-marker {
+   position: absolute;
+   width: 100%;
+   height: 2px;
+   background: rgba(231, 76, 60, 0.3);
+   pointer-events: auto;
+   cursor: pointer;
+   transition: all 0.2s ease;
+   display: flex;
+   align-items: center;
+}
+
+.dark .timeline-marker {
+   background: rgba(230, 126, 115, 0.3);
+}
+
+/* Filtered out markers (grayed) */
+.timeline-marker.filtered {
+   background: rgba(149, 165, 166, 0.2);
+   opacity: 0.4;
+}
+
+.dark .timeline-marker.filtered {
+   background: rgba(149, 165, 166, 0.15);
+}
+
+.timeline-marker.filtered::before {
+   background: #95a5a6;
+   opacity: 0.5;
+}
+
+/* Active markers (highlighted) */
+.timeline-marker.active {
+   background: rgba(231, 76, 60, 0.5);
+   height: 3px;
+}
+
+.dark .timeline-marker.active {
+   background: rgba(230, 126, 115, 0.5);
+}
+
+.timeline-marker::before {
+   content: '';
+   position: absolute;
+   left: -4px;
+   width: 8px;
+   height: 8px;
+   background: #e74c3c;
+   border-radius: 50%;
+   border: 2px solid white;
+   transition: all 0.2s ease;
+}
+
+.dark .timeline-marker::before {
+   background: #e67e73;
+   border-color: #2c3e50;
+}
+
+.timeline-marker:hover:not(.filtered) {
+   background: rgba(231, 76, 60, 0.6);
+   height: 3px;
+   z-index: 10;
+}
+
+.timeline-marker:hover:not(.filtered)::before {
+   width: 12px;
+   height: 12px;
+   left: -6px;
+}
+
+.timeline-slider {
+   display: flex;
+   justify-content: center;
+   cursor: pointer;
+}
+
+.slider-line {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   width: 2px;
+   background: rgba(0, 0, 0, 0.1);
+   pointer-events: none;
+}
+
+.dark .slider-line {
+   background: rgba(255, 255, 255, 0.1);
+}
+
+.slider-thumb {
+   position: absolute;
+   width: 24px;
+   height: 24px;
+   background: #e74c3c;
+   border: 3px solid white;
+   border-radius: 50%;
+   cursor: grab;
+   transition: all 0.2s ease;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+   z-index: 100;
+   margin-left: -12px;
+}
+
+.dark .slider-thumb {
+   background: #e67e73;
+   border-color: #2c3e50;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.slider-thumb:hover {
+   transform: scale(1.2);
+   box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+}
+
+.slider-thumb.dragging {
+   cursor: grabbing;
+   transform: scale(1.3);
+   box-shadow: 0 6px 16px rgba(231, 76, 60, 0.5);
+}
+
+.timeline-labels {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: -40px;
+   width: 35px;
+   pointer-events: none;
+}
+
+.timeline-label {
+   position: absolute;
+   font-size: 0.75rem;
+   font-weight: 600;
+   color: #6c757d;
+   text-align: right;
+   white-space: nowrap;
+}
+
+.dark .timeline-label {
+   color: #adb5bd;
+}
+
+/* ==================== Responsive Design ==================== */
+@media (max-width: 991px) {
+   .interactive-timeline {
+      display: none;
+   }
+   
+   .news-controls {
+      justify-content: center;
+   }
+   
+   .view-mode-selector {
+      width: 100%;
+      max-width: 400px;
+   }
+   
+   .btn-view-mode {
+      flex: 1;
+   }
+}
+
+@media (max-width: 768px) {
+   .news-date-badge {
+      width: 44px;
+      height: 52px;
+   }
+   
+   .badge-month {
+      height: 11px;
+      font-size: 0.52rem;
+   }
+   
+   .badge-day {
+      font-size: 0.95rem;
+      margin-top: 4px;
+   }
+   
+   .badge-year {
+      font-size: 0.5rem;
+      margin-top: 2px;
+   }
+   
+   .view-mode-selector {
+      flex-wrap: wrap;
+   }
+   
+   .btn-view-mode {
+      font-size: 0.75rem;
+      padding: 0.4rem 0.75rem;
+      min-width: 50px;
+   }
+}
+
+/* ============================================================================
+   Article sidebar — category badges and tag links
+   ============================================================================ */
+
+.news-article-sidebar {
+    padding-top: 3rem;          /* matches content panel my-5 (margin-top: 3rem) */
+    top: 3.5rem;               /* fallback — overridden by JS to exact navbar height */
+    max-height: calc(100vh - 3.5rem); /* fallback; overridden by JS */
+    overflow-y: hidden;        /* no scrollbar; JS scrolls programmatically */
+}
+
+.news-article-sidebar .publications-sidebar-header,
+.news-sidebar .publications-sidebar-header {
+  border-bottom: none;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0;
+}
+
+.news-article-sidebar .news-article-sidebar-meta li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.85rem;
+}
+
+.news-article-sidebar .news-article-sidebar-label {
+    flex-shrink: 0;
+    color: var(--bs-secondary-color);
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+.news-article-sidebar .news-article-sidebar-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1rem 0.5rem;
+    margin-top: 0.15rem;
+}
+
+/* Category badges — compact with background */
+.news-article-sidebar .news-category-badge {
+    display: inline-block;
+    padding: .12em .45em;
+    font-size: .72em;
+    font-weight: 600;
+    line-height: 1.5;
+    border-radius: 3px;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    background: var(--bs-secondary-bg);
+    color: var(--bs-secondary-color);
+}
+
+.news-article-sidebar .news-cat-news {
+    background: rgba(13, 110, 253, .1);
+    color: #0d6efd;
+}
+.news-article-sidebar a.news-cat-news:hover {
+    background: rgba(13, 110, 253, .2);
+}
+
+.news-article-sidebar .news-cat-work {
+    background: rgba(111, 66, 193, .1);
+    color: #6f42c1;
+}
+.news-article-sidebar a.news-cat-work:hover {
+    background: rgba(111, 66, 193, .2);
+}
+
+.news-article-sidebar .news-cat-research-activity,
+.news-article-sidebar .news-cat-research {
+    background: rgba(25, 135, 84, .1);
+    color: #198754;
+}
+.news-article-sidebar a.news-cat-research-activity:hover,
+.news-article-sidebar a.news-cat-research:hover {
+    background: rgba(25, 135, 84, .2);
+}
+
+.news-article-sidebar .news-cat-publication {
+    background: rgba(253, 126, 20, .1);
+    color: #fd7e14;
+}
+.news-article-sidebar a.news-cat-publication:hover {
+    background: rgba(253, 126, 20, .2);
+}
+
+/* Tag links — no background, plain text */
+.news-article-sidebar .news-article-tag {
+    display: inline-block;
+    font-size: .77em;
+    padding: 0;
+    color: var(--bs-secondary-color);
+    text-decoration: none;
+    line-height: 1.6;
+}
+
+.news-article-sidebar .news-article-tag::before {
+    content: '#';
+    opacity: .4;
+}
+
+.news-article-sidebar .news-article-tag:hover {
+    color: var(--bs-primary);
+}
+
+/* ── Sidebar nav links (feed rows + back link) ───────────────────────────── */
+
+.sidebar-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.sidebar-feed-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.2rem 0;
+}
+
+.sidebar-feed-label {
+  font-size: 0.82rem;
+  color: var(--bs-body-color);
+  text-decoration: none;
+  flex: 1;
+}
+
+.sidebar-feed-label:hover {
+  color: var(--bs-primary);
+  text-decoration: underline;
+}
+
+.sidebar-feed-label--plain {
+  color: var(--bs-secondary-color);
+}
+
+.sidebar-feed-rss {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.7;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.sidebar-feed-rss:hover {
+  opacity: 1;
+}
+
+.sidebar-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--bs-secondary-color);
+  text-decoration: none;
+  padding: 0.15rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ── Domain-grouped category sections in blog sidebar ── */
+.domain-subgroup {
+  margin-top: 0.5rem;
+}
+
+.domain-subgroup-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.2rem;
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--bs-tertiary-color, rgba(108, 117, 125, 0.5));
+}
+
+.domain-subgroup-label span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.domain-rss-link {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.55;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.domain-rss-link:hover {
+  opacity: 1;
+}
+
+/* Two-column grid for category badges within a domain */
+.filter-tagcloud--2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.2rem 0.3rem;
+  margin: 0.25rem 0 0.1rem;
+}
+
+/* Category badge + inline RSS icon */
+.cat-rss-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.25rem;
+  opacity: 0.5;
+  text-decoration: none;
+  color: currentColor;
+  vertical-align: middle;
+}
+
+.cat-rss-icon:hover {
+  opacity: 1;
+}
+
+.sidebar-back-link:hover {
+  color: var(--bs-body-color);
+}
+
+/* External link (replaces primary button) */
+.sidebar-external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  color: var(--bs-emphasis-color);
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.15s;
+}
+
+.sidebar-external-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+  color: var(--bs-emphasis-color);
+}
+
+.sidebar-external-link .bi {
+  font-size: 0.72rem;
+  flex-shrink: 0;
+}
+
+/* ── Blog article sidebar TOC ─────────────────────────────────────────── */
+
+.blog-toc-heading {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--bs-secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.blog-toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-toc-item {
+  margin-bottom: 0.2rem;
+}
+
+.blog-toc-h3 {
+  padding-left: 0.85rem;
+}
+
+.blog-toc-link {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--bs-secondary-color);
+  text-decoration: none;
+  padding: 0.1rem 0;
+  border-left: 2px solid transparent;
+  padding-left: 0.5rem;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.blog-toc-link:hover,
+.blog-toc-link.active {
+  color: var(--bs-emphasis-color);
+  border-left-color: var(--bs-primary);
+}
+
+/* ── Collapsible artifacts section ──────────────────────────────────────── */
+
+.news-artifacts-heading {
+  margin: 0;
+}
+
+.news-artifacts-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--bs-emphasis-color);
+  cursor: pointer;
+}
+
+.news-artifacts-toggle:hover {
+  color: var(--bs-primary);
+}
+
+.news-artifacts-count {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--bs-secondary-color);
+}
+
+.news-artifacts-chevron {
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.news-artifacts-toggle:not(.collapsed) .news-artifacts-chevron {
+  transform: rotate(-180deg);
+}
+
+.article-posts-container .post h2,
+.article-posts-container .post .h2 {
+    font-size: 1.2rem;
+    margin-top: 1.4rem;
+}
+
+.article-posts-container .post h3,
+.article-posts-container .post .h3 {
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+}
+
+.article-posts-container .post h4,
+.article-posts-container .post .h4 {
+    font-size: 0.95rem;
+    margin-top: 1rem;
+}
+
+/* Override Bootstrap docs 133% first-paragraph lead and normalize body text */
+.article-posts-container .post > p:first-of-type,
+.article-posts-container .post > img:first-child + p {
+    font-size: 0.925rem;
+}
+
+.article-posts-container .post p,
+.article-posts-container .post li,
+.article-posts-container .post td {
+    font-size: 0.925rem;
+    line-height: 1.65;
+}
+
+@media (min-width: 1200px) {
+    .article-posts-container .post h2,
+    .article-posts-container .post .h2 {
+        font-size: 1.2rem;
+    }
+
+    .article-posts-container .post h3,
+    .article-posts-container .post .h3 {
+        font-size: 1.05rem;
+    }
+
+    .article-posts-container .post > p:first-of-type,
+    .article-posts-container .post > img:first-child + p {
+        font-size: 0.925rem;
+    }
+}
+
+/* ============================================================================
+   News article artifact cards
+   ============================================================================ */
+.news-article-artifacts {
+    border-top: 1px solid var(--bs-border-color);
+    padding-top: 1.5rem;
+}
+
+.news-artifacts-heading {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--bs-secondary-color);
+    margin-bottom: 0.75rem;
+}
+
+.news-artifacts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.news-artifact-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    text-decoration: none;
+    color: var(--bs-body-color);
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.news-artifact-card:hover {
+    border-color: var(--bs-primary);
+    background: var(--bs-tertiary-bg);
+    color: var(--bs-body-color);
+}
+
+.news-artifact-icon {
+    font-size: 1.1rem;
+    color: var(--bs-secondary-color);
+    flex-shrink: 0;
+    width: 1.4rem;
+    text-align: center;
+}
+
+.news-artifact-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.news-artifact-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.news-artifact-type {
+    font-size: 0.72rem;
+    color: var(--bs-secondary-color);
+}
+
+.news-artifact-arrow {
+    font-size: 0.75rem;
+    color: var(--bs-secondary-color);
+    flex-shrink: 0;
+}
+
+/* ============================================================================
+   Sidebar changelog
+   ============================================================================ */
+.news-changelog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.news-changelog-entry {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.4rem 0.5rem;
+    align-items: baseline;
+}
+
+.news-changelog-date {
+    font-size: 0.7rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--bs-secondary-color);
+    white-space: nowrap;
+}
+
+.news-changelog-note {
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: var(--bs-body-color);
+}

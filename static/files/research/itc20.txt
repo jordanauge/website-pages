@@ -1,0 +1,10 @@
+The issue of buffer sizing is rightly receiving increasing attention with the
+realization that the bandwidth delay product rule-of-thumb is becoming
+unsustainable as link capacity continues to grow. In the present paper we
+examine this issue from the light of our understanding of traffic
+characteristics and the performance of statistical bandwidth sharing. We
+demonstrate through simple analytical models coupled with the results of ns2
+simulations that, while a buffer equivalent to the bandwidth delay product is
+certainly unnecessary, the recently advocated reduction to a few dozen packets
+is too drastic. The required buffer size depends significantly on the peak
+exogenous rate of multiplexed flows.

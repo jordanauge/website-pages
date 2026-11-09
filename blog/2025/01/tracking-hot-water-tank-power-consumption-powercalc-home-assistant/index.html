@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="/theme/css/style.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/theme-logos.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/docs.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/wowchemy-compat.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news-snippet.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/publications.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/feeds.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/projects.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/research-home.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/collaborations.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/cv.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/archive-links.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-summary.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/filter-tagcloud.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-content.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/pygments.css?v=c6b9f9bc" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="/theme/css/navbar.css" rel="stylesheet">
+
+<!-- KaTeX for LaTeX math rendering -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+
+
+
+
+<title>Tracking hot water tank power consumption with PowerCalc in Home Assistant</title>
+
+
+<link href="https://jordan.auge.synaxe.net/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jordan Augé Full Atom Feed" >
+
+<link href="https://jordan.auge.synaxe.net/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Full RSS Feed" >
+
+
+
+
+<link href="/feed/home-automation.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Categories RSS Feed" >
+
+
+
+<link rel="canonical" href="https://jordan.auge.synaxe.net/blog/2025/01/tracking-hot-water-tank-power-consumption-powercalc-home-assistant/">
+
+<link rel="alternate" hreflang="en" href="https://jordan.auge.synaxe.net/blog/2025/01/tracking-hot-water-tank-power-consumption-powercalc-home-assistant/">
+<link rel="alternate" hreflang="fr" href="https://jordan.auge.synaxe.net/fr/blog/2025/01/tracking-hot-water-tank-power-consumption-powercalc-home-assistant/">
+
+<meta property="og:locale" content="">
+
+<meta property="og:site_name" content="Jordan Augé">
+<meta property="og:url" content="https://jordan.auge.synaxe.net/blog/2025/01/tracking-hot-water-tank-power-consumption-powercalc-home-assistant/">
+<meta property="og:type" content="article">
+
+<meta property="og:title" content="Tracking hot water tank power consumption with PowerCalc in Home Assistant">
+<meta property="og:description" content="Estimate hot water tank energy consumption in Home Assistant with PowerCalc by combining a binary trigger and a voltage-aware power template.">
+
+
+
+
+<meta name="description" content="Estimate hot water tank energy consumption in Home Assistant with PowerCalc by combining a binary trigger and a voltage-aware power template.">
+
+<meta name="author" content="Jordan Augé">
+
+<meta name="tags" content="home-assistant">
+<meta name="tags" content="powercalc">
+<meta name="tags" content="energy">
+<meta name="tags" content="water-heater">
+
+
+<meta name="description" content="Jordan Augé's homepage">
+
+<script src="/theme/js/color-modes.js"></script>
+
+<meta name="author" content="Jordan Augé">
+
+
+</head>
+
+<body class="article-tracking-hot-water-tank-power-consumption-powercalc-home-assistant">
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <symbol id="archive" viewBox="0 0 16 16">
+    <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="arrow-right-short" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+  </symbol>
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </symbol>
+  <symbol id="file-earmark-richtext" viewBox="0 0 16 16">
+    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+    <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
+  </symbol>
+  <symbol id="film" viewBox="0 0 16 16">
+    <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="rss" viewBox="0 0 16 16">
+    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+    <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+  <symbol id="three-dots" viewBox="0 0 16 16">
+    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+  </symbol>
+</svg>
+
+
+
+
+
+  <header class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top">
+  <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+    <div class="d-lg-none" style="width: 2.25rem;"></div>
+
+    <a class="navbar-brand p-0 me-0 me-lg-4" href="https://jordan.auge.synaxe.net/" aria-label=Jordan Augé>Jordan Augé</a>
+
+    <div class="d-flex">
+      <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jordan Augé</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+      </div>
+
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/">Home</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/news">News</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/research/publications">Publications</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/projects">Projects</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/blog">Blog</a>
+              </li>
+        </ul>
+
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+
+          <li class="nav-item d-none d-lg-flex align-items-center navbar-social-icons">
+            <a href="mailto:jordan.auge@free.fr" class="nav-link px-1 navbar-social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://scholar.google.fr/citations?user=-itbwwIAAAAJ" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://github.com/jordanauge" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/jordan-aug%C3%A9-763ba4a8/" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </li>
+
+          <li class="nav-item dropdown d-lg-none">
+            <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                    id="bd-theme-mobile"
+                    type="button"
+                    aria-expanded="false"
+                    data-bs-toggle="dropdown"
+                    data-bs-display="static"
+                    aria-label="Toggle theme (auto)">
+              <svg class="bi my-1"><use href="#circle-half"></use></svg>
+              <span class="ms-2" id="bd-theme-text">Toggle theme</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+                  Light
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+                  Dark
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+                  Auto
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item d-lg-none navbar-language-item">
+            <div class="navbar-lang-toggle" aria-label="Language switcher">
+              <span class="navbar-lang-label">EN</span>
+              <a href="/fr/blog/2025/01/tracking-hot-water-tank-power-consumption-powercalc-home-assistant/"
+                 class="navbar-lang-toggle-track"
+                 role="switch"
+                 aria-checked="false"
+                 aria-label="Switch to French">
+                <span class="navbar-lang-toggle-thumb"></span>
+              </a>
+              <span class="navbar-lang-label">FR</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="navbar-absolute-right d-none d-lg-flex align-items-center">
+    <div class="dropdown d-flex align-items-center">
+      <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-lang-toggle navbar-language-item" aria-label="Language switcher">
+      <span class="navbar-lang-label">EN</span>
+      <a href="/fr/blog/2025/01/tracking-hot-water-tank-power-consumption-powercalc-home-assistant/"
+         class="navbar-lang-toggle-track"
+         role="switch"
+         aria-checked="false"
+         aria-label="Switch to French">
+        <span class="navbar-lang-toggle-thumb"></span>
+      </a>
+      <span class="navbar-lang-label">FR</span>
+    </div>
+  </div>
+</header>
+            <header class="intro-header"
+                style="background-image: url('https://jordan.auge.synaxe.net/theme/images/post-bg.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                            <div class="post-heading text-light text-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+
+
+<div class="container-xxl px-4 px-xxl-2">
+    <div class="d-lg-grid content blog-article-page" id="content">
+        
+<div class="sidebar">
+  <aside class="news-article-sidebar sticky-top">
+
+    <div class="publications-sidebar-header">
+      <h1>Home Automation</h1>
+    </div>
+
+    <div class="sidebar-section sidebar-nav-links">
+
+      <div class="sidebar-feed-row">
+        <a class="sidebar-feed-label" href="/blog/">All posts</a>
+        <div class="dropdown sidebar-rss-dropdown">
+          <button class="sidebar-rss-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="RSS feeds">
+            <svg class="bi" width="11" height="11" aria-hidden="true"><use xlink:href="#rss"></use></svg>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end sidebar-rss-menu">
+            <li><a class="dropdown-item" href="/feed/blog.rss.xml" rel="alternate" type="application/rss+xml">Posts</a></li>
+            <li><a class="dropdown-item" href="/feed/blog-with-updates.rss.xml" rel="alternate" type="application/rss+xml">Posts + updates</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-feed-row">
+        <a class="sidebar-feed-label sidebar-feed-label--plain" href="https://jordan.auge.synaxe.net/blog/category/home-automation/">Home Automation</a>
+        <div class="dropdown sidebar-rss-dropdown">
+          <button class="sidebar-rss-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="RSS feeds">
+            <svg class="bi" width="11" height="11" aria-hidden="true"><use xlink:href="#rss"></use></svg>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end sidebar-rss-menu">
+            <li><a class="dropdown-item" href="/feed/home-automation.rss.xml" rel="alternate" type="application/rss+xml">Posts</a></li>
+            <li><a class="dropdown-item" href="/feed/home-automation-with-updates.rss.xml" rel="alternate" type="application/rss+xml">Posts + updates</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-back-row mt-2">
+        <button type="button" class="sidebar-back-link" onclick="if(history.length > 1 && document.referrer && document.referrer.indexOf(location.host) !== -1){ history.back(); } else { location.href='/blog/'; }">
+          <i class="bi bi-arrow-left"></i>
+          Back
+        </button>
+      </div>
+
+    </div>
+
+    <div id="blog-toc-section" class="sidebar-section" style="display:none">
+      <hr class="sidebar-divider my-2">
+      <div class="blog-toc-heading">On this page</div>
+      <nav id="blog-toc" class="blog-toc-nav" aria-label="Table of contents"></nav>
+    </div>
+
+  </aside>
+</div>
+
+<script>
+(function() {
+  function buildToc() {
+    var post = document.querySelector('.post');
+    if (!post) return;
+    var headings = Array.from(post.querySelectorAll('h2, h3'));
+    if (headings.length < 2) return;
+    var nav = document.getElementById('blog-toc');
+    var section = document.getElementById('blog-toc-section');
+    if (!nav || !section) return;
+
+    var ul = document.createElement('ul');
+    ul.className = 'blog-toc-list';
+    headings.forEach(function(h, i) {
+      if (!h.id) h.id = 'toc-heading-' + i;
+      var li = document.createElement('li');
+      li.className = 'blog-toc-item blog-toc-' + h.tagName.toLowerCase();
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.className = 'blog-toc-link';
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    nav.appendChild(ul);
+    section.style.display = '';
+
+    var aside = section.closest('.news-article-sidebar');
+    if (!aside) return;
+
+    // Calibrate sticky top to actual navbar height so sidebar never overlaps it
+    function applyNavbarOffset() {
+      var navbar = document.querySelector('.bd-navbar');
+      if (!navbar) return;
+      var h = Math.ceil(navbar.getBoundingClientRect().height);
+      var gap = 4; // px clearance below navbar
+      aside.style.top = (h + gap) + 'px';
+      aside.style.maxHeight = 'calc(100vh - ' + (h + gap) + 'px)';
+    }
+    applyNavbarOffset();
+    window.addEventListener('resize', applyNavbarOffset, { passive: true });
+
+    // Minimal-scroll: only move the sidebar when the active link is out of view.
+    // Never overshoot — scroll just enough to reveal the link with a small margin.
+    function scrollSidebarToActive(link) {
+      var margin = 6;
+      var asideRect = aside.getBoundingClientRect();
+      var linkRect = link.getBoundingClientRect();
+      var relTop    = linkRect.top    - asideRect.top;
+      var relBottom = linkRect.bottom - asideRect.top;
+      if (relTop < margin) {
+        aside.scrollTop += relTop - margin;
+      } else if (relBottom > asideRect.height - margin) {
+        aside.scrollTop += relBottom - asideRect.height + margin;
+      }
+      // If already visible, do nothing
+    }
+
+    // Scroll-based active tracking: the active heading is the last one whose
+    // top edge has passed above the scroll threshold (navbar bottom + small offset).
+    var currentActiveId = null;
+    function updateActive() {
+      var navbar = document.querySelector('.bd-navbar');
+      var threshold = (navbar ? navbar.offsetHeight : 56) + 8;
+
+      var found = null;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        if (headings[i].getBoundingClientRect().top <= threshold) {
+          found = headings[i];
+          break;
+        }
+      }
+      // If nothing has passed yet, highlight the first item
+      if (!found) found = headings[0];
+      if (!found) return;
+
+      if (found.id === currentActiveId) return; // no change
+      currentActiveId = found.id;
+
+      nav.querySelectorAll('.blog-toc-link').forEach(function(l) {
+        l.classList.remove('active');
+      });
+      var activeLink = nav.querySelector('a[href="#' + found.id + '"]');
+      if (activeLink) {
+        activeLink.classList.add('active');
+        scrollSidebarToActive(activeLink);
+      }
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() { updateActive(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateActive(); // set initial state
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildToc);
+  } else {
+    buildToc();
+  }
+})();
+</script>
+
+
+
+        <div class="main">
+            
+<div class="posts-container article-posts-container mx-auto my-5">
+  <div class="posts">
+    <div class="post">
+      <div class="article-content-header">
+        <h1 class="article-content-title">Tracking hot water tank power consumption with PowerCalc in Home Assistant</h1>
+        <div class="article-meta-pills article-meta-pills-content mt-2 mb-1">
+          <time class="article-date" datetime="2025-01-27"><i class="bi bi-calendar3"></i> 2025-01-27</time>
+          <button type="button" class="article-date article-date-updated changelog-toggle"
+                  data-bs-toggle="collapse" data-bs-target="#article-changelog"
+                  aria-expanded="false" aria-controls="article-changelog">
+            <i class="bi bi-pencil-square"></i> 2026-05-19<i class="bi bi-chevron-down changelog-chevron" aria-hidden="true"></i>
+          </button>
+            <a class="post-tag post-tag-project" data-color="teal" href="https://jordan.auge.synaxe.net/blog/category/home-automation/"><i class="bi bi-folder2-open"></i> Home Automation</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/blog/tag/home-assistant">#home-assistant</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/blog/tag/powercalc">#powercalc</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/blog/tag/energy">#energy</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/blog/tag/water-heater">#water-heater</a>
+        </div>
+        <div class="collapse" id="article-changelog">
+          <div class="changelog-banner">
+            <div class="changelog-entry">
+              <span class="changelog-date">2026-05-19</span>
+<a href="#going-further" class="changelog-note">Added: voltage fluctuation error analysis; native YAML alternative without PowerCalc.</a>            </div>
+          </div>
+        </div>
+      </div>
+      
+     <div class="article-summary article-summary-featured">
+         <div class="article-summary-kicker">Summary</div>
+     <p>Estimate hot water tank energy consumption in Home Assistant with PowerCalc by combining a binary trigger and a voltage-aware power template.</p>
+     </div>
+
+
+
+       <h2 id="introduction">Introduction</h2>
+<!--
+Old version:
+This article explains how to use the PowerCalc integration to add your hot water tank consumption to the Home Assistant Energy dashboard without installing a dedicated power monitor.
+
+The key observation is that hot water tanks follow a simple consumption pattern: they are high-power resistive loads, often scheduled in fixed time windows such as off-peak night hours. When there is no other similar appliance running at the same time, you can exploit sharp power jumps, or another correlated signal, to detect when the heater is active and estimate its consumption accurately. PowerCalc is well suited to that kind of virtual sensing.
+-->
+<p>This article explains how to use the PowerCalc integration to add your hot water tank consumption to the Home Assistant Energy dashboard without installing a dedicated power monitor.</p>
+<p>The idea is simple: a hot water tank is a high-power resistive load with a fairly predictable schedule. If no other similar appliance overlaps with it, a single whole-home power sensor is often enough to detect heater activity and estimate its energy usage with good precision. PowerCalc is a good fit for this kind of virtual sensing because it can turn a binary trigger into both instantaneous power and accumulated energy.</p>
+<h2 id="motivation">Motivation</h2>
+<!--
+Old version:
+I deliberately chose a "dumb" appliance, the widely available 200L Sauter Cangar, advertised at 2200W, because a hot water tank should remain a simple device. Marketing seems to have won the battle against durability, efficiency, and technical sanity. Many newer products expose proprietary interfaces for a superficial sense of control, require Wi-Fi and cloud connectivity, and draw a constant non-negligible standby load. I also found that some of them cannot be controlled through pilot wire, forcing you to manually synchronize their schedule with your electricity provider. Traditional tanks are simpler: they are designed to be driven by pilot wire and, because they are not intended to remain permanently powered, they often include a stronger battery for features such as active anti-corrosion during off-grid periods.
+
+If you use Home Assistant seriously, you have probably run into the "dark matter" of home energy: heavy appliances such as hardwired electric water heaters that have no built-in metering. You can install a dedicated relay or a sub-meter in the electrical panel, but in some situations a software-driven virtual sensor is accurate enough and much easier to maintain.
+-->
+<p>I deliberately chose a “dumb” appliance, the widely available 200L Sauter Cangar, advertised at 2200W, because a hot water tank should remain a simple device. Marketing seems to have won the battle against durability, efficiency, and technical sanity. Many newer products expose proprietary interfaces for a superficial sense of control, require Wi-Fi and cloud connectivity, and draw a constant non-negligible standby load. I also found that some of them cannot be controlled through pilot wire, forcing you to manually synchronize their schedule with your electricity provider. Traditional tanks are simpler: they are designed to be driven by pilot wire and, because they are not intended to remain permanently powered, they often include a stronger battery for features such as active anti-corrosion during off-grid periods.</p>
+<p>If you use Home Assistant seriously, you have probably run into the “dark matter” of home energy: hardwired appliances with no built-in metering. A hot water tank is a perfect example. You can install a relay with power monitoring or add a sub-meter in the electrical panel, but if the appliance has a clean enough signature, a software-only virtual sensor can be both simpler and accurate enough for the Energy dashboard.</p>
+<h2 id="what-is-powercalc"><strong>What is Powercalc?</strong></h2>
+<p><a href="https://github.com/bramstroker/homeassistant-powercalc">Powercalc</a> is a specialized Home Assistant integration designed to estimate power consumption for devices that don’t report it themselves. Its key feature is the <strong>Manual Virtual Power</strong> sensor. It allows you to take a simple “On/Off” state and transform it into a high-fidelity Power (W) and Energy (kWh) entity.</p>
+<ul>
+<li><strong>The Energy Dashboard:</strong> only requires the <strong>Energy Sensor</strong> (kWh) created by PowerCalc. It manages its own long-term statistics internally.  </li>
+<li><strong>Utility Meters:</strong> useful when you want dedicated entities for the main UI, or when you need separate tariff-specific counters outside the dashboard.</li>
+</ul>
+<h2 id="computing-the-heaters-resistance">Computing the heater’s resistance</h2>
+<!--
+Old version:
+You could assign a fixed value such as 2200 W, or derive a simple average from recent history, but in practice this power varies over time. That can easily introduce errors of 5% or more.
+
+The reason is that mains voltage drops during heavy usage periods. I noticed that voltage could fall from 225 V to 215 V exactly when off-peak hours start and the heater turns on. If you model the heater with a fixed power value, you will overestimate the energy actually used.
+-->
+<p>You could assign a fixed value such as 2200 W, or derive a simple average from recent history, but in practice this power varies over time. That can easily introduce errors of 5% or more.</p>
+<p>The reason is that voltage is not constant. During heavy usage periods I observed mains voltage falling from roughly 225 V to 215 V, often exactly when off-peak hours begin and the heater turns on. A fixed-power model therefore counts energy that was never actually drawn.</p>
+<p>The graph makes the problem visible: heater activation coincides with a lower grid voltage, so using a fixed advertised wattage would systematically overestimate consumption.</p>
+<p><img alt="Measured mains voltage and heater power variation around the heating trigger" src="/blog/2025-01-27-homeassistant-power-tracking-water-tank-powercalc/image.png"/></p>
+<p>Instead, we can exploit the fact that a hot water tank behaves as a nearly pure resistive load following Ohm’s law: $P = V^2 / R$. I measured the power delta before and after the heater trigger.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>P</th>
+<th>V</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before trigger</td>
+<td>212 W</td>
+<td>220 V</td>
+</tr>
+<tr>
+<td>After trigger</td>
+<td>2212 W</td>
+<td>220 V</td>
+</tr>
+</tbody>
+</table>
+<p>The formula gives $R = V^2 / P = 220^2 / 2000 = 24.2 \Omega$. In this measurement the result is close to the advertised value, but that is not always the case. I repeated the same check over several days and kept 24 $\Omega$ as the working resistance.</p>
+<p>Once you have that resistance estimate, you can compute instantaneous power directly from the measured voltage using the same formula.</p>
+<h2 id="when-this-approach-works-well">When this approach works well</h2>
+<p>This approach works well when three conditions hold:</p>
+<ul>
+<li>the appliance behaves like a mostly resistive load</li>
+<li>the appliance has a distinct power signature</li>
+<li>its schedule or operating window helps reduce ambiguity</li>
+</ul>
+<p>It works less well when several similar high-power loads overlap, or when the trigger sensor is too noisy to isolate the heater reliably.</p>
+<h2 id="setting-up-powercalc">Setting up powercalc</h2>
+<h3 id="installation">Installation</h3>
+<ol>
+<li><strong>HACS Installation:</strong> Go to HACS -&gt; Integrations -&gt; Explore &amp; Download Repositories. Search for “Powercalc” and download it.  </li>
+<li><strong>Restart:</strong> Restart Home Assistant to initialize the new files.  </li>
+</ol>
+<h2 id="setting-up-a-binary-sensor-to-track-active-appliance">Setting up a binary sensor to track active appliance</h2>
+<p>To track an appliance virtually, PowerCalc needs a reference sensor indicating when the device is active. Here I use the whole-home power meter, a <strong>Lixee ZLinky</strong>, to detect the power delta.</p>
+<p>A binary sensor is created in <code>templates.yaml</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">binary_sensor</span><span class="p">:</span><span class="w">  </span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Water</span><span class="nv"> </span><span class="s">Tank</span><span class="nv"> </span><span class="s">Heating"</span><span class="w">  </span>
+<span class="w">      </span><span class="nt">unique_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">water_tank_heating</span><span class="w">  </span>
+<span class="w">      </span><span class="nt">device_class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">running</span><span class="w">  </span>
+<span class="w">      </span><span class="nt">delay_on</span><span class="p">:</span><span class="w"> </span><span class="s">"00:00:15"</span><span class="w">   </span>
+<span class="w">      </span><span class="nt">delay_off</span><span class="p">:</span><span class="w"> </span><span class="s">"00:00:15"</span><span class="w">  </span>
+<span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">{% set power = states('sensor.lixee_zlinky_tic_puissance') | float(0) %}</span>
+<span class="w">        </span><span class="no">{% set is_time_window = 22 &lt;= now().hour or now().hour &lt; 6 %}</span>
+<span class="w">        </span><span class="no">{{ power &gt; 1800 and is_time_window }}</span>
+</code></pre></div></td></tr></table></div>
+<p>To avoid false positives caused by other heavy appliances such as an oven, I use the off-peak schedule, 10 PM to 6 AM in my case, as an additional constraint. The <code>delay_on</code> of 15 seconds filters out short spikes, and <code>delay_off</code> prevents flicker when the meter briefly reports 0 W or misses an update.</p>
+<h2 id="adding-a-sensor-from-powercalc-ui">Adding a sensor from PowerCalc UI</h2>
+<p><strong>Integration Setup:</strong> Go to <strong>Settings</strong> &gt; <strong>Devices &amp; Services</strong> &gt; <strong>Add Integration</strong>. Search for “Powercalc” and select it.</p>
+<p>Follow these steps in the PowerCalc configuration flow:</p>
+<h3 id="screen-1-choose-sensor-type"><strong>Screen 1: Choose Sensor Type</strong></h3>
+<ul>
+<li>Select <strong>Virtual power (manual)</strong>.</li>
+</ul>
+<h3 id="screen-2-create-a-virtual-power-sensor"><strong>Screen 2: Create a virtual power sensor</strong></h3>
+<ul>
+<li><strong>Source entity:</strong> <code>binary_sensor.water_tank_heating</code>.  </li>
+<li><strong>Name:</strong> “Hot water tank Power”.  </li>
+<li><strong>Calculation strategy:</strong> Select <strong>fixed</strong> from the dropdown.  </li>
+<li><strong>Standby power:</strong> Set this to 0.  </li>
+<li><strong>Create energy sensor:</strong> Ensure this is toggled <strong>ON</strong>.</li>
+</ul>
+<h3 id="screen-3-fixed-config"><strong>Screen 3: Fixed config</strong></h3>
+<p>Use the <strong>Power template</strong> field (the middle one) for your dynamic calculation.</p>
+<p>Instead of writing a fixed wattage, use the usual Home Assistant Jinja expression that squares <code>sensor.lixee_zlinky_tic_tension</code>, divides by <code>23.07</code>, and rounds the result to two decimals.</p>
+<h3 id="screen-4-advanced-options"><strong>Screen 4: Advanced options</strong></h3>
+<ul>
+<li><strong>Energy integration method:</strong> change this to <strong>left</strong> (Left Riemann Sum). For appliances that switch almost instantly from 0 W to 2000 W, this is usually more accurate than the default trapezoidal method.  </li>
+<li><strong>Energy sensor unit prefix:</strong> Ensure <strong>k (kilo)</strong> is selected.</li>
+</ul>
+<div class="section-added">
+<p><span id="going-further"></span></p>
+<h2 id="going-further-2026-05-19">Going further <a class="section-badge section-badge-added" data-bs-target="#article-changelog" data-bs-toggle="collapse" href="#article-changelog" role="button" title="Added 2026-05-19: voltage fluctuation error analysis; native YAML alternative without PowerCalc.">+ 2026-05-19</a></h2>
+<h3 id="accuracy-quantifying-the-voltage-error">Accuracy: quantifying the voltage error</h3>
+<p>The formula $P = V^2/R$ means that a voltage variation from the 230 V nominal is
+amplified when computing power, because the relationship is quadratic. With $R = 24\,\Omega$:</p>
+<table>
+<thead>
+<tr>
+<th>Voltage</th>
+<th>Actual power</th>
+<th>Error vs. fixed 230 V</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>215 V</td>
+<td>1927 W</td>
+<td>−277 W (−14%)</td>
+</tr>
+<tr>
+<td>220 V</td>
+<td>2017 W</td>
+<td>−187 W (−9%)</td>
+</tr>
+<tr>
+<td>225 V</td>
+<td>2110 W</td>
+<td>−94 W (−4%)</td>
+</tr>
+<tr>
+<td>230 V</td>
+<td>2204 W</td>
+<td>0</td>
+</tr>
+<tr>
+<td>235 V</td>
+<td>2301 W</td>
+<td>+97 W (+4%)</td>
+</tr>
+</tbody>
+</table>
+<p>During off-peak hours the grid is typically more loaded and voltage tends to sit
+toward the lower end of that range. For a 3.5-hour heating cycle at 215 V, a
+fixed 230 V model would account for 7.7 kWh instead of the actual 6.7 kWh — a
+one kilowatt-hour overcount per night, or roughly 30 kWh per month.</p>
+<blockquote>
+<p><strong>A note on negative values.</strong> If you were to estimate heater energy by
+subtracting a baseline from the whole-home meter rather than using a binary
+trigger, a simultaneous voltage drop at heater turn-on could produce a power
+delta slightly lower than expected and, depending on timing, even a brief
+negative reading. The binary trigger approach avoids this entirely: power is
+either $V^2/R$ or zero, with no subtraction involved.</p>
+</blockquote>
+<h3 id="alternative-native-yaml-without-powercalc">Alternative: native YAML without PowerCalc</h3>
+<p>If you prefer not to add a HACS dependency, the same result can be achieved
+with three standard Home Assistant components.</p>
+<p><strong>1. Template sensor</strong> — instantaneous power, in <code>templates.yaml</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sensor</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Water</span><span class="nv"> </span><span class="s">Tank</span><span class="nv"> </span><span class="s">Power"</span>
+<span class="w">      </span><span class="nt">unit_of_measurement</span><span class="p">:</span><span class="w"> </span><span class="s">"W"</span>
+<span class="w">      </span><span class="nt">device_class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">power</span>
+<span class="w">      </span><span class="nt">state_class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">measurement</span>
+<span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">{% if is_state('binary_sensor.water_tank_heating', 'on') %}</span>
+<span class="w">          </span><span class="no">{{ (states('sensor.lixee_zlinky_tic_tension') | float(0) ** 2 / 24) | round(2) }}</span>
+<span class="w">        </span><span class="no">{% else %}</span>
+<span class="w">          </span><span class="no">0</span>
+<span class="w">        </span><span class="no">{% endif %}</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>2. Riemann sum integration</strong> — energy accumulation, in <code>configuration.yaml</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">sensor</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integration</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sensor.water_tank_power</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Water</span><span class="nv"> </span><span class="s">Tank</span><span class="nv"> </span><span class="s">Energy"</span>
+<span class="w">    </span><span class="nt">unit_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k</span>
+<span class="w">    </span><span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">left</span>
+<span class="w">    </span><span class="nt">round</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>3. Utility meter</strong> — cycle resets and persistence across restarts, in <code>configuration.yaml</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">utility_meter</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">water_tank_energy_daily</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sensor.water_tank_energy</span>
+<span class="w">    </span><span class="nt">cycle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daily</span>
+<span class="w">  </span><span class="nt">water_tank_energy_monthly</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sensor.water_tank_energy</span>
+<span class="w">    </span><span class="nt">cycle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monthly</span>
+</code></pre></div></td></tr></table></div>
+<p>The <code>integration</code> sensor resets to zero on Home Assistant restart. The
+<code>utility_meter</code> wrapper adds cycle-based resets and long-term statistics,
+giving the same behaviour as PowerCalc’s built-in energy sensor. Add
+<code>sensor.water_tank_energy</code> (or a utility meter entity) to the Energy dashboard
+in the usual way.</p>
+<p>The tradeoff is three YAML blocks versus a single guided UI flow. PowerCalc
+remains the simpler path if HACS is already part of your setup.</p>
+</div>
+<h2 id="conclusion">Conclusion</h2>
+<!--
+Old version:
+Once the new sensors are created, they should appear in the Energy dashboard as individual devices. This moves a large share of consumption out of the generic "untracked" bucket while keeping the estimate reasonably accurate, even during periods of lower mains voltage.
+-->
+<p>Once the new sensors are created, they should appear in the Energy dashboard as individual devices. This moves a large share of consumption out of the generic “untracked” bucket while keeping the estimate reasonably accurate, even during periods of lower mains voltage.</p>
+<p>The practical advantage of this method is not just accuracy. It is maintainability. If you already have a reliable whole-home meter, a virtual model in Home Assistant is often easier to operate than adding another relay, another radio device, or another component in the electrical panel.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+            <hr>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+  </div>
+</footer>
+    <!--script async src="/theme/js/vendor/bootstrap.bundle.min.js"></script-->
+    <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
+    <script async src="/theme/js/lazyload.js"></script-->
+    <script async src="/theme/js/application.js"></script>
+    <script defer src="/theme/js/archive-links.js"></script>
+    <script defer src="/theme/js/code-blocks.js"></script>
+    <script defer src="/theme/js/filters.js"></script>
+
+    <!-- KaTeX JavaScript for math rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\\\(', right: '\\\\)', display: false},
+            {left: '\\\\[', right: '\\\\]', display: true}
+          ]
+        });"></script>
+
+
+  </body>
+</html>

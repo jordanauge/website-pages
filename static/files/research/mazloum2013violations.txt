@@ -1,0 +1,8 @@
+We challenge a set of common assumptions that are frequently used to model
+interdomain routing in the Internet. We draw assumptions from the scientific
+literature and confront them with routing decisions that are actually taken by
+ASes, as seen in BGP feeds. We show that the assumptions are too simple to model
+real-world Internet routing policies. We also show that ASes frequently route in
+ways that are inconsistent with simple economic models of AS relationships. Our
+results should introduce a note of caution into future work that makes these
+assumptions and should prompt attempts to find more accurate models.

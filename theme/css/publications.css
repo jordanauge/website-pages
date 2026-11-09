@@ -1,0 +1,2054 @@
+/* Publications Page Styles */
+
+/* ============================================================================
+   Publications Sidebar
+   ============================================================================ */
+
+.publications-sidebar {
+    position: sticky;
+    top: 5.75rem;
+    max-height: calc(100vh - 6.75rem);
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    background: transparent;
+    border-radius: 0;
+    padding: 1rem 1.25rem 1.5rem;
+}
+
+.page-publications .publications-sidebar {
+    top: 5.5rem;
+    max-height: calc(100vh - 6.3rem);
+    padding: 0.85rem 1rem 1.1rem;
+}
+
+.publications-sidebar-header {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--bs-border-color);
+}
+
+.publications-sidebar-header h1 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.page-publications .publications-sidebar-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+}
+
+.page-publications .publications-sidebar-header h1 {
+    font-size: 1.02rem;
+}
+
+.publications-sidebar .sidebar-kicker,
+.publications-sidebar .sidebar-note {
+    color: var(--bs-secondary);
+    font-size: 0.78rem;
+    line-height: 1.45;
+}
+
+.page-publications .publications-sidebar .sidebar-kicker,
+.page-publications .publications-sidebar .sidebar-note {
+    font-size: 0.72rem;
+    line-height: 1.35;
+}
+
+.publications-sidebar .sidebar-section {
+    margin-bottom: 1rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--bs-border-color);
+}
+
+.publications-sidebar .sidebar-divider {
+    border: none;
+    border-top: 2px solid var(--bs-border-color);
+    margin: 0.5rem 0 1rem;
+    opacity: 1;
+}
+
+.publications-sidebar .sidebar-section-compact {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.page-publications .publications-sidebar .sidebar-section {
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.7rem;
+}
+
+.publications-sidebar .sidebar-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Sidebar count display — plain text, no pill background */
+.pub-count {
+    font-size: 0.68rem;
+    font-weight: 400;
+    color: var(--bs-secondary-color);
+    flex-shrink: 0;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+}
+
+.pub-count.venue-badge {
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.pub-count.venue-badge:hover {
+    color: var(--bs-primary);
+}
+
+.publications-sidebar .sidebar-title {
+    font-size: 0.76rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--bs-secondary);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.page-publications .publications-sidebar .sidebar-title {
+    font-size: 0.71rem;
+    margin-bottom: 0.75rem;
+}
+
+.publications-sidebar .sidebar-title i {
+    font-size: 1rem;
+}
+
+/* Nav Links */
+.publications-sidebar .nav-link {
+    color: var(--bs-body-color);
+    border-radius: 0;
+    padding: 0.2rem 0;
+    margin-bottom: 0.1rem;
+    transition: none;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.page-publications .publications-sidebar .nav-link {
+    font-size: 0.74rem;
+    gap: 0.32rem;
+    padding: 0.16rem 0;
+}
+
+.publications-sidebar .nav-link:hover {
+    background-color: transparent;
+    color: var(--bs-primary);
+    transform: none;
+}
+
+.publications-sidebar .nav-link.active {
+    background-color: transparent;
+    color: var(--bs-primary);
+}
+
+.publications-sidebar .nav-link i {
+    width: 14px;
+    opacity: 0.55;
+}
+
+.publications-sidebar .nav-link.active i {
+    opacity: 1;
+}
+
+.publications-sidebar .venue-ext-link {
+    display: inline;
+    color: var(--bs-secondary-color);
+    text-decoration: none;
+    font-size: 0.62em;
+    opacity: 0.65;
+    margin-left: 0.25em;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.publications-sidebar .venue-ext-link:hover {
+    opacity: 1;
+    color: var(--bs-primary);
+}
+
+/* Statistics Section */
+.pub-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: center;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--bs-primary);
+    line-height: 1;
+}
+
+.page-publications .stat-value {
+    font-size: 0.98rem;
+}
+
+.stat-label {
+    font-size: 0.62rem;
+    color: var(--bs-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.page-publications .stat-label {
+    font-size: 0.56rem;
+}
+
+/* Export Button */
+.publications-sidebar .btn {
+    font-size: 0.74rem;
+    padding: 0.36rem 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.page-publications .publications-sidebar .btn {
+    font-size: 0.69rem;
+    padding: 0.28rem 0.55rem;
+}
+
+.jump-links .nav-link {
+    font-size: 0.76rem;
+}
+
+.page-publications .jump-links .nav-link {
+    font-size: 0.71rem;
+}
+
+.publications-sidebar .category-filters {
+    gap: 0.35rem;
+    font-size: 0.68rem;
+}
+
+.publications-sidebar .category-filters .btn,
+.publications-sidebar .category-filters .btn-link {
+    padding: 0;
+    font-size: 0.68rem;
+    color: var(--bs-secondary);
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.publications-sidebar .category-filters .btn:hover,
+.publications-sidebar .category-filters .btn-link:hover {
+    color: var(--bs-primary);
+    transform: none;
+}
+
+.publications-sidebar .checkbox-group {
+    gap: 0.25rem;
+}
+
+/* Venue filter — nested under publication types */
+.publications-sidebar .pubtype-tree {
+    gap: 0;
+}
+
+.publications-sidebar .pubtype-node {
+    margin-bottom: 0.1rem;
+}
+
+.publications-sidebar .pubtype-node .form-check {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+}
+
+/* Collapse toggle button for categories with sub-items */
+.publications-sidebar .btn-collapse-toggle {
+    background: none;
+    border: none;
+    color: var(--bs-secondary);
+    font-size: 0.68rem;
+    padding: 0 0.15rem;
+    margin-left: auto;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+.publications-sidebar .btn-collapse-toggle i {
+    display: inline-block;
+    transition: transform 0.2s;
+}
+.publications-sidebar .btn-collapse-toggle.collapsed i {
+    transform: rotate(-90deg);
+}
+.publications-sidebar .btn-collapse-toggle:hover {
+    color: var(--bs-primary);
+}
+
+/* Collapsible venue / sub-item containers */
+.publications-sidebar .collapsible {
+    overflow: hidden;
+    max-height: 500px;
+    transition: max-height 0.25s ease-in-out, opacity 0.2s ease-in-out;
+    opacity: 1;
+}
+.publications-sidebar .collapsible.collapsed {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Activity subs also collapsible */
+.publications-sidebar .activity-subs.collapsible {
+    overflow: hidden;
+    max-height: 500px;
+    transition: max-height 0.25s ease-in-out, opacity 0.2s ease-in-out;
+    opacity: 1;
+}
+.publications-sidebar .activity-subs.collapsible.collapsed {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Type badge — clickable solo filter on hover */
+.publication-card-type .label,
+.publications-list > li .label {
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+}
+.publication-card-type .label:hover,
+.publications-list > li .label:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb, 13, 110, 253), 0.25);
+    filter: brightness(1.15);
+}
+
+/* Sidebar count badges — click to solo */
+.publications-sidebar .pubtype-tree .badge,
+.publications-sidebar .activity-tree .badge {
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+.publications-sidebar .pubtype-tree .badge:hover,
+.publications-sidebar .activity-tree .badge:hover {
+    background-color: var(--bs-primary) !important;
+}
+
+.publications-sidebar .pubtype-venues {
+    padding-left: 1.4rem;
+    max-height: 200px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.publications-sidebar .pubtype-venues .form-check {
+    padding: 0.1rem 0;
+}
+
+.publications-sidebar .pubtype-venues .badge {
+    font-size: 0.62rem;
+    font-weight: 500;
+    min-width: 1.3rem;
+    padding: 0.15em 0.4em;
+    cursor: pointer;
+}
+
+.publications-sidebar .pubtype-venues .badge:hover {
+    background-color: var(--bs-primary) !important;
+}
+
+.publications-sidebar .pubtype-venues .form-check-label {
+    width: 100%;
+    font-size: 0.82rem;
+}
+
+/* Master checkbox in section title */
+.publications-sidebar .sidebar-title .form-check-input {
+    margin-top: 0.15rem;
+}
+
+.publications-sidebar .sidebar-title label {
+    cursor: pointer;
+}
+
+/* Activity filter — nested under groups */
+.publications-sidebar .activity-tree {
+    gap: 0;
+}
+
+.publications-sidebar .activity-super-node {
+    margin-bottom: 0.25rem;
+}
+
+.publications-sidebar .activity-super-node > .form-check label {
+    width: 100%;
+}
+
+.publications-sidebar .activity-groups {
+    padding-left: 1.2rem;
+}
+
+.publications-sidebar .activity-node {
+    margin-bottom: 0.1rem;
+}
+
+.publications-sidebar .activity-node > .form-check label {
+    width: 100%;
+    font-size: 0.88rem;
+}
+
+.publications-sidebar .activity-subs {
+    padding-left: 1.4rem;
+}
+
+.publications-sidebar .activity-subs .form-check {
+    padding: 0.1rem 0;
+}
+
+.publications-sidebar .activity-subs .badge {
+    font-size: 0.62rem;
+    font-weight: 500;
+    min-width: 1.3rem;
+    padding: 0.15em 0.4em;
+    cursor: pointer;
+}
+
+.publications-sidebar .activity-subs .badge:hover {
+    background-color: var(--bs-primary) !important;
+}
+
+.publications-sidebar .activity-subs .form-check-label {
+    width: 100%;
+    font-size: 0.82rem;
+}
+
+.publications-sidebar .checkbox-group .form-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0;
+    padding: 0.2rem 0;
+    padding-left: 0;
+}
+
+.publications-sidebar .checkbox-group .form-check-input {
+    position: static;
+    flex-shrink: 0;
+    width: 0.9rem;
+    height: 0.9rem;
+    margin: 0.12rem 0 0;
+}
+
+.publications-sidebar .checkbox-group .form-check-label {
+    display: inline-flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    font-size: 0.78rem;
+    gap: 0.35rem;
+    padding: 0;
+    margin-left: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.publications-sidebar .checkbox-group .form-check-label i {
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.page-publications .publications-sidebar .checkbox-group .form-check-label {
+    font-size: 0.72rem;
+}
+
+.publications-sidebar .checkbox-group .form-check-label:hover {
+    background: transparent;
+    padding-left: 0;
+}
+
+.publications-sidebar .date-range-filter {
+    padding: 0.1rem 0 0;
+}
+
+.publications-sidebar .date-range-filter.is-enhanced {
+    padding-top: 1.8rem;
+}
+
+.publications-sidebar .date-range-filter.is-enhanced .range-display-fallback {
+    display: none;
+}
+
+.publications-sidebar .range-display {
+    justify-content: flex-start;
+    gap: 0.35rem;
+}
+
+.publications-sidebar .range-display .badge {
+    font-size: 0.68rem;
+    padding: 0.12rem 0.4rem;
+    min-width: 2.6rem;
+    font-weight: 500;
+}
+
+.page-publications .publications-sidebar .range-display .badge {
+    font-size: 0.62rem;
+    min-width: 2.3rem;
+}
+
+.publications-sidebar .dual-range-slider {
+    margin: 0.55rem 0 0.45rem;
+    min-height: 18px;
+    overflow: visible;
+}
+
+.publications-sidebar .date-range-filter.is-enhanced .dual-range-slider {
+    margin-top: 0;
+    overflow: visible;
+}
+
+.publications-sidebar .dual-range-slider .noUi-target {
+    border: 0;
+    box-shadow: none;
+    background: var(--bs-border-color);
+}
+
+.publications-sidebar .dual-range-slider .noUi-horizontal {
+    height: 3px !important;
+}
+
+.publications-sidebar .dual-range-slider .noUi-connect {
+    background: var(--bs-secondary-color);
+}
+
+.publications-sidebar .dual-range-slider .noUi-handle {
+    width: 10px;
+    height: 10px;
+    top: -4px !important;
+    border-width: 1px;
+    border-color: var(--bs-secondary-color);
+    box-shadow: none;
+    transform: none;
+}
+
+.publications-sidebar .dual-range-slider .noUi-handle:hover,
+.publications-sidebar .dual-range-slider .noUi-handle:active {
+    transform: none;
+    box-shadow: none;
+}
+
+.publications-sidebar .dual-range-slider .noUi-tooltip {
+    bottom: calc(100% + 0.55rem);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 0;
+    border-radius: 999px;
+    padding: 0.14rem 0.42rem;
+    min-width: 2.7rem;
+    background: var(--bs-secondary-color);
+    color: var(--bs-body-bg);
+    font-size: 0.64rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+    white-space: nowrap;
+    box-shadow: none;
+}
+
+.publications-sidebar .dual-range-slider .noUi-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -4px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--bs-secondary-color);
+}
+
+.page-publications .publications-sidebar .dual-range-slider .noUi-tooltip {
+    font-size: 0.6rem;
+    min-width: 2.45rem;
+    padding: 0.12rem 0.36rem;
+}
+
+/* ============================================================================
+   Publications Content
+   ============================================================================ */
+
+.publications-kicker,
+.publications-shell-kicker {
+    margin-bottom: 0.5rem;
+    color: var(--bs-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.publications-hero-label {
+    display: inline-block;
+    margin-bottom: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--bs-secondary);
+}
+
+.publications-shell {
+    margin-bottom: 2.25rem;
+}
+
+.page-publications .publications-shell {
+    margin-bottom: 1.75rem;
+}
+
+.publications-shell-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.page-publications .publications-shell-header {
+    gap: 1rem;
+    margin-bottom: 0.95rem;
+}
+
+.publications-shell-header .section-heading {
+    margin-bottom: 0;
+}
+
+.publications-shell-note {
+    max-width: 38ch;
+    margin: 0;
+    color: var(--bs-secondary-color);
+}
+
+.page-publications .publications-shell-note {
+    font-size: 0.84rem;
+}
+
+.thesis-hero {
+    margin-bottom: 2.5rem;
+    padding: 1.75rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at top right, rgba(25, 135, 84, 0.08), transparent 30%),
+        var(--bs-body-bg);
+}
+
+.page-publications .thesis-hero {
+    margin-bottom: 1.9rem;
+    padding: 1.35rem;
+    border-radius: 12px;
+}
+
+.thesis-lead {
+    max-width: 68ch;
+    margin-bottom: 1.5rem;
+    font-size: 1.02rem;
+    color: var(--bs-secondary-color);
+}
+
+.page-publications .thesis-lead {
+    margin-bottom: 1rem;
+    font-size: 0.93rem;
+}
+
+.thesis-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.page-publications .thesis-meta-grid {
+    gap: 0.75rem;
+}
+
+.thesis-meta-card {
+    padding: 1rem;
+    border-radius: 12px;
+    background: var(--bs-tertiary-bg);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.page-publications .thesis-meta-card {
+    padding: 0.8rem;
+}
+
+.thesis-meta-card strong {
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.thesis-meta-card p {
+    margin: 0;
+    color: var(--bs-secondary-color);
+}
+
+.publication-item {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.page-publications .publication-item {
+    margin-bottom: 0.55rem;
+}
+
+.publication-item:hover {
+    box-shadow: none;
+    border-color: transparent;
+    transform: none;
+}
+
+.publication-item h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--bs-emphasis-color);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.page-publications .publication-item h3 {
+    font-size: 1.16rem;
+    line-height: 1.2;
+    margin-bottom: 0.55rem;
+}
+
+/* Publication Type Labels */
+.label {
+    display: inline-block;
+    padding: 0.3rem 0.55rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1px solid transparent;
+}
+
+/* Type-specific subtle badge colours */
+.label-primary   { background: rgba(13, 110, 253, 0.10); color: #4e8cff; border-color: rgba(13, 110, 253, 0.18); }
+.label-success   { background: rgba(25, 135, 84, 0.10);  color: #2eaa6e; border-color: rgba(25, 135, 84, 0.18); }
+.label-info      { background: rgba(13, 202, 240, 0.10); color: #0fb5d0; border-color: rgba(13, 202, 240, 0.18); }
+.label-warning   { background: rgba(255, 193, 7, 0.12);  color: #c89c00; border-color: rgba(255, 193, 7, 0.22); }
+.label-danger    { background: rgba(220, 53, 69, 0.10);  color: #e05263; border-color: rgba(220, 53, 69, 0.18); }
+.label-default   { background: rgba(108, 117, 125, 0.10); color: var(--bs-secondary-color); border-color: rgba(108, 117, 125, 0.18); }
+.label-preprint  { background: rgba(111, 66, 193, 0.10); color: #8b5cf6; border-color: rgba(111, 66, 193, 0.18); }
+.label-ietf      { background: rgba(0, 123, 255, 0.10);  color: #3b82f6; border-color: rgba(0, 123, 255, 0.18); }
+.label-report    { background: rgba(108, 117, 125, 0.10); color: #8b95a0; border-color: rgba(108, 117, 125, 0.18); }
+.label-workshop  { background: rgba(13, 202, 240, 0.10); color: #0fb5d0; border-color: rgba(13, 202, 240, 0.18); }
+.label-talk      { background: rgba(255, 159, 67, 0.10); color: #e88a3a; border-color: rgba(255, 159, 67, 0.18); }
+.label-demo      { background: rgba(46, 204, 113, 0.10); color: #27ae60; border-color: rgba(46, 204, 113, 0.18); }
+
+/* Publication Heading */
+.publication-item p {
+    margin-bottom: 0.65rem;
+    line-height: 1.65;
+}
+
+.page-publications .publication-item p {
+    margin-bottom: 0.3rem;
+    line-height: 1.38;
+}
+
+.publication-summary {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--bs-body-color);
+}
+
+.publication-authors,
+.publication-title-line,
+.publication-meta {
+    margin: 0;
+}
+
+.publication-authors {
+    font-size: 0.84rem;
+    line-height: 1.4;
+    color: var(--bs-secondary-color);
+}
+
+.publication-title-line {
+    margin-top: 0.2rem;
+    font-size: 1.02rem;
+    line-height: 1.35;
+    color: var(--bs-emphasis-color);
+}
+
+.publication-title-line strong {
+    font-weight: 700;
+}
+
+.publication-meta {
+    margin-top: 0.18rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--bs-body-color);
+}
+
+/* Publication details line: consolidated metadata */
+.publication-details-line {
+    margin-top: 0.25rem;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: var(--bs-secondary-color);
+}
+
+.publication-details-line a {
+    color: var(--bs-link-color);
+    text-decoration: none;
+}
+
+.publication-details-line a:hover {
+    text-decoration: underline;
+}
+
+.page-publications .publication-summary {
+    font-size: 0.82rem;
+}
+
+.page-publications .publication-authors {
+    font-size: 0.68rem;
+}
+
+.page-publications .publication-title-line {
+    font-size: 0.84rem;
+    line-height: 1.28;
+    margin-top: 0.1rem;
+}
+
+.page-publications .publication-meta {
+    font-size: 0.67rem;
+    line-height: 1.32;
+}
+
+.page-publications .publication-details-line {
+    font-size: 0.65rem;
+    margin-top: 0.18rem;
+}
+
+.publication-summary em,
+.publication-summary i {
+    color: var(--bs-secondary-color);
+}
+
+.publication-award {
+    margin-left: 0.5rem;
+}
+
+.publication-award-line {
+    margin: 0.15rem 0 0.25rem 0;
+    font-size: 0.82rem;
+    color: #d4a017;
+    font-weight: 500;
+}
+.publication-award-line .fa-star {
+    color: #d4a017;
+    margin-right: 0.3em;
+}
+[data-bs-theme="dark"] .publication-award-line {
+    color: #f0c040;
+}
+[data-bs-theme="dark"] .publication-award-line .fa-star {
+    color: #f0c040;
+}
+
+/* Related (non-self-authored) publications — subtle visual distinction */
+.publication-related {
+    opacity: 0.72;
+    border-left: 3px solid transparent;
+}
+.publication-related:hover {
+    opacity: 1;
+}
+.publication-item:not(.publication-related) {
+}
+
+/* Self-author bold in author list */
+.publication-authors strong {
+    font-weight: 600;
+}
+
+.publication-citations {
+    display: inline-flex;
+    padding-left: 0.5rem;
+}
+
+.publication-meta .publication-citations {
+    margin-left: 0.35rem;
+    vertical-align: baseline;
+}
+
+.publication-year-heading {
+    margin: 2rem 0 1rem;
+    scroll-margin-top: 5rem;
+}
+
+.page-publications .publication-year-heading {
+    margin: 1.1rem 0 0.5rem;
+    font-size: 1rem;
+}
+
+.publication-card-header {
+    padding: 1.1rem 1.2rem 0.95rem !important;
+    background: transparent !important;
+    border: 0 !important;
+}
+
+.page-publications .publication-card-header {
+    padding: 0.72rem 0.82rem 0.62rem !important;
+}
+
+.publication-card-grid {
+    display: grid;
+    grid-template-columns: minmax(4.5rem, 5.75rem) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+}
+
+.page-publications .publication-card-grid {
+    grid-template-columns: minmax(4rem, 5.5rem) minmax(0, 1fr);
+    gap: 0.6rem;
+}
+
+.page-publications .publication-card-type {
+    padding-top: 0;
+}
+
+.publication-card-type {
+    padding-top: 0.1rem;
+}
+
+.publication-card-main {
+    min-width: 0;
+}
+
+.publication-inline-actions,
+.publication-resource-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+}
+
+/* Project links under type badge */
+.publication-card-projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem;
+    margin-top: 0.35rem;
+    justify-content: center;
+}
+
+.publication-project-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.3rem;
+    height: 1.3rem;
+    font-size: 0.65rem;
+    color: var(--bs-secondary-color);
+    opacity: 0.55;
+    border-radius: 3px;
+    transition: opacity 0.15s, color 0.15s;
+}
+
+.publication-project-link:hover {
+    opacity: 1;
+    color: var(--bs-primary);
+}
+
+/* Research topic badges (above authors) */
+.publication-topic-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Meta bar: topic badges + citation badge on one line */
+.publication-meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.15rem;
+}
+
+.publication-topic-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.68rem;
+    font-weight: 500;
+    line-height: 1;
+    padding: 0.2em 0.55em;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+    border: 1px solid var(--bs-border-color, #dee2e6);
+    transition: border-color 0.15s;
+}
+
+/* Inner links inside topic badge */
+.publication-topic-badge a {
+    text-decoration: none;
+    color: var(--bs-secondary-color, #6c757d);
+    transition: color 0.15s, background 0.15s;
+    border-radius: 0.15rem;
+    padding: 0 0.1em;
+    margin: 0 -0.1em;
+}
+.publication-topic-badge a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Separator between category / subcategory */
+.topic-badge-sep {
+    color: var(--bs-tertiary-color, #adb5bd);
+    font-weight: 400;
+    user-select: none;
+}
+
+/* ── Per-topic subtle tinted backgrounds ── */
+
+/* Agentic AI — violet */
+.publication-topic-badge.topic-agentic-ai {
+    background: rgba(139, 92, 246, 0.08);
+    border-left: 3px solid #8b5cf6;
+}
+.publication-topic-badge.topic-agentic-ai a:hover { background: #8b5cf6; }
+
+/* Cloud Security — cyan */
+.publication-topic-badge.topic-cloud-security {
+    background: rgba(6, 182, 212, 0.08);
+    border-left: 3px solid #06b6d4;
+}
+.publication-topic-badge.topic-cloud-security a:hover { background: #06b6d4; }
+
+/* ICN family — amber */
+.publication-topic-badge.topic-hybrid-icn,
+.publication-topic-badge.topic-icn {
+    background: rgba(245, 158, 11, 0.08);
+    border-left: 3px solid #f59e0b;
+}
+.publication-topic-badge.topic-hybrid-icn a:hover,
+.publication-topic-badge.topic-icn a:hover { background: #f59e0b; }
+
+/* Internet Measurements family — emerald */
+.publication-topic-badge.topic-internet-measurements,
+.publication-topic-badge.topic-testbed-federation,
+.publication-topic-badge.topic-flow-aware-networking,
+.publication-topic-badge.topic-anycast {
+    background: rgba(16, 185, 129, 0.08);
+    border-left: 3px solid #10b981;
+}
+.publication-topic-badge.topic-internet-measurements a:hover,
+.publication-topic-badge.topic-testbed-federation a:hover,
+.publication-topic-badge.topic-flow-aware-networking a:hover,
+.publication-topic-badge.topic-anycast a:hover { background: #10b981; }
+
+/* ── Citation badge — Scholar blue tint ── */
+.publication-cite-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    font-size: 0.68rem;
+    font-weight: 500;
+    line-height: 1;
+    padding: 0.2em 0.55em;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    white-space: nowrap;
+    background: rgba(66, 133, 244, 0.07);
+    color: #5a7ab5;
+    border: 1px solid rgba(66, 133, 244, 0.18);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.publication-cite-badge:hover {
+    background: #4285f4;
+    color: #fff;
+    border-color: #4285f4;
+    text-decoration: none;
+}
+
+/* ── Action button colour accents (subtle, theme-friendly) ── */
+
+/* BibTeX — warm neutral */
+.publication-bib-trigger {
+    color: #7c6f64 !important;
+    border-color: rgba(124, 111, 100, 0.25) !important;
+    background: rgba(124, 111, 100, 0.05) !important;
+}
+.publication-bib-trigger:hover {
+    color: #fff !important;
+    background: rgba(124, 111, 100, 0.72) !important;
+    border-color: rgba(124, 111, 100, 0.72) !important;
+}
+
+/* Abstract — soft blue */
+.publication-abstract-trigger {
+    color: #4a7ab5 !important;
+    border-color: rgba(74, 122, 181, 0.25) !important;
+    background: rgba(74, 122, 181, 0.05) !important;
+}
+.publication-abstract-trigger:hover {
+    color: #fff !important;
+    background: rgba(74, 122, 181, 0.72) !important;
+    border-color: rgba(74, 122, 181, 0.72) !important;
+}
+
+/* PDF / Download — soft rose */
+.publication-quick-link,
+.publication-item .btn-download {
+    color: #c0392b !important;
+    border-color: rgba(192, 57, 43, 0.2) !important;
+    background: rgba(192, 57, 43, 0.04) !important;
+}
+.publication-quick-link:hover,
+.publication-item .btn-download:hover {
+    color: #fff !important;
+    background: rgba(192, 57, 43, 0.72) !important;
+    border-color: rgba(192, 57, 43, 0.72) !important;
+}
+
+/* Slides — teal */
+.publication-item .btn-xs[title*="Slides"],
+.publication-item .btn-xs[title*="slides"],
+.publication-item a.btn-xs[href*="slides"] {
+    color: #0d9488 !important;
+    border-color: rgba(13, 148, 136, 0.22) !important;
+    background: rgba(13, 148, 136, 0.04) !important;
+}
+.publication-item .btn-xs[title*="Slides"]:hover,
+.publication-item .btn-xs[title*="slides"]:hover,
+.publication-item a.btn-xs[href*="slides"]:hover {
+    color: #fff !important;
+    background: rgba(13, 148, 136, 0.72) !important;
+    border-color: rgba(13, 148, 136, 0.72) !important;
+}
+
+/* Poster — purple */
+.publication-item .btn-xs[title*="Poster"],
+.publication-item .btn-xs[title*="poster"] {
+    color: #7c3aed !important;
+    border-color: rgba(124, 58, 237, 0.2) !important;
+    background: rgba(124, 58, 237, 0.04) !important;
+}
+.publication-item .btn-xs[title*="Poster"]:hover,
+.publication-item .btn-xs[title*="poster"]:hover {
+    color: #fff !important;
+    background: rgba(124, 58, 237, 0.72) !important;
+    border-color: rgba(124, 58, 237, 0.72) !important;
+}
+
+/* Dataset / Demo / Artifact — amber */
+.publication-item .btn-xs[title*="Dataset"],
+.publication-item .btn-xs[title*="Demo"],
+.publication-item .btn-xs[title*="demo"],
+.publication-artifact-group .btn {
+    color: #b45309 !important;
+    border-color: rgba(180, 83, 9, 0.2) !important;
+    background: rgba(180, 83, 9, 0.04) !important;
+}
+.publication-item .btn-xs[title*="Dataset"]:hover,
+.publication-item .btn-xs[title*="Demo"]:hover,
+.publication-item .btn-xs[title*="demo"]:hover,
+.publication-artifact-group .btn:hover {
+    color: #fff !important;
+    background: rgba(180, 83, 9, 0.72) !important;
+    border-color: rgba(180, 83, 9, 0.72) !important;
+}
+
+/* PDF dropdown split button group — visually one button */
+.publication-pdf-group {
+    display: inline-flex;
+}
+
+.publication-pdf-group > .btn:first-child:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.publication-pdf-group .dropdown-toggle-split {
+    padding: 1px 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    margin-left: 0;
+}
+
+.publication-sources-menu {
+    font-size: 0.82rem;
+    min-width: 12rem;
+}
+
+.publication-sources-menu .dropdown-item {
+    padding: 0.35rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.publication-sources-menu .dropdown-item i {
+    width: 1rem;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.publication-sources-menu .dropdown-mirror-badge {
+    color: #6c757d;
+    font-size: 0.7rem;
+    margin-left: auto;
+}
+
+.publication-sources-menu .dropdown-mirror-badge:hover {
+    color: #495057;
+}
+
+.page-publications .publication-inline-actions,
+.page-publications .publication-resource-links {
+    gap: 0.28rem;
+    margin-top: 0.45rem;
+}
+
+.page-publications .label {
+    padding: 0.22rem 0.42rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    display: inline-block;
+    text-align: center;
+    max-width: 100%;
+}
+
+/* Citation Badge */
+.publication-item .badge {
+    background-color: rgba(var(--bs-secondary-rgb), 0.18);
+    color: var(--bs-body-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.page-publications .publication-item .badge {
+    font-size: 0.58rem;
+    padding: 0.12rem 0.34rem;
+}
+
+/* Buttons */
+.publication-item .btn-group {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+}
+
+.publication-item .btn-group > .btn,
+.publication-item .btn-group > .btn + .btn {
+    margin-left: 0 !important;
+}
+
+.publication-item .btn-xs {
+    padding: 0.38rem 0.7rem;
+    font-size: 0.75rem;
+    border-radius: 999px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all 0.2s ease;
+    border: 1px solid var(--bs-border-color);
+    background: transparent;
+    min-width: 0;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.page-publications .publication-item .btn-xs {
+    padding: 0.2rem 0.42rem;
+    font-size: 0.6rem;
+    gap: 0.18rem;
+}
+
+.publication-item .btn-xs:hover {
+    transform: none;
+    box-shadow: none;
+    background: var(--bs-secondary-bg);
+}
+
+.publication-item .btn-danger,
+.publication-item .btn-warning,
+.publication-item .btn-primary,
+.publication-item .btn-success,
+.publication-item .btn-info,
+.publication-item .btn-default {
+    color: var(--bs-body-color);
+}
+
+.publication-item .btn-default {
+    border: 1px solid var(--bs-border-color);
+}
+
+.publication-item .btn-default:hover {
+    background-color: var(--bs-secondary-bg);
+    color: var(--bs-body-color);
+}
+
+/* Collapse Section */
+.publication-item .collapse {
+    margin-top: 0;
+}
+
+.publication-details {
+    padding: 0 1.2rem 1.2rem !important;
+    border-top: 1px solid var(--bs-border-color);
+    background: transparent;
+}
+
+.page-publications .publication-details {
+    padding: 0 0.82rem 0.82rem !important;
+    font-size: 0.8rem;
+}
+
+.publication-details p {
+    margin-bottom: 0.7rem;
+}
+
+.page-publications .publication-details p {
+    margin-bottom: 0.42rem;
+}
+
+.page-publications .publication-details .publication-resource-links {
+    margin-top: 0.55rem;
+}
+
+.publication-details p:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================================================================
+   ArXiv ID / Publication Identifiers
+   ============================================================================ */
+
+.publication-id {
+    margin-top: 0.15rem;
+    font-size: 0.78rem;
+}
+
+.page-publications .publication-id {
+    font-size: 0.65rem;
+}
+
+.publication-id-link {
+    color: #8b5cf6;
+    text-decoration: none;
+    font-family: var(--bs-font-monospace);
+    font-size: 0.82em;
+    font-weight: 500;
+}
+
+.publication-id-link:hover {
+    color: #7c3aed;
+    text-decoration: underline;
+}
+
+.publication-id-class {
+    color: var(--bs-secondary-color);
+    font-size: 0.85em;
+    margin-left: 0.3rem;
+}
+
+/* Download button distinction */
+.publication-item .btn-download {
+    background: rgba(25, 135, 84, 0.06);
+    border-color: rgba(25, 135, 84, 0.22);
+    color: #2eaa6e;
+}
+
+.publication-item .btn-download:hover {
+    background: rgba(25, 135, 84, 0.14);
+    color: #198754;
+}
+
+/* arXiv link button */
+.publication-item .btn-arxiv {
+    background: rgba(111, 66, 193, 0.06);
+    border-color: rgba(111, 66, 193, 0.22);
+    color: #8b5cf6;
+}
+
+.publication-item .btn-arxiv:hover {
+    background: rgba(111, 66, 193, 0.14);
+    color: #7c3aed;
+}
+
+/* Artifact buttons (code, data) */
+.publication-item .btn-artifact {
+    background: rgba(13, 110, 253, 0.06);
+    border-color: rgba(13, 110, 253, 0.18);
+    color: #4e8cff;
+}
+
+.publication-item .btn-artifact:hover {
+    background: rgba(13, 110, 253, 0.14);
+    color: #0d6efd;
+}
+
+/* Mirror/archive buttons */
+.publication-item .btn-mirror {
+    background: rgba(108, 117, 125, 0.06);
+    border-color: rgba(108, 117, 125, 0.18);
+    color: #6c757d;
+    padding: 1px 4px;
+    margin-left: -2px;
+    font-size: 0.7rem;
+}
+
+.publication-item .btn-mirror:hover {
+    background: rgba(108, 117, 125, 0.18);
+    color: #495057;
+}
+
+/* ============================================================================
+   Publication Modals (Abstract + BibTeX)
+   ============================================================================ */
+
+.publication-abstract-body {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--bs-body-color);
+}
+
+.publication-abstract-body .publication-keywords {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--bs-border-color);
+    font-size: 0.84rem;
+    color: var(--bs-secondary-color);
+}
+
+.publication-abstract-body .publication-award-note {
+    margin-top: 0.75rem;
+    color: #198754;
+    font-weight: 500;
+}
+
+.bibtex-code {
+    background: var(--bs-tertiary-bg);
+    color: var(--bs-body-color);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-all;
+    max-height: 22rem;
+    overflow-y: auto;
+}
+
+/* Copy button feedback */
+.publication-copy-bib.btn-copied {
+    color: #198754 !important;
+    border-color: rgba(25, 135, 84, 0.3) !important;
+}
+
+/* Modal refinements */
+.modal-content {
+    border-radius: 14px;
+    border: 1px solid var(--bs-border-color);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--bs-border-color);
+    padding: 1rem 1.25rem;
+}
+
+.modal-header .modal-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--bs-border-color);
+    padding: 0.75rem 1.25rem;
+    gap: 0.5rem;
+}
+
+.modal-footer .btn {
+    font-size: 0.78rem;
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+}
+
+/* ============================================================================
+   Sections (IETF Drafts, Patents, Posters)
+   ============================================================================ */
+
+.section-heading {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--bs-primary);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--bs-primary);
+}
+
+.page-publications .section-heading {
+    font-size: 1.5rem;
+    margin-top: 2.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.55rem;
+}
+
+.publications-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.publications-list li {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 1.15rem 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--bs-border-color);
+}
+
+.page-publications .publications-list li {
+    padding: 0.95rem 0;
+    margin-bottom: 0;
+}
+
+.publications-list li:hover {
+    box-shadow: none;
+    border-color: var(--bs-border-color);
+    transform: none;
+}
+
+.publications-list li b {
+    color: var(--bs-emphasis-color);
+    font-size: 1.02rem;
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.page-publications .publications-list li b {
+    font-size: 0.94rem;
+}
+
+.publications-list li i {
+    color: var(--bs-secondary);
+    font-style: italic;
+}
+
+.publications-list li a {
+    color: var(--bs-link-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.publications-list li a:hover {
+    text-decoration: underline;
+    color: var(--bs-primary);
+}
+
+.publication-note {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--bs-secondary-color);
+}
+
+.publications-list li img[src*='icon/pdf'] {
+    width: 20px;
+    height: auto;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.publications-list li img[src*='fr.png'] {
+    width: 20px;
+    height: auto;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+/* ============================================================================
+   Dark Mode Overrides
+   ============================================================================ */
+
+[data-bs-theme="dark"] .publications-sidebar {
+    background: transparent;
+}
+
+[data-bs-theme="dark"] .thesis-hero,
+[data-bs-theme="dark"] .thesis-meta-card {
+    background: #1e1e1e;
+    border-color: #2d2d2d;
+}
+
+[data-bs-theme="dark"] .publication-item {
+    background: transparent;
+    border-color: transparent;
+}
+
+[data-bs-theme="dark"] .publication-item:hover {
+    border-color: transparent;
+}
+
+[data-bs-theme="dark"] .publications-list li {
+    background: transparent;
+    border-color: #2d2d2d;
+}
+
+[data-bs-theme="dark"] .publications-list li:hover {
+    border-color: #2d2d2d;
+}
+
+[data-bs-theme="dark"] .label,
+[data-bs-theme="dark"] .label-primary,
+[data-bs-theme="dark"] .label-success,
+[data-bs-theme="dark"] .label-warning,
+[data-bs-theme="dark"] .label-info,
+[data-bs-theme="dark"] .label-danger,
+[data-bs-theme="dark"] .label-preprint,
+[data-bs-theme="dark"] .label-ietf,
+[data-bs-theme="dark"] .label-report,
+[data-bs-theme="dark"] .label-workshop {
+    /* Keep the same colour scheme; the rgba() values work in dark mode */
+}
+
+[data-bs-theme="dark"] .publication-id-link {
+    color: #a78bfa;
+}
+
+[data-bs-theme="dark"] .publication-id-link:hover {
+    color: #c4b5fd;
+}
+
+[data-bs-theme="dark"] .publication-item .btn-download {
+    color: #4ade80;
+    border-color: rgba(74, 222, 128, 0.22);
+    background: rgba(74, 222, 128, 0.06);
+}
+
+[data-bs-theme="dark"] .publication-item .btn-arxiv {
+    color: #a78bfa;
+    border-color: rgba(167, 139, 250, 0.22);
+    background: rgba(167, 139, 250, 0.06);
+}
+
+[data-bs-theme="dark"] .publication-item .btn-artifact {
+    color: #60a5fa;
+    border-color: rgba(96, 165, 250, 0.22);
+    background: rgba(96, 165, 250, 0.06);
+}
+
+[data-bs-theme="dark"] .publication-item .btn-mirror {
+    color: #9ca3af;
+    border-color: rgba(156, 163, 175, 0.22);
+    background: rgba(156, 163, 175, 0.06);
+}
+
+[data-bs-theme="dark"] .publication-item .btn-mirror:hover {
+    color: #d1d5db;
+    background: rgba(156, 163, 175, 0.14);
+}
+
+[data-bs-theme="dark"] .publication-project-link {
+    color: #9ca3af;
+}
+
+[data-bs-theme="dark"] .publication-project-link:hover {
+    color: #60a5fa;
+}
+
+[data-bs-theme="dark"] .publication-topic-badge {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-bs-theme="dark"] .publication-topic-badge a {
+    color: #d1d5db;
+}
+[data-bs-theme="dark"] .publication-topic-badge a:hover {
+    color: #fff;
+}
+[data-bs-theme="dark"] .topic-badge-sep {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Per-topic dark mode tints */
+[data-bs-theme="dark"] .publication-topic-badge.topic-agentic-ai        { background: rgba(139, 92, 246, 0.12); }
+[data-bs-theme="dark"] .publication-topic-badge.topic-cloud-security     { background: rgba(6, 182, 212, 0.12); }
+[data-bs-theme="dark"] .publication-topic-badge.topic-hybrid-icn,
+[data-bs-theme="dark"] .publication-topic-badge.topic-icn                { background: rgba(245, 158, 11, 0.12); }
+[data-bs-theme="dark"] .publication-topic-badge.topic-internet-measurements,
+[data-bs-theme="dark"] .publication-topic-badge.topic-testbed-federation,
+[data-bs-theme="dark"] .publication-topic-badge.topic-flow-aware-networking,
+[data-bs-theme="dark"] .publication-topic-badge.topic-anycast            { background: rgba(16, 185, 129, 0.12); }
+
+[data-bs-theme="dark"] .publication-cite-badge {
+    background: rgba(66, 133, 244, 0.12);
+    color: #7aadff;
+    border-color: rgba(66, 133, 244, 0.22);
+}
+
+[data-bs-theme="dark"] .publication-cite-badge:hover {
+    background: #4285f4;
+    color: #fff;
+    border-color: #4285f4;
+}
+
+/* Dark-mode button accents — slightly brighter text, same tint ratios */
+[data-bs-theme="dark"] .publication-bib-trigger {
+    color: #b8a99a !important;
+    border-color: rgba(184, 169, 154, 0.22) !important;
+    background: rgba(184, 169, 154, 0.08) !important;
+}
+[data-bs-theme="dark"] .publication-abstract-trigger {
+    color: #7ab0e8 !important;
+    border-color: rgba(122, 176, 232, 0.22) !important;
+    background: rgba(122, 176, 232, 0.08) !important;
+}
+[data-bs-theme="dark"] .publication-quick-link,
+[data-bs-theme="dark"] .publication-item .btn-download {
+    color: #e87c73 !important;
+    border-color: rgba(232, 124, 115, 0.2) !important;
+    background: rgba(232, 124, 115, 0.06) !important;
+}
+[data-bs-theme="dark"] .publication-item .btn-xs[title*="Slides"],
+[data-bs-theme="dark"] .publication-item .btn-xs[title*="slides"],
+[data-bs-theme="dark"] .publication-item a.btn-xs[href*="slides"] {
+    color: #5eead4 !important;
+    border-color: rgba(94, 234, 212, 0.2) !important;
+    background: rgba(94, 234, 212, 0.06) !important;
+}
+[data-bs-theme="dark"] .publication-item .btn-xs[title*="Poster"],
+[data-bs-theme="dark"] .publication-item .btn-xs[title*="poster"] {
+    color: #a78bfa !important;
+    border-color: rgba(167, 139, 250, 0.2) !important;
+    background: rgba(167, 139, 250, 0.06) !important;
+}
+[data-bs-theme="dark"] .publication-item .btn-xs[title*="Dataset"],
+[data-bs-theme="dark"] .publication-item .btn-xs[title*="Demo"],
+[data-bs-theme="dark"] .publication-item .btn-xs[title*="demo"],
+[data-bs-theme="dark"] .publication-artifact-group .btn {
+    color: #fbbf24 !important;
+    border-color: rgba(251, 191, 36, 0.2) !important;
+    background: rgba(251, 191, 36, 0.06) !important;
+}
+
+[data-bs-theme="dark"] .publication-sources-menu {
+    background: var(--bs-body-bg);
+    border-color: #2d2d44;
+}
+
+[data-bs-theme="dark"] .publication-sources-menu .dropdown-item {
+    color: var(--bs-body-color);
+}
+
+[data-bs-theme="dark"] .publication-sources-menu .dropdown-item:hover {
+    background: rgba(96, 165, 250, 0.08);
+}
+
+[data-bs-theme="dark"] .publication-sources-menu .dropdown-mirror-badge {
+    color: #9ca3af;
+}
+
+[data-bs-theme="dark"] .publication-pdf-group .dropdown-toggle-split {
+    border-left-color: rgba(255, 255, 255, 0.18);
+}
+
+[data-bs-theme="dark"] .bibtex-code {
+    background: var(--bs-tertiary-bg);
+    border-color: var(--bs-border-color);
+}
+
+/* Reset Pygments syntax colors inside BibTeX popup to neutral readable tones */
+.bibtex-code .highlight {
+    background: transparent;
+    color: inherit;
+}
+
+.bibtex-code .highlight .k,
+.bibtex-code .highlight .o,
+.bibtex-code .highlight .kn,
+.bibtex-code .highlight .kp { color: var(--bs-primary); font-weight: normal; }
+
+.bibtex-code .highlight .s,
+.bibtex-code .highlight .s1,
+.bibtex-code .highlight .s2,
+.bibtex-code .highlight .se { color: var(--bs-body-color); }
+
+.bibtex-code .highlight .n,
+.bibtex-code .highlight .na,
+.bibtex-code .highlight .nb { color: var(--bs-secondary-color); }
+
+.bibtex-code .highlight .c,
+.bibtex-code .highlight .c1,
+.bibtex-code .highlight .cm { color: var(--bs-secondary-color); font-style: italic; }
+
+[data-bs-theme="dark"] .modal-content {
+    background: var(--bs-body-bg);
+    border-color: #2d2d2d;
+}
+
+[data-bs-theme="dark"] .publication-item .btn-xs {
+    border-color: rgba(148, 163, 184, 0.2);
+    color: rgba(226, 232, 240, 0.92);
+}
+
+[data-bs-theme="dark"] .publication-item .btn-xs:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 991.98px) {
+    .publications-sidebar {
+        position: static;
+        max-height: none;
+        overflow: visible;
+        padding: 0 0 1.5rem;
+    }
+
+    .publications-shell-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .thesis-meta-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .publication-card-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+}
+
+[data-bs-theme="dark"] .publications-sidebar .btn-outline-primary {
+    border-color: var(--bs-primary);
+    color: var(--bs-primary);
+}
+
+[data-bs-theme="dark"] .publications-sidebar .btn-outline-primary:hover {
+    background-color: var(--bs-primary);
+    color: white;
+}
+
+/* ============================================================================
+   Responsive Design
+   ============================================================================ */
+
+@media (max-width: 992px) {
+    .publications-shell-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pub-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+    }
+
+    .stat-value {
+        font-size: 1.25rem;
+    }
+
+    .publication-item .btn-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .publication-inline-actions,
+    .publication-resource-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .publication-item .btn-xs {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .publication-item h3 {
+        font-size: 1.5rem;
+    }
+
+    .publication-card-header,
+    .publication-details {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .section-heading {
+        font-size: 1.5rem;
+    }
+
+    .publication-authors {
+        font-size: 0.78rem;
+    }
+
+    .publication-title-line {
+        font-size: 0.92rem;
+    }
+
+    .publication-meta {
+        font-size: 0.74rem;
+    }
+
+    .page-publications .publication-item h3 {
+        font-size: 1.16rem;
+    }
+
+    .page-publications .section-heading {
+        font-size: 1.3rem;
+    }
+}
+
+/* ── Artifact split-button dropdowns (Dataset, Demo, etc. with archive) ── */
+.publication-artifact-group {
+    display: inline-flex !important;
+    vertical-align: middle;
+}
+.publication-artifact-group > .btn:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.publication-artifact-group > .dropdown-toggle-split {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+}
+.publication-artifact-group .dropdown-divider {
+    margin: 0.25rem 0;
+}
+
+/* ============================================================================
+   Author Interactive Styles
+   ============================================================================ */
+
+/* Clickable author names */
+.pub-author {
+    cursor: pointer;
+    border-bottom: 1px dotted var(--bs-secondary);
+    transition: color 0.15s, border-color 0.15s;
+}
+.pub-author:hover {
+    color: var(--bs-primary);
+    border-bottom-color: var(--bs-primary);
+}
+
+/* Author popover */
+.author-popover {
+    background: var(--bs-body-bg, #fff);
+    border: 1px solid var(--bs-border-color, #dee2e6);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    min-width: 200px;
+    max-width: 320px;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.15);
+    font-size: 0.85rem;
+}
+.author-popover-header {
+    margin-bottom: 0.35rem;
+    font-size: 0.9rem;
+}
+.author-popover-info {
+    margin-bottom: 0.25rem;
+    font-size: 0.8rem;
+}
+.author-popover-info i {
+    width: 1.1em;
+    text-align: center;
+    margin-right: 0.25rem;
+}
+.author-popover-links {
+    display: flex;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+.author-popover-links .btn {
+    padding: 0.2rem 0.45rem;
+    font-size: 0.75rem;
+}
+
+/* Dark mode popover */
+[data-bs-theme="dark"] .author-popover {
+    background: var(--bs-body-bg, #212529);
+    border-color: var(--bs-border-color, #495057);
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+/* ── Coauthor / Affiliation / Collaboration sidebar sections ── */
+.coauthor-affiliation-node {
+    margin-bottom: 0.5rem;
+}
+.coauthor-affiliation-header {
+    padding: 0.15rem 0 0.1rem 0.25rem;
+    border-bottom: 1px solid var(--bs-border-color-translucent, rgba(0,0,0,0.075));
+    margin-bottom: 0.2rem;
+}
+.coauthor-affiliation-header small {
+    font-weight: 600;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+.coauthor-tree .form-check,
+.affiliation-tree .form-check,
+.collaboration-tree .form-check {
+    padding-left: 1.5rem;
+    font-size: 0.82rem;
+}
+
+/* Collapse icon rotation */
+.sidebar-title .collapse-icon {
+    transition: transform 0.2s;
+    font-size: 0.75rem;
+}
+.sidebar-title[aria-expanded="true"] .collapse-icon,
+.sidebar-title:not(.collapsed) .collapse-icon {
+    transform: rotate(180deg);
+}

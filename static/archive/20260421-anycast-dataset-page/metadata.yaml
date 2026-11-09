@@ -1,0 +1,18 @@
+archived_at: '2026-04-21T08:18:58.651655Z'
+date: '20260421'
+description: Archived webpage from anycast.telecom-paristech.fr
+files:
+- index.html
+- assets/images/dataset-infocom_jsac.png
+- assets/stylesheets/css
+- assets/stylesheets/main.css
+original_url: https://anycast.telecom-paristech.fr/dataset/
+size_mb: 0.18
+slug: anycast-dataset-page
+tags:
+- anycast
+- dns
+- dataset
+- telecom-paristech
+title: Anycast Datasets
+type: webpage

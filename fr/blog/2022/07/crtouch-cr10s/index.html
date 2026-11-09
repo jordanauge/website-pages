@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="/theme/css/style.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/theme-logos.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/docs.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/wowchemy-compat.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news-snippet.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/publications.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/feeds.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/projects.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/research-home.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/collaborations.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/cv.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/archive-links.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-summary.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/filter-tagcloud.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-content.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/pygments.css?v=c6b9f9bc" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="/theme/css/navbar.css" rel="stylesheet">
+
+<!-- KaTeX for LaTeX math rendering -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+
+
+
+
+<title>Installation d'un CR-Touch sur un CR-10S d'origine</title>
+
+
+<link href="https://jordan.auge.synaxe.net/fr/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jordan Augé Full Atom Feed" >
+
+<link href="https://jordan.auge.synaxe.net/fr/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Full RSS Feed" >
+
+
+
+
+<link href="/feed/impression-3d.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Categories RSS Feed" >
+
+
+
+<link rel="canonical" href="https://jordan.auge.synaxe.net/fr/blog/2022/07/crtouch-cr10s/">
+
+<link rel="alternate" hreflang="fr" href="https://jordan.auge.synaxe.net/fr/blog/2022/07/crtouch-cr10s/">
+<link rel="alternate" hreflang="en" href="https://jordan.auge.synaxe.net/blog/2022/07/crtouch-cr10s/">
+
+<meta property="og:locale" content="">
+
+<meta property="og:site_name" content="Jordan Augé">
+<meta property="og:url" content="https://jordan.auge.synaxe.net/fr/blog/2022/07/crtouch-cr10s/">
+<meta property="og:type" content="article">
+
+<meta property="og:title" content="Installation d&#39;un CR-Touch sur un CR-10S d&#39;origine">
+<meta property="og:description" content="Comment câbler un CR-Touch sur la carte mère d’origine du CR-10S avec un adaptateur maison, patcher le firmware Marlin 2, et calibrer l’offset sonde.">
+
+
+
+
+<meta name="description" content="Comment câbler un CR-Touch sur la carte mère d’origine du CR-10S avec un adaptateur maison, patcher le firmware Marlin 2, et calibrer...">
+
+<meta name="author" content="Jordan Augé">
+
+<meta name="tags" content="cr10s">
+<meta name="tags" content="crtouch">
+<meta name="tags" content="marlin">
+<meta name="tags" content="impression3d">
+<meta name="tags" content="firmware">
+
+
+<meta name="description" content="Jordan Augé's homepage">
+
+<script src="/theme/js/color-modes.js"></script>
+
+<meta name="author" content="Jordan Augé">
+
+
+</head>
+
+<body class="article-crtouch-cr10s">
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <symbol id="archive" viewBox="0 0 16 16">
+    <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="arrow-right-short" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+  </symbol>
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </symbol>
+  <symbol id="file-earmark-richtext" viewBox="0 0 16 16">
+    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+    <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
+  </symbol>
+  <symbol id="film" viewBox="0 0 16 16">
+    <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="rss" viewBox="0 0 16 16">
+    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+    <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+  <symbol id="three-dots" viewBox="0 0 16 16">
+    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+  </symbol>
+</svg>
+
+
+
+
+
+  <header class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top">
+  <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+    <div class="d-lg-none" style="width: 2.25rem;"></div>
+
+    <a class="navbar-brand p-0 me-0 me-lg-4" href="https://jordan.auge.synaxe.net/fr/" aria-label=Jordan Augé>Jordan Augé</a>
+
+    <div class="d-flex">
+      <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Basculer la navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jordan Augé</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fermer" data-bs-target="#bdNavbar"></button>
+      </div>
+
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/">Accueil</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/news">Actualites</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/research/publications">Publications</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/projects">Projets</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/blog">Blog</a>
+              </li>
+        </ul>
+
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+
+          <li class="nav-item d-none d-lg-flex align-items-center navbar-social-icons">
+            <a href="mailto:jordan.auge@free.fr" class="nav-link px-1 navbar-social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://scholar.google.fr/citations?user=-itbwwIAAAAJ" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://github.com/jordanauge" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/jordan-aug%C3%A9-763ba4a8/" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </li>
+
+          <li class="nav-item dropdown d-lg-none">
+            <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                    id="bd-theme-mobile"
+                    type="button"
+                    aria-expanded="false"
+                    data-bs-toggle="dropdown"
+                    data-bs-display="static"
+                    aria-label="Changer le thème (auto)">
+              <svg class="bi my-1"><use href="#circle-half"></use></svg>
+              <span class="ms-2" id="bd-theme-text">Changer le thème</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+                  Clair
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+                  Sombre
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+                  Auto
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item d-lg-none navbar-language-item">
+            <div class="navbar-lang-toggle" aria-label="Choix de langue">
+              <span class="navbar-lang-label">EN</span>
+              <a href="/blog/category/"
+                 class="navbar-lang-toggle-track is-fr"
+                 role="switch"
+                 aria-checked="true"
+                 aria-label="Switch to English">
+                <span class="navbar-lang-toggle-thumb"></span>
+              </a>
+              <span class="navbar-lang-label">FR</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="navbar-absolute-right d-none d-lg-flex align-items-center">
+    <div class="dropdown d-flex align-items-center">
+      <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-label="Changer le thème (auto)">
+        <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+            Clair
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+            Sombre
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-lang-toggle navbar-language-item" aria-label="Choix de langue">
+      <span class="navbar-lang-label">EN</span>
+      <a href="/blog/category/"
+         class="navbar-lang-toggle-track is-fr"
+         role="switch"
+         aria-checked="true"
+         aria-label="Switch to English">
+        <span class="navbar-lang-toggle-thumb"></span>
+      </a>
+      <span class="navbar-lang-label">FR</span>
+    </div>
+  </div>
+</header>
+            <header class="intro-header"
+                style="background-image: url('https://jordan.auge.synaxe.net/fr/../theme/images/post-bg.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                            <div class="post-heading text-light text-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+
+
+<div class="container-xxl px-4 px-xxl-2">
+    <div class="d-lg-grid content blog-article-page" id="content">
+        
+<div class="sidebar">
+  <aside class="news-article-sidebar sticky-top">
+
+    <div class="publications-sidebar-header">
+      <h1>Impression 3D</h1>
+    </div>
+
+    <div class="sidebar-section sidebar-nav-links">
+
+      <div class="sidebar-feed-row">
+        <a class="sidebar-feed-label" href="/fr/blog/">Tous les billets</a>
+        <div class="dropdown sidebar-rss-dropdown">
+          <button class="sidebar-rss-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Flux RSS">
+            <svg class="bi" width="11" height="11" aria-hidden="true"><use xlink:href="#rss"></use></svg>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end sidebar-rss-menu">
+            <li><a class="dropdown-item" href="/fr/feed/blog.rss.xml" rel="alternate" type="application/rss+xml">Articles</a></li>
+            <li><a class="dropdown-item" href="/fr/feed/blog-with-updates.rss.xml" rel="alternate" type="application/rss+xml">Articles + mises à jour</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-feed-row">
+        <a class="sidebar-feed-label sidebar-feed-label--plain" href="https://jordan.auge.synaxe.net/fr/blog/category/impression-3d/">Impression 3D</a>
+        <div class="dropdown sidebar-rss-dropdown">
+          <button class="sidebar-rss-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Flux RSS">
+            <svg class="bi" width="11" height="11" aria-hidden="true"><use xlink:href="#rss"></use></svg>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end sidebar-rss-menu">
+            <li><a class="dropdown-item" href="/fr/feed/impression-3d.rss.xml" rel="alternate" type="application/rss+xml">Articles</a></li>
+            <li><a class="dropdown-item" href="/fr/feed/impression-3d-with-updates.rss.xml" rel="alternate" type="application/rss+xml">Articles + mises à jour</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-back-row mt-2">
+        <button type="button" class="sidebar-back-link" onclick="if(history.length > 1 && document.referrer && document.referrer.indexOf(location.host) !== -1){ history.back(); } else { location.href='/fr/blog/'; }">
+          <i class="bi bi-arrow-left"></i>
+          Retour
+        </button>
+      </div>
+
+    </div>
+
+    <div id="blog-toc-section" class="sidebar-section" style="display:none">
+      <hr class="sidebar-divider my-2">
+      <div class="blog-toc-heading">Sur cette page</div>
+      <nav id="blog-toc" class="blog-toc-nav" aria-label="Table of contents"></nav>
+    </div>
+
+  </aside>
+</div>
+
+<script>
+(function() {
+  function buildToc() {
+    var post = document.querySelector('.post');
+    if (!post) return;
+    var headings = Array.from(post.querySelectorAll('h2, h3'));
+    if (headings.length < 2) return;
+    var nav = document.getElementById('blog-toc');
+    var section = document.getElementById('blog-toc-section');
+    if (!nav || !section) return;
+
+    var ul = document.createElement('ul');
+    ul.className = 'blog-toc-list';
+    headings.forEach(function(h, i) {
+      if (!h.id) h.id = 'toc-heading-' + i;
+      var li = document.createElement('li');
+      li.className = 'blog-toc-item blog-toc-' + h.tagName.toLowerCase();
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.className = 'blog-toc-link';
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    nav.appendChild(ul);
+    section.style.display = '';
+
+    var aside = section.closest('.news-article-sidebar');
+    if (!aside) return;
+
+    // Calibrate sticky top to actual navbar height so sidebar never overlaps it
+    function applyNavbarOffset() {
+      var navbar = document.querySelector('.bd-navbar');
+      if (!navbar) return;
+      var h = Math.ceil(navbar.getBoundingClientRect().height);
+      var gap = 4; // px clearance below navbar
+      aside.style.top = (h + gap) + 'px';
+      aside.style.maxHeight = 'calc(100vh - ' + (h + gap) + 'px)';
+    }
+    applyNavbarOffset();
+    window.addEventListener('resize', applyNavbarOffset, { passive: true });
+
+    // Minimal-scroll: only move the sidebar when the active link is out of view.
+    // Never overshoot — scroll just enough to reveal the link with a small margin.
+    function scrollSidebarToActive(link) {
+      var margin = 6;
+      var asideRect = aside.getBoundingClientRect();
+      var linkRect = link.getBoundingClientRect();
+      var relTop    = linkRect.top    - asideRect.top;
+      var relBottom = linkRect.bottom - asideRect.top;
+      if (relTop < margin) {
+        aside.scrollTop += relTop - margin;
+      } else if (relBottom > asideRect.height - margin) {
+        aside.scrollTop += relBottom - asideRect.height + margin;
+      }
+      // If already visible, do nothing
+    }
+
+    // Scroll-based active tracking: the active heading is the last one whose
+    // top edge has passed above the scroll threshold (navbar bottom + small offset).
+    var currentActiveId = null;
+    function updateActive() {
+      var navbar = document.querySelector('.bd-navbar');
+      var threshold = (navbar ? navbar.offsetHeight : 56) + 8;
+
+      var found = null;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        if (headings[i].getBoundingClientRect().top <= threshold) {
+          found = headings[i];
+          break;
+        }
+      }
+      // If nothing has passed yet, highlight the first item
+      if (!found) found = headings[0];
+      if (!found) return;
+
+      if (found.id === currentActiveId) return; // no change
+      currentActiveId = found.id;
+
+      nav.querySelectorAll('.blog-toc-link').forEach(function(l) {
+        l.classList.remove('active');
+      });
+      var activeLink = nav.querySelector('a[href="#' + found.id + '"]');
+      if (activeLink) {
+        activeLink.classList.add('active');
+        scrollSidebarToActive(activeLink);
+      }
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() { updateActive(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateActive(); // set initial state
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildToc);
+  } else {
+    buildToc();
+  }
+})();
+</script>
+
+
+
+        <div class="main">
+            
+<div class="posts-container article-posts-container mx-auto my-5">
+  <div class="posts">
+    <div class="post">
+      <div class="article-content-header">
+        <h1 class="article-content-title">Installation d'un CR-Touch sur un CR-10S d'origine</h1>
+        <div class="article-meta-pills article-meta-pills-content mt-2 mb-1">
+          <time class="article-date" datetime="2022-07-20"><i class="bi bi-calendar3"></i> 2022-07-20</time>
+          <button type="button" class="article-date article-date-updated changelog-toggle"
+                  data-bs-toggle="collapse" data-bs-target="#article-changelog"
+                  aria-expanded="false" aria-controls="article-changelog">
+            <i class="bi bi-pencil-square"></i> 2026-05-29<i class="bi bi-chevron-down changelog-chevron" aria-hidden="true"></i>
+          </button>
+            <a class="post-tag" data-color="default" href="https://jordan.auge.synaxe.net/fr/blog/category/impression-3d/">Impression 3D</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/cr10s">#cr10s</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/crtouch">#crtouch</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/marlin">#marlin</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/impression3d">#impression3d</a>
+          <a class="post-tag post-tag-label" href="https://jordan.auge.synaxe.net/fr/blog/tag/firmware">#firmware</a>
+        </div>
+        <div class="collapse" id="article-changelog">
+          <div class="changelog-banner">
+            <div class="changelog-entry">
+              <span class="changelog-date">2026-05-29</span>
+<span class="changelog-note">Note rétrospective quatre ans après.</span>            </div>
+          </div>
+        </div>
+      </div>
+      <div class="translation-notice translation-notice-warn">
+  <i class="bi bi-robot"></i>
+  <span>Traduction automatique depuis l'anglais — non relue.</span>
+</div>
+
+     <div class="article-summary article-summary-featured">
+         <div class="article-summary-kicker">Summary</div>
+     <p>Comment câbler un CR-Touch sur la carte mère d&rsquo;origine du CR-10S avec un adaptateur maison, patcher le firmware Marlin 2, et calibrer l&rsquo;offset sonde.</p>
+     </div>
+
+
+
+       <!-- PELICAN_BEGIN_SUMMARY -->
+<p>Le CR-Touch fonctionne très bien sur les cartes 8 bits — le signal PWM servo
+et la sortie numérique de déclenchement sont parfaitement dans les capacités
+d’un ATmega2560. Le problème avec le CR-10S stock n’est pas le processeur,
+c’est le connecteur : les guides Creality supposent tous un connecteur BLTouch
+5 broches dédié que la carte V2 d’origine n’a pas. Cet article documente le
+câble adaptateur qui relie deux connecteurs existants, le patch Marlin en une
+ligne, et la procédure de réglage de l’offset sonde.</p>
+<!-- PELICAN_END_SUMMARY -->
+<!-- TODO: ajouter une photo du CR-Touch avant publication — placer le fichier crtouch.jpg dans ce dossier -->
+<!-- ![Sonde ABL CR-Touch]({attach}crtouch.jpg) -->
+<h2 id="le-probleme-avec-la-carte-dorigine">Le problème avec la carte d’origine</h2>
+<p>Les guides d’installation CR-Touch supposent presque tous un connecteur BLTouch
+5 broches dédié sur la carte mère. Creality a ajouté ce connecteur sur ses
+nouvelles cartes 32 bits (CR-10S Pro, CR-6 SE, etc.), et la documentation
+officielle ne couvre que celles-là. La carte stock du CR-10S V2 — un ATmega2560
+— est antérieure à ce connecteur. Le CR-Touch lui-même se fiche de
+l’architecture du processeur ; il a besoin de cinq signaux, et ces signaux sont
+disponibles sur deux connecteurs existants que la carte V2 expose déjà : un
+<strong>connecteur servo D11</strong> libre (3 broches) et le <strong>connecteur fin de course Z</strong>
+(2 broches). Pas de carte adaptateur, pas de découpe de câble.</p>
+<h2 id="fabrication-du-cable-adaptateur">Fabrication du câble adaptateur</h2>
+<p>L’adaptateur divise le connecteur 5 broches JST du CR-Touch en deux branches :</p>
+<ul>
+<li>une <strong>fiche Dupont femelle 3 broches</strong> pour le connecteur servo D11</li>
+<li>une <strong>fiche JST 2 broches</strong> remplaçant le connecteur de fin de course Z</li>
+</ul>
+<p>Le risque principal est d’inverser le connecteur : une erreur de câblage peut
+endommager le CR-Touch. Utilisez un multimètre en mode continuité pour vérifier
+avant la mise sous tension. Les deux broches de masse (G) du CR-Touch sont
+court-circuitées en interne, ce qui permet de les confirmer facilement en les
+sondant simultanément.</p>
+<p>Le câblage correct pour le CR-10S d’origine est indiqué ci-dessous. Notez que les
+fils GND (blanc) et VIN (noir) <strong>se croisent</strong> entre le connecteur CR-Touch et
+le connecteur D11 — la broche 1 du D11 est VIN, mais VIN est le second fil du
+CR-Touch.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Broche CR-Touch</th>
+<th style="text-align: left;">Couleur fil</th>
+<th style="text-align: left;">Destination</th>
+<th style="text-align: left;">Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">G</td>
+<td style="text-align: left;">Blanc</td>
+<td style="text-align: left;">D11 broche 2</td>
+<td style="text-align: left;">GND</td>
+</tr>
+<tr>
+<td style="text-align: left;">V</td>
+<td style="text-align: left;">Noir</td>
+<td style="text-align: left;">D11 broche 1</td>
+<td style="text-align: left;">VIN (+5V)</td>
+</tr>
+<tr>
+<td style="text-align: left;">IN</td>
+<td style="text-align: left;">Jaune</td>
+<td style="text-align: left;">D11 broche 3</td>
+<td style="text-align: left;">Signal</td>
+</tr>
+<tr>
+<td style="text-align: left;">G</td>
+<td style="text-align: left;">Rouge</td>
+<td style="text-align: left;">Fin de course Z broche 2</td>
+<td style="text-align: left;">GND</td>
+</tr>
+<tr>
+<td style="text-align: left;">OUT</td>
+<td style="text-align: left;">Bleu</td>
+<td style="text-align: left;">Fin de course Z broche 1</td>
+<td style="text-align: left;">OUT</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Schéma de câblage de l'adaptateur" src="https://jordan.auge.synaxe.net/fr/blog/2022/07/crtouch-cr10s/wiring-diagram.svg"/></p>
+<p>Le connecteur D11 se lit <strong>de gauche à droite : noir (VIN) — blanc (GND) — jaune (SIG)</strong>
+vu côté fiche. Le connecteur fin de course Z a le bleu (OUT) sur la broche 1
+et le rouge (GND) sur la broche 2.</p>
+<blockquote>
+<p><strong>Conseil de vérification :</strong> sondez les deux broches G (blanc et rouge) en
+continuité — elles doivent biper. Vérifiez aussi le VIN par rapport à un point
++5 V connu sur la carte avant la mise sous tension pour confirmer la polarité.</p>
+</blockquote>
+<h2 id="patch-marlin-2">Patch Marlin 2</h2>
+<p>Les définitions de broches RAMPS/Creality par défaut dans Marlin ne définissent
+pas <code>SERVO0_PIN</code>, ce qui laisse le signal servo du BLTouch flottant. Modifiez
+<code>Marlin/src/pins/ramps/pins_RAMPS_CREALITY.h</code> en ajoutant à l’intérieur du bloc
+<code>#ifdef NUM_SERVOS</code> existant :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#ifdef NUM_SERVOS</span>
+<span class="w">  </span><span class="cp">#define SERVO0_PIN 11</span>
+<span class="cp">#endif</span>
+</code></pre></div></td></tr></table></div>
+<p>Ce mapping assigne le servo 0 à la broche 11, correspondant au connecteur D11
+utilisé ci-dessus.</p>
+<h2 id="parametres-configurationh">Paramètres Configuration.h</h2>
+<p>Activez les defines suivants dans <code>Configuration.h</code> :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#define BLTOUCH                          </span><span class="c1">// traite le CR-Touch comme un BL-Touch</span>
+<span class="cp">#define USE_PROBE_FOR_Z_HOMING           </span><span class="c1">// homing Z via la sonde, pas le fin de course</span>
+<span class="cp">#define Z_SAFE_HOMING                    </span><span class="c1">// évite de crasher la sonde hors du plateau</span>
+
+<span class="c1">// Grille de sondage</span>
+<span class="cp">#define GRID_MAX_POINTS_X 7              </span><span class="c1">// maillage de niveau 7×7</span>
+
+<span class="c1">// Assistants de calibration (optionnels mais recommandés)</span>
+<span class="cp">#define PROBE_OFFSET_WIZARD</span>
+<span class="cp">#define PROBE_OFFSET_WIZARD_START_Z -4.0</span>
+
+<span class="c1">// Babystepping (peut déjà être activé dans les versions récentes de Marlin)</span>
+<span class="cp">#define BABYSTEPPING</span>
+<span class="cp">#define BABYSTEP_DISPLAY_TOTAL</span>
+<span class="cp">#define BABYSTEP_ZPROBE_OFFSET</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="comprendre-letat-des-leds">Comprendre l’état des LEDs</h2>
+<p>Après le flash et la mise sous tension, le CR-Touch effectue un auto-test. Les
+LEDs rendent compte du résultat :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">État LED</th>
+<th style="text-align: left;">Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">🔴 Rouge seule, fixe</td>
+<td style="text-align: left;">Alimentation OK ; signal PWM pas encore reçu</td>
+</tr>
+<tr>
+<td style="text-align: left;">🔴🔵 Rouge + Bleu (violet)</td>
+<td style="text-align: left;">Auto-test réussi — sonde prête</td>
+</tr>
+<tr>
+<td style="text-align: left;">🔴 Rouge clignotante</td>
+<td style="text-align: left;">Auto-test échoué — broche bloquée ou obstruée</td>
+</tr>
+</tbody>
+</table>
+<p>Si l’auto-test passe mais que seule la LED rouge s’allume (pas de bleu), le
+câble de signal PWM est probablement mal connecté ou lâche. Fixez le connecteur
+Dupont maison avec du scotch ; vérifiez le fil signal sur la broche 3 du D11.</p>
+<p>Une fois la LED bleue allumée, testez le déploiement et l’escamotage depuis le
+menu Marlin <strong>Mouvement → BLTouch</strong> avant de lancer une impression.</p>
+<h2 id="reglage-de-loffset-sonde">Réglage de l’offset sonde</h2>
+<p><code>NOZZLE_TO_PROBE_OFFSET { X, Y, Z }</code> définit la position de la pointe de sonde
+par rapport à la buse. X et Y dépendent du montage du support ; Z est la hauteur
+de déclenchement.</p>
+<p><strong>N’essayez pas de régler Z à la compilation.</strong> Laissez-le à <code>0</code> dans le build
+et utilisez l’<strong>Assistant d’offset sonde</strong> (Mouvement → Offset sonde dans le
+menu Marlin) pour le régler en live. L’assistant utilise un test papier pour
+trouver la hauteur exacte de déclenchement et écrit le résultat en EEPROM.</p>
+<p>Pour X/Y, des valeurs typiques avec le support métal Creality standard :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Axe</th>
+<th style="text-align: left;">Valeur typique</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">X</td>
+<td style="text-align: left;">−44 à −46</td>
+<td style="text-align: left;">Mesurez sur votre support ; −44 est un bon point de départ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Y</td>
+<td style="text-align: left;">−9</td>
+<td style="text-align: left;">Généralement stable quelle que soit la position du support</td>
+</tr>
+<tr>
+<td style="text-align: left;">Z</td>
+<td style="text-align: left;">0 (compilation)</td>
+<td style="text-align: left;">Régler en live via l’Assistant d’offset, sauvegardé en EEPROM</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#define NOZZLE_TO_PROBE_OFFSET { -44, -9, 0 }</span>
+</code></pre></div></td></tr></table></div>
+<p>Si les résultats de première couche dérivent latéralement, mesurez la distance
+réelle buse-sonde avec un pied à coulisse et ajustez X/Y en conséquence.</p>
+<h2 id="babystepping-et-ajustement-z-en-direct">Babystepping et ajustement Z en direct</h2>
+<p>Le babystepping permet de régler l’offset Z en cours d’impression sans arrêter
+l’impression. Avec <code>BABYSTEP_ZPROBE_OFFSET</code> activé, l’ajustement est persistant :
+il met à jour l’offset sonde stocké en EEPROM, pas seulement un décalage
+temporaire. Workflow recommandé :</p>
+<ol>
+<li>Lancer une impression.</li>
+<li>Observer la première couche ; utiliser le menu babystepping pour corriger si nécessaire.</li>
+<li>La valeur corrigée est sauvegardée automatiquement.</li>
+</ol>
+<p>Pour un guide visuel combinant l’Assistant d’offset sonde et le babystepping,
+voir ce <a href="https://3dprintscape.com/z-offset-wizard-complete-guide/">guide de calibration Z</a>.</p>
+<h2 id="visualisation-du-nivellement-de-plateau">Visualisation du nivellement de plateau</h2>
+<p>Si vous utilisez OctoPrint, le
+<a href="https://plugins.octoprint.org/plugins/bedlevelvisualizer/">plugin Bed Level Visualizer</a>
+affiche le maillage sous forme de carte de chaleur 3D. Il est utile pour
+repérer les problèmes physiques de plateau qu’aucune correction Z ne peut
+résoudre, comme un châssis voilé ou non de niveau.</p>
+<h2 id="quatre-ans-apres-2026">Quatre ans après (2026)</h2>
+<p>Une fois calibré, le CR-Touch devient invisible — la première couche fonctionne, point. Le câble adaptateur est la seule étape non standard ; une fois ce problème de connecteur réglé, c’est de la configuration Marlin classique. Quatre ans plus tard, je n’ai pas eu à recalibrer une seule fois.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+            <hr>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+  </div>
+</footer>
+    <!--script async src="/theme/js/vendor/bootstrap.bundle.min.js"></script-->
+    <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
+    <script async src="/theme/js/lazyload.js"></script-->
+    <script async src="/theme/js/application.js"></script>
+    <script defer src="/theme/js/archive-links.js"></script>
+    <script defer src="/theme/js/code-blocks.js"></script>
+    <script defer src="/theme/js/filters.js"></script>
+
+    <!-- KaTeX JavaScript for math rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\\\(', right: '\\\\)', display: false},
+            {left: '\\\\[', right: '\\\\]', display: true}
+          ]
+        });"></script>
+
+
+  </body>
+</html>

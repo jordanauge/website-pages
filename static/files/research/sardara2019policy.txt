@@ -1,0 +1,12 @@
+The future landscape of a heterogeneous and unified access (WiFi and Cellular),
+where users and applications interact with heterogeneous multi-cloud networks, with
+many different services collaborating together, poses significant challenges to ISP,
+Enterprises, Cloud Providers and the applications themselves, in particular in terms
+of Policies, Security and QoE.
+
+In this demonstration we showcase the potential of Hybrid ICN (hICN) in the context
+of enforcing inter-domain policies: exploiting the connection-less, app-aware,
+multipoint transport of hICN we are able to manage policies on a per-application
+basis, combining multiple objectives of different players (ISP, Enterprise, Users)
+in a dynamic and seamless manner.
+

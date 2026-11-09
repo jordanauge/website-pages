@@ -1,0 +1,14 @@
+Researchers use the PlanetLab testbed for its ability to host experimental
+applications in realistic conditions over the public best-effort internet. Such
+applications form overlays whose performance is affected by the underlying
+topology and its evolution. While several topology information services have
+been proposed for PlanetLab, the TopHat system that we describe here fills a
+special niche. It is designed to support the entire lifecycle of an experiment:
+from setup, through run time, to retrospective analysis. TopHat does so in a new
+way, by drawing upon excellent, proven third party services, notably the Dimes
+and Etomic measurement infrastructures, for specialized measurements. TopHat has
+been developed as the active measurement component of PlanetLab Europe, the
+flagship testbed of the OneLab experimental facility. It is part of OneLab’s
+larger effort to pioneer the federation of previously independent testbeds and
+measurement systems in order to provide a diverse global scale environment for
+Future Internet research.
