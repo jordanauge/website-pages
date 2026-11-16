@@ -1,0 +1,30 @@
+.timeline {
+  border-left: 1px solid var(--base0E);
+  position: relative;
+  list-style: none;
+}
+
+.timeline .timeline-item {
+  position: relative;
+}
+
+.timeline .timeline-item:after {
+  position: absolute;
+  display: block;
+  top: 0;
+}
+
+.timeline .timeline-item:after {
+//  background-color: hsl(0, 0%, 90%);
+  left: -36px;
+  top: 5px;
+//  border-radius: 50%;
+//  height: 11px;
+//  width: 11px;
+  content: "";
+  width: 0; 
+  height: 0; 
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid var(--base0E);
+}

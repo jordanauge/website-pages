@@ -1,0 +1,387 @@
+/* Article content styling */
+
+/* ── Updated date badge ──────────────────────────────────────────────────── */
+.article-date-updated {
+  opacity: 0.82;
+  font-style: italic;
+}
+
+/* When the Updated badge is a button (collapse toggle) — must look identical
+   to the <time> sibling: same font, same size, no browser button chrome. */
+button.article-date-updated {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  /* Explicit font properties instead of `font: inherit` to avoid rounding */
+  font-size: 0.76rem;
+  font-weight: 400;
+  font-family: inherit;
+  line-height: inherit;
+  color: var(--bs-secondary-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-style: italic;
+  opacity: 0.82;
+}
+/* Hide Bootstrap's ::after caret — we use our own chevron icon */
+button.article-date-updated::after { display: none; }
+
+/* Chevron rotates when the banner is expanded */
+.changelog-chevron {
+  font-size: 0.58rem;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+button.article-date-updated[aria-expanded="true"] .changelog-chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Changelog banner (full-width panel, expands below the meta row) ─────── */
+.changelog-banner {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.65rem 1rem;
+  border-left: 3px solid var(--bs-primary);
+  background: var(--bs-tertiary-bg);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.82rem;
+}
+
+.changelog-entry {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.15rem 0;
+}
+
+.changelog-entry + .changelog-entry {
+  border-top: 1px solid var(--bs-border-color-translucent);
+  margin-top: 0.3rem;
+  padding-top: 0.4rem;
+}
+
+.changelog-date {
+  font-weight: 700;
+  font-size: 0.72rem;
+  color: #6c757d;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+[data-bs-theme="dark"] .changelog-date { color: #adb5bd; }
+
+.changelog-note {
+  color: var(--bs-body-color);
+  text-decoration: none;
+  line-height: 1.45;
+}
+
+a.changelog-note:hover {
+  text-decoration: underline;
+  color: var(--bs-primary);
+}
+
+/* ── Section badges (inline in headings: Added / Updated) ────────────────── */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.12em 0.45em;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-left: 0.5em;
+  line-height: 1.5;
+}
+
+a.section-badge {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.section-badge-added {
+  background: rgba(25, 135, 84, 0.12);
+  color: #146c43;
+  border: 1px solid rgba(25, 135, 84, 0.30);
+}
+
+.section-badge-updated {
+  background: rgba(255, 193, 7, 0.12);
+  color: #856404;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+}
+
+[data-bs-theme="dark"] .section-badge-added  { color: #75d9a3; }
+[data-bs-theme="dark"] .section-badge-updated { color: #ffd666; }
+
+/* Badge on its own line above the heading text */
+.post h2:has(.section-badge),
+.post h3:has(.section-badge) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+.post h2 .section-badge,
+.post h3 .section-badge {
+  order: -1;
+  margin-left: 0; /* reset the inline sibling offset */
+}
+
+/* ── Added/updated section left bar ───────────────────────────────────────── */
+.section-added,
+.section-updated {
+  position: relative;
+  padding-left: 1.25rem; /* gutter reserved for the bar */
+}
+
+.section-added::before,
+.section-updated::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 1px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* Solid green bar — "added" */
+.section-added::before {
+  left: 0.4rem;
+  width: 2px;
+  background: rgba(25, 135, 84, 0.7);
+}
+[data-bs-theme="dark"] .section-added::before {
+  background: rgba(117, 217, 163, 0.6);
+}
+
+/* Orange zigzag bar — "updated" */
+.section-updated::before {
+  left: 0.25rem;
+  width: 6px;
+  background-image:
+    linear-gradient(to bottom right, transparent 40%, rgba(230, 126, 34, 0.72) 40%, rgba(230, 126, 34, 0.72) 60%, transparent 60%),
+    linear-gradient(to bottom left,  transparent 40%, rgba(230, 126, 34, 0.72) 40%, rgba(230, 126, 34, 0.72) 60%, transparent 60%);
+  background-size: 6px 12px;
+  background-position: 0 0, 0 6px;
+  background-color: transparent;
+  border-radius: 0;
+}
+[data-bs-theme="dark"] .section-updated::before {
+  background-image:
+    linear-gradient(to bottom right, transparent 40%, rgba(253, 197, 117, 0.65) 40%, rgba(253, 197, 117, 0.65) 60%, transparent 60%),
+    linear-gradient(to bottom left,  transparent 40%, rgba(253, 197, 117, 0.65) 40%, rgba(253, 197, 117, 0.65) 60%, transparent 60%);
+  background-size: 6px 12px;
+  background-position: 0 0, 0 6px;
+  background-color: transparent;
+}
+
+/* Bars appear when changelog is expanded */
+.post:has(.changelog-toggle[aria-expanded="true"]) .section-added::before,
+.post:has(.changelog-toggle[aria-expanded="true"]) .section-updated::before {
+  opacity: 1;
+}
+
+/* ── Translation quality notice ─────────────────────────────────────────── */
+.translation-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 1.25rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  border: 1px solid transparent;
+}
+
+.translation-notice .bi {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+}
+
+/* warn: autogenerated, not reviewed */
+.translation-notice-warn {
+  background: rgba(255, 193, 7, 0.10);
+  border-color: rgba(255, 193, 7, 0.35);
+  color: #856404;
+}
+[data-bs-theme="dark"] .translation-notice-warn {
+  background: rgba(255, 193, 7, 0.08);
+  border-color: rgba(255, 193, 7, 0.25);
+  color: #ffd666;
+}
+
+/* ok: autogenerated and reviewed */
+.translation-notice-ok {
+  background: rgba(25, 135, 84, 0.08);
+  border-color: rgba(25, 135, 84, 0.28);
+  color: #146c43;
+}
+[data-bs-theme="dark"] .translation-notice-ok {
+  background: rgba(25, 135, 84, 0.10);
+  border-color: rgba(25, 135, 84, 0.30);
+  color: #75d9a3;
+}
+
+/* info: human-written in non-default lang */
+.translation-notice-info {
+  background: rgba(13, 110, 253, 0.06);
+  border-color: rgba(13, 110, 253, 0.22);
+  color: #084298;
+}
+[data-bs-theme="dark"] .translation-notice-info {
+  background: rgba(13, 110, 253, 0.08);
+  border-color: rgba(13, 110, 253, 0.25);
+  color: #8bb4fe;
+}
+
+/* Images in articles — responsive, constrained width */
+#content.blog-article-page img,
+.article-summary img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Constrain image width to ~80% of text width on desktop (matching pincab style) */
+@media (min-width: 768px) {
+  #content.blog-article-page img,
+  .article-summary img {
+    max-width: 85%;
+  }
+}
+
+/* Figures (if using <figure> tags) */
+#content figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+#content figure img {
+  max-width: 85%;
+  height: auto;
+  display: inline-block;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+#content figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--bs-secondary, #6c757d);
+  line-height: 1.5;
+}
+
+/* Small thumbnail floated beside text; click opens Bootstrap modal */
+#content .article-float-thumb {
+  float: right;
+  clear: right;
+  max-width: min(220px, 42%);
+  margin: 0.15rem 0 1rem 1.5rem;
+}
+
+#content .article-float-thumb a {
+  display: block;
+  cursor: zoom-in;
+}
+
+#content .article-float-thumb img {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  display: block;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+#content .article-float-thumb figcaption {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  text-align: center;
+  font-style: normal;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+#content .article-image-zoom-modal .modal-body {
+  padding: 0.5rem;
+}
+
+#content .article-image-zoom-modal img {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  display: block;
+  border-radius: 0.25rem;
+}
+
+@media (max-width: 575.98px) {
+  #content .article-float-thumb {
+    float: none;
+    max-width: 65%;
+    margin: 0 auto 1rem;
+  }
+}
+
+/* Footnotes styling */
+.footnote {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.footnote ol {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bs-border-color, #dee2e6);
+}
+
+.footnote li {
+  margin-bottom: 0.5rem;
+}
+
+.footnote a.footnote-backref {
+  margin-left: 0.25rem;
+  font-size: 0.8em;
+}
+
+/* ── Code block: hide the duplicate application.js clipboard button ── */
+.bd-clipboard {
+  display: none !important;
+}
+
+/* ── Code block: zebra stripe lines ──────────────────────────── */
+.highlight td.code pre,
+.highlight td.code div {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 1.5em,
+    rgba(128, 128, 128, 0.055) 1.5em,
+    rgba(128, 128, 128, 0.055) 3em
+  );
+  background-attachment: local;
+}
+
+.highlight td.linenos {
+  opacity: 0.45;
+}
+.highlight td.linenos .linenodiv pre {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 1.5em,
+    rgba(128, 128, 128, 0.055) 1.5em,
+    rgba(128, 128, 128, 0.055) 3em
+  );
+  background-attachment: local;
+}

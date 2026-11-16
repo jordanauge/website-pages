@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="/theme/css/style.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/theme-logos.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/docs.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/wowchemy-compat.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/news-snippet.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/publications.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/feeds.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/projects.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/research-home.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/collaborations.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/cv.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/archive-links.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-summary.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/filter-tagcloud.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/article-content.css?v=c6b9f9bc" rel="stylesheet">
+<link href="/theme/css/pygments.css?v=c6b9f9bc" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="/theme/css/navbar.css" rel="stylesheet">
+
+<!-- KaTeX for LaTeX math rendering -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+
+
+
+
+<title>Suivre la consommation d'un ballon d'eau chaude avec PowerCalc dans Home Assistant</title>
+
+
+<link href="https://jordan.auge.synaxe.net/fr/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jordan Augé Full Atom Feed" >
+
+<link href="https://jordan.auge.synaxe.net/fr/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Full RSS Feed" >
+
+
+
+
+<link href="/feed/home-automation.rss.xml" type="application/rss+xml" rel="alternate" title="Jordan Augé Categories RSS Feed" >
+
+
+
+<link rel="canonical" href="https://jordan.auge.synaxe.net/fr/blog/2025/01/tracking-hot-water-tank-power-consumption-powercalc-home-assistant/">
+
+<link rel="alternate" hreflang="fr" href="https://jordan.auge.synaxe.net/fr/blog/2025/01/tracking-hot-water-tank-power-consumption-powercalc-home-assistant/">
+<link rel="alternate" hreflang="en" href="https://jordan.auge.synaxe.net/blog/2025/01/tracking-hot-water-tank-power-consumption-powercalc-home-assistant/">
+
+<meta property="og:locale" content="">
+
+<meta property="og:site_name" content="Jordan Augé">
+<meta property="og:url" content="https://jordan.auge.synaxe.net/fr/blog/2025/01/tracking-hot-water-tank-power-consumption-powercalc-home-assistant/">
+<meta property="og:type" content="article">
+
+<meta property="og:title" content="Suivre la consommation d&#39;un ballon d&#39;eau chaude avec PowerCalc dans Home Assistant">
+<meta property="og:description" content="Estimer la consommation d’un ballon d’eau chaude dans Home Assistant avec PowerCalc en combinant un déclencheur binaire et un modèle de puissance dépendant de la tension.">
+
+
+
+
+<meta name="description" content="Estimer la consommation d’un ballon d’eau chaude dans Home Assistant avec PowerCalc en combinant un déclencheur binaire et un modèle de...">
+
+<meta name="author" content="Jordan Augé">
+
+
+
+<meta name="description" content="Jordan Augé's homepage">
+
+<script src="/theme/js/color-modes.js"></script>
+
+<meta name="author" content="Jordan Augé">
+
+
+</head>
+
+<body class="article-tracking-hot-water-tank-power-consumption-powercalc-home-assistant">
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <symbol id="archive" viewBox="0 0 16 16">
+    <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="arrow-right-short" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+  </symbol>
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </symbol>
+  <symbol id="file-earmark-richtext" viewBox="0 0 16 16">
+    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+    <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
+  </symbol>
+  <symbol id="film" viewBox="0 0 16 16">
+    <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="rss" viewBox="0 0 16 16">
+    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+    <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+  <symbol id="three-dots" viewBox="0 0 16 16">
+    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+  </symbol>
+</svg>
+
+
+
+
+
+  <header class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top">
+  <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+    <div class="d-lg-none" style="width: 2.25rem;"></div>
+
+    <a class="navbar-brand p-0 me-0 me-lg-4" href="https://jordan.auge.synaxe.net/fr/" aria-label=Jordan Augé>Jordan Augé</a>
+
+    <div class="d-flex">
+      <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Basculer la navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jordan Augé</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fermer" data-bs-target="#bdNavbar"></button>
+      </div>
+
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/">Accueil</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/news">Actualites</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/research/publications">Publications</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/projects">Projets</a>
+              </li>
+              <li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-2 px-0 px-lg-2" href="/fr/blog">Blog</a>
+              </li>
+        </ul>
+
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+
+          <li class="nav-item d-none d-lg-flex align-items-center navbar-social-icons">
+            <a href="mailto:jordan.auge@free.fr" class="nav-link px-1 navbar-social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://scholar.google.fr/citations?user=-itbwwIAAAAJ" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://github.com/jordanauge" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/jordan-aug%C3%A9-763ba4a8/" class="nav-link px-1 navbar-social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </li>
+
+          <li class="nav-item dropdown d-lg-none">
+            <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                    id="bd-theme-mobile"
+                    type="button"
+                    aria-expanded="false"
+                    data-bs-toggle="dropdown"
+                    data-bs-display="static"
+                    aria-label="Changer le thème (auto)">
+              <svg class="bi my-1"><use href="#circle-half"></use></svg>
+              <span class="ms-2" id="bd-theme-text">Changer le thème</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+                  Clair
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+                  Sombre
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+                  Auto
+                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item d-lg-none navbar-language-item">
+            <div class="navbar-lang-toggle" aria-label="Choix de langue">
+              <span class="navbar-lang-label">EN</span>
+              <a href="/blog/category/"
+                 class="navbar-lang-toggle-track is-fr"
+                 role="switch"
+                 aria-checked="true"
+                 aria-label="Switch to English">
+                <span class="navbar-lang-toggle-thumb"></span>
+              </a>
+              <span class="navbar-lang-label">FR</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="navbar-absolute-right d-none d-lg-flex align-items-center">
+    <div class="dropdown d-flex align-items-center">
+      <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-label="Changer le thème (auto)">
+        <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+            Clair
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+            Sombre
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-lang-toggle navbar-language-item" aria-label="Choix de langue">
+      <span class="navbar-lang-label">EN</span>
+      <a href="/blog/category/"
+         class="navbar-lang-toggle-track is-fr"
+         role="switch"
+         aria-checked="true"
+         aria-label="Switch to English">
+        <span class="navbar-lang-toggle-thumb"></span>
+      </a>
+      <span class="navbar-lang-label">FR</span>
+    </div>
+  </div>
+</header>
+            <header class="intro-header"
+                style="background-image: url('https://jordan.auge.synaxe.net/fr/../theme/images/post-bg.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                            <div class="post-heading text-light text-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+
+
+<div class="container-xxl px-4 px-xxl-2">
+    <div class="d-lg-grid content blog-article-page" id="content">
+        
+<div class="sidebar">
+  <aside class="news-article-sidebar sticky-top">
+
+    <div class="publications-sidebar-header">
+      <h1>Home Automation</h1>
+    </div>
+
+    <div class="sidebar-section sidebar-nav-links">
+
+      <div class="sidebar-feed-row">
+        <a class="sidebar-feed-label" href="/fr/blog/">Tous les billets</a>
+        <div class="dropdown sidebar-rss-dropdown">
+          <button class="sidebar-rss-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Flux RSS">
+            <svg class="bi" width="11" height="11" aria-hidden="true"><use xlink:href="#rss"></use></svg>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end sidebar-rss-menu">
+            <li><a class="dropdown-item" href="/fr/feed/blog.rss.xml" rel="alternate" type="application/rss+xml">Articles</a></li>
+            <li><a class="dropdown-item" href="/fr/feed/blog-with-updates.rss.xml" rel="alternate" type="application/rss+xml">Articles + mises à jour</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-feed-row">
+        <a class="sidebar-feed-label sidebar-feed-label--plain" href="https://jordan.auge.synaxe.net/fr/blog/category/home-automation/">Home Automation</a>
+        <div class="dropdown sidebar-rss-dropdown">
+          <button class="sidebar-rss-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Flux RSS">
+            <svg class="bi" width="11" height="11" aria-hidden="true"><use xlink:href="#rss"></use></svg>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end sidebar-rss-menu">
+            <li><a class="dropdown-item" href="/fr/feed/home-automation.rss.xml" rel="alternate" type="application/rss+xml">Articles</a></li>
+            <li><a class="dropdown-item" href="/fr/feed/home-automation-with-updates.rss.xml" rel="alternate" type="application/rss+xml">Articles + mises à jour</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-back-row mt-2">
+        <button type="button" class="sidebar-back-link" onclick="if(history.length > 1 && document.referrer && document.referrer.indexOf(location.host) !== -1){ history.back(); } else { location.href='/fr/blog/'; }">
+          <i class="bi bi-arrow-left"></i>
+          Retour
+        </button>
+      </div>
+
+    </div>
+
+    <div id="blog-toc-section" class="sidebar-section" style="display:none">
+      <hr class="sidebar-divider my-2">
+      <div class="blog-toc-heading">Sur cette page</div>
+      <nav id="blog-toc" class="blog-toc-nav" aria-label="Table of contents"></nav>
+    </div>
+
+  </aside>
+</div>
+
+<script>
+(function() {
+  function buildToc() {
+    var post = document.querySelector('.post');
+    if (!post) return;
+    var headings = Array.from(post.querySelectorAll('h2, h3'));
+    if (headings.length < 2) return;
+    var nav = document.getElementById('blog-toc');
+    var section = document.getElementById('blog-toc-section');
+    if (!nav || !section) return;
+
+    var ul = document.createElement('ul');
+    ul.className = 'blog-toc-list';
+    headings.forEach(function(h, i) {
+      if (!h.id) h.id = 'toc-heading-' + i;
+      var li = document.createElement('li');
+      li.className = 'blog-toc-item blog-toc-' + h.tagName.toLowerCase();
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.className = 'blog-toc-link';
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    nav.appendChild(ul);
+    section.style.display = '';
+
+    var aside = section.closest('.news-article-sidebar');
+    if (!aside) return;
+
+    // Calibrate sticky top to actual navbar height so sidebar never overlaps it
+    function applyNavbarOffset() {
+      var navbar = document.querySelector('.bd-navbar');
+      if (!navbar) return;
+      var h = Math.ceil(navbar.getBoundingClientRect().height);
+      var gap = 4; // px clearance below navbar
+      aside.style.top = (h + gap) + 'px';
+      aside.style.maxHeight = 'calc(100vh - ' + (h + gap) + 'px)';
+    }
+    applyNavbarOffset();
+    window.addEventListener('resize', applyNavbarOffset, { passive: true });
+
+    // Minimal-scroll: only move the sidebar when the active link is out of view.
+    // Never overshoot — scroll just enough to reveal the link with a small margin.
+    function scrollSidebarToActive(link) {
+      var margin = 6;
+      var asideRect = aside.getBoundingClientRect();
+      var linkRect = link.getBoundingClientRect();
+      var relTop    = linkRect.top    - asideRect.top;
+      var relBottom = linkRect.bottom - asideRect.top;
+      if (relTop < margin) {
+        aside.scrollTop += relTop - margin;
+      } else if (relBottom > asideRect.height - margin) {
+        aside.scrollTop += relBottom - asideRect.height + margin;
+      }
+      // If already visible, do nothing
+    }
+
+    // Scroll-based active tracking: the active heading is the last one whose
+    // top edge has passed above the scroll threshold (navbar bottom + small offset).
+    var currentActiveId = null;
+    function updateActive() {
+      var navbar = document.querySelector('.bd-navbar');
+      var threshold = (navbar ? navbar.offsetHeight : 56) + 8;
+
+      var found = null;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        if (headings[i].getBoundingClientRect().top <= threshold) {
+          found = headings[i];
+          break;
+        }
+      }
+      // If nothing has passed yet, highlight the first item
+      if (!found) found = headings[0];
+      if (!found) return;
+
+      if (found.id === currentActiveId) return; // no change
+      currentActiveId = found.id;
+
+      nav.querySelectorAll('.blog-toc-link').forEach(function(l) {
+        l.classList.remove('active');
+      });
+      var activeLink = nav.querySelector('a[href="#' + found.id + '"]');
+      if (activeLink) {
+        activeLink.classList.add('active');
+        scrollSidebarToActive(activeLink);
+      }
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() { updateActive(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateActive(); // set initial state
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildToc);
+  } else {
+    buildToc();
+  }
+})();
+</script>
+
+
+
+        <div class="main">
+            
+<div class="posts-container article-posts-container mx-auto my-5">
+  <div class="posts">
+    <div class="post">
+      <div class="article-content-header">
+        <h1 class="article-content-title">Suivre la consommation d'un ballon d'eau chaude avec PowerCalc dans Home Assistant</h1>
+        <div class="article-meta-pills article-meta-pills-content mt-2 mb-1">
+          <time class="article-date" datetime="2025-01-27"><i class="bi bi-calendar3"></i> 2025-01-27</time>
+          <button type="button" class="article-date article-date-updated changelog-toggle"
+                  data-bs-toggle="collapse" data-bs-target="#article-changelog"
+                  aria-expanded="false" aria-controls="article-changelog">
+            <i class="bi bi-pencil-square"></i> 2026-05-19<i class="bi bi-chevron-down changelog-chevron" aria-hidden="true"></i>
+          </button>
+            <a class="post-tag post-tag-project" data-color="teal" href="https://jordan.auge.synaxe.net/fr/blog/category/home-automation/"><i class="bi bi-folder2-open"></i> Home Automation</a>
+        </div>
+        <div class="collapse" id="article-changelog">
+          <div class="changelog-banner">
+            <div class="changelog-entry">
+              <span class="changelog-date">2026-05-19</span>
+<a href="#pour-aller-plus-loin" class="changelog-note">Ajout : analyse de l'erreur liée aux fluctuations de tension ; alternative en YAML natif sans PowerCalc.</a>            </div>
+          </div>
+        </div>
+      </div>
+      <div class="translation-notice translation-notice-warn">
+  <i class="bi bi-robot"></i>
+  <span>Traduction automatique depuis l'anglais — non relue.</span>
+</div>
+
+     <div class="article-summary article-summary-featured">
+         <div class="article-summary-kicker">Summary</div>
+     <p>Estimer la consommation d&rsquo;un ballon d&rsquo;eau chaude dans Home Assistant avec PowerCalc en combinant un déclencheur binaire et un modèle de puissance dépendant de la tension.</p>
+     </div>
+
+
+
+       <h2 id="introduction">Introduction</h2>
+<p>Cet article explique comment utiliser l’intégration PowerCalc pour ajouter la consommation d’un ballon d’eau chaude au tableau de bord Énergie de Home Assistant sans installer de capteur de puissance dédié.</p>
+<p>L’idée clé est qu’un ballon d’eau chaude suit un profil de consommation assez simple : c’est une charge résistive de forte puissance, souvent active sur des créneaux fixes, par exemple pendant les heures creuses la nuit. Lorsqu’aucun autre appareil comparable ne fonctionne au même moment, on peut exploiter les sauts de puissance, ou tout autre signal corrélé, pour détecter quand le ballon chauffe et estimer correctement sa consommation. PowerCalc est particulièrement adapté à ce type de capteur virtuel.</p>
+<h2 id="motivation">Motivation</h2>
+<p>J’ai volontairement choisi un appareil “simple”, le Sauter Cangar 200 L, annoncé à 2200 W, parce qu’un ballon d’eau chaude devrait rester un équipement basique. Le marketing semble pourtant avoir pris le dessus sur la durabilité, l’efficacité et le bon sens technique. Beaucoup de modèles plus récents exposent des interfaces propriétaires pour un faux sentiment de contrôle, exigent du Wi-Fi et une connexion cloud, et consomment en permanence une puissance de veille non négligeable. J’ai aussi constaté que certains ne peuvent pas être pilotés via le fil pilote, ce qui oblige à synchroniser manuellement leur programmation avec celle du fournisseur d’électricité. Les ballons plus classiques sont plus simples : ils sont pensés pour être pilotés via le fil pilote et, comme ils ne sont pas conçus pour rester alimentés en permanence, ils intègrent souvent une batterie plus robuste pour des fonctions comme l’anticorrosion active pendant les périodes hors tension.</p>
+<p>Si vous utilisez Home Assistant sérieusement, vous avez sans doute déjà rencontré la “matière noire” de l’énergie domestique : des équipements lourds, comme les ballons d’eau chaude câblés en direct, sans mesure intégrée. On peut installer un relais dédié ou un sous-compteur dans le tableau électrique, mais dans certains cas un capteur virtuel piloté par logiciel est suffisamment précis et bien plus simple à maintenir.</p>
+<h2 id="quest-ce-que-powercalc">Qu’est-ce que PowerCalc ?</h2>
+<p><a href="https://github.com/bramstroker/homeassistant-powercalc">PowerCalc</a> est une intégration Home Assistant spécialisée dans l’estimation de la consommation des appareils qui ne la remontent pas eux-mêmes. Sa fonctionnalité la plus utile ici est le capteur de <strong>puissance virtuelle manuelle</strong>. Elle permet de prendre un simple état On/Off et de le transformer en entités de puissance (W) et d’énergie (kWh).</p>
+<ul>
+<li><strong>Le tableau de bord Énergie</strong> : n’a besoin que du capteur d’énergie (kWh) créé par PowerCalc.  </li>
+<li><strong>Les utility meters</strong> : sont utiles si vous voulez des entités dédiées pour l’interface principale, ou des compteurs distincts selon les tarifs.</li>
+</ul>
+<h2 id="calculer-la-resistance-du-ballon">Calculer la résistance du ballon</h2>
+<p>On pourrait affecter une puissance fixe, par exemple 2200 W, ou prendre une moyenne récente, mais en pratique cette valeur varie dans le temps. Cela peut facilement introduire une erreur de 5 % ou plus.</p>
+<p>La raison est la baisse de tension du réseau pendant les périodes de forte demande. J’ai observé une tension qui pouvait passer de 225 V à 215 V exactement au moment où les heures creuses commencent et où le ballon démarre. Si l’on modélise le ballon avec une puissance fixe, on surestime alors l’énergie réellement consommée.</p>
+<p><img alt="alt text" src="/blog/2025-01-27-homeassistant-power-tracking-water-tank-powercalc/image.png"/></p>
+<p>On peut au contraire exploiter le fait qu’un ballon se comporte comme une charge presque purement résistive suivant la loi d’Ohm : $P = V^2 / R$. J’ai mesuré le delta de puissance avant et après le déclenchement.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>P</th>
+<th>V</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Avant déclenchement</td>
+<td>212 W</td>
+<td>220 V</td>
+</tr>
+<tr>
+<td>Après déclenchement</td>
+<td>2212 W</td>
+<td>220 V</td>
+</tr>
+</tbody>
+</table>
+<p>La formule donne alors $R = V^2 / P = 220^2 / 2000 = 24.2 \Omega$. Dans cette mesure, le résultat est proche de la valeur annoncée, mais ce n’est pas toujours le cas. J’ai répété l’opération sur plusieurs jours et retenu une résistance moyenne de 24 $\Omega$.</p>
+<p>Une fois cette résistance estimée, on peut calculer la puissance instantanée directement à partir de la tension mesurée en utilisant la même formule.</p>
+<h2 id="configurer-powercalc">Configurer PowerCalc</h2>
+<h3 id="installation">Installation</h3>
+<ol>
+<li><strong>Installation via HACS</strong> : allez dans HACS -&gt; Integrations -&gt; Explore &amp; Download Repositories. Cherchez “Powercalc” puis installez-le.  </li>
+<li><strong>Redémarrage</strong> : redémarrez Home Assistant pour initialiser l’intégration.</li>
+</ol>
+<h2 id="creer-un-binary-sensor-pour-detecter-lactivite-du-ballon">Créer un binary sensor pour détecter l’activité du ballon</h2>
+<p>Pour suivre virtuellement un appareil, PowerCalc a besoin d’un capteur de référence indiquant quand l’équipement est actif. Ici j’utilise le compteur global de la maison, un <strong>Lixee ZLinky</strong>, pour détecter le saut de puissance.</p>
+<p>Un binary sensor est créé dans <code>templates.yaml</code> :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">binary_sensor</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Water</span><span class="nv"> </span><span class="s">Tank</span><span class="nv"> </span><span class="s">Heating"</span>
+<span class="w">      </span><span class="nt">unique_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">water_tank_heating</span>
+<span class="w">      </span><span class="nt">device_class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">running</span>
+<span class="w">      </span><span class="nt">delay_on</span><span class="p">:</span><span class="w"> </span><span class="s">"00:00:15"</span>
+<span class="w">      </span><span class="nt">delay_off</span><span class="p">:</span><span class="w"> </span><span class="s">"00:00:15"</span>
+<span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">{% set power = states('sensor.lixee_zlinky_tic_puissance') | float(0) %}</span>
+<span class="w">        </span><span class="no">{% set is_time_window = 22 &lt;= now().hour or now().hour &lt; 6 %}</span>
+<span class="w">        </span><span class="no">{{ power &gt; 1800 and is_time_window }}</span>
+</code></pre></div></td></tr></table></div>
+<p>Pour éviter les faux positifs dus à d’autres gros appareils comme un four, j’ajoute comme contrainte le créneau heures creuses, de 22 h à 6 h dans mon cas. Le <code>delay_on</code> de 15 secondes filtre les pics très courts, et le <code>delay_off</code> évite les clignotements lorsque le compteur remonte brièvement 0 W ou manque une mise à jour.</p>
+<h2 id="ajouter-un-capteur-depuis-linterface-powercalc">Ajouter un capteur depuis l’interface PowerCalc</h2>
+<p><strong>Configuration de l’intégration</strong> : allez dans <strong>Settings</strong> &gt; <strong>Devices &amp; Services</strong> &gt; <strong>Add Integration</strong>. Recherchez “Powercalc” puis sélectionnez-le.</p>
+<p>Suivez ensuite les étapes suivantes :</p>
+<h3 id="ecran-1-choix-du-type-de-capteur">Écran 1 : choix du type de capteur</h3>
+<ul>
+<li>Sélectionnez <strong>Virtual power (manual)</strong>.</li>
+</ul>
+<h3 id="ecran-2-creation-dun-capteur-de-puissance-virtuelle">Écran 2 : création d’un capteur de puissance virtuelle</h3>
+<ul>
+<li><strong>Source entity</strong> : <code>binary_sensor.water_tank_heating</code>.  </li>
+<li><strong>Name</strong> : “Hot water tank Power”.  </li>
+<li><strong>Calculation strategy</strong> : choisissez <strong>fixed</strong>.  </li>
+<li><strong>Standby power</strong> : mettez 0.  </li>
+<li><strong>Create energy sensor</strong> : laissez activé.</li>
+</ul>
+<h3 id="ecran-3-configuration-fixe">Écran 3 : configuration fixe</h3>
+<p>Utilisez le champ <strong>Power template</strong> pour le calcul dynamique.</p>
+<p>Au lieu de saisir une puissance fixe, utilisez l’expression Jinja Home Assistant habituelle qui élève <code>sensor.lixee_zlinky_tic_tension</code> au carré, divise par <code>23.07</code>, puis arrondit le résultat à deux décimales.</p>
+<h3 id="ecran-4-options-avancees">Écran 4 : options avancées</h3>
+<ul>
+<li><strong>Energy integration method</strong> : choisissez <strong>left</strong> (Left Riemann Sum). Pour un appareil qui passe presque instantanément de 0 W à 2000 W, cette méthode est en général plus précise que la méthode trapézoïdale par défaut.  </li>
+<li><strong>Energy sensor unit prefix</strong> : vérifiez que <strong>k (kilo)</strong> est sélectionné.</li>
+</ul>
+<div class="section-added">
+<p><span id="pour-aller-plus-loin"></span></p>
+<h2 id="pour-aller-plus-loin-2026-05-19">Pour aller plus loin <a class="section-badge section-badge-added" data-bs-target="#article-changelog" data-bs-toggle="collapse" href="#article-changelog" role="button" title="Ajouté le 2026-05-19 : analyse des erreurs dues aux fluctuations de tension ; alternative YAML native sans PowerCalc.">+ 2026-05-19</a></h2>
+<h3 id="precision-quantifier-lerreur-liee-aux-fluctuations-de-tension">Précision : quantifier l’erreur liée aux fluctuations de tension</h3>
+<p>La formule $P = V^2/R$ implique qu’une variation de tension par rapport au nominal 230 V est amplifiée dans le calcul de puissance, car la relation est quadratique. Avec $R = 24\,\Omega$ :</p>
+<table>
+<thead>
+<tr>
+<th>Tension</th>
+<th>Puissance réelle</th>
+<th>Erreur vs. 230 V fixe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>215 V</td>
+<td>1927 W</td>
+<td>−277 W (−14 %)</td>
+</tr>
+<tr>
+<td>220 V</td>
+<td>2017 W</td>
+<td>−187 W (−9 %)</td>
+</tr>
+<tr>
+<td>225 V</td>
+<td>2110 W</td>
+<td>−94 W (−4 %)</td>
+</tr>
+<tr>
+<td>230 V</td>
+<td>2204 W</td>
+<td>0</td>
+</tr>
+<tr>
+<td>235 V</td>
+<td>2301 W</td>
+<td>+97 W (+4 %)</td>
+</tr>
+</tbody>
+</table>
+<p>En heures creuses, le réseau est davantage chargé et la tension se situe typiquement vers le bas de cette plage. Sur un cycle de chauffe de 3h30 à 215 V, un modèle fixé à 230 V comptabiliserait 7,7 kWh au lieu des 6,7 kWh réels — soit un écart d’un kilowattheure par nuit, ou environ 30 kWh par mois.</p>
+<blockquote>
+<p><strong>Remarque sur les valeurs négatives.</strong> Si l’on cherchait à estimer la consommation du ballon en soustrayant une ligne de base à la puissance totale du foyer plutôt qu’en utilisant un déclencheur binaire, une chute de tension simultanée au démarrage du ballon pourrait produire un delta de puissance légèrement inférieur à l’attendu et, selon le timing, une lecture brièvement négative. L’approche par déclencheur binaire évite entièrement ce problème : la puissance vaut soit $V^2/R$, soit zéro, sans aucune soustraction.</p>
+</blockquote>
+<h3 id="alternative-yaml-natif-sans-powercalc">Alternative : YAML natif sans PowerCalc</h3>
+<p>Si vous préférez éviter une dépendance HACS, le même résultat peut être obtenu avec trois composants standard de Home Assistant.</p>
+<p><strong>1. Capteur template</strong> — puissance instantanée, dans <code>templates.yaml</code> :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sensor</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Water</span><span class="nv"> </span><span class="s">Tank</span><span class="nv"> </span><span class="s">Power"</span>
+<span class="w">      </span><span class="nt">unit_of_measurement</span><span class="p">:</span><span class="w"> </span><span class="s">"W"</span>
+<span class="w">      </span><span class="nt">device_class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">power</span>
+<span class="w">      </span><span class="nt">state_class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">measurement</span>
+<span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">{% if is_state('binary_sensor.water_tank_heating', 'on') %}</span>
+<span class="w">          </span><span class="no">{{ (states('sensor.lixee_zlinky_tic_tension') | float(0) ** 2 / 24) | round(2) }}</span>
+<span class="w">        </span><span class="no">{% else %}</span>
+<span class="w">          </span><span class="no">0</span>
+<span class="w">        </span><span class="no">{% endif %}</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>2. Intégration de Riemann</strong> — accumulation d’énergie, dans <code>configuration.yaml</code> :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">sensor</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integration</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sensor.water_tank_power</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Water</span><span class="nv"> </span><span class="s">Tank</span><span class="nv"> </span><span class="s">Energy"</span>
+<span class="w">    </span><span class="nt">unit_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k</span>
+<span class="w">    </span><span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">left</span>
+<span class="w">    </span><span class="nt">round</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>3. Compteur utilitaire</strong> — remises à zéro cycliques et persistance entre les redémarrages, dans <code>configuration.yaml</code> :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">utility_meter</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">water_tank_energy_daily</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sensor.water_tank_energy</span>
+<span class="w">    </span><span class="nt">cycle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daily</span>
+<span class="w">  </span><span class="nt">water_tank_energy_monthly</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sensor.water_tank_energy</span>
+<span class="w">    </span><span class="nt">cycle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monthly</span>
+</code></pre></div></td></tr></table></div>
+<p>Le capteur <code>integration</code> se remet à zéro à chaque redémarrage de Home Assistant. Le wrapper <code>utility_meter</code> ajoute des remises à zéro cycliques et des statistiques long terme, offrant le même comportement que le capteur d’énergie intégré de PowerCalc. Ajoutez <code>sensor.water_tank_energy</code> (ou une entité de compteur utilitaire) au tableau de bord Énergie de la manière habituelle.</p>
+<p>Le compromis : trois blocs YAML contre une interface guidée en quelques clics. PowerCalc reste la solution la plus simple si HACS fait déjà partie de votre configuration.</p>
+</div>
+<h2 id="conclusion">Conclusion</h2>
+<p>Une fois les nouveaux capteurs créés, ils devraient apparaître dans le tableau de bord Énergie comme appareils individuels. Cela permet de sortir une part importante de la consommation de la catégorie générique “non suivie”, tout en gardant une estimation raisonnablement précise, même lorsque la tension secteur varie.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+            <hr>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+  </div>
+</footer>
+    <!--script async src="/theme/js/vendor/bootstrap.bundle.min.js"></script-->
+    <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
+    <script async src="/theme/js/lazyload.js"></script-->
+    <script async src="/theme/js/application.js"></script>
+    <script defer src="/theme/js/archive-links.js"></script>
+    <script defer src="/theme/js/code-blocks.js"></script>
+    <script defer src="/theme/js/filters.js"></script>
+
+    <!-- KaTeX JavaScript for math rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\\\(', right: '\\\\)', display: false},
+            {left: '\\\\[', right: '\\\\]', display: true}
+          ]
+        });"></script>
+
+
+  </body>
+</html>

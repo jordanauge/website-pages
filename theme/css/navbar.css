@@ -1,0 +1,405 @@
+/**
+ * Navbar Menu Visibility Fix
+ * 
+ * Problem: docs.css sets navbar links to rgba(255,255,255,0.85) - semi-transparent
+ * Solution: Override ONLY text color to be fully opaque white
+ * Note: Bootstrap 5's navbar-expand-lg already handles collapse behavior automatically
+ */
+
+/* Fix menu link color - fully opaque white */
+.bd-navbar .navbar-nav .nav-link,
+.bd-navbar .navbar-toggler {
+    color: rgba(255, 255, 255, 1) !important;
+}
+
+.bd-navbar .navbar-nav .nav-link,
+.bd-navbar .navbar-nav .nav-link.active,
+.bd-navbar .navbar-nav .show > .nav-link,
+.bd-navbar .navbar-nav .nav-link:hover,
+.bd-navbar .navbar-nav .nav-link:focus,
+.bd-navbar .navbar-nav .nav-link:active {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.bd-navbar .nav-item.active,
+.bd-navbar .nav-item.active .nav-link {
+    background: transparent !important;
+}
+
+.bd-navbar .navbar-toggler:hover,
+.bd-navbar .navbar-toggler:focus,
+.bd-navbar .navbar-nav .nav-link:hover,
+.bd-navbar .navbar-nav .nav-link:focus {
+    color: #fff !important;
+}
+
+:root {
+    --jordan-navbar-blue: #0b4f83;
+    --jordan-navbar-blue-dark: #0b4f83;
+    --jordan-dropdown-surface: #f8fafc;
+    --jordan-dropdown-surface-dark: #1b2733;
+    --jordan-dropdown-text: #11263a;
+    --jordan-dropdown-text-dark: rgba(255, 255, 255, 0.92);
+    --jordan-dropdown-border: rgba(17, 38, 58, 0.12);
+    --jordan-dropdown-border-dark: rgba(255, 255, 255, 0.12);
+    --jordan-dropdown-hover: rgba(11, 79, 131, 0.08);
+    --jordan-dropdown-active: rgba(11, 79, 131, 0.14);
+}
+
+html {
+    font-size: 13.5px;
+}
+
+@media screen and (min-width: 58em) {
+    html {
+        font-size: 17.25px;
+    }
+}
+
+.dropdown-menu {
+    background-color: var(--jordan-dropdown-surface) !important;
+    color: var(--jordan-dropdown-text) !important;
+    border: 1px solid var(--jordan-dropdown-border) !important;
+    box-shadow: none !important;
+    padding: 0.3rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.dropdown-divider {
+    border-top-color: rgba(17, 38, 58, 0.08) !important;
+}
+
+.dropdown-header {
+    color: rgba(17, 38, 58, 0.62) !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.dropdown-item,
+.dropdown-item-text,
+.dropdown-menu .dropdown-item,
+.dropdown-menu .dropdown-item-text {
+    background-color: transparent !important;
+    color: var(--jordan-dropdown-text) !important;
+    font-size: 0.88rem !important;
+}
+
+.dropdown-item,
+.dropdown-item-text {
+    padding: 0.38rem 0.9rem !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus,
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    color: var(--jordan-dropdown-text) !important;
+    background-color: var(--jordan-dropdown-hover) !important;
+}
+
+.dropdown-item.active,
+.dropdown-item:active,
+.dropdown-menu .active,
+.dropdown-item-active,
+.navbar .dropdown-item.active,
+.navbar .dropdown-item-active {
+    color: var(--jordan-dropdown-text) !important;
+    background-color: var(--jordan-dropdown-active) !important;
+    font-weight: 600;
+}
+
+.dropdown-item .bi,
+.dropdown-item .theme-icon {
+    color: inherit !important;
+}
+
+[data-bs-theme="dark"] .dropdown-menu,
+.dark .dropdown-menu {
+    background-color: var(--jordan-dropdown-surface-dark) !important;
+    color: var(--jordan-dropdown-text-dark) !important;
+    border-color: var(--jordan-dropdown-border-dark) !important;
+}
+
+[data-bs-theme="dark"] .dropdown-divider,
+.dark .dropdown-divider {
+    border-top-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-bs-theme="dark"] .dropdown-header,
+.dark .dropdown-header {
+    color: rgba(255, 255, 255, 0.62) !important;
+}
+
+[data-bs-theme="dark"] .dropdown-item,
+[data-bs-theme="dark"] .dropdown-item-text,
+.dark .dropdown-item,
+.dark .dropdown-item-text {
+    color: var(--jordan-dropdown-text-dark) !important;
+}
+
+[data-bs-theme="dark"] .dropdown-item:hover,
+[data-bs-theme="dark"] .dropdown-item:focus,
+.dark .dropdown-item:hover,
+.dark .dropdown-item:focus {
+    color: #fff !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-bs-theme="dark"] .dropdown-item.active,
+[data-bs-theme="dark"] .dropdown-item:active,
+[data-bs-theme="dark"] .dropdown-menu .active,
+[data-bs-theme="dark"] .dropdown-item-active,
+.dark .dropdown-item.active,
+.dark .dropdown-item:active,
+.dark .dropdown-menu .active,
+.dark .dropdown-item-active {
+    color: #fff !important;
+    background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.bd-navbar {
+    box-shadow: none !important;
+}
+
+.bd-navbar::after {
+    background-image: none !important;
+    background-color: var(--jordan-navbar-blue) !important;
+}
+
+.bd-navbar .offcanvas-lg {
+    background-color: var(--jordan-navbar-blue) !important;
+}
+
+.bd-navbar .navbar-nav .nav-link,
+.bd-navbar .navbar-nav .nav-link.active,
+.bd-navbar .navbar-nav .show > .nav-link,
+.bd-navbar .navbar-nav .dropdown-toggle,
+.bd-navbar .navbar-nav .dropdown-toggle.active,
+.bd-navbar .btn-link.nav-link,
+.bd-navbar .btn-link.nav-link:hover,
+.bd-navbar .btn-link.nav-link:focus,
+.bd-navbar .btn-link.nav-link:active {
+    background-image: none !important;
+    background-color: transparent !important;
+}
+
+.bd-navbar .nav-link.active,
+.bd-navbar .show > .nav-link {
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.9);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35em;
+}
+
+.bd-navbar .vr {
+    opacity: 0 !important;
+}
+
+.bd-navbar .dropdown-menu {
+    background-color: #0b4f83 !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow: none !important;
+}
+
+.bd-navbar .dropdown-item {
+    color: rgba(255, 255, 255, 0.92) !important;
+    background-color: transparent !important;
+}
+
+.bd-navbar .dropdown-item:hover,
+.bd-navbar .dropdown-item:focus {
+    color: #fff !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.bd-navbar .dropdown-item.active,
+.bd-navbar .dropdown-item:active,
+.bd-navbar .dropdown-menu .active {
+    color: #fff !important;
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    font-weight: 600;
+}
+
+.bd-navbar .dropdown-item .theme-icon,
+.bd-navbar .dropdown-item .bi {
+    color: inherit !important;
+}
+
+.navbar-language-item {
+    display: flex;
+    align-items: center;
+}
+
+/* Language toggle switch */
+.navbar-lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-left: 0.35rem;
+}
+
+.navbar-lang-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1;
+    user-select: none;
+}
+
+.navbar-lang-toggle-track {
+    position: relative;
+    display: inline-block;
+    width: 2.1rem;
+    height: 1.1rem;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    text-decoration: none;
+}
+
+.navbar-lang-toggle-track.is-fr {
+    background: rgba(255, 255, 255, 0.88);
+    border-color: rgba(255, 255, 255, 0.88);
+}
+
+.navbar-lang-toggle-thumb {
+    position: absolute;
+    top: 50%;
+    left: 0.18rem;
+    transform: translateY(-50%);
+    width: 0.72rem;
+    height: 0.72rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    transition: left 0.2s ease, background 0.2s ease;
+    pointer-events: none;
+}
+
+.navbar-lang-toggle-track.is-fr .navbar-lang-toggle-thumb {
+    left: calc(100% - 0.18rem - 0.72rem);
+    background: #0b4f83;
+}
+
+.navbar-lang-toggle-track:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-lang-toggle:has(.is-fr) .navbar-lang-label:last-child {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar-lang-toggle:not(:has(.is-fr)) .navbar-lang-label:first-child {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar-language-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.85rem;
+    padding: 0.15rem 0.35rem;
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.82) !important;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar-language-link:hover,
+.navbar-language-link:focus {
+    color: #fff !important;
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.navbar-language-link.active {
+    color: #0b4f83 !important;
+    background-color: rgba(255, 255, 255, 0.96);
+}
+
+[data-bs-theme="dark"] .bd-navbar::after {
+    background-image: none !important;
+    background-color: #083b61 !important;
+}
+
+[data-bs-theme="dark"] .bd-navbar .offcanvas-lg {
+    background-color: #083b61 !important;
+}
+
+[data-bs-theme="dark"] .bd-navbar .dropdown-menu {
+    background-color: #083b61 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-bs-theme="dark"] .bd-navbar .dropdown-item:hover,
+[data-bs-theme="dark"] .bd-navbar .dropdown-item:focus {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-bs-theme="dark"] .bd-navbar .dropdown-item.active,
+[data-bs-theme="dark"] .bd-navbar .dropdown-item:active,
+[data-bs-theme="dark"] .bd-navbar .dropdown-menu .active {
+    background-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-language-item {
+        margin-top: 0.5rem;
+    }
+
+    .navbar-language-switcher {
+        margin-left: 0;
+    }
+}
+
+/* Desktop controls pinned to the right edge of the viewport */
+.navbar-absolute-right {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    gap: 0.1rem;
+    z-index: 10;
+}
+
+/* Disable hover rotation/animation on site title */
+.bd-navbar .navbar-brand,
+.bd-navbar .navbar-brand:hover,
+.bd-navbar .navbar-brand:focus,
+.bd-navbar .navbar-brand:active {
+    transform: none !important;
+    animation: none !important;
+}
+
+@media (min-width: 992px) {
+    .bd-navbar .navbar-brand {
+        margin-right: 2rem !important;
+    }
+}
+
+/* Menu entries — lighter weight */
+.bd-navbar .bd-navbar-nav .nav-link {
+    font-weight: 300;
+}
+
+/* Social icons in navbar — desktop only */
+.navbar-social-icons {
+   gap: 0;
+   margin-right: 0.25rem;
+}
+
+.navbar-social-link {
+   opacity: 0.7;
+   font-size: 1.05rem;
+   transition: opacity 0.15s;
+}
+
+.navbar-social-link:hover {
+   opacity: 1;
+}

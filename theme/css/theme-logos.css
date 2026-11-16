@@ -1,0 +1,33 @@
+/* ==========================================================================
+   Global logo light/dark switching
+   ==========================================================================
+   Convention:
+     - .logo-light  → visible in light mode, hidden in dark mode
+     - .logo-dark   → hidden in light mode, visible in dark mode
+
+   Usage (HTML):
+     <img class="logo-light" src="/theme/img/logos/foo-light.svg" alt="Foo">
+     <img class="logo-dark"  src="/theme/img/logos/foo-dark.svg"  alt="Foo">
+
+   For theme-safe logos (same file works in both modes), use a single <img>
+   without either class.
+
+   File naming: logos/{name}-light.svg and logos/{name}-dark.svg
+   ========================================================================== */
+
+.logo-dark {
+    display: none;
+}
+
+[data-bs-theme="dark"] .logo-light {
+    display: none;
+}
+
+[data-bs-theme="dark"] .logo-dark {
+    display: block;
+}
+
+/* Inline-block variant for logos used inside inline / flex contexts */
+[data-bs-theme="dark"] .logo-dark.logo-inline {
+    display: inline-block;
+}

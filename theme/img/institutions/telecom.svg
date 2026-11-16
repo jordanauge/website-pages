@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="56" viewBox="0 0 180 56" role="img" aria-labelledby="title desc">
+  <title id="title">Telecom Paris badge</title>
+  <desc id="desc">Institution badge for Telecom Paris.</desc>
+  <rect width="180" height="56" rx="12" fill="#fff7fa"/>
+  <rect x="0.75" y="0.75" width="178.5" height="54.5" rx="11.25" fill="none" stroke="#e8c7d2"/>
+  <rect x="10" y="10" width="38" height="36" rx="10" fill="#b0143b"/>
+  <text x="29" y="33" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#ffffff">TP</text>
+  <text x="60" y="24" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#541525">Telecom Paris</text>
+  <text x="60" y="39" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#7d4958">Engineering school</text>
+</svg>

@@ -1,0 +1,249 @@
+/* ==================== Filter Tagcloud Component ==================== */
+
+.filter-tagcloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.4rem;
+  margin: 0.6rem 0;
+}
+
+.filter-tag-item {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter-tag-item input[type="checkbox"] {
+  display: none;
+}
+
+.filter-tag-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.08rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  border: 2px solid rgba(108, 117, 125, 0.35);
+  background: transparent;
+  color: var(--bs-secondary-color);
+  transition: all 0.15s ease;
+}
+
+.filter-tag-item input[type="checkbox"]:checked + .filter-tag-label {
+  font-weight: 600;
+  background: rgba(108, 117, 125, 0.12);
+}
+
+/* Color variants for filter labels — aligned with post-tag[data-color] */
+.filter-tag-label[data-color="blue"] {
+  border-color: rgba(13,110,253,0.30);
+  color: #4e8cff;
+  background: rgba(13,110,253,0.10);
+}
+
+.filter-tag-item input[type="checkbox"]:checked + .filter-tag-label[data-color="blue"] {
+  background: rgba(13,110,253,0.20);
+}
+
+.filter-tag-label[data-color="green"] {
+  border-color: rgba(25,135,84,0.30);
+  color: #2eaa6e;
+  background: rgba(25,135,84,0.10);
+}
+
+.filter-tag-item input[type="checkbox"]:checked + .filter-tag-label[data-color="green"] {
+  background: rgba(25,135,84,0.20);
+}
+
+.filter-tag-label[data-color="purple"] {
+  border-color: rgba(111,66,193,0.30);
+  color: #8b5cf6;
+  background: rgba(111,66,193,0.10);
+}
+
+.filter-tag-item input[type="checkbox"]:checked + .filter-tag-label[data-color="purple"] {
+  background: rgba(111,66,193,0.20);
+}
+
+.filter-tag-label[data-color="orange"] {
+  border-color: rgba(255,159,67,0.30);
+  color: #e88a3a;
+  background: rgba(255,159,67,0.10);
+}
+
+.filter-tag-item input[type="checkbox"]:checked + .filter-tag-label[data-color="orange"] {
+  background: rgba(255,159,67,0.20);
+}
+
+.filter-tag-label[data-color="teal"] {
+  border-color: rgba(13,202,240,0.30);
+  color: #0fb5d0;
+  background: rgba(13,202,240,0.10);
+}
+
+.filter-tag-item input[type="checkbox"]:checked + .filter-tag-label[data-color="teal"] {
+  background: rgba(13,202,240,0.20);
+}
+
+.filter-tag-label[data-color="red"] {
+  border-color: rgba(220,53,69,0.30);
+  color: #dc3545;
+  background: rgba(220,53,69,0.10);
+}
+
+.filter-tag-item input[type="checkbox"]:checked + .filter-tag-label[data-color="red"] {
+  background: rgba(220,53,69,0.20);
+}
+
+.filter-tag-label[data-color="yellow"] {
+  border-color: rgba(255,193,7,0.30);
+  color: #ffc107;
+  background: rgba(255,193,7,0.10);
+}
+
+.filter-tag-item input[type="checkbox"]:checked + .filter-tag-label[data-color="yellow"] {
+  background: rgba(255,193,7,0.20);
+}
+
+/* Dark theme support */
+[data-bs-theme="dark"] .filter-tag-label {
+  border-color: rgba(108, 117, 125, 0.35);
+  color: var(--bs-secondary-color);
+}
+
+[data-bs-theme="dark"] .filter-tag-label[data-color="blue"] {
+  color: #6ea9ff;
+}
+
+[data-bs-theme="dark"] .filter-tag-label[data-color="green"] {
+  color: #52c77a;
+}
+
+[data-bs-theme="dark"] .filter-tag-label[data-color="purple"] {
+  color: #a78bfa;
+}
+
+[data-bs-theme="dark"] .filter-tag-label[data-color="orange"] {
+  color: #fba96a;
+}
+
+[data-bs-theme="dark"] .filter-tag-label[data-color="teal"] {
+  color: #38d9f0;
+}
+
+[data-bs-theme="dark"] .filter-tag-label[data-color="red"] {
+  color: #ff6b7a;
+}
+
+[data-bs-theme="dark"] .filter-tag-label[data-color="yellow"] {
+  color: #ffd966;
+}
+
+/* ==================== Filter Section Headers ==================== */
+.filter-section {
+  margin-bottom: 1.5rem;
+}
+
+.filter-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bs-emphasis-color);
+  margin-bottom: 0.75rem;
+}
+
+.filter-section-title::before {
+  content: "";
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.12rem;
+  border-radius: 999px;
+  background: var(--bs-primary);
+}
+
+/* ==================== Display Size Buttons ==================== */
+.filter-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.filter-btn {
+  padding: 0.22rem 0.55rem;
+  border: 1px solid var(--bs-border-color);
+  background: transparent;
+  color: var(--bs-secondary-color);
+  font-size: 0.74rem;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--bs-primary);
+  color: var(--bs-primary);
+}
+
+.filter-btn.active {
+  background: var(--bs-primary);
+  color: #fff;
+  border-color: var(--bs-primary);
+  font-weight: 600;
+}
+
+/* Fade unselected items when the cloud has an active selection */
+.filter-tagcloud:has(input:checked) .filter-tag-item:not(:has(input:checked)) .filter-tag-label {
+  opacity: 0.3;
+}
+
+/* ==================== Thin noUiSlider for sidebar date range ==================== */
+#blog-date-slider.noUi-target,
+#news-date-slider.noUi-target {
+  height: 3px;
+  border: 0;
+  box-shadow: none;
+  background: var(--bs-border-color);
+  border-radius: 2px;
+}
+
+#blog-date-slider .noUi-connect,
+#news-date-slider .noUi-connect {
+  background: var(--bs-secondary-color);
+}
+
+#blog-date-slider .noUi-handle,
+#news-date-slider .noUi-handle {
+  width: 12px;
+  height: 12px;
+  top: -5px;
+  right: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--bs-secondary-color);
+  background: var(--bs-body-bg);
+  box-shadow: none;
+  cursor: pointer;
+}
+
+#blog-date-slider .noUi-handle::before,
+#blog-date-slider .noUi-handle::after,
+#news-date-slider .noUi-handle::before,
+#news-date-slider .noUi-handle::after {
+  display: none;
+}
+
+#blog-date-slider .noUi-handle:hover,
+#blog-date-slider .noUi-handle:active,
+#news-date-slider .noUi-handle:hover,
+#news-date-slider .noUi-handle:active {
+  border-color: var(--bs-primary);
+  transform: none;
+  box-shadow: none;
+}

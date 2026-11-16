@@ -1,0 +1,11 @@
+Hosts in the current Internet are seldom experiencing large queueing delays,
+dubbed bufferbloat, that are self-inflicted by users due to TCP dynamics filling
+their access link buffers. While it is known that maximum bufferbloat possibly
+grows up to a few seconds, it is less understood how often in practice these
+delays may affect the user Internet experience. To answer this question, we
+design a system based on distributed agents running on PlanetLab that aims at
+quantify- ing its extent. Specifically, we focus on continously probing, at a
+higher frequency than typically done today, a fairly large number of hosts, to
+build a spatial and temporal map of Internet bufferbloat. In this paper, we
+report on the system architecture, its validation, and a preliminary results of
+a measurement campaign we are currently running.

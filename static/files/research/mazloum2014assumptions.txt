@@ -1,0 +1,7 @@
+We challenge a set of assumptions that are frequently used to model interdomain
+routing in the Internet by confronting them with routing decisions that are
+actually taken by ASes, as revealed through publicly available BGP feeds. Our
+results quantify for the first time the extent to which such assumptions are too
+simple to model real-world Internet routing policies. This should introduce a
+note of caution into future work that makes these assumptions and should prompt
+attempts to find more accurate models.

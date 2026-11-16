@@ -1,0 +1,299 @@
+<svg viewBox="0 0 1400 1100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: bold 28px sans-serif; fill: #2c3e50; }
+      .subtitle { font: bold 18px sans-serif; fill: #34495e; }
+      .section-title { font: bold 16px sans-serif; fill: #2c3e50; }
+      .label { font: 16px sans-serif; fill: #2c3e50; }
+      .small-label { font: 14px sans-serif; fill: #555; }
+      .value { font: bold 16px monospace; fill: #e74c3c; }
+      .wire { stroke-width: 4; fill: none; }
+      .wire-red { stroke: #e74c3c; stroke-width: 5; }
+      .wire-black { stroke: #2c3e50; stroke-width: 5; }
+      .wire-yellow { stroke: #f39c12; stroke-width: 4; }
+      .wire-green { stroke: #27ae60; stroke-width: 4; }
+      .wire-blue { stroke: #3498db; stroke-width: 4; }
+      .wire-orange { stroke: #e67e22; stroke-width: 4; }
+      .wire-purple { stroke: #9b59b6; stroke-width: 4; }
+      .breadboard { fill: #f8f9fa; stroke: #95a5a6; stroke-width: 3; }
+      .ic-body { fill: #2c3e50; stroke: #1a252f; stroke-width: 2; }
+      .ic-pin { fill: #95a5a6; stroke: #7f8c8d; stroke-width: 1; }
+      .ic-notch { fill: #1a252f; }
+      .resistor { fill: #f4d03f; stroke: #2c3e50; stroke-width: 2; }
+      .resistor-band { fill: #8b4513; }
+      .capacitor { fill: #3498db; stroke: #2c3e50; stroke-width: 2; }
+      .cap-plus { fill: none; stroke: #fff; stroke-width: 2; }
+      .diode { fill: #e74c3c; stroke: #2c3e50; stroke-width: 2; }
+      .transistor { fill: #34495e; stroke: #2c3e50; stroke-width: 2; }
+      .component-label { font: bold 14px monospace; fill: #2c3e50; }
+      .pin-label { font: bold 12px sans-serif; fill: #fff; }
+      .terminal { fill: #c0392b; stroke: #7f1c1c; stroke-width: 3; }
+      .annotation { font: 14px sans-serif; fill: #555; }
+      .box { fill: none; stroke: #95a5a6; stroke-width: 2; stroke-dasharray: 5,5; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="700" y="40" text-anchor="middle" class="title">555 Timer Doorbell Adapter - Breadboard Wiring</text>
+  <text x="700" y="70" text-anchor="middle" class="subtitle">Frequency: 1Hz (152ms ON / 901ms OFF)</text>
+
+  <!-- Main Layout: 3 sections side by side -->
+  
+  <!-- ============ SECTION 1: INPUT (VTO2202F) ============ -->
+  <g id="section-input">
+    <rect x="50" y="100" width="380" height="350" rx="10" class="box"/>
+    <text x="240" y="130" text-anchor="middle" class="section-title">① INPUT: VTO2202F Connection</text>
+    
+    <!-- VTO2202F Terminal Block -->
+    <g transform="translate(120, 180)">
+      <rect x="0" y="0" width="80" height="120" rx="5" fill="#34495e" stroke="#2c3e50" stroke-width="3"/>
+      <text x="40" y="-15" text-anchor="middle" class="label">VTO2202F</text>
+      
+      <!-- Terminal 1 -->
+      <circle cx="40" cy="30" r="12" class="terminal"/>
+      <text x="40" y="36" text-anchor="middle" class="pin-label">1</text>
+      <text x="95" y="35" class="annotation">Wire 1</text>
+      
+      <!-- Terminal 2 -->
+      <circle cx="40" cy="90" r="12" class="terminal"/>
+      <text x="40" y="96" text-anchor="middle" class="pin-label">2</text>
+      <text x="95" y="95" class="annotation">Wire 2</text>
+      
+      <!-- Output wires -->
+      <line x1="52" y1="30" x2="120" y2="30" class="wire wire-purple"/>
+      <line x1="52" y1="90" x2="120" y2="90" class="wire wire-red"/>
+    </g>
+    
+    <!-- Connection explanation -->
+    <text x="70" y="350" class="annotation">When doorbell pressed:</text>
+    <text x="70" y="375" class="annotation">• Contact closes (NO → closed)</text>
+    <text x="70" y="400" class="annotation">• Pin 4 goes HIGH → 555 starts</text>
+    <text x="70" y="425" class="annotation">• Oscillation begins at 1Hz</text>
+  </g>
+
+  <!-- ============ SECTION 2: CIRCUIT (555 + Components) ============ -->
+  <g id="section-circuit">
+    <rect x="470" y="100" width="480" height="800" rx="10" class="box"/>
+    <text x="710" y="130" text-anchor="middle" class="section-title">② CIRCUIT: 555 Timer + Components</text>
+    
+    <!-- Breadboard representation -->
+    <rect x="500" y="160" width="420" height="650" rx="8" class="breadboard"/>
+    
+    <!-- Power rails labels -->
+    <text x="510" y="185" class="small-label">+6V</text>
+    <line x1="550" y1="180" x2="900" y2="180" class="wire-red"/>
+    <text x="510" y="210" class="small-label">GND</text>
+    <line x1="550" y1="205" x2="900" y2="205" class="wire-black"/>
+    
+    <!-- TLC555 IC (centered, larger) -->
+    <g id="ic555" transform="translate(620, 280)">
+      <rect x="0" y="0" width="180" height="260" rx="8" class="ic-body"/>
+      <ellipse cx="90" cy="30" rx="15" ry="10" class="ic-notch"/>
+      <text x="90" y="140" text-anchor="middle" class="pin-label" font-size="20">TLC555</text>
+      
+      <!-- Left pins -->
+      <rect x="-20" y="40" width="20" height="18" class="ic-pin"/>
+      <text x="-35" y="54" text-anchor="end" class="small-label" fill="#fff">1 GND</text>
+      
+      <rect x="-20" y="90" width="20" height="18" class="ic-pin"/>
+      <text x="-35" y="104" text-anchor="end" class="small-label" fill="#fff">2 TRIG</text>
+      
+      <rect x="-20" y="140" width="20" height="18" class="ic-pin"/>
+      <text x="-35" y="154" text-anchor="end" class="small-label" fill="#fff">3 OUT</text>
+      
+      <rect x="-20" y="190" width="20" height="18" class="ic-pin"/>
+      <text x="-35" y="204" text-anchor="end" class="small-label" fill="#fff">4 RST</text>
+      
+      <!-- Right pins -->
+      <rect x="180" y="40" width="20" height="18" class="ic-pin"/>
+      <text x="215" y="54" class="small-label" fill="#fff">8 VDD</text>
+      
+      <rect x="180" y="90" width="20" height="18" class="ic-pin"/>
+      <text x="215" y="104" class="small-label" fill="#fff">7 DIS</text>
+      
+      <rect x="180" y="140" width="20" height="18" class="ic-pin"/>
+      <text x="215" y="154" class="small-label" fill="#fff">6 THR</text>
+      
+      <rect x="180" y="190" width="20" height="18" class="ic-pin"/>
+      <text x="215" y="204" class="small-label" fill="#fff">5 CTL</text>
+    </g>
+    
+    <!-- R1 (22kΩ) -->
+    <g transform="translate(670, 590)">
+      <rect x="0" y="0" width="80" height="30" rx="5" class="resistor"/>
+      <rect x="15" y="0" width="8" height="30" class="resistor-band"/>
+      <rect x="35" y="0" width="8" height="30" class="resistor-band"/>
+      <text x="40" y="20" text-anchor="middle" class="component-label" font-size="12">R1</text>
+      <text x="40" y="50" text-anchor="middle" class="value">22kΩ</text>
+    </g>
+    
+    <!-- R2 (130kΩ) -->
+    <g transform="translate(770, 590)">
+      <rect x="0" y="0" width="80" height="30" rx="5" class="resistor"/>
+      <rect x="15" y="0" width="8" height="30" class="resistor-band"/>
+      <rect x="35" y="0" width="8" height="30" class="resistor-band"/>
+      <text x="40" y="20" text-anchor="middle" class="component-label" font-size="12">R2</text>
+      <text x="40" y="50" text-anchor="middle" class="value">130kΩ</text>
+    </g>
+    
+    <!-- C1 (10µF) -->
+    <g transform="translate(530, 640)">
+      <rect x="0" y="0" width="50" height="70" rx="5" class="capacitor"/>
+      <line x1="10" y1="15" x2="40" y2="15" class="cap-plus" stroke-width="3"/>
+      <line x1="25" y1="5" x2="25" y2="25" class="cap-plus" stroke-width="3"/>
+      <text x="25" y="50" text-anchor="middle" class="pin-label">C1</text>
+      <text x="25" y="95" text-anchor="middle" class="value">10µF</text>
+    </g>
+    
+    <!-- D1 (1N4148) -->
+    <g transform="translate(670, 650)">
+      <polygon points="0,0 40,20 0,40" class="diode"/>
+      <rect x="40" y="0" width="4" height="40" fill="#2c3e50"/>
+      <text x="20" y="60" text-anchor="middle" class="value">D1 1N4148</text>
+    </g>
+    
+    <!-- Q1 (2N2222) -->
+    <g transform="translate(850, 420)">
+      <circle cx="0" cy="0" r="35" class="transistor"/>
+      <line x1="-10" y1="-15" x2="-10" y2="15" stroke="#fff" stroke-width="4"/>
+      <line x1="-30" y1="0" x2="-10" y2="0" stroke="#fff" stroke-width="3"/>
+      <line x1="-10" y1="-12" x2="20" y2="-30" stroke="#fff" stroke-width="3"/>
+      <line x1="-10" y1="12" x2="20" y2="30" stroke="#fff" stroke-width="3"/>
+      <polygon points="-10,12 -5,18 -15,18" fill="#fff"/>
+      <text x="-45" y="5" class="small-label" fill="#fff">B</text>
+      <text x="30" y="-28" class="small-label" fill="#fff">C</text>
+      <text x="30" y="38" class="small-label" fill="#fff">E</text>
+      <text x="0" y="60" text-anchor="middle" class="value">Q1 2N2222</text>
+    </g>
+    
+    <!-- Rb (1kΩ) -->
+    <g transform="translate(760, 425)">
+      <rect x="0" y="0" width="60" height="25" rx="4" class="resistor"/>
+      <text x="30" y="18" text-anchor="middle" class="component-label" font-size="11">Rb 1kΩ</text>
+    </g>
+    
+    <!-- D2 (1N4007 flyback) -->
+    <g transform="translate(870, 320)">
+      <polygon points="0,0 30,15 0,30" class="diode"/>
+      <rect x="30" y="0" width="4" height="30" fill="#2c3e50"/>
+      <text x="15" y="50" text-anchor="middle" class="value" font-size="11">D2</text>
+      <text x="15" y="65" text-anchor="middle" class="small-label">Flyback</text>
+    </g>
+    
+    <!-- Connection lines (simplified) -->
+    <!-- Power -->
+    <line x1="600" y1="180" x2="600" y2="320" class="wire-red"/>
+    <line x1="600" y1="320" x2="620" y2="320" class="wire-red"/>
+    <text x="580" y="250" class="small-label">+6V</text>
+    
+    <line x1="600" y1="205" x2="600" y2="330" class="wire-black"/>
+    <text x="580" y="330" class="small-label">GND</text>
+    
+    <!-- Pin 4 from VTO2202F -->
+    <line x1="550" y1="470" x2="600" y2="470" class="wire-purple"/>
+    <text x="515" y="475" class="annotation" font-size="12">Pin 4</text>
+    
+    <!-- Timing capacitor -->
+    <line x1="555" y1="640" x2="555" y2="410" class="wire-yellow"/>
+    <line x1="555" y1="410" x2="600" y2="410" class="wire-yellow"/>
+    <text x="520" y="530" class="annotation" font-size="12">Timing</text>
+    
+    <!-- Output to transistor -->
+    <line x1="710" y1="420" x2="760" y2="420" class="wire-orange"/>
+    <line x1="820" y1="420" x2="820" y2="420" class="wire-orange"/>
+    <text x="730" y="415" class="annotation" font-size="12">OUT</text>
+  </g>
+
+  <!-- ============ SECTION 3: OUTPUT (Doorbell) ============ -->
+  <g id="section-output">
+    <rect x="990" y="100" width="360" height="350" rx="10" class="box"/>
+    <text x="1170" y="130" text-anchor="middle" class="section-title">③ OUTPUT: Doorbell Chime</text>
+    
+    <!-- Doorbell Terminal Block -->
+    <g transform="translate(1080, 180)">
+      <rect x="0" y="0" width="80" height="120" rx="5" fill="#34495e" stroke="#2c3e50" stroke-width="3"/>
+      <text x="40" y="-15" text-anchor="middle" class="label">Doorbell</text>
+      
+      <!-- Terminal + -->
+      <circle cx="40" cy="30" r="12" class="terminal"/>
+      <text x="40" y="36" text-anchor="middle" class="pin-label">+</text>
+      <text x="-40" y="35" text-anchor="end" class="annotation">Chime +</text>
+      
+      <!-- Terminal - -->
+      <circle cx="40" cy="90" r="12" class="terminal"/>
+      <text x="40" y="96" text-anchor="middle" class="pin-label">-</text>
+      <text x="-40" y="95" text-anchor="end" class="annotation">Chime -</text>
+      
+      <!-- Input wires -->
+      <line x1="20" y1="30" x2="-40" y2="30" class="wire-red"/>
+      <line x1="20" y1="90" x2="-40" y2="90" class="wire-black"/>
+    </g>
+    
+    <!-- Connection explanation -->
+    <text x="1010" y="350" class="annotation">Doorbell operation:</text>
+    <text x="1010" y="375" class="annotation">• Transistor switches ON/OFF</text>
+    <text x="1010" y="400" class="annotation">• 152ms ON → solenoid strikes</text>
+    <text x="1010" y="425" class="annotation">• 901ms OFF → reset for next</text>
+  </g>
+
+  <!-- ============ CONNECTION SUMMARY ============ -->
+  <g id="connection-summary" transform="translate(50, 480)">
+    <rect x="0" y="0" width="900" height="240" rx="10" fill="#ecf0f1" stroke="#95a5a6" stroke-width="3"/>
+    <text x="450" y="35" text-anchor="middle" class="section-title">Connection Summary</text>
+    
+    <!-- VTO2202F connections -->
+    <text x="20" y="70" class="label" fill="#9b59b6">VTO2202F (Input):</text>
+    <text x="40" y="95" class="annotation">• Wire 1 (purple) → Pin 4 (RESET)</text>
+    <text x="40" y="120" class="annotation">• Wire 2 (red) → +6V rail</text>
+    <text x="40" y="145" class="annotation">When pressed: contact closes, Pin 4 HIGH, oscillation starts</text>
+    
+    <!-- Doorbell connections -->
+    <text x="480" y="70" class="label" fill="#e74c3c">Doorbell (Output):</text>
+    <text x="500" y="95" class="annotation">• Chime + → Transistor Collector (via D2)</text>
+    <text x="500" y="120" class="annotation">• Chime - → GND rail</text>
+    <text x="500" y="145" class="annotation">Rings: 152ms ON / 901ms OFF (≈1 Hz)</text>
+    
+    <!-- Power connections -->
+    <text x="20" y="180" class="label" fill="#e74c3c">Power Supply (6V Battery):</text>
+    <text x="40" y="205" class="annotation">• Battery + → +6V rail (top and bottom)</text>
+    <text x="40" y="230" class="annotation">• Battery - → GND rail (top and bottom)</text>
+  </g>
+
+  <!-- ============ COMPONENT LIST ============ -->
+  <g transform="translate(50, 760)">
+    <rect x="0" y="0" width="900" height="190" rx="10" fill="#f8f9fa" stroke="#95a5a6" stroke-width="3"/>
+    <text x="450" y="35" text-anchor="middle" class="section-title">Shopping List</text>
+    
+    <g transform="translate(20, 60)">
+      <text x="0" y="0" class="annotation">□ TLC555CP (CMOS timer IC)</text>
+      <text x="0" y="25" class="annotation">□ Resistor 22kΩ (1/4W)</text>
+      <text x="0" y="50" class="annotation">□ Resistor 130kΩ (1/4W)</text>
+      <text x="0" y="75" class="annotation">□ Resistor 1kΩ (1/4W)</text>
+      <text x="0" y="100" class="annotation">□ Capacitor 10µF electrolytic 16V</text>
+    </g>
+    
+    <g transform="translate(320, 60)">
+      <text x="0" y="0" class="annotation">□ Capacitor 10nF ceramic</text>
+      <text x="0" y="25" class="annotation">□ Diode 1N4148 (signal)</text>
+      <text x="0" y="50" class="annotation">□ Diode 1N4007 (power)</text>
+      <text x="0" y="75" class="annotation">□ Transistor 2N2222 (NPN)</text>
+      <text x="0" y="100" class="annotation">□ Breadboard 830 points</text>
+    </g>
+    
+    <g transform="translate(620, 60)">
+      <text x="0" y="0" class="annotation">□ Jumper wires (assorted)</text>
+      <text x="0" y="25" class="annotation">□ Screw terminals (4×)</text>
+      <text x="0" y="50" class="annotation"></text>
+      <text x="0" y="75" class="annotation" fill="#e74c3c" font-weight="bold">⚠ Use TLC555 (CMOS)</text>
+      <text x="0" y="100" class="annotation" fill="#e74c3c" font-weight="bold">NOT NE555 (bipolar)</text>
+    </g>
+  </g>
+
+  <!-- ============ IMPORTANT NOTES ============ -->
+  <g transform="translate(50, 980)">
+    <rect x="0" y="0" width="900" height="90" rx="10" fill="#ffe6e6" stroke="#e74c3c" stroke-width="3"/>
+    <text x="20" y="30" class="annotation" fill="#c0392b" font-weight="bold">⚠ CRITICAL:</text>
+    <text x="20" y="55" class="annotation">1. Electrolytic capacitor C1: + (long lead) to signal, - to GND</text>
+    <text x="20" y="75" class="annotation">2. Diode D1: Cathode (band) toward Pin 7 | Diode D2: Cathode toward doorbell+</text>
+  </g>
+</svg>

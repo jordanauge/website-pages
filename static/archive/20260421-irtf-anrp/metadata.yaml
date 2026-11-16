@@ -1,0 +1,21 @@
+archived_at: '2026-04-21T08:19:07.544617Z'
+date: '20260421'
+description: Archived webpage from irtf.org
+files:
+- index.html
+- assets/images/Comcast-Logo.png
+- assets/images/NBCU-Logo.png
+- assets/images/isoc.png
+- assets/images/irtf.png
+- assets/scripts/bootstrap.bundle.js
+- assets/stylesheets/bootstrap.css
+original_url: https://irtf.org/anrp
+size_mb: 0.71
+slug: irtf-anrp
+tags:
+- irtf
+- anrp
+- award
+- research
+title: Applied Networking Research Prize
+type: webpage

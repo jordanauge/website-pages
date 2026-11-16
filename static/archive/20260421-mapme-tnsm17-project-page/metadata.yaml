@@ -1,0 +1,22 @@
+archived_at: '2026-04-21T08:17:34.869015Z'
+date: '20260421'
+description: Archived webpage from mapme-tnsm17.github.io
+files:
+- index.html
+- assets/images/code.png
+- assets/images/bib.png
+- assets/images/txt.png
+- assets/images/pdf.png
+- assets/scripts/anchor.min.js
+- assets/stylesheets/style.css
+original_url: https://mapme-tnsm17.github.io/
+size_mb: 0.08
+slug: mapme-tnsm17-project-page
+tags:
+- mapme
+- hicn
+- icn
+- research
+title: 'MAP-ME: Managing Anchor-less Producer Mobility in Content-Centric Networks
+  | mapme-tnsm17.github.io'
+type: webpage

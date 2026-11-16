@@ -1,0 +1,399 @@
+.article-summary-featured {
+  margin: 1.25rem 0 2rem;
+  padding: 1rem 1.25rem 1.1rem;
+  border: 1px solid rgba(31, 41, 51, 0.1);
+  border-left: 0.2rem solid rgba(31, 41, 51, 0.24);
+  border-radius: 0 0.6rem 0.6rem 0;
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.03), rgba(17, 24, 39, 0.015));
+  color: rgba(0, 0, 0, 0.78);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.article-meta-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+
+
+/* ── Article date — standalone component (not a pill) ───────────────── */
+.article-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: var(--bs-secondary-color);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.article-date .bi {
+  font-size: 0.68rem;
+  flex-shrink: 0;
+  opacity: 0.65;
+}
+
+/* Hero variant — no icon, adapted for dark background */
+.article-date--hero {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+
+[data-bs-theme="dark"] .article-date,
+.dark .article-date {
+  color: var(--bs-secondary-color);
+}
+
+.article-summary-kicker {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  padding: 0.12rem 0.42rem;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.05);
+  color: rgba(17, 24, 39, 0.7);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.article-summary-featured p,
+.article-summary-featured ul,
+.article-summary-featured ol {
+  font-size: 1.04rem;
+  line-height: 1.8;
+}
+
+.article-summary-featured p {
+  max-width: 62ch;
+}
+
+.article-summary-featured p:last-child,
+.article-summary-featured ul:last-child,
+.article-summary-featured ol:last-child {
+  margin-bottom: 0;
+}
+
+.article-summary-featured strong {
+  color: var(--bs-emphasis-color, #1f2933);
+}
+
+.article-summary-featured a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.14em;
+}
+
+[data-bs-theme="dark"] .article-summary-featured,
+.dark .article-summary-featured {
+  border-color: rgba(255, 255, 255, 0.08);
+  border-left-color: rgba(226, 232, 240, 0.28);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.02));
+  color: rgba(255, 255, 255, 0.84);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+[data-bs-theme="dark"] .article-summary-kicker,
+.dark .article-summary-kicker {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.68);
+}
+
+[data-bs-theme="dark"] .article-summary-featured strong,
+.dark .article-summary-featured strong {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.article-posts-container-news {
+  max-width: 72rem;
+}
+
+.news-article-hero .post-heading {
+  max-width: 58rem;
+  margin: 0 auto;
+}
+
+.post-heading .article-page-title {
+  margin: 0;
+  font-size: clamp(1.9rem, 3.1vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.news-article-hero .display-2 {
+  font-size: clamp(2.7rem, 5.6vw, 5rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.news-article-hero .meta {
+  display: inline-block;
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+@media (max-width: 992px) {
+  .article-posts-container-news {
+    max-width: 100%;
+  }
+
+  .post-heading .article-page-title {
+    font-size: clamp(1.6rem, 6.8vw, 2.2rem);
+  }
+
+  .news-article-hero .display-2 {
+    font-size: clamp(2.3rem, 8vw, 3.8rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .article-meta-pills {
+    gap: 0.35rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .article-summary-featured {
+    margin: 1rem 0 1.5rem;
+    padding: 0.9rem 1rem;
+  }
+}
+
+/* Global: reduce base font from Wowchemy's 18px to 16px on large screens */
+@media screen and (min-width: 58em) {
+  html { font-size: 14px; }
+}
+
+/* Blog index article styles */
+.post-preview h1,
+.post-preview h2 {
+  font-size: 0.92rem;
+  line-height: 1.3;
+  margin-bottom: 0;
+}
+
+.post-preview .post-date {
+  font-size: 0.72rem;
+  margin-top: 0.35rem;
+  margin-bottom: 0.45rem;
+  color: rgba(100, 116, 139, 0.9);
+}
+
+[data-bs-theme="dark"] .post-preview .post-date,
+.dark .post-preview .post-date {
+  color: rgba(148, 163, 184, 0.85);
+}
+
+.post-preview .article-summary {
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.post-read-more-link {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0f5f9c;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.post-read-more-link:hover {
+  color: #0b4f83;
+}
+
+[data-bs-theme="dark"] .post-read-more-link {
+  color: #7dc0f0;
+}
+
+[data-bs-theme="dark"] .post-read-more-link:hover {
+  color: #a6d7f7;
+}
+
+/* Category/tag chips on blog posts — shared palette with .news-tag */
+.post-tags-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 0.45rem 0 0.6rem;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0;
+}
+
+/* Base chip — category (default, not project-linked) */
+.post-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.08rem 0.35rem;
+  border-radius: 999px;
+  font-size: 0.60rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  background: rgba(108, 117, 125, 0.10);
+  color: var(--bs-secondary-color);
+  border: 1px solid rgba(108, 117, 125, 0.18);
+}
+
+.post-tag:hover { filter: brightness(1.15); text-decoration: none; }
+
+/* Fix icon vertical centering in article meta pills */
+.article-meta-pills-content .article-date i,
+.article-meta-pills-content .post-tag i {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.post-tag[data-color="blue"]   { background: rgba(13,110,253,0.15);  color:#4e8cff; border-color:rgba(13,110,253,0.30); }
+.post-tag[data-color="green"]  { background: rgba(25,135,84,0.15);   color:#2eaa6e; border-color:rgba(25,135,84,0.30); }
+.post-tag[data-color="purple"] { background: rgba(111,66,193,0.15);  color:#8b5cf6; border-color:rgba(111,66,193,0.30); }
+.post-tag[data-color="orange"] { background: rgba(255,159,67,0.15);  color:#e88a3a; border-color:rgba(255,159,67,0.30); }
+.post-tag[data-color="teal"]   { background: rgba(13,202,240,0.15);  color:#0fb5d0; border-color:rgba(13,202,240,0.30); }
+.post-tag[data-color="red"]    { background: rgba(220,53,69,0.15);  color:#dc3545; border-color:rgba(220,53,69,0.30); }
+.post-tag[data-color="yellow"] { background: rgba(255,193,7,0.15);  color:#ffc107; border-color:rgba(255,193,7,0.30); }
+
+[data-bs-theme="dark"] .post-tag[data-color="blue"]   { color:#6ea9ff; }
+[data-bs-theme="dark"] .post-tag[data-color="green"]  { color:#52c77a; }
+[data-bs-theme="dark"] .post-tag[data-color="purple"] { color:#a78bfa; }
+[data-bs-theme="dark"] .post-tag[data-color="orange"] { color:#fba96a; }
+[data-bs-theme="dark"] .post-tag[data-color="teal"]   { color:#38d9f0; }
+[data-bs-theme="dark"] .post-tag[data-color="red"]    { color:#ff6b7a; }
+[data-bs-theme="dark"] .post-tag[data-color="yellow"] { color:#ffd966; }
+
+/* Project-linked category: slightly squared corners + bold icon prefix */
+.post-tag-project {
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.post-tag-project .bi {
+  font-size: 0.6rem;
+  opacity: 0.8;
+}
+
+/* Freeform tag: border only, no background */
+.post-tag-label {
+  font-size: 0.62rem;
+  font-weight: 400;
+  background: transparent;
+  border-color: rgba(108, 117, 125, 0.35);
+  color: var(--bs-secondary-color);
+}
+
+.post-tag-label:hover {
+  border-color: rgba(108, 117, 125, 0.6);
+  filter: none;
+  color: var(--bs-body-color);
+}
+
+/* ==================== Blog Timeline (archive) ==================== */
+.archive-year {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bs-secondary-color);
+  margin: 1.5rem 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.archive-year:first-child {
+  margin-top: 0;
+}
+
+.archive-list {
+  margin-bottom: 0;
+}
+
+.archive-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  padding: 0.28rem 0;
+  flex-wrap: wrap;
+}
+
+.archive-date {
+  font-size: 0.7rem;
+  color: var(--bs-secondary-color);
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 5.5rem;
+}
+
+.archive-title {
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--bs-body-color);
+  text-decoration: none;
+  flex: 1;
+  min-width: 0;
+}
+
+.archive-title:hover {
+  color: var(--bs-primary);
+}
+
+.archive-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.archive-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  width: 100%;
+  padding-left: calc(5.5rem + 0.65rem); /* align under title: date min-width + gap */
+}
+
+.blog-index-page nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem 0 0;
+}
+
+.blog-index-page nav ul li {
+  margin: 0;
+}
+
+/* ── Article content header (title rendered in the content area) ────────── */
+
+.article-content-header {
+  margin-bottom: 1.75rem;
+}
+
+.article-content-title {
+  margin: 0.25rem 0 0;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--bs-emphasis-color, #1f2933);
+}
+
+/* Pills shown inside the content area — left-aligned, uses post-tag system */
+.article-meta-pills-content {
+  justify-content: flex-start;
+}
+}

@@ -1,0 +1,19 @@
+archived_at: '2026-04-21T08:17:50.421140Z'
+date: '20260421'
+description: Archived webpage from wiki.fd.io
+files:
+- index.html
+- assets/images/poweredby_mediawiki_88x31.png
+- assets/scripts/load.php
+- assets/stylesheets/load.php
+original_url: https://wiki.fd.io/view/Vicn
+size_mb: 0.12
+slug: fdio-wiki-vicn
+tags:
+- vicn
+- fdio
+- hicn
+- icn
+- code
+title: Vicn - fd.io
+type: webpage

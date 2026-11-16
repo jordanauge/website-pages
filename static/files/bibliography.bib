@@ -1,0 +1,564 @@
+@article{carofiglio2019hicn,
+    title = {{Enabling ICN in the Internet Protocol: Analysis and Evaluation of the Hybrid-ICN Architecture}},
+    author = {Carofiglio, Giovanna and Muscariello, Luca and Aug{\'e}, Jordan and Papalini, Michele and Sardara, Mauro and Compagno, Alberto},
+    journal = {ACM SIGCOMM ICN'19},
+    address = {Macau, CN},
+    year = {2019},
+    month = {Sept.},
+    _pdf = {/static/files/research/carofiglio2019hicn.pdf},
+    abstract = {Information-Centric Networking (ICN) embraces a family of network architectures rethinking Internet communication principles around named-data. After several years of research and the emergence of a few popular proposals, the idea to replace the Internet protocol with data-centric networking remains a subject of debate. ICN advantages have been advocated in the context of 5G networks for the support of highly mobile, multi-access/source and latencyminimal patterns of communications. However, large scale testing and insertion in operational networks are yet to happen, likely due to the lack of a clear incremental deployment strategy. In this paper, we analyze a recent proposal Hybrid-ICN (hICN), an ICN integration inside IP (rather that over/ under/ in place of) that has the ambition to trade-off no ICN architectural principles. By reusing existing packet formats, hICN brings innovation inside the IP stack, requiring minimal software upgrades and guaranteeing transparent interconnection with existing IP networks. We describe the architecture and use the open source implementation to test hICN in the open Internet to validate its short-term deployability. Further, we consider linear video streaming over mobile wireless heterogeneous networks as use case to highlight hICN advantages compared to TCP/IP counterpart.}
+}
+
+@article{sardara2019policy,
+    title = {Application-specific policy-driven 5G Transport with Hybrid ICN},
+    author = {Sardara, Mauro and Samain, Jacques and Aug{\'e}, Jordan and Carofiglio, Giovanna},
+    journal = {LANMAN'19 (demo session)},
+    month={1-3 July},
+    year = {2019},
+    address = {Paris, France},
+    _pdf = {/static/files/research/sardara2019policy.pdf},
+    abstract = {The future landscape of a heterogeneous and unified access (WiFi and Cellular), where users and applications interact with heterogeneous multi-cloud networks, with many different services collaborating together, poses significant challenges to ISP, Enterprises, Cloud Providers and the applications themselves, in particular in terms of Policies, Security and QoE. In this demonstration we showcase the potential of Hybrid ICN (hICN) in the context of enforcing inter-domain policies: exploiting the connection-less, app-aware, multipoint transport of hICN we are able to manage policies on a per-application basis, combining multiple objectives of different players (ISP, Enterprise, Users) in a dynamic and seamless manner.}
+}
+
+@article{auge2019intent,
+    title = {A Network Protocol for Distributed Orchestration Using Intent-Based Forwarding},
+    author = {Aug{\'e}, Jordan and Enguehard, Marcel},
+    journal = {IM'2019},
+    year = {2019},
+    _pdf = {/static/files/research/auge2019intent.pdf},
+    abstract = {Network management systems have undergone tremendous changes to adapt to the growing complexity and diversity of network deployments. A new trend of intent-based frameworks has emerged, where network administrators only input an abstract view of their desired network model instead of specifying the necessary steps to attain it. Intent-based networking holds the promise of autonomous, agile, and learning networks that configure themselves according to abstract policy without requiring human intervention. In this demonstration, we introduce a novel architecture for distributed intent-based network orchestration. For this purpose, we first extend the standard YANG to carry intent rather than configuration, adding missing features for in-network orchestration. Second, we use the model intents as network-native objects on which to perform routing and forwarding in-between orchestrators. Finally, we highlight the benefits of pushing intent in the network rather than fully processing it in a centralized orchestrator and illustrate potential improvements in term of scalability, programmability, and reliability.}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2018                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{auge2018map,
+  title={MAP-Me: Managing Anchor-less Producer Mobility in Content-Centric Networks},
+  author={Aug{\'e}, Jordan and Carofiglio, Giovanna and Grassi, Giulio and Muscariello, Luca and Pau, Giovanni and Zeng, Xuan},
+  journal={IEEE Transactions on Network and Service Management},
+  year={2018},
+  publisher={IEEE},
+  _pdf = {/static/files/research/auge2018mapme.pdf},
+  _link1 = {https://mapme-tnsm17.github.io/},
+  _code1 = {https://github.com/mapme-tnsm17},
+  abstract = {Mobility has become a basic premise of network communications, thereby requiring a native integration into 5G networks. Despite numerous efforts to propose and standardize effective mobility-management models for IP, the result is a complex, poorly flexible set of mechanisms. The natural support for mobility offered by ICN (Information Centric Networking) makes it a good candidate to define a radically new solution relieving limitations of the traditional approaches. If consumer mobility is supported in ICN by design, in virtue of its connectionless pull-based communication model, producer mobility is still an open challenge. In this work, we look at two prominent ICN architecture, CCN (Content Centric Networking) and NDN (Named Data Networking) and we propose MAP-Me, an anchor-less solution to manage micro-mobility of content producers via a name- based CCN/NDN data plane, with support for latency-sensitive streaming applications. We analyze MAP-Me performance and provide guarantees of correctness, stability, and bounded stretch, which we verify on real ISP topologies. Finally, we set up a comprehensive simulation environment in NDNSim 2.1 for MAP-Me evaluation and comparison with different classes of solution. We cover a wide range of topologies, mobility models and radio conditions, and conclude with a realistic trace-driven car-mobility pattern under a 802.11n radio access. The results are encouraging and highlight MAP-Me characteristics and efficiency in terms of user performance and network cost metrics. All the code is available as open-source.}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2017                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@inproceedings{auge2017simple,
+  title={Simple and efficient ICN network virtualization with vICN},
+  author={Aug{\'e}, Jordan and Carofiglio, Giovanna and Enguehard, Marcel and Muscariello, Luca and Sardara, Mauro},
+  booktitle={Proceedings of the 4th ACM Conference on Information-Centric Networking},
+  pages={216--217},
+  year={2017},
+  organization={ACM},
+  abstract = {
+    Information-Centric Networking (ICN) has been proposed as an alternative to
+    IP for future networks such as 5G. To speed up its development and adoption,
+    researchers and engineers require testing tools that are both simple and
+    scalable. In particular, it is crucial to be able to quickly deploy
+    ICN-enabled network topologies in a flexible and efficient manner.
+
+    In this demonstration, we showcase vICN (virtualized ICN), a platform that
+    enables easy deployment, orchestration and management of ICN networks. vICN
+    uses standard virtualization technologies such as Linux Containers (LXC) and
+    is fully integrated with the CICN suite to enable flexible testing of ICN
+    technologies on general-purpose hardware. Furthermore, it can perform live
+    monitoring and modification of the network. In particular, we use vICN to
+    deploy a simple topology that consists of 9 nodes. We show that vICN
+    bootstraps the topology in about 60s on commodity hardware.
+    We then demonstrate how vICN interacts with the virtualized network and how
+    it can be used for easy experimentation.
+  },
+  _pdf = {/static/files/research/auge2017simple.pdf},
+  _code1 = {https://wiki.fd.io/view/Vicn},
+  _link1 = {https://conferences.sigcomm.org/acm-icn/2017/proceedings/icn17-21.pdf},
+}
+
+@inproceedings{compagno2017secure,
+  title={Secure producer mobility in information-centric network},
+  author={Compagno, Alberto and Zeng, Xuan and Muscariello, Luca and Carofiglio, Giovanna and Aug{\'e}, Jordan},
+  booktitle={Proceedings of the 4th ACM Conference on Information-Centric Networking},
+  pages={163--169},
+  year={2017},
+  organization={ACM},
+  abstract = {
+    One of the fundamental requirements of next generation 5G networks is the
+    support for seamless mobility over an heterogeneous access network by
+    design. The shift from host-based to content-based location-independent
+    communication makes Information-Centric Networking (ICN) an appealing
+    technology to provide not only mobility, but security and storage as native
+    properties of the network architecture.
+
+    Previous work in ICN literature has focused on name-based mobility
+    management solutions and particularly on the challenges of producer
+    mobility, which involves an interaction between forwarding and control
+    plane.
+
+    In this paper, we consider the security implications of producer mobility in
+    ICN and highlight the importance of securing producer to network
+    interactions to avoid any sort of cyber attack potentially leading to denial
+    of service. To this aim, we propose a fully distributed and very
+    low-overhead protocol for name prefix attestation in the network based on
+    hash-chaining. First results show a significant improvement in verification
+    latency of order of magnitudes with respect to signature verification.
+  },
+  _pdf = {/static/files/research/compagne2017secure.pdf},
+  _link1 = {https://conferences.sigcomm.org/acm-icn/2017/proceedings/icn17-23.pdf},
+}
+
+@inproceedings{samain2017enhancing,
+  title={Enhancing Mobile Video Delivery over an Heterogeneous Network Access with Information-Centric Networking},
+  author={Samain, Jacques and Aug{\'e}, Jordan and Carofiglio, Giovanna and Muscariello, Luca and Papalini, Michele and Sardara, Mauro},
+  booktitle={Proceedings of the SIGCOMM Posters and Demos},
+  pages={22--24},
+  year={2017},
+  organization={ACM},
+  abstract = {
+    Mobile video delivery drives Internet traffic evolution and puts
+    colossal pressure on future 5G networks to support higher quality and lower
+    latency requirements over an increasingly heterogeneous network access. Future
+    Internet paradigms recentering communication around content, such as
+    Information Centric Networks (ICN), appear as promising candidates to relieve
+    the challenges of a mobility-robust, efficient and cost-effective video
+    delivery, by integrating video-awareness at network layer. In this demo, we
+    focus on ICN-enabled Dynamic Adaptive Streaming (DAS) over an heterogeneous
+    wireless access. We integrate ICN capabilities in DAS clients requesting 4K
+    video content to standard DAS servers. We deploy a virtualized ICN-enabled
+    network slice using LXC containers to connect clients to servers through an
+    heterogeneous wireless access (802.11n and LTE emulated radios) and a
+    simplified backhaul.
+
+    The contribution of the demo is twofold.  First it showcases what ICN can
+    bring to DAS over a mobile heterogeneous access in virtue of its
+    content-awareness at network layer. Second, it offers to the user a rich
+    sandbox where several state-of-the-art DAS controllers are implemented and
+    can be tested over ICN or standard TCP.
+  },
+  _pdf = {/static/files/research/samain2017enhancing.pdf},
+  link1 = {https://dl.acm.org/citation.cfm?id=3131973},
+  link2 = {https://conferences.sigcomm.org/sigcomm/2017/program-demos.html},
+}
+
+@inproceedings{sardara2017vicn,
+  title={Virtualized ICN (vICN): towards a unified network virtualization framework for ICN experimentation},
+  author={Sardara, Mauro and Muscariello, Luca and Aug{\'e}, Jordan and Enguehard, Marcel and Compagno, Alberto and Carofiglio, Giovanna},
+  booktitle={Proceedings of the 4th ACM Conference on Information-Centric Networking},
+  pages={109--115},
+  year={2017},
+  organization={ACM},
+  abstract = {
+    To assess the feasibility and potential for deployment of new networking
+    paradigms such as ICN, being able to carry out large scale experimentation
+    and tests in real operational networks is crucial. Various platforms have
+    been developed by the research community to support design and evaluation of
+    specific aspects of ICN architecture. Most of them provide ICN-dedicated,
+    small scale or application-specific environments and ad-hoc testing tools,
+    non reusable in other contexts nor in real-world IP deployments.
+
+    The goal of this paper is to contribute vICN (virtualized ICN), a unified
+    open-source framework for network configuration and management that uses
+    recent progresses in resource isolation and virtualization techniques. It
+    offers a single, flexible and scalable platform to serve different purposes,
+    ranging from reproducible large-scale research experimentation, to
+    demonstrations with  emulated and/or physical devices and network resources
+    and to real deployments of ICN in existing IP networks. In the paper, we
+    describe the rationale for vICN and its components, highlighting
+    programmability, scalability and reliability as its core principles.
+    Illustration of vICN properties is provided through concrete examples.
+  },
+  _pdf = {/static/files/research/sardara2017vicn.pdf},
+  _code1 = {https://wiki.fd.io/view/Vicn},
+  _link1 = {https://conferences.sigcomm.org/acm-icn/2017/proceedings/icn17-26.pdf},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2016                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{auge2016mapme,
+  author    = {Jordan Aug{\'{e}} and
+               Giovanna Carofiglio and
+               Giulio Grassi and
+               Luca Muscariello and
+               Giovanni Pau and
+               Xuan Zeng},
+  title     = {MAP-Me: Managing Anchor-less Producer Mobility in Information-Centric
+               Networks},
+  journal   = {CoRR},
+  volume    = {abs/1611.06785},
+  year      = {2016},
+  url       = {http://arxiv.org/abs/1611.06785},
+  archivePrefix = {arXiv},
+  eprint    = {1611.06785},
+  _pdf = {https://arxiv.org/pdf/1611.06785},
+  _link = {https://arxiv.org/abs/1611.06785},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2015                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{cicalese2015latency,
+  title={Latency-Based Anycast Geolocalization: Algorithms, Software and Datasets},
+  author={Cicalese, Danilo and Joumblatt, Diana and Rossi, Dario and Buob, Marc-Olivier and Aug{\'e}, Jordan and Friedman, Timur},
+  journal={to appear in JSAC},
+  year={2016},
+  keywords = {journal},
+  _demo = {https://anycast.telecom-paristech.fr/dataset/},
+  _demo_external = {https://anycast.telecom-paristech.fr/tabview/},
+  _data1 = {https://anycast.telecom-paristech.fr/dataset/},
+}
+
+@inproceedings{auge2015anchor,
+  title={Anchor-Less Producer Mobility in ICN},
+  author={Aug{\'e}, Jordan and Carofiglio, Giovanna and Grassi, Giulio and Muscariello, Luca and Pau, Giovanni and Zeng, Xuan},
+  booktitle={Proceedings of ICN'15 / the 2nd International Conference on Information-Centric Networking},
+  pages={189--190},
+  year={2015},
+  organization={ACM}
+}
+
+
+@inproceedings{cicalese2015characterizing,
+  title={Characterizing IPv4 Anycast Adoption and Deployment},
+  author={Cicalese, Danilo and Aug{\'e}, Jordan and Joumblatt, Diana and Friedman, Timur and Rossi, Dario},
+  booktitle={Proceedings of CONEXT'2015},
+  year={2015},
+  keywords = {conference},
+  _award = {IRTF Applied Networking Research Prize @ IETF-96 (2016)},
+  _link1 = {https://irtf.org/anrp##ANRP website},
+  _code1 = {https://anycast.telecom-paristech.fr/code/},
+  _demo = {https://anycast.telecom-paristech.fr/dataset/},
+  _demo_external = {https://anycast.telecom-paristech.fr/tabview/},
+  _data1 = {https://anycast.telecom-paristech.fr/dataset/},
+}
+
+
+@inproceedings{cicalese2015lightweight,
+  title={Lightweight Anycast Enumeration and Geolocation},
+  author={Cicalese, Danilo and Aug{\'e}, Jordan and Joumblatt, Diana and Rossi, Dario and Buob, Marc-Olivier and Friedman, Timur},
+  booktitle={INFOCOM'2015 (Demo)},
+  year={2015},
+  keywords = {conference},
+  _demo = {https://anycast.telecom-paristech.fr/dataset/},
+  _demo_external = {https://anycast.telecom-paristech.fr/tabview/},
+  _data1 = {https://anycast.telecom-paristech.fr/dataset/},
+}
+
+
+@inproceedings{mazloum2015errors,
+  title={Errors Announcing 32-bit ASNs in BGP Routes},
+  author={Riad Mazloum and Jordan Augé and Dario Rossi and Timur Friedman},
+  booktitle={Extended abstract, DRCN'15},
+  month = {Mar. 25--27},
+  address = {Kansas City (MI), USA},
+  year = {2015},
+  keywords = {conference,poster}
+}
+
+@inproceedings{cicalese2015anycast,
+  title = {A Fistful of Pings: Accurate and Lightweight Anycast Enumeration and
+  Geolocation},
+  author = {Danilo Cicalese and Diana Joumblatt and Marc-Olivier Buob and Jordan
+  Augé and Dario Rossi and Timur Friedman},
+  booktitle = {INFOCOM'2015},
+  month = {Apr. 26 -- May 1st},
+  year = {2015},
+  address = {Hong-Kong},
+  keywords = {conference}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2014                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{auge2014federating,
+  title = {Federating data to support measurement and monitoring},
+  author = {Jordan Aug\'e and Marc-Olivier Buob and Lo\"ic Baron and Timur
+  Friedman and Serge Fdida},
+  journal = {2nd FIRE-GENI workshop},
+  month = {May 6-7},
+  year = {2014},
+  address = {Boston, MA},
+  keywords = {invited talk}
+}
+
+@inproceedings{casoria2014distributed,
+  title={Distributed Active Measurement of Internet Queuing Delays},
+  author={Casoria, Pellegrino and Rossi, Dario and Aug{\'e}, Jordan and Buob, Marc-Olivier and Friedman, Timur and Pescap{\'e}, Antonio},
+  booktitle={Passive and Active Measurement, Extended Abstract},
+  month = {Mar. 10-11},
+  year={2014},
+  pages={278--280},
+  address = {Los Angeles (CA)},
+  keywords = {conference,poster}
+}
+
+@inproceedings{mazloum2014violation,
+  title = {Violation of Interdomain Routing Assumptions},
+  author = {Riad Mazloum and Marc-Olivier Buob and Jordan Aug\'e and Bruno Baynat and Timur Friedman and Dario Rossi},
+  booktitle={PAM'2014},
+  month = {Mar. 10-11},
+  year={2014},
+  address = {Los Angeles (CA)},
+  keywords = {conference}
+}
+
+@article{auge2014tools,
+  title={Tools to foster a global federation of testbeds},
+  author = {Jordan Aug{\'e} and Thierry Parmentelat and Nicolas Turro and Sandrine Avakian and Lo\"ic Baron and Mohamed Amine Larabi and Mohammed Yasin Rahman and Timur Friedman and Serge Fdida},
+  journal = {Computer Networks, Special issue on Future Internet Testbeds},
+  year={2014},
+  keywords = {journal}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2013                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{auge2013thoughts,
+    title = {Some thoughts towards an intercontinental federation},
+    author = {Jordan Aug\'e and Lo\"ic Baron and Mohammed Yasin Rahman and Timur
+    Friedman and Serge Fdida and Mohamed Amine Larabi and Thierry Parmentelat},
+    journal = {FIRE-GENI workshop},
+    month = {October 14-15},
+    year = {2013},
+    address = {Leuven, Belgium},
+  keywords = {invitedtalk}
+}
+
+@article{auge2013standard,
+    author = {Jordan Aug\'e and Marc-Olivier Buob and Lo\"ic Baron and Serge
+    Fdida and Timur Friedman},
+    title = {Can we define a standard interface for the measurement and
+    monitoring plane ?},
+    journal = {FIRE-GENI workshop},
+    month = {October 14-15},
+    year = {2013},
+    address = {Leuven, Belgium},
+  keywords = {invitedtalk}
+}
+
+@article{fdida2013fi,
+  title = {Some development about the Future Internet in Europe},
+  author = {Serge Fdida and Jordan Aug{\'e} and Marc-Olivier Buob and Lo\"ic Baron and Timur Friedman},
+  journal = {CFI'2013, The 8th International Conference on Future Internet
+  Technologies},
+  month = {June 5-7},
+  year = {2013},
+  address = {Beijing, China},
+  keywords = {invitedtalk}
+}
+
+@article{mazloum2013multiexit,
+  title = {On multi-exit routings and AS relationships},
+  author = {Riad Mazloum and Marc-Olivier Buob and Jordan Aug{\'e} and  Bruno Baynat
+  and Timur Friedman and Dario Rossi},
+  journal = {ISMA'2013 - 5th AIMS workshop},
+  year = {2013},
+  month = {February 6-8},
+  address = {San Diego (CA)},
+  keywords = {workshop}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2012                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{baron2012portal,
+  title = {Towards an integrated portal for networking testbed federation, an open platform
+approach},
+  author = {Lo\"ic Baron and Jordan Aug{\'e} and Timur Friedman and Serge Fdida},
+  journal = {FIRE Engineering workshop},
+  month = {Nov 6-7},
+  year= {2012},
+  address = {Ghent, Belgium},
+  keywords = {workshop}
+}
+
+@article{auge2012gec,
+  title = {Supporting the experiment lifecycle with MySlice},
+  author = {Jordan Aug{\'e} and Lo\"ic Baron and  Timur Friedman and Serge Fdida},
+  journal = {GENI Engineering Conference, GEC15},
+  month = {Oct. 23-25},
+  year = {2012},
+  address = {Houston, TX},
+  keywords = {invitedtalk}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2011                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@inproceedings{auge2011mbac,
+    author={Jordan Aug{\'e} and Sara Oueslati and James Roberts},
+    title={Measurement-Based Admission Control for Flow-Aware Implicit Service Differentiation},
+    booktitle={23rd International Teletraffic Congress (ITC 2011)},
+    address={San Francisco, USA},
+    day={6},
+    month={Sep},
+    year={2011},
+    shorthand={P5},
+    keywords={conference,phd,Admission control,Flow-Aware Networking},
+    abstract={It has previously been shown that the combined use of fair queuing
+    and admission control would allow the Internet to provide satisfactory
+    quality of service for both streaming and elastic flows without explicitly
+    identifying traffic classes. In this paper we discuss the design of the
+    required measurement based admission control (MBAC) scheme. The context is
+    different to that of previous work on MBAC in that there is no prior
+    knowledge of flow characteristics and there is a twofold objective: to
+    maintain adequate throughput for elastic flows and to ensure low packet
+    latency for any flow whose peak rate is less than a given threshold. In the
+    paper we consider the second objective assuming realistically that most
+    elastic and streaming flows are rate limited. We propose an MBAC algorithm
+    and evaluate its performance by simulation under different stationary
+    traffic mixes and in a flash crowd scenario. The algorithm is shown to offer
+    a satisfactory compromise between flow performance and link utilization.},
+    _pdf = {/static/files/research/auge2011mbac.pdf}
+}
+
+@article{auge2011tophat,
+  title = {Update on TopHat \& measurement system interconnection},
+  author = {Jordan Aug{\'e} and Timur Friedman and Thomas Bourgeau},
+  journal = {ISMA'2011 - 3rd AIMS workshop},
+  address = {San Diego (CA)},
+  month = {February 8-10},
+  year = {2010},
+  keywords = {workshop}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2010                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@inproceedings{bourgeau2010tophat,
+    author = {Thomas Bourgeau and Jordan Aug{\'e} and Timur Friedman},
+    title = {TopHat: supporting experiments through measurement infrastructure federation},
+    booktitle = {Proceedings of TridentCom'2010},
+    year = {2010},
+    month = {18-20 May},
+    address = {Berlin, Germany},
+    shorthand={E2},
+    keywords = {conference}
+}
+
+@article{auge2010tophat,
+  title = {Overview of TopHat: Interconnecting the OneLab measurement
+  infrastructures},
+  author = {Jordan Aug{\'e} and Timur Friedman and Thomas Bourgeau},
+  journal = {ISMA'2010 - 2nd AIMS workshop},
+  address = {San Diego (CA)},
+  month = {February 8-10},
+  year= {2010},
+  keywords = {workshop}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2009                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{claffy2009aims,
+  title = {The 2nd Workshop on Active Internet Measurements (AIMS-2) report},
+  author = {KC Claffy and Emile Aben and Jordan Aug{\'e} and Robert Beverly and Fabian Bustamante and Benoît
+Donnet and Timur Friedman and Marina Fomenkov and Peter Haga and Matthew Luckie and Yuval
+Shavitt},
+  journal = {ACM SIGCOMM Computer Communication Review (CCR)},
+  volume = {39},
+  number = {5},
+  pages = {32--36},
+  month = {Oct},
+  year = {2009},
+  keywords = {workshop}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2009                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{clegg2009challenges,
+  title={Challenges in the capture and dissemination of measurements from high-speed networks},
+  author={Clegg, RG and Withall, M.S. and Moore, AW and Phillips, I.W. and Parish, D.J. and Rio, M. and Landa, R. and Haddadi, H. and Kyriakopoulos, K. and Aug{\'e}, J. and others},
+  journal={Communications, IET},
+  volume={3},
+  number={6},
+  pages={957--966},
+  year={2009},
+  publisher={IET},
+  shorthand={E1},
+  _pdf = {/static/files/research/clegg2009challenges.pdf},
+  keywords = {journal}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2008                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2007                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@inproceedings{auge2007buffer,
+    title = {A Statistical Bandwidth Sharing Perspective on Buffer Sizing.},
+    author = {J. Aug{\'e} and J. Roberts},
+    booktitle = {International Teletraffic Congress},
+    pages = {410-421},
+    series = {Lecture Notes in Computer Science},
+    volume = {4516},
+    year = {2007},
+    keywords = {conference,phd},
+    _pdf = {/static/files/research/itc20.pdf}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2006                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@inproceedings{auge2006buffer,
+  title={Buffer sizing for elastic traffic},
+  author={Jordan Aug{\'e} and James Roberts},
+  booktitle={Next Generation Internet Design and Engineering (NGI'06)},
+  pages={8-9},
+  year={2006},
+  organization={IEEE},
+  shorthand={P3},
+  keywords = {conference,phd},
+  _pdf = {/static/files/research/ngi06.pdf}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     2005                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    before                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{auge2005fq,
+  title={Fair Queueing and Congestion Control},
+  author={James Roberts and Jordan Aug{\'e}},
+  journal={Workshop on Congestion Control},
+  month={September},
+  year={2005},
+  address={Hamilton Institute},
+  shorthand={P1},
+  keywords = {workshop,phd},
+  _pdf={/static/files/research/roberts2005fqcc.ppt}
+}
+
+@article{auge2005performance,
+  title={Performance of TCP over a link using Fair Queueing},
+  author={Jordan Aug{\'e} and James Roberts},
+  journal={EuroNGI, Proceedings of Workshop on QoS and Traffic Control},
+  month={December},
+  year={2005},
+  address={Paris},
+  shorthand={P2},
+  keywords = {workshop,phd},
+  _pdf = {/static/files/research/ngi06wqostc.pdf}
+}
+
+
