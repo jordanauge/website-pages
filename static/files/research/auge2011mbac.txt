@@ -1,0 +1,13 @@
+It has previously been shown that the combined use of fair queuing and admission
+control would allow the Internet to provide satisfactory quality of service for
+both streaming and elastic flows without explicitly identifying traffic classes.
+In this paper we discuss the design of the required measurement based admission
+control (MBAC) scheme. The context is different to that of previous work on MBAC
+in that there is no prior knowledge of flow characteristics and there is a
+twofold objective: to maintain adequate throughput for elastic flows and to
+ensure low packet latency for any flow whose peak rate is less than a given
+threshold. In the paper we consider the second objective assuming realistically
+that most elastic and streaming flows are rate limited. We propose an MBAC
+algorithm and evaluate its performance by simulation under different stationary
+traffic mixes and in a flash crowd scenario. The algorithm is shown to offer a
+satisfactory compromise between flow performance and link utilization.

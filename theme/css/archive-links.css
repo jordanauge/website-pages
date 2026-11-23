@@ -1,0 +1,46 @@
+/* ── Archive hover badge — site-wide ── */
+
+/* Wrapper stays inline with the link flow */
+.archive-link-wrapper {
+    position: relative;
+    display: inline;
+}
+
+/* The badge: hidden by default, appears on hover */
+.archive-link-wrapper .archive-hover-badge {
+    display: none;
+    position: absolute;
+    top: -0.15em;
+    right: -1.2em;
+    z-index: 10;
+    color: var(--bs-secondary-color, #6c757d);
+    opacity: 0.55;
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+    line-height: 1;
+    pointer-events: auto;
+}
+.archive-link-wrapper .archive-hover-badge:hover {
+    opacity: 1;
+    color: var(--bs-primary, #0d6efd);
+}
+
+/* Show badge on wrapper hover */
+.archive-link-wrapper:hover .archive-hover-badge {
+    display: inline-block;
+}
+
+/* Inside buttons or badges, shift the badge further right */
+.btn .archive-link-wrapper .archive-hover-badge,
+.badge .archive-link-wrapper .archive-hover-badge {
+    right: -1.5em;
+    top: -0.3em;
+}
+
+/* Dark mode adjustments */
+[data-bs-theme="dark"] .archive-link-wrapper .archive-hover-badge {
+    color: var(--bs-secondary-color, #adb5bd);
+}
+[data-bs-theme="dark"] .archive-link-wrapper .archive-hover-badge:hover {
+    color: var(--bs-info, #0dcaf0);
+}

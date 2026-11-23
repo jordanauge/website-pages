@@ -1,0 +1,17 @@
+Network management systems have undergone tremendous changes to adapt to the
+growing complexity and diversity of network deployments. A new trend of
+intent-based frameworks has emerged, where network administrators only input an
+abstract view of their desired network model instead of specifying the necessary
+steps to attain it. Intent-based networking holds the promise of autonomous,
+agile, and learning networks that configure themselves according to abstract
+policy without requiring human intervention.
+
+In this demonstration, we introduce a novel architecture for distributed
+intent-based network orchestration. For this purpose, we first extend the
+standard YANG to carry intent rather than configuration, adding missing features
+for in-network orchestration. Second, we use the model intents as network-native
+objects on which to perform routing and forwarding in-between orchestrators.
+Finally, we highlight the benefits of pushing intent in the network rather than
+fully processing it in a centralized orchestrator and illustrate potential
+improvements in term of scalability, programmability, and reliability.
+

@@ -1,0 +1,115 @@
+/*
+ * wowchemy-compat.css
+ * Minimal set of Wowchemy/Bootstrap 4 classes that are still referenced in
+ * templates or content but are not provided by Bootstrap 5 or style.css.
+ * Replaces the 173K misc.css which was a full Bootstrap 4 + Wowchemy bundle.
+ *
+ * Rules updated to use Bootstrap 5 CSS variables for dark-mode compatibility.
+ */
+
+/* ── Avatar ──────────────────────────────────────────────────────────────── */
+.avatar {
+    width: 270px;
+    height: 270px;
+    margin: 0 auto;
+    object-fit: cover;
+}
+
+.author-card .avatar {
+    width: 60px;
+    height: 60px;
+}
+
+.avatar-circle {
+    border-radius: 50%;
+}
+
+/* ── Network / social icon list ──────────────────────────────────────────── */
+ul.network-icon {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.network-icon li {
+    margin-right: 10px;
+}
+
+/* ── Page subtitle ───────────────────────────────────────────────────────── */
+.page-subtitle {
+    font-size: 1.15rem;
+    color: var(--bs-secondary-color);
+    margin-bottom: 1rem;
+}
+
+/* ── Portrait title (profile widget) ────────────────────────────────────── */
+.portrait-title h2 {
+    font-size: 1.75em;
+    font-weight: 300;
+    color: var(--bs-emphasis-color);
+    margin: 20px 0 10px;
+}
+
+.portrait-title h3 {
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0 0 10px;
+}
+
+/* ── Section heading ─────────────────────────────────────────────────────── */
+.section-heading h1 {
+    margin: 0 0 10px;
+}
+
+.section-heading p {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--bs-secondary-color);
+}
+
+/* ── Education list (CV) ─────────────────────────────────────────────────── */
+ul.ul-edu li .description p {
+    margin: 0;
+}
+
+ul.ul-edu li .description p.course {
+    font-size: .9rem;
+}
+
+ul.ul-edu li .description p.institution {
+    font-size: .75rem;
+    color: var(--bs-secondary-color);
+}
+
+/* ── Big icon ────────────────────────────────────────────────────────────── */
+.big-icon {
+    font-size: 2rem;
+}
+
+/* ── article-style: aside/callout blocks inside blog content ─────────────── */
+.article-style aside {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: .25rem;
+    background-color: var(--bs-tertiary-bg);
+}
+
+.article-style aside p {
+    position: relative;
+    display: block;
+    font-size: 1rem;
+    margin-left: 2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* ── Bootstrap 4 spacing shim (.pr-1 → BS5 .pe-1) ───────────────────────── */
+.pr-1 {
+    padding-right: .25rem !important;
+}

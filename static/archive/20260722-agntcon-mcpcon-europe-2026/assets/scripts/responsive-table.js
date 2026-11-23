@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".is-style-table-with-column-headers table").ReStable({rowHeaders:!0,maxWidth:999,keepHtml:!0})});

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Anycast Datasets</title>
+<meta content="This anycast discovery method allows for accurate enumeration and city-level geolocation of anycast replicas, with the constraints of only leverages a handful of latency measurements from a set of known vantage points.
+" name="description"/>
+<link href="assets/stylesheets/main.css" rel="stylesheet"/>
+<link href="https://anycast.telecom-paristech.fr/dataset/" rel="canonical"/>
+<link href="https://anycast.telecom-paristech.fr/feed.xml" rel="alternate" title="Anycast enumeration and geolocation" type="application/rss+xml">
+<link href="assets/stylesheets/css" id="open-sans-css" media="all" rel="stylesheet" type="text/css">
+<link href="assets/stylesheets/css" rel="stylesheet" type="text/css"/>
+</link></link></head>
+<body><div style="background: #f0f8ff; padding: 10px; border: 1px solid #ddd; margin: 10px 0; border-radius: 5px;">📁 Archived copy from https://anycast.telecom-paristech.fr/dataset/ • Saved on 2026-04-21</div>
+<header class="site-header">
+<div class="wrapper">
+<a class="site-title" href="/">Anycast enumeration and geolocation</a>
+<nav class="site-nav">
+<a class="menu-icon menu.open" href="#">
+<svg viewbox="0 0 18 15">
+<path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#424242"></path>
+<path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#424242"></path>
+<path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#424242"></path>
+</svg>
+</a>
+<div class="trigger"><h1>Main Navigation</h1>
+<ul class="menu">
+<li><a class="page-link" href="/about/">About</a>
+</li>
+<li><a class="page-link" href="/dataset/">Dataset</a>
+</li>
+<li><a class="page-link" href="/code/">Code</a>
+</li>
+<li><a class="page-link" href="">Geolocation services</a>
+<ul class="sub-menu">
+<li><a href="/map/">Google Map</a></li>
+<li><a href="/tabview/">Tabular view</a></li>
+</ul>
+</li>
+<li><a class="page-link" href="/publications">Publications</a>
+</li>
+</ul>
+<!-- <ul class="menu">
+        <li> <a class="page-link" href="/about">About</a></li>
+        <li> <a class="page-link"  href="/blog">Blog</a>
+        <li> <a class="page-link" href="/blog">CV</a>
+        <li> <a class="page-link" href="/blog">For Students</a></li>
+        <li> <a class="page-link"  href="/blog">Research</a></a>
+        <li> <a class="page-link" href="/blog">Teaching</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">POSC 1020 – Introduction to International Relations</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">POSC 3410 – Quantitative Methods in Political Science</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">POSC 3610 – International Politics in Crisis</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3630-united-states-foreign-policy/">POSC 3630 – United States Foreign Policy</a></li>
+</ul></li>
+        <li> <a class="page-link" href="/blog">Miscellany</a>
+<ul class="sub-menu">
+	<li><a href="http://svmiller.com/teaching/posc-1020-introduction-to-international-relations/">Clean USAID Greenbook Data</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3410-quantitative-methods-in-political-science/">Journal of Peace Research *.bst File</a></li>
+	<li><a href="http://svmiller.com/teaching/posc-3610-international-politics-in-crisis/">My Custom Beamer Style</a></li>
+</ul> 
+
+</li>
+</ul> -->
+</div>
+</nav>
+</div>
+</header>
+<div class="page-content">
+<div class="wrapper">
+<div class="post">
+<header class="post-header">
+<h1 class="post-title">Anycast Datasets</h1>
+</header>
+<article class="post-content">
+<p>In this page you can find two kinds of datasets:</p>
+<ul>
+<li>Datasets with ground truth, collected with protocol specific techniques (e.g., DNS CHAOS requests or DPI over HTTP headers) for a restrained set of providers, that we used to validate the <a href="/code/">iGreedy code</a></li>
+<li>Internet-wide censuses without groundtruth, collected solely based on ICMP latency measurement and processed with the scalable iGreedy code (not yet publicly available)</li>
+</ul>
+<h2 id="dataset-with-ground-truth">Dataset with ground truth</h2>
+<p>These datasets (and <a href="/code/">code</a>) were used to obtain results in <a href="/publications/#INFOCOM-15">[INFOCOM-15]</a> and <a href="/publications/#JSAC-16">[JSAC-16]</a>, and collected as schematized in the following picture (see the <a href="/publications">publication</a>  section for details)</p>
+<p><img alt="" src="assets/images/dataset-infocom_jsac.png"/></p>
+<p>To make results fully reproducible, the datasets are directly available in the <a href="/code/">iGreedy code</a></p>
+<h2 id="ipv4-censues">IPv4 Censues</h2>
+<p>Starting in March 2015, we have performed Internet-wide censuses of IPv4 anycast deployment  at /24 level <a href="/publications/#CoNEXT-15">[CoNEXT-15]</a>, which we make available to the community as</p>
+<ul>
+<li>The <a href="/assets/anycast-conext2015-ip24.list">list of anycast IP/24</a> belonging to the top-100 ASes</li>
+<li>A <a href="/assets/top100-conext15.png">nice illustration</a>  of the top-100 anycast ASes</li>
+</ul>
+<p>Since December 2015, we have started running monthly censuses, that we describe in <a href="/publications/#SIGCOMM-CCR-17">[SIGCOMM-CCR-17]</a>. In this page, we host one year worth of data, making available</p>
+<ul>
+<li>the raw measurement from PlanetLab,</li>
+<li>the set of raw mesurement for targets that were found to be Anycast, as well as</li>
+<li>the list of anycast /24 for every month.</li>
+<li>the IDs of the public RIPE Atlas measurements we used in <a href="/publications/#SIGCOMM-CCR-17">[SIGCOMM-CCR-17]</a>  for the <a href="/assets/ripe_monthly_2016-06_2017-06">year-long tracking</a> as well as the <a href="/assets/ripe_ids_2017-06">monthly refinement</a></li>
+</ul>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+.tg td{font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.grayout {
+    opacity: 0.6; /* Real browsers */
+    filter: alpha(opacity = 60); /* MSIE */
+}
+p {
+  display: inline-block;
+}
+</style>
+<table align="center" class="tg" id="table" width="100%">
+<tr>
+<th class="tg-baqh">Month</th>
+<th class="tg-baqh" colspan="2">Raw measurement data</th>
+<th class="tg-baqh">Processed data</th>
+</tr>
+<tr>
+<td class="tg-baqh"></td>
+<td class="tg-baqh">All</td>
+<td class="tg-baqh">Anycast</td>
+<td class="tg-baqh">Anycast List</td>
+</tr>
+<!--
+		<tr>
+			<td class="tg-baqh"> 2016-05</td>
+			<td class="tg-baqh"> n/a </td>
+			<td class="tg-baqh"><a href="../datasets/censuses-anycast-subset/2016-05.tar.gz"> 2016-05 </a> <p class="grayout">[2.2MB]</p> </td>
+			<td class="tg-baqh"> <a href="/list/2016-05"> 2016-05 </a> <p class="grayout">[12KB]</p></td>
+	  	</tr>
+    -->
+<tr>
+<td class="tg-baqh"> 2016-06</td>
+<td class="tg-baqh"><a href="../datasets/censuses/2016-06.tar.gz"> 2016-06 </a><p class="grayout">[2.3GB]</p></td>
+<td class="tg-baqh"><a href="../datasets/censuses-anycast-subset/2016-06.tar.gz"> 2016-06 </a><p class="grayout">[2.2MB]</p></td>
+<td class="tg-baqh"> <a href="/list/2016-06"> 2016-06 </a> <p class="grayout">[52KB]</p> </td>
+</tr>
+<tr>
+<td class="tg-baqh"> 2016-07</td>
+<td class="tg-baqh"><a href="../datasets/censuses/2016-07.tar.gz"> 2016-07 </a> <p class="grayout">[21GB]</p></td>
+<td class="tg-baqh"><a href="../datasets/censuses-anycast-subset/2016-07.tar.gz"> 2016-07 </a><p class="grayout">[3.0MB]</p></td>
+<td class="tg-baqh"> <a href="/list/2016-07"> 2016-07 </a> <p class="grayout">[52KB]</p> </td>
+</tr>
+<tr>
+<td class="tg-baqh"> 2016-08</td>
+<td class="tg-baqh"><a href="../datasets/censuses/2016-08.tar.gz"> 2016-08 </a> <p class="grayout">[4.0GB]</p> </td>
+<td class="tg-baqh"><a href="../datasets/censuses-anycast-subset/2016-08.tar.gz"> 2016-08 </a> <p class="grayout">[2.0MB]</p> </td>
+<td class="tg-baqh"> <a href="/list/2016-08"> 2016-08 </a> <p class="grayout">[48KB]</p> </td>
+</tr>
+<tr>
+<td class="tg-baqh"> 2016-09</td>
+<td class="tg-baqh"><a href="../datasets/censuses/2016-09.tar.gz"> 2016-09 </a> <p class="grayout">[7.9GB]</p></td>
+<td class="tg-baqh"><a href="../datasets/censuses-anycast-subset/2016-09.tar.gz"> 2016-09 </a> <p class="grayout">[2.2MB]</p></td>
+<td class="tg-baqh"> <a href="/list/2016-09"> 2016-09 </a> <p class="grayout">[52KB]</p> </td>
+</tr>
+<tr>
+<td class="tg-baqh"> 2016-10</td>
+<td class="tg-baqh"><a href="../datasets/censuses/2016-10.tar.gz"> 2016-10 </a> <p class="grayout">[4.3GB]</p></td>
+<td class="tg-baqh"><a href="../datasets/censuses-anycast-subset/2016-10.tar.gz"> 2016-10 </a> <p class="grayout">[2.1MB]</p></td>
+<td class="tg-baqh"> <a href="/list/2016-10"> 2016-10 </a> <p class="grayout">[52KB]</p></td>
+</tr>
+<tr>
+<td class="tg-baqh"> 2016-11</td>
+<td class="tg-baqh"><a href="../datasets/censuses/2016-11.tar.gz"> 2016-11 </a> <p class="grayout">[4.0GB]</p></td>
+<td class="tg-baqh"> n/a </td>
+<td class="tg-baqh"> <a href="/list/2016-11"> 2016-11 </a> <p class="grayout">[48KB]</p> </td>
+</tr>
+<tr>
+<td class="tg-baqh"> 2016-12</td>
+<td class="tg-baqh"><a href="../datasets/censuses/2016-12.tar.gz"> 2016-12 </a> <p class="grayout">[3.2GB]</p></td>
+<td class="tg-baqh"> n/a </td>
+<td class="tg-baqh"> <a href="/list/2016-12"> 2016-12 </a> <p class="grayout">[52KB]</p> </td>
+</tr>
+<tr>
+<td class="tg-baqh"> 2017-01</td>
+<td class="tg-baqh"><a href="../datasets/censuses/2017-01.tar.gz"> 2017-01 </a> <p class="grayout">[3.6GB]</p></td>
+<td class="tg-baqh"><a href="../datasets/censuses-anycast-subset/2017-01.tar.gz"> 2017-01 </a> <p class="grayout">[1.8MB]</p></td>
+<td class="tg-baqh"> <a href="/list/2017-01"> 2017-01 </a> <p class="grayout">[52KB]</p> </td>
+</tr>
+<tr>
+<td class="tg-baqh"> 2017-02</td>
+<td class="tg-baqh"><a href="../datasets/censuses/2017-02.tar.gz"> 2017-02 </a> <p class="grayout">[1.8GB]</p></td>
+<td class="tg-baqh"><a href="../datasets/censuses-anycast-subset/2017-02.tar.gz"> 2017-02 </a> <p class="grayout">[1.7MB]</p></td>
+<td class="tg-baqh"> <a href="/list/2017-02"> 2017-02 </a> <p class="grayout">[52KB]</p></td>
+</tr>
+<tr>
+<td class="tg-baqh"> 2017-03</td>
+<td class="tg-baqh"><a href="../datasets/censuses/2017-03.tar.gz"> 2017-03 </a> <p class="grayout">[1.7GB]</p></td>
+<td class="tg-baqh"><a href="../datasets/censuses-anycast-subset/2017-03.tar.gz"> 2017-03 </a> <p class="grayout">[1.6MB]</p></td>
+<td class="tg-baqh"> <a href="/list/2017-03"> 2017-03 </a> <p class="grayout">[52KB]</p> </td>
+</tr>
+<tr>
+<td class="tg-baqh"> 2017-04</td>
+<td class="tg-baqh"><a href="../datasets/censuses/2017-04.tar.gz"> 2017-04 </a> <p class="grayout">[3.1GB]</p></td>
+<td class="tg-baqh"><a href="../datasets/censuses-anycast-subset/2017-04.tar.gz"> 2017-04 </a> <p class="grayout">[3.0MB]</p></td>
+<td class="tg-baqh"> <a href="/list/2017-04"> 2017-04 </a> <p class="grayout">[56KB]</p> </td>
+</tr>
+<!--    
+		<tr>
+			<td class="tg-baqh"> 2017-05</td>
+			<td class="tg-baqh"><a href="../datasets/censuses/2017-05.tar.gz"> 2017-05 </a> <p class="grayout">[3.0GB]</p> </td>
+			<td class="tg-baqh"><a href="../datasets/censuses-anycast-subset/2017-05.tar.gz"> 2017-05 </a> <p class="grayout">[2.6MB]</p></td>
+			<td class="tg-baqh"> <a href="/list/2017-05"> 2017-05 </a> <p class="grayout">[52KB]</p></td>
+	  	</tr>
+    
+
+    
+		<tr>
+			<td class="tg-baqh"> 2017-08</td>
+			<td class="tg-baqh"> n/a </td>
+			<td class="tg-baqh"> n/a </td>
+			<td class="tg-baqh"> <a href="/list/2017-08"> 2017-08 </a> <p class="grayout">[52KB]</p> </td>
+	  	</tr>
+    
+
+    
+		<tr>
+			<td class="tg-baqh"> 2017-09</td>
+			<td class="tg-baqh"> n/a </td>
+			<td class="tg-baqh"> n/a </td>
+			<td class="tg-baqh"> <a href="/list/2017-09"> 2017-09 </a> <p class="grayout">[56KB]</p></td>
+	  	</tr>
+    
+
+    
+		<tr>
+			<td class="tg-baqh"> 2017-10</td>
+			<td class="tg-baqh"> n/a </td>
+			<td class="tg-baqh"> n/a </td>
+			<td class="tg-baqh"> <a href="/list/2017-10"> 2017-10 </a><p class="grayout">[52KB]</p> </td>
+	  	</tr>
+
+    
+		<tr>
+			<td class="tg-baqh"> 2018-01</td>
+			<td class="tg-baqh"> n/a </td>
+			<td class="tg-baqh"> n/a </td>
+			<td class="tg-baqh"> <a href="/list/2018-01"> 2018-01 </a><p class="grayout">[60KB]</p> </td>
+	  	</tr>
+-->
+</table>
+<!--
+<h2 id="references">References</h2>
+
+<ul class="bibliography"><li>	<abbr><strong>[SIGCOMM-CCR-17]</strong></abbr>
+	Cicalese, Danilo and Rossi, Dario, 
+
+	
+    	<a href="/assets/papers/SIGCOMM-CCR-17.pdf"> A longitudinal study of IP Anycast  </a>
+		
+
+
+
+
+	<emph>
+	     ACM SIGCOMM Comput. Commun. Rev. 	   
+	</emph>
+
+		   
+	 2017 	   
+	
+ 
+ 
+</li>
+<li>	<abbr><strong>[JSAC-16]</strong></abbr>
+	Cicalese, Danilo and Joumblatt, Diana and Rossi, Dario and Buob, Marc-Olivier and Auge, Jordan and Friedman, Timur, 
+
+	
+    	<a href="/assets/papers/JSAC-16.pdf"> Latency-Based Anycast Geolocalization: Algorithms, Software and Datasets  </a>
+		
+
+
+
+
+	<emph>
+	 In IEEE Journal on Selected Areas of Communications,  Special issue on Measuring and Troubleshooting the Internet, 	   
+	 Vol. 6, 	   
+		   
+		   
+	</emph>
+	
+	 jun. 	   
+	 2016, 	   
+
+
+ 
+ 
+</li>
+<li>	<abbr><strong>[TECHREP-16]</strong></abbr>
+	Cicalese, Danilo and Auge, Jordan and Joumblatt, Diana and Friedman, Timur and Rossi, Dario, 
+
+	
+    	<a href="/assets/papers/TECHREP-16.pdf"> Latency-Based Anycast Geolocation: Algorithms, Software and Datasets (Extended Version)  </a>
+		
+
+
+
+
+
+	<emph>
+	     Telecom ParisTech 	   
+	</emph>
+
+		   
+	 2016 	   
+	
+ 
+ 
+</li>
+<li>	<abbr><strong>[CoNEXT-15]</strong></abbr>
+	Cicalese, Danilo and Auge, Jordan and Joumblatt, Diana and Friedman, Timur and Rossi, Dario, 
+
+	
+    	<a href="/assets/papers/CoNEXT-15.pdf"> Characterizing IPv4 Anycast Adoption and Deployment  </a>
+		
+
+
+
+
+	<emph>
+	     ACM CoNEXT 	   
+	</emph>
+
+		   
+	 2015 	   
+	
+ 
+ 
+</li>
+<li>	<abbr><strong>[INFOCOM-15]</strong></abbr>
+	Cicalese, Danilo and Joumblatt, Diana and Rossi, Dario and Buob, Marc-Olivier and Augé, Jordan and Friedman, Timur, 
+
+	
+    	<a href="/assets/papers/INFOCOM-15.pdf"> A Fistful of Pings: Accurate and Lightweight Anycast Enumeration and Geolocation  </a>
+		
+
+
+
+
+	<emph>
+	     IEEE INFOCOM 	   
+	</emph>
+
+		   
+	 2015 	   
+	
+ 
+ 
+</li>
+<li>	<abbr><strong>[INFOCOM-15Demo]</strong></abbr>
+	Cicalese, Danilo and Joumblatt, Diana and Rossi, Dario and Buob, Marc-Olivier and Auge, Jordan and Friedman, Timur, 
+
+	
+    	<a href="/assets/papers/INFOCOM-15Demo.pdf"> A Lightweight Anycast Enumeration and Geolocation  </a>
+		
+
+
+
+
+	<emph>
+	     IEEE INFOCOM, Demo Session 	   
+	</emph>
+
+		   
+	 2015 	   
+	
+ 
+ 
+</li>
+<li>	<abbr><strong>[AIMS-15]</strong></abbr>
+	Cicalese, Danilo and Auge, Jordan and Joumblatt, Diana and Rossi, Dario and Friedman, Timur, 
+
+	
+    	<a href="/assets/papers/AIMS-15.pdf"> Anycast census and geolocation  </a>
+		
+
+
+
+
+	<emph>
+	     7th Workshop on Active Internet Measurements (AIMS 2015) 	   
+	</emph>
+
+		   
+	 2015 	   
+	
+ 
+ 
+</li></ul>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+-->
+<footer class="site-footer">
+<div class="wrapper">
+<!--     <h2 class="footer-heading">Anycast enumeration and geolocation</h2> -->
+<div class="footer-col-wrapper">
+<div class="footer-col footer-col-1">
+<ul class="contact-list">
+<li><strong>Anycast enumeration and geolocation</strong></li>
+<li><a href="mailto:dario.rossi+anycast@enst.fr">dario.rossi+anycast@enst.fr</a></li>
+</ul>
+</div>
+<div class="footer-col footer-col-2">
+<ul class="social-media-list">
+<!--           
+          <li>
+            <a href="https://github.com/jekyll">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyll</span>
+            </a>
+          </li>
+           -->
+</ul>
+</div>
+<div class="footer-col footer-col-3">
+<p class="text">
+This anycast discovery method allows for accurate enumeration and city-level geolocation of anycast replicas, with the constraints of only leverages a handful of latency measurements from a set of known vantage points.
+ 
+      </p></div>
+</div>
+</div>
+</footer>
+</article></div></div></div></body>
+</html>
